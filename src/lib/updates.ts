@@ -1,7 +1,7 @@
 import { Capacitor, CapacitorHttp, registerPlugin } from "@capacitor/core";
 import { App as NativeApp } from "@capacitor/app";
 import { parseCatalog, type Catalog } from "./content";
-export const APP_VERSION = "1.0.0";
+export const APP_VERSION = "1.1.0";
 export const isAndroid = Capacitor.getPlatform() === "android";
 const updater = registerPlugin<{
   install(options: {

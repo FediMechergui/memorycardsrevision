@@ -15,7 +15,8 @@ describe("Content integrity", () => {
     expect(c.subjects.map((s) => s.id)).toEqual(["ccna1", "ccna2", "javafx"]);
     const chapters = c.subjects.flatMap((s) => s.chapters);
     expect(chapters).toHaveLength(18);
-    expect(chapters.flatMap((c) => c.cards)).toHaveLength(72);
+    expect(chapters.flatMap((c) => c.cards)).toHaveLength(180);
+    expect(chapters.every((c) => c.cards.length >= 10)).toBe(true);
     for (const chapter of chapters)
       for (const card of chapter.cards)
         expect(card.choices[card.correct]).toBe(card.answer);

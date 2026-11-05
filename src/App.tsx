@@ -14,6 +14,7 @@ import {
   WifiHigh,
   WifiSlash,
   X,
+  UsersThree,
 } from "@phosphor-icons/react";
 import {
   Component,
@@ -36,6 +37,8 @@ import {
 } from "./components/Learning";
 import { ImportPage, ProgressPage, Settings } from "./components/Manage";
 import { Study } from "./components/Study";
+import { Classroom } from "./components/Classroom";
+import { AndroidUpdates } from "./components/AndroidUpdates";
 import { EmptyState, go, Toast } from "./components/UI";
 function useRoute() {
   const [route, setRoute] = useState(window.location.hash.slice(1) || "/");
@@ -136,6 +139,7 @@ function AppContent() {
   const navItems = [
     { path: "/", label: "Vue d’ensemble", icon: House },
     { path: "/library", label: "Mes matières", icon: BookOpen },
+    { path: "/classroom", label: "Le salon Mimo", icon: UsersThree },
     { path: "/favorites", label: "Mes favoris", icon: Star },
     { path: "/progress", label: "Ma progression", icon: ChartBar },
   ];
@@ -143,15 +147,17 @@ function AppContent() {
     ? "Mon espace"
     : kind === "library" || kind === "subject" || kind === "learn"
       ? "Mes matières"
-      : kind === "settings"
-        ? "Réglages"
-        : kind === "import"
-          ? "Ajouter un cours"
-          : kind === "progress"
-            ? "Ma progression"
-            : kind === "favorites"
-              ? "Mes favoris"
-              : "Entraînement";
+      : kind === "classroom"
+        ? "Le salon Mimo"
+        : kind === "settings"
+          ? "Réglages"
+          : kind === "import"
+            ? "Ajouter un cours"
+            : kind === "progress"
+              ? "Ma progression"
+              : kind === "favorites"
+                ? "Mes favoris"
+                : "Entraînement";
   let page: ReactNode;
   if (!kind) page = <Dashboard store={store} />;
   else if (kind === "library")
@@ -177,6 +183,7 @@ function AppContent() {
       />
     );
   else if (kind === "favorites") page = <Favorites store={store} />;
+  else if (kind === "classroom") page = <Classroom store={store} />;
   else if (kind === "progress") page = <ProgressPage store={store} />;
   else if (kind === "settings") page = <Settings store={store} />;
   else if (kind === "import") page = <ImportPage store={store} />;
@@ -195,6 +202,11 @@ function AppContent() {
     );
   return (
     <div className="app-shell">
+      <AndroidUpdates
+        repository={
+          store.progress.repository || "FediMechergui/memorycardsrevision"
+        }
+      />
       <a
         className="skip-link"
         href="#main-content"
@@ -368,9 +380,11 @@ function AppContent() {
                 ? "Accueil"
                 : n.path === "/library"
                   ? "Matières"
-                  : n.path === "/favorites"
-                    ? "Favoris"
-                    : "Progrès"}
+                  : n.path === "/classroom"
+                    ? "Salon"
+                    : n.path === "/favorites"
+                      ? "Favoris"
+                      : "Progrès"}
             </span>
           </a>
         ))}

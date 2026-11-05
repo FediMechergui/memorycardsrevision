@@ -37,7 +37,7 @@ test("quiz explains answers, blocks changing a choice, and saves a real score", 
   page,
 }) => {
   await page.goto("/#/study/quiz/c1-reseaux");
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < catalog.subjects[0].chapters[0].cards.length; i++) {
     const question = await page.locator(".question-area h2").innerText();
     const card = catalog.subjects[0].chapters[0].cards.find(
       (c) => c.question === question,
@@ -51,10 +51,13 @@ test("quiz explains answers, blocks changing a choice, and saves a real score", 
     await expect(page.getByText("Exactement !")).toBeVisible();
     await page
       .getByRole("button", {
-        name: i === 3 ? "Voir mon résultat" : "Question suivante",
+        name:
+          i === catalog.subjects[0].chapters[0].cards.length - 1
+            ? "Voir mon résultat"
+            : "Question suivante",
       })
       .click();
-    if (i < 3)
+    if (i < catalog.subjects[0].chapters[0].cards.length - 1)
       await expect(page.locator(".session-progress")).toContainText(
         `Question ${i + 2}`,
       );
@@ -237,7 +240,7 @@ test("GitHub course update merges a newer catalog and exposes a release", async 
   page,
 }) => {
   const updated = structuredClone(catalog);
-  updated.version = 2;
+  updated.version = catalog.version + 1;
   updated.subjects[0].chapters[0].title = "Cours depuis GitHub";
   await page.route("https://api.github.com/repos/test/memora", (route) =>
     route.fulfill({ json: { default_branch: "main" } }),
@@ -250,18 +253,20 @@ test("GitHub course update merges a newer catalog and exposes a release", async 
     "https://api.github.com/repos/test/memora/releases/latest",
     (route) =>
       route.fulfill({
-        json: { tag_name: "v1.1.0", body: "De nouveaux cours.", assets: [] },
+        json: { tag_name: "v1.2.0", body: "De nouveaux cours.", assets: [] },
       }),
   );
   await page.goto("/#/settings");
   await page.getByRole("textbox", { name: "Dépôt GitHub" }).fill("test/memora");
   await page.getByRole("button", { name: "Mettre les cours à jour" }).click();
-  await expect(page.getByRole("status")).toContainText("Catalogue v2 installé");
+  await expect(page.getByRole("status")).toContainText(
+    `Catalogue v${catalog.version + 1} installé`,
+  );
   await page
     .getByRole("button", { name: "Vérifier la version Android" })
     .click();
   await expect(
-    page.getByRole("heading", { name: "La version v1.1.0 est disponible" }),
+    page.getByRole("heading", { name: "La version v1.2.0 est disponible" }),
   ).toBeVisible();
   await expect(
     page.getByRole("link", { name: "Ouvrir la release GitHub" }),
@@ -282,13 +287,11 @@ test("restoring a valid backup requires confirmation and survives reload", async
   );
   backup.name = "Sam";
   backup.read = ["c1-reseaux"];
-  await page
-    .locator("input[type=file]")
-    .setInputFiles({
-      name: "backup.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify(backup)),
-    });
+  await page.locator("input[type=file]").setInputFiles({
+    name: "backup.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(backup)),
+  });
   await expect(page.getByRole("dialog")).toBeVisible();
   await expect(
     page.getByRole("textbox", { name: "Comment t’appeler ?" }),

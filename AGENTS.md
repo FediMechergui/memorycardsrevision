@@ -19,6 +19,8 @@ Application de révision en français pour le master Expert réseaux. Stack : Re
 - Couleurs douces, accent vert forêt, typographies locales Outfit et DM Sans, mascotte CSS Mimo. Préserver accessibilité clavier, petits écrans et réduction des animations.
 - Ne jamais supprimer la progression lors d’une mise à jour de contenu.
 - Ne pas exposer des clés de signature ou des secrets. `.signing/` et les keystores restent hors Git.
+- Le mode Classe utilise `server/` et les fonctions Netlify. Préserver les écritures conditionnelles par salle, l’autorité serveur des scores, et la distinction entre QR public et secret privé du profil. Les tests locaux utilisent uniquement `memory-store`, jamais la production.
+- L’aide IA est facultative et passe exclusivement par le serveur avec `OPENROUTER_API_KEY` ; ne jamais préfixer une clé par `VITE_`. Le modèle est gratuit sans repli payant. Une suggestion IA ne coche la grille que sur action explicite et reste modifiable.
 
 ## Android et releases
 

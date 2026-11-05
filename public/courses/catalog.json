@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": 1,
-  "updatedAt": "2026-11-05",
+  "version": 2,
+  "updatedAt": "2026-11-06",
   "subjects": [
     {
       "id": "ccna1",
@@ -22,6 +22,18 @@
         {
           "title": "IETF · TCP (RFC 9293)",
           "url": "https://www.rfc-editor.org/rfc/rfc9293.html"
+        },
+        {
+          "title": "IETF · CIDR (RFC 4632)",
+          "url": "https://www.rfc-editor.org/rfc/rfc4632.html"
+        },
+        {
+          "title": "IETF · Neighbor Discovery (RFC 4861)",
+          "url": "https://www.rfc-editor.org/rfc/rfc4861.html"
+        },
+        {
+          "title": "IETF · ARP (RFC 826)",
+          "url": "https://www.rfc-editor.org/rfc/rfc826.html"
         }
       ],
       "chapters": [
@@ -29,7 +41,7 @@
           "id": "c1-reseaux",
           "title": "Bienvenue dans le réseau",
           "description": "Hôtes, équipements et chemins de communication.",
-          "minutes": 8,
+          "minutes": 11,
           "sections": [
             {
               "title": "Un réseau, des échanges",
@@ -47,6 +59,25 @@
             {
               "title": "Suivre le trajet d’un message",
               "body": "Pour joindre un serveur hors de son sous-réseau, un poste remet le paquet à sa passerelle par défaut. Les routeurs suivants choisissent chacun une route vers le réseau de destination. La passerelle doit être joignable sur le lien local."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Un transfert subit quatre délais : traitement, attente dans une file, émission des bits et propagation du signal. Augmenter le débit réduit l’émission, pas la distance. Pour diagnostiquer, pars du poste : lien actif, configuration IP, passerelle, destination puis résolution de noms.",
+              "bullets": [
+                "Débit utile : données applicatives reçues par seconde ; il est inférieur au débit brut à cause des en-têtes et retransmissions.",
+                "Un octet vaut 8 bits : 10 Mo représentent 80 Mbit en unités décimales.",
+                "Un lien de secours protège contre une panne ; la QoS priorise certains flux en cas de congestion, sans créer de capacité."
+              ],
+              "formula": "Délai d’émission = taille en bits / débit en bit/s\n10 Mo × 8 / 100 Mbit/s = 0,8 s (minimum théorique)\nDélai de propagation = distance / vitesse du signal",
+              "diagram": {
+                "caption": "Du poste vers un réseau distant",
+                "steps": [
+                  "Poste · IP + masque",
+                  "Switch · réseau local",
+                  "Passerelle · routeur",
+                  "Serveur distant"
+                ]
+              }
             }
           ],
           "takeaway": "Le switch connecte le réseau local ; le routeur connecte les réseaux entre eux.",
@@ -102,6 +133,84 @@
               ],
               "correct": 3,
               "explanation": "Un chemin de secours permet de maintenir les échanges après une défaillance."
+            },
+            {
+              "id": "c1-reseaux-v2-q1",
+              "question": "Quelle durée minimale pour émettre 10 Mo sur 100 Mbit/s, sans surcoût ?",
+              "answer": "0,8 seconde",
+              "choices": [
+                "0,1 seconde",
+                "0,8 seconde",
+                "8 secondes",
+                "80 secondes"
+              ],
+              "correct": 1,
+              "explanation": "10 Mo décimaux valent 80 Mbit. Divise par 100 Mbit/s."
+            },
+            {
+              "id": "c1-reseaux-v2-q2",
+              "question": "Quel délai augmente surtout avec la distance du lien ?",
+              "answer": "Le délai de propagation",
+              "choices": [
+                "Le délai de sérialisation",
+                "Le délai de traitement DNS",
+                "Le délai de propagation",
+                "Le délai de file uniquement"
+              ],
+              "correct": 2,
+              "explanation": "Le signal met du temps à parcourir le support, même avec un débit élevé."
+            },
+            {
+              "id": "c1-reseaux-v2-q3",
+              "question": "Que désigne le débit utile applicatif ?",
+              "answer": "Les données utiles reçues par unité de temps",
+              "choices": [
+                "La vitesse de propagation du signal",
+                "La capacité nominale du câble",
+                "Le nombre total d’en-têtes",
+                "Les données utiles reçues par unité de temps"
+              ],
+              "correct": 3,
+              "explanation": "Les en-têtes et les retransmissions occupent de la bande passante sans être des données applicatives nouvelles."
+            },
+            {
+              "id": "c1-reseaux-v2-q4",
+              "question": "Quel est le but de la QoS lors d’une congestion ?",
+              "answer": "Prioriser les flux selon leur besoin",
+              "choices": [
+                "Prioriser les flux selon leur besoin",
+                "Multiplier la capacité physique",
+                "Supprimer toute latence",
+                "Remplacer le routage IP"
+              ],
+              "correct": 0,
+              "explanation": "Une file prioritaire peut protéger la voix ; elle ne crée pas de bande passante."
+            },
+            {
+              "id": "c1-reseaux-v2-q5",
+              "question": "Un poste ne joint aucun voisin. Quel premier contrôle est pertinent ?",
+              "answer": "Vérifier le lien et la configuration IP",
+              "choices": [
+                "Changer le serveur DNS distant",
+                "Vérifier le lien et la configuration IP",
+                "Modifier le navigateur",
+                "Changer la route sur Internet"
+              ],
+              "correct": 1,
+              "explanation": "Un diagnostic commence par les causes locales et les couches basses."
+            },
+            {
+              "id": "c1-reseaux-v2-q6",
+              "question": "Quel modèle décrit un serveur qui répond aux requêtes des postes ?",
+              "answer": "Client-serveur",
+              "choices": [
+                "Pair-à-pair sans rôle dédié",
+                "Diffusion uniquement",
+                "Client-serveur",
+                "Boucle de commutation"
+              ],
+              "correct": 2,
+              "explanation": "Le client initie une requête ; le serveur fournit le service demandé."
             }
           ],
           "exams": [
@@ -122,7 +231,7 @@
           "id": "c1-modeles",
           "title": "OSI & TCP/IP",
           "description": "Mettre de l’ordre dans les couches et l’encapsulation.",
-          "minutes": 10,
+          "minutes": 13,
           "sections": [
             {
               "title": "Un modèle pour comprendre",
@@ -141,6 +250,25 @@
             {
               "title": "Encapsuler puis décapsuler",
               "body": "À l’émission, les données applicatives reçoivent des informations de transport, puis IP, puis de liaison. À la réception, le chemin est inversé. À chaque saut routé, la trame de liaison est remplacée. Les adresses IP restent normalement celles des extrémités, sauf traduction comme le NAT."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "L’encapsulation ajoute des informations à chaque couche. Le destinataire fait l’inverse. Un routeur retire la trame reçue, traite le paquet IP, décrémente le TTL puis construit une trame pour le lien suivant. Sans traduction NAT, les IP source et destination restent les mêmes de bout en bout.",
+              "bullets": [
+                "OSI : physique, liaison, réseau, transport, session, présentation, application.",
+                "TCP/IP regroupe session, présentation et application ; sa couche accès réseau couvre liaison et physique.",
+                "Un problème de câble est physique ; une mauvaise route est réseau ; un port applicatif fermé concerne le transport ou l’application."
+              ],
+              "diagram": {
+                "caption": "Encapsulation puis décapsulation à l’arrivée",
+                "steps": [
+                  "Données applicatives",
+                  "Segment TCP / datagramme UDP",
+                  "Paquet IP",
+                  "Trame Ethernet",
+                  "Bits sur le support"
+                ]
+              }
             }
           ],
           "takeaway": "Données → segment ou datagramme → paquet → trame → bits.",
@@ -196,6 +324,84 @@
               ],
               "correct": 3,
               "explanation": "Le routeur retire la trame entrante et encapsule le paquet pour son interface de sortie."
+            },
+            {
+              "id": "c1-modeles-v2-q1",
+              "question": "Quelle couche OSI transforme les bits en signal ?",
+              "answer": "La couche physique",
+              "choices": [
+                "La couche transport",
+                "La couche physique",
+                "La couche présentation",
+                "La couche réseau"
+              ],
+              "correct": 1,
+              "explanation": "La couche physique concerne les signaux et les caractéristiques du support."
+            },
+            {
+              "id": "c1-modeles-v2-q2",
+              "question": "Quel champ IPv4 diminue au passage d’un routeur ?",
+              "answer": "Le TTL",
+              "choices": [
+                "Le port TCP destination",
+                "L’adresse IP destination, systématiquement",
+                "Le TTL",
+                "Le masque du poste"
+              ],
+              "correct": 2,
+              "explanation": "Le TTL limite le nombre de sauts ; à zéro, le paquet est abandonné."
+            },
+            {
+              "id": "c1-modeles-v2-q3",
+              "question": "Sans NAT, quelles adresses restent normalement identiques sur le trajet routé ?",
+              "answer": "Les IP source et destination",
+              "choices": [
+                "Les MAC source et destination",
+                "Les ports des switches",
+                "Les adresses de broadcast Ethernet",
+                "Les IP source et destination"
+              ],
+              "correct": 3,
+              "explanation": "Les trames sont recréées par lien, tandis que l’adressage IP reste de bout en bout."
+            },
+            {
+              "id": "c1-modeles-v2-q4",
+              "question": "Que fait la décapsulation ?",
+              "answer": "Retirer et traiter les en-têtes des couches successives",
+              "choices": [
+                "Retirer et traiter les en-têtes des couches successives",
+                "Ajouter un VLAN au paquet",
+                "Compresser toutes les données",
+                "Remplacer les adresses DNS"
+              ],
+              "correct": 0,
+              "explanation": "Le destinataire remonte la pile jusqu’aux données applicatives."
+            },
+            {
+              "id": "c1-modeles-v2-q5",
+              "question": "Quelles couches OSI sont regroupées dans l’application TCP/IP ?",
+              "answer": "Application, présentation et session",
+              "choices": [
+                "Physique et liaison",
+                "Application, présentation et session",
+                "Réseau et transport",
+                "Liaison, réseau et transport"
+              ],
+              "correct": 1,
+              "explanation": "Le modèle TCP/IP expose moins de couches, sans supprimer ces fonctions."
+            },
+            {
+              "id": "c1-modeles-v2-q6",
+              "question": "Un câble débranché relève d’abord de quelle couche ?",
+              "answer": "Physique",
+              "choices": [
+                "Application",
+                "Transport",
+                "Physique",
+                "Session"
+              ],
+              "correct": 2,
+              "explanation": "Aucun signal exploitable ne peut circuler sur un lien déconnecté."
             }
           ],
           "exams": [
@@ -216,7 +422,7 @@
           "id": "c1-ethernet",
           "title": "Ethernet, MAC & ARP",
           "description": "Comprendre la livraison sur le réseau local.",
-          "minutes": 10,
+          "minutes": 13,
           "sections": [
             {
               "title": "La commutation Ethernet",
@@ -235,6 +441,24 @@
               "title": "Vérifier avant de conclure",
               "body": "Une interface active ne garantit pas que les adresses sont correctes. Vérifie le câble, le VLAN, l’IP, le masque, puis la résolution ARP.",
               "code": "show mac address-table\nshow interfaces status\nshow ip arp"
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Dans un VLAN, un switch apprend l’emplacement d’une MAC à partir de la source des trames reçues. Il consulte ensuite la destination : port connu, transmission ciblée ; destination inconnue, diffusion sur les autres ports du VLAN. ARP résout une IPv4 locale en MAC, mais ne fournit aucune authentification.",
+              "bullets": [
+                "Une MAC Ethernet usuelle contient 48 bits, écrits en six octets hexadécimaux.",
+                "Une trame corrompue détectée par son FCS est rejetée ; Ethernet ne la répare pas.",
+                "Sur un lien commuté full-duplex, émission et réception sont simultanées ; les collisions ne sont pas un fonctionnement normal."
+              ],
+              "diagram": {
+                "caption": "ARP pour une destination hors du sous-réseau",
+                "steps": [
+                  "Destination IP distante",
+                  "ARP : qui a l’IP de la passerelle ?",
+                  "Réponse : MAC du routeur",
+                  "Trame vers la passerelle"
+                ]
+              }
             }
           ],
           "takeaway": "Le switch apprend grâce à la source ; il transmet en regardant la destination.",
@@ -290,6 +514,84 @@
               ],
               "correct": 3,
               "explanation": "Cette diffusion permet la livraison avant l’apprentissage de la destination."
+            },
+            {
+              "id": "c1-ethernet-v2-q1",
+              "question": "Combien de bits contient une adresse MAC Ethernet usuelle ?",
+              "answer": "48 bits",
+              "choices": [
+                "32 bits",
+                "48 bits",
+                "64 bits",
+                "128 bits"
+              ],
+              "correct": 1,
+              "explanation": "Six octets de huit bits donnent 48 bits."
+            },
+            {
+              "id": "c1-ethernet-v2-q2",
+              "question": "Quelle MAC représente le broadcast Ethernet ?",
+              "answer": "FF:FF:FF:FF:FF:FF",
+              "choices": [
+                "00:00:00:00:00:00",
+                "01:00:5E:00:00:01",
+                "FF:FF:FF:FF:FF:FF",
+                "02:00:00:00:00:01"
+              ],
+              "correct": 2,
+              "explanation": "Tous les bits à 1 désignent la diffusion sur le domaine de couche 2."
+            },
+            {
+              "id": "c1-ethernet-v2-q3",
+              "question": "Une destination MAC est connue sur le port d’entrée. Que fait le switch ?",
+              "answer": "Il filtre la trame au lieu de la renvoyer",
+              "choices": [
+                "Il la diffuse partout",
+                "Il la transmet au routeur par défaut",
+                "Il envoie une requête DNS",
+                "Il filtre la trame au lieu de la renvoyer"
+              ],
+              "correct": 3,
+              "explanation": "La destination est déjà du côté du port d’entrée ; la retransmettre serait inutile."
+            },
+            {
+              "id": "c1-ethernet-v2-q4",
+              "question": "À quoi sert le FCS Ethernet ?",
+              "answer": "Détecter des erreurs de transmission",
+              "choices": [
+                "Détecter des erreurs de transmission",
+                "Chiffrer le contenu",
+                "Choisir le prochain routeur",
+                "Authentifier la MAC source"
+              ],
+              "correct": 0,
+              "explanation": "Le contrôle d’intégrité détecte des corruptions, sans assurer l’authenticité."
+            },
+            {
+              "id": "c1-ethernet-v2-q5",
+              "question": "Que permet le full-duplex ?",
+              "answer": "Émettre et recevoir simultanément",
+              "choices": [
+                "Partager un seul canal avec des collisions",
+                "Émettre et recevoir simultanément",
+                "Doubler la taille des MAC",
+                "Supprimer les en-têtes Ethernet"
+              ],
+              "correct": 1,
+              "explanation": "Chaque direction peut transmettre ; CSMA/CD n’est pas utilisé sur un lien full-duplex."
+            },
+            {
+              "id": "c1-ethernet-v2-q6",
+              "question": "Pourquoi un empoisonnement ARP est-il possible ?",
+              "answer": "ARP n’authentifie pas nativement ses associations IP–MAC",
+              "choices": [
+                "ARP chiffre ses réponses",
+                "ARP utilise des certificats expirés",
+                "ARP n’authentifie pas nativement ses associations IP–MAC",
+                "ARP modifie le masque réseau"
+              ],
+              "correct": 2,
+              "explanation": "Des protections comme DAI contrôlent les associations sur les équipements compatibles."
             }
           ],
           "exams": [
@@ -310,7 +612,7 @@
           "id": "c1-ipv4",
           "title": "IPv4 & sous-réseaux",
           "description": "Calculer un préfixe, un réseau et une plage d’hôtes.",
-          "minutes": 15,
+          "minutes": 18,
           "sections": [
             {
               "title": "Une adresse, deux parties",
@@ -328,6 +630,24 @@
             {
               "title": "Adresses privées et diagnostic",
               "body": "Les plages privées sont 10.0.0.0/8, 172.16.0.0/12 et 192.168.0.0/16. Elles ne sont pas destinées au routage sur Internet public. Le VLSM permet d’allouer des préfixes de tailles différentes selon les besoins."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Pour calculer un sous-réseau, compte les bits hôte h = 32 − préfixe. La taille du bloc vaut 2ʰ. Trouve la frontière de bloc contenant l’adresse, puis le broadcast en fin de bloc. En VLSM, attribue d’abord les plus grands besoins pour limiter la fragmentation du plan d’adressage.",
+              "bullets": [
+                "Exemple : 192.168.10.70/26 appartient au bloc 64–127 : réseau .64, hôtes .65 à .126, broadcast .127.",
+                "Pour 50 hôtes, /26 suffit : 62 adresses utilisables. /27 n’en offre que 30.",
+                "2ʰ − 2 s’applique aux sous-réseaux classiques ; un /31 point-à-point et un /32 sont des cas particuliers."
+              ],
+              "formula": "h = 32 − p ; adresses = 2ʰ ; hôtes classiques = 2ʰ − 2\n/26 : h = 6 → 64 adresses → 62 hôtes\nRéseau = adresse IP ET masque (opération binaire)",
+              "diagram": {
+                "caption": "Le bloc 192.168.10.64/26",
+                "steps": [
+                  ".64 · réseau",
+                  ".65 … .126 · 62 hôtes",
+                  ".127 · broadcast"
+                ]
+              }
             }
           ],
           "takeaway": "Pour /26 : 6 bits d’hôtes, 64 adresses, 62 hôtes utilisables.",
@@ -383,6 +703,84 @@
               ],
               "correct": 3,
               "explanation": "172.16.0.0/12 couvre 172.16.0.0 à 172.31.255.255. 169.254.0.0/16 est une plage link-local."
+            },
+            {
+              "id": "c1-ipv4-v2-q1",
+              "question": "Quel est le broadcast de 192.168.10.64/26 ?",
+              "answer": "192.168.10.127",
+              "choices": [
+                "192.168.10.63",
+                "192.168.10.127",
+                "192.168.10.126",
+                "192.168.10.255"
+              ],
+              "correct": 1,
+              "explanation": "Un /26 contient 64 adresses ; le bloc commencé à 64 se termine à 127."
+            },
+            {
+              "id": "c1-ipv4-v2-q2",
+              "question": "Quel plus petit sous-réseau classique accueille 50 hôtes ?",
+              "answer": "/26",
+              "choices": [
+                "/27",
+                "/28",
+                "/26",
+                "/29"
+              ],
+              "correct": 2,
+              "explanation": "Avec six bits hôte : 2⁶ − 2 = 62, contre 30 pour /27."
+            },
+            {
+              "id": "c1-ipv4-v2-q3",
+              "question": "Combien de sous-réseaux /27 obtient-on en découpant un /24 ?",
+              "answer": "8",
+              "choices": [
+                "2",
+                "4",
+                "16",
+                "8"
+              ],
+              "correct": 3,
+              "explanation": "Trois bits sont empruntés : 2³ = 8 sous-réseaux."
+            },
+            {
+              "id": "c1-ipv4-v2-q4",
+              "question": "Quel masque correspond à /27 ?",
+              "answer": "255.255.255.224",
+              "choices": [
+                "255.255.255.224",
+                "255.255.255.192",
+                "255.255.255.240",
+                "255.255.255.248"
+              ],
+              "correct": 0,
+              "explanation": "Les trois bits supplémentaires valent 128 + 64 + 32 = 224."
+            },
+            {
+              "id": "c1-ipv4-v2-q5",
+              "question": "Quelle opération permet de retrouver l’adresse réseau ?",
+              "answer": "Un ET binaire entre IP et masque",
+              "choices": [
+                "Un OU entre IP et passerelle",
+                "Un ET binaire entre IP et masque",
+                "Une addition de l’IP et du masque",
+                "Une soustraction du port TCP"
+              ],
+              "correct": 1,
+              "explanation": "Les bits hôte sont annulés par les zéros du masque."
+            },
+            {
+              "id": "c1-ipv4-v2-q6",
+              "question": "Dans un plan VLSM, quels besoins attribuer en premier ?",
+              "answer": "Les plus grands sous-réseaux",
+              "choices": [
+                "Les plus petites adresses MAC",
+                "Les réseaux avec DNS uniquement",
+                "Les plus grands sous-réseaux",
+                "Les plus petits sous-réseaux"
+              ],
+              "correct": 2,
+              "explanation": "Réserver d’abord les grands blocs facilite un découpage cohérent et sans chevauchement."
             }
           ],
           "exams": [
@@ -403,7 +801,7 @@
           "id": "c1-ipv6",
           "title": "L’essentiel d’IPv6",
           "description": "Préfixes, compression et découverte des voisins.",
-          "minutes": 12,
+          "minutes": 15,
           "sections": [
             {
               "title": "128 bits pour adresser",
@@ -421,6 +819,23 @@
             {
               "title": "NDP et autoconfiguration",
               "body": "Neighbor Discovery utilise ICMPv6 pour découvrir les voisins et les routeurs. SLAAC permet à un hôte de former une adresse à partir des annonces de routeur. DHCPv6 peut fournir une adresse ou d’autres paramètres ; la route par défaut est généralement apprise par les annonces de routeur."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "IPv6 emploie des adresses unicast, multicast et anycast ; il n’utilise pas de broadcast. Les messages ICMPv6 de découverte de voisins servent aussi à découvrir les routeurs. SLAAC construit une adresse à partir d’un préfixe annoncé ; DHCPv6 peut fournir d’autres paramètres, mais la route par défaut vient normalement des Router Advertisements.",
+              "bullets": [
+                "Un /64 laisse 64 bits pour l’identifiant d’interface ; c’est le découpage habituel des LAN IPv6.",
+                "::1 est le loopback ; :: est l’adresse non spécifiée ; ff00::/8 est multicast.",
+                "Les routeurs IPv6 ne fragmentent pas les paquets en transit : la source adapte la taille, notamment via Path MTU Discovery."
+              ],
+              "diagram": {
+                "caption": "SLAAC en trois idées",
+                "steps": [
+                  "RA · annonce du préfixe",
+                  "Adresse candidate du poste",
+                  "DAD · vérifier l’absence de doublon"
+                ]
+              }
             }
           ],
           "takeaway": "IPv6 utilise NDP/ICMPv6 pour les voisins et ne possède pas de broadcast.",
@@ -476,6 +891,84 @@
               ],
               "correct": 3,
               "explanation": "fe80::/10 désigne les adresses IPv6 link-local ; les deux derniers choix sont IPv4."
+            },
+            {
+              "id": "c1-ipv6-v2-q1",
+              "question": "Quelle est l’adresse IPv6 de loopback ?",
+              "answer": "::1",
+              "choices": [
+                "::",
+                "::1",
+                "fe80::",
+                "ff02::1"
+              ],
+              "correct": 1,
+              "explanation": "::1 désigne l’hôte lui-même ; :: est non spécifiée."
+            },
+            {
+              "id": "c1-ipv6-v2-q2",
+              "question": "Quel mécanisme remplace l’usage du broadcast en IPv6 ?",
+              "answer": "Des groupes multicast ciblés",
+              "choices": [
+                "Un broadcast de 128 bits",
+                "ARPv6",
+                "Des groupes multicast ciblés",
+                "Une diffusion DNS obligatoire"
+              ],
+              "correct": 2,
+              "explanation": "IPv6 n’a pas d’adresse de broadcast ; les destinataires peuvent appartenir à un groupe multicast."
+            },
+            {
+              "id": "c1-ipv6-v2-q3",
+              "question": "Quelle annonce apprend normalement la route par défaut à un hôte IPv6 ?",
+              "answer": "Router Advertisement",
+              "choices": [
+                "DHCPv6 Reply uniquement",
+                "Neighbor Advertisement uniquement",
+                "Une réponse DNS AAAA",
+                "Router Advertisement"
+              ],
+              "correct": 3,
+              "explanation": "Les RA permettent notamment la découverte des routeurs par défaut."
+            },
+            {
+              "id": "c1-ipv6-v2-q4",
+              "question": "Que vérifie DAD avant d’utiliser une adresse ?",
+              "answer": "L’absence de doublon sur le lien",
+              "choices": [
+                "L’absence de doublon sur le lien",
+                "La vitesse du port",
+                "L’existence d’un nom DNS",
+                "La validité du mot de passe Wi-Fi"
+              ],
+              "correct": 0,
+              "explanation": "Duplicate Address Detection évite d’utiliser une adresse déjà présente."
+            },
+            {
+              "id": "c1-ipv6-v2-q5",
+              "question": "Combien de bits restent après un préfixe IPv6 /64 ?",
+              "answer": "64 bits",
+              "choices": [
+                "32 bits",
+                "64 bits",
+                "48 bits",
+                "96 bits"
+              ],
+              "correct": 1,
+              "explanation": "Une adresse IPv6 contient 128 bits : 128 − 64 = 64."
+            },
+            {
+              "id": "c1-ipv6-v2-q6",
+              "question": "Qui peut fragmenter un paquet IPv6 ?",
+              "answer": "La source du paquet",
+              "choices": [
+                "Chaque routeur traversé",
+                "Le switch Ethernet uniquement",
+                "La source du paquet",
+                "Le serveur DNS"
+              ],
+              "correct": 2,
+              "explanation": "La fragmentation IPv6 relève de la source, pas des routeurs intermédiaires."
             }
           ],
           "exams": [
@@ -496,7 +989,7 @@
           "id": "c1-services",
           "title": "Transport & services réseau",
           "description": "TCP, UDP, DNS, DHCP et les premiers diagnostics.",
-          "minutes": 12,
+          "minutes": 15,
           "sections": [
             {
               "title": "TCP et UDP : deux approches",
@@ -515,6 +1008,16 @@
               "title": "Diagnostiquer par étapes",
               "body": "Vérifie l’interface et la configuration IP, puis la passerelle, une destination distante et enfin le nom DNS. Un ping teste ICMP ; il ne prouve pas à lui seul qu’un service HTTP fonctionne. Un pare-feu peut filtrer ICMP sans bloquer le service.",
               "code": "ping 192.168.1.1\nnslookup example.com\ntracert example.com"
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "TCP établit une connexion puis numérote les octets et acquitte leur réception. Son contrôle de flux protège le destinataire ; le contrôle de congestion tient compte du réseau. UDP offre des datagrammes sans ces garanties intégrées : une application peut cependant ajouter sa propre fiabilité, comme le fait QUIC.",
+              "bullets": [
+                "TCP : SYN, SYN-ACK, ACK pour l’ouverture classique. La fiabilité ne signifie pas confidentialité : TLS apporte la protection cryptographique.",
+                "Ports usuels : DNS 53, HTTP 80, HTTPS 443, SSH 22 ; ce sont des conventions configurables.",
+                "DNS peut utiliser UDP ou TCP. Un enregistrement A désigne IPv4 ; AAAA désigne IPv6."
+              ],
+              "formula": "Débit applicatif idéal limité par une fenêtre ≈ fenêtre en bits / RTT en secondes\nFenêtre 64 000 octets, RTT 0,1 s → 5,12 Mbit/s (modèle simplifié)"
             }
           ],
           "takeaway": "IP joint la machine ; les ports permettent d’atteindre le service.",
@@ -570,6 +1073,84 @@
               ],
               "correct": 3,
               "explanation": "Le bail peut inclure IP, masque, passerelle et serveurs DNS."
+            },
+            {
+              "id": "c1-services-v2-q1",
+              "question": "Quel est l’ordre de l’ouverture TCP classique ?",
+              "answer": "SYN → SYN-ACK → ACK",
+              "choices": [
+                "ACK → SYN → FIN",
+                "SYN → SYN-ACK → ACK",
+                "DISCOVER → OFFER → ACK",
+                "FIN → ACK → SYN"
+              ],
+              "correct": 1,
+              "explanation": "Le three-way handshake synchronise les numéros de séquence des deux côtés."
+            },
+            {
+              "id": "c1-services-v2-q2",
+              "question": "Quel mécanisme TCP protège un récepteur trop lent ?",
+              "answer": "Le contrôle de flux",
+              "choices": [
+                "Le chiffrement TLS",
+                "La résolution ARP",
+                "Le contrôle de flux",
+                "La fragmentation Ethernet"
+              ],
+              "correct": 2,
+              "explanation": "La fenêtre annoncée indique la capacité de réception disponible."
+            },
+            {
+              "id": "c1-services-v2-q3",
+              "question": "Quel enregistrement DNS associe un nom à une IPv6 ?",
+              "answer": "AAAA",
+              "choices": [
+                "A",
+                "MX",
+                "PTR",
+                "AAAA"
+              ],
+              "correct": 3,
+              "explanation": "AAAA est destiné à IPv6 ; A à IPv4, MX aux serveurs de courrier."
+            },
+            {
+              "id": "c1-services-v2-q4",
+              "question": "Quel port TCP est usuel pour SSH ?",
+              "answer": "22",
+              "choices": [
+                "22",
+                "23",
+                "25",
+                "80"
+              ],
+              "correct": 0,
+              "explanation": "SSH permet une administration distante chiffrée, généralement sur TCP 22."
+            },
+            {
+              "id": "c1-services-v2-q5",
+              "question": "TCP garantit-il à lui seul la confidentialité ?",
+              "answer": "Non, un protocole comme TLS est nécessaire",
+              "choices": [
+                "Oui, par les numéros de séquence",
+                "Non, un protocole comme TLS est nécessaire",
+                "Oui, par le handshake",
+                "Oui, si le port vaut 443"
+              ],
+              "correct": 1,
+              "explanation": "La livraison fiable et le chiffrement sont deux fonctions différentes."
+            },
+            {
+              "id": "c1-services-v2-q6",
+              "question": "DNS peut-il utiliser TCP ?",
+              "answer": "Oui, ainsi qu’UDP",
+              "choices": [
+                "Non, uniquement UDP",
+                "Non, uniquement ICMP",
+                "Oui, ainsi qu’UDP",
+                "Oui, seulement en IPv6"
+              ],
+              "correct": 2,
+              "explanation": "TCP sert notamment aux transferts de zone et aux échanges nécessitant un transport fiable."
             }
           ],
           "exams": [
@@ -603,6 +1184,10 @@
         {
           "title": "IETF · DHCP (RFC 2131)",
           "url": "https://www.rfc-editor.org/rfc/rfc2131.html"
+        },
+        {
+          "title": "Cisco · STP et EtherChannel, IOS XE 17.15",
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html"
         }
       ],
       "chapters": [
@@ -610,7 +1195,7 @@
           "id": "c2-vlan",
           "title": "VLAN & trunks",
           "description": "Segmenter un réseau local et transporter plusieurs VLAN.",
-          "minutes": 12,
+          "minutes": 15,
           "sections": [
             {
               "title": "Séparer les domaines de diffusion",
@@ -629,6 +1214,23 @@
                 "show interfaces trunk : état et VLAN transportés.",
                 "Un trunk n’effectue pas le routage inter-VLAN."
               ]
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Un port access porte normalement le trafic d’un VLAN de données ; un trunk transporte plusieurs VLAN autorisés. Un VLAN ne traverse le trunk que s’il existe et s’il est autorisé. Le VLAN natif traite en général le trafic non tagué : une incohérence entre extrémités peut mélanger des domaines attendus séparés.",
+              "bullets": [
+                "Vérifie successivement : VLAN créé, port access associé, trunk opérationnel, liste des VLAN autorisés.",
+                "Un VLAN limite la diffusion, mais les règles de sécurité entre VLAN dépendent du routage et des ACL.",
+                "La priorité 802.1p et le VLAN ID sont des champs distincts dans le tag 802.1Q."
+              ],
+              "diagram": {
+                "caption": "Un trunk, deux domaines de diffusion",
+                "steps": [
+                  "VLAN 10 · étudiants",
+                  "Trunk 802.1Q · VLAN 10 et 20",
+                  "VLAN 20 · enseignants"
+                ]
+              }
             }
           ],
           "takeaway": "Un VLAN = un domaine de diffusion. Un trunk transporte ; un routeur fait communiquer.",
@@ -684,6 +1286,84 @@
               ],
               "correct": 3,
               "explanation": "Elle affiche l’état du trunk et les VLAN autorisés ou actifs."
+            },
+            {
+              "id": "c2-vlan-v2-q1",
+              "question": "Quel port porte normalement un seul VLAN de données ?",
+              "answer": "Un port access",
+              "choices": [
+                "Un port trunk multivlan",
+                "Un port access",
+                "Une sous-interface routée",
+                "Un tunnel IPsec"
+              ],
+              "correct": 1,
+              "explanation": "Le trafic d’un poste classique arrive non tagué sur un port access."
+            },
+            {
+              "id": "c2-vlan-v2-q2",
+              "question": "Un VLAN existe sur deux switches mais manque dans la liste autorisée du trunk. Conséquence ?",
+              "answer": "Son trafic ne traverse pas ce trunk",
+              "choices": [
+                "Il devient automatiquement natif",
+                "Il est routé sans configuration",
+                "Son trafic ne traverse pas ce trunk",
+                "Il utilise tous les autres VLAN"
+              ],
+              "correct": 2,
+              "explanation": "L’existence du VLAN et son autorisation sur le trunk sont deux conditions distinctes."
+            },
+            {
+              "id": "c2-vlan-v2-q3",
+              "question": "À quoi correspond le VLAN natif sur un trunk 802.1Q usuel ?",
+              "answer": "Au VLAN du trafic non tagué",
+              "choices": [
+                "Au VLAN chiffré automatiquement",
+                "Au VLAN de plus grande priorité IP",
+                "À tous les VLAN autorisés",
+                "Au VLAN du trafic non tagué"
+              ],
+              "correct": 3,
+              "explanation": "La configuration de tagging natif peut varier ; les extrémités doivent être cohérentes."
+            },
+            {
+              "id": "c2-vlan-v2-q4",
+              "question": "Quelle commande Cisco résume les VLAN et ports access ?",
+              "answer": "show vlan brief",
+              "choices": [
+                "show vlan brief",
+                "show ip route",
+                "show arp",
+                "show access-lists"
+              ],
+              "correct": 0,
+              "explanation": "La table des VLAN aide à vérifier l’appartenance des ports."
+            },
+            {
+              "id": "c2-vlan-v2-q5",
+              "question": "Un VLAN suffit-il à définir les accès autorisés entre réseaux ?",
+              "answer": "Non, des règles de filtrage sont aussi nécessaires",
+              "choices": [
+                "Oui, tous les paquets sont chiffrés",
+                "Non, des règles de filtrage sont aussi nécessaires",
+                "Oui, tous les routeurs bloquent par défaut",
+                "Oui, le trunk est un pare-feu"
+              ],
+              "correct": 1,
+              "explanation": "La segmentation sépare les domaines ; le routage et ses politiques définissent les communications permises."
+            },
+            {
+              "id": "c2-vlan-v2-q6",
+              "question": "Combien de bits porte l’identifiant VLAN 802.1Q ?",
+              "answer": "12 bits",
+              "choices": [
+                "8 bits",
+                "16 bits",
+                "12 bits",
+                "24 bits"
+              ],
+              "correct": 2,
+              "explanation": "12 bits donnent 4096 valeurs ; certaines sont réservées, donc toutes ne sont pas utilisables."
             }
           ],
           "exams": [
@@ -704,7 +1384,7 @@
           "id": "c2-intervlan",
           "title": "Le routage inter-VLAN",
           "description": "Router-on-a-stick, sous-interfaces et SVI.",
-          "minutes": 12,
+          "minutes": 15,
           "sections": [
             {
               "title": "Une passerelle par réseau",
@@ -723,6 +1403,25 @@
                 "La passerelle des postes doit appartenir à leur sous-réseau.",
                 "Contrôler les ACL si le routage fonctionne mais qu’un flux est refusé."
               ]
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Dans router-on-a-stick, chaque sous-interface du routeur associe un tag 802.1Q à une IP de passerelle. Le lien physique vers le switch est un trunk. Sur un switch multicouche, chaque SVI joue ce rôle pour son VLAN, avec le routage IP activé. Il faut une route aller et une route retour.",
+              "bullets": [
+                "Un poste du VLAN 10 envoie une trame à la MAC de sa passerelle, même si l’IP finale se trouve dans le VLAN 20.",
+                "Le routeur change les en-têtes de couche 2, consulte sa table de routage et diminue le TTL.",
+                "Une SVI peut rester inactive si son VLAN n’existe pas ou n’a aucun port actif satisfaisant les conditions de la plateforme."
+              ],
+              "diagram": {
+                "caption": "Router-on-a-stick",
+                "steps": [
+                  "PC · VLAN 10",
+                  "Trunk · tag 10",
+                  "Routeur · sous-interfaces .10 / .20",
+                  "Trunk · tag 20",
+                  "Serveur · VLAN 20"
+                ]
+              }
             }
           ],
           "takeaway": "Une sous-interface ou une SVI porte la passerelle de chaque VLAN.",
@@ -778,6 +1477,84 @@
               ],
               "correct": 3,
               "explanation": "Sur les équipements Cisco compatibles, la commande est généralement ip routing."
+            },
+            {
+              "id": "c2-intervlan-v2-q1",
+              "question": "Quel mode pour le lien switch–routeur en router-on-a-stick ?",
+              "answer": "Trunk",
+              "choices": [
+                "Access VLAN 1 uniquement",
+                "Trunk",
+                "PortFast obligatoire",
+                "Port-channel sans VLAN"
+              ],
+              "correct": 1,
+              "explanation": "Il doit transporter les tags des différents VLAN routés."
+            },
+            {
+              "id": "c2-intervlan-v2-q2",
+              "question": "Quelle commande associe une sous-interface Cisco au VLAN 20 ?",
+              "answer": "encapsulation dot1Q 20",
+              "choices": [
+                "switchport access vlan 20",
+                "ip routing 20",
+                "encapsulation dot1Q 20",
+                "vlan native address 20"
+              ],
+              "correct": 2,
+              "explanation": "La sous-interface interprète les trames marquées avec le VLAN ID 20."
+            },
+            {
+              "id": "c2-intervlan-v2-q3",
+              "question": "À quelle MAC un poste envoie-t-il une trame vers un autre VLAN ?",
+              "answer": "À la MAC de sa passerelle",
+              "choices": [
+                "À la MAC du serveur distant directement",
+                "À sa propre MAC",
+                "À une MAC DNS",
+                "À la MAC de sa passerelle"
+              ],
+              "correct": 3,
+              "explanation": "Le serveur est hors sous-réseau ; le premier saut est le routeur."
+            },
+            {
+              "id": "c2-intervlan-v2-q4",
+              "question": "Quelle interface logique représente la passerelle d’un VLAN sur un switch multicouche ?",
+              "answer": "Une SVI",
+              "choices": [
+                "Une SVI",
+                "Un port console",
+                "Une interface loopback obligatoire",
+                "Une entrée de table MAC"
+              ],
+              "correct": 0,
+              "explanation": "L’interface VLAN porte une IP et peut router avec ip routing."
+            },
+            {
+              "id": "c2-intervlan-v2-q5",
+              "question": "Quelle vérification explique une SVI inactive ?",
+              "answer": "Vérifier l’existence du VLAN et ses ports actifs",
+              "choices": [
+                "Changer le mot de passe DNS",
+                "Vérifier l’existence du VLAN et ses ports actifs",
+                "Ajouter un enregistrement AAAA",
+                "Activer HTTP sur les postes"
+              ],
+              "correct": 1,
+              "explanation": "L’état d’une SVI dépend notamment de l’activité de couche 2 du VLAN."
+            },
+            {
+              "id": "c2-intervlan-v2-q6",
+              "question": "Quel risque de performance est propre à router-on-a-stick ?",
+              "answer": "Le lien physique partagé peut devenir un goulot d’étranglement",
+              "choices": [
+                "Chaque VLAN doit avoir un câble vers chaque poste",
+                "Les IP sont limitées à 8 bits",
+                "Le lien physique partagé peut devenir un goulot d’étranglement",
+                "Les switches cessent d’apprendre les MAC"
+              ],
+              "correct": 2,
+              "explanation": "Les communications inter-VLAN empruntent le même lien physique vers le routeur."
             }
           ],
           "exams": [
@@ -798,7 +1575,7 @@
           "id": "c2-stp",
           "title": "STP & EtherChannel",
           "description": "Ajouter de la redondance sans créer de boucle.",
-          "minutes": 14,
+          "minutes": 17,
           "sections": [
             {
               "title": "Pourquoi les boucles sont dangereuses",
@@ -816,6 +1593,23 @@
             {
               "title": "Regrouper avec EtherChannel",
               "body": "EtherChannel regroupe plusieurs liens en une interface logique. STP traite ce groupe comme un lien. LACP négocie la formation du groupe : active/active et active/passive peuvent fonctionner, passive/passive ne démarre pas la négociation. Les paramètres des interfaces doivent être compatibles. Un flux unique ne cumule pas nécessairement le débit de tous les liens."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "STP choisit une racine, puis chaque switch non racine choisit son meilleur chemin vers elle. Les autres chemins redondants peuvent être bloqués pour éviter les boucles. LACP agrège des liens compatibles en une interface logique ; un flux donné utilise généralement un seul membre selon une fonction de hachage.",
+              "bullets": [
+                "Bridge ID : priorité, identifiant de système étendu selon le mode, puis MAC. Le plus petit gagne.",
+                "PortFast accélère un port de bord ; BPDU Guard le désactive s’il reçoit une BPDU inattendue.",
+                "Les membres d’un EtherChannel doivent avoir des paramètres compatibles : mode de port, VLAN, vitesse et duplex selon la plateforme."
+              ],
+              "diagram": {
+                "caption": "La redondance reste disponible sans boucle active",
+                "steps": [
+                  "Switch racine",
+                  "Chemin actif à coût minimal",
+                  "Autre lien · secours bloqué"
+                ]
+              }
             }
           ],
           "takeaway": "STP supprime les boucles ; EtherChannel regroupe des liens cohérents en un lien logique.",
@@ -871,6 +1665,84 @@
               ],
               "correct": 3,
               "explanation": "PortFast accélère le passage en forwarding des ports de bordure ; il ne remplace pas la protection contre les boucles."
+            },
+            {
+              "id": "c2-stp-v2-q1",
+              "question": "Comment un switch non racine choisit-il son root port en premier critère ?",
+              "answer": "Par le coût total minimal vers la racine",
+              "choices": [
+                "Par le plus grand numéro de port",
+                "Par le coût total minimal vers la racine",
+                "Par le plus grand VLAN ID",
+                "Par la plus grande MAC destination"
+              ],
+              "correct": 1,
+              "explanation": "Les critères de départage supplémentaires interviennent si les coûts sont égaux."
+            },
+            {
+              "id": "c2-stp-v2-q2",
+              "question": "Que fait BPDU Guard sur un port de bord recevant une BPDU ?",
+              "answer": "Il met le port en erreur/désactivation selon la configuration",
+              "choices": [
+                "Il le transforme en trunk",
+                "Il le choisit comme racine",
+                "Il met le port en erreur/désactivation selon la configuration",
+                "Il réécrit toutes les MAC"
+              ],
+              "correct": 2,
+              "explanation": "Cette protection aide à détecter un switch raccordé à un port destiné à un terminal."
+            },
+            {
+              "id": "c2-stp-v2-q3",
+              "question": "Deux liens de 1 Gbit/s en EtherChannel donnent-ils 2 Gbit/s à un seul flux habituel ?",
+              "answer": "Pas nécessairement : un flux reste généralement sur un membre",
+              "choices": [
+                "Toujours exactement 2 Gbit/s",
+                "Toujours 500 Mbit/s",
+                "Seulement si le DNS est actif",
+                "Pas nécessairement : un flux reste généralement sur un membre"
+              ],
+              "correct": 3,
+              "explanation": "La répartition se fait par hachage des caractéristiques du flux, pas par alternance aveugle des paquets."
+            },
+            {
+              "id": "c2-stp-v2-q4",
+              "question": "Quelle combinaison LACP permet une négociation ?",
+              "answer": "Active et passive",
+              "choices": [
+                "Active et passive",
+                "Passive et passive",
+                "Off et passive",
+                "Deux ports console"
+              ],
+              "correct": 0,
+              "explanation": "Au moins une extrémité active initie les échanges LACP."
+            },
+            {
+              "id": "c2-stp-v2-q5",
+              "question": "Quelles configurations doivent rester compatibles dans un EtherChannel ?",
+              "answer": "Les modes de port et VLAN autorisés, notamment",
+              "choices": [
+                "Les mots de passe des postes",
+                "Les modes de port et VLAN autorisés, notamment",
+                "Les noms DNS des clients",
+                "Les ports TCP des applications"
+              ],
+              "correct": 1,
+              "explanation": "Des incohérences peuvent empêcher l’agrégation ou créer des anomalies de trafic."
+            },
+            {
+              "id": "c2-stp-v2-q6",
+              "question": "Quel est l’avantage principal de RSTP par rapport au STP classique ?",
+              "answer": "Une convergence généralement plus rapide",
+              "choices": [
+                "Le chiffrement des trames",
+                "La suppression de toute élection",
+                "Une convergence généralement plus rapide",
+                "Le routage IPv6 automatique"
+              ],
+              "correct": 2,
+              "explanation": "RSTP accélère les transitions grâce à ses mécanismes de rôles et de négociation."
             }
           ],
           "exams": [
@@ -891,7 +1763,7 @@
           "id": "c2-dhcp",
           "title": "DHCP & sécurité du LAN",
           "description": "Distribuer les adresses et protéger les ports d’accès.",
-          "minutes": 12,
+          "minutes": 15,
           "sections": [
             {
               "title": "Les quatre étapes de DHCPv4",
@@ -910,6 +1782,25 @@
                 "Dynamic ARP Inspection peut exploiter la base DHCP snooping.",
                 "Une sécurité de port mal réglée peut bloquer un utilisateur légitime."
               ]
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Le client DHCPv4 démarre sans adresse et diffuse sa recherche. Un relais relaie les échanges vers un serveur d’un autre réseau, en indiquant le réseau client. DHCP snooping distingue les ports de confiance où un serveur légitime peut répondre et construit une table d’associations utile à d’autres protections.",
+              "bullets": [
+                "DHCPv4 utilise UDP 67 côté serveur et UDP 68 côté client.",
+                "Sans valeurs particulières fournies par le serveur, T1 vaut 50 % du bail et T2 87,5 % : renouvellement puis rebinding.",
+                "DAI vérifie des messages ARP ; port security limite des MAC sur un port. Ces protections ont des objectifs différents."
+              ],
+              "formula": "Bail de 8 h, valeurs par défaut :\nT1 = 0,5 × 8 h = 4 h ; T2 = 0,875 × 8 h = 7 h",
+              "diagram": {
+                "caption": "DORA : attribution initiale simplifiée",
+                "steps": [
+                  "Discover · client",
+                  "Offer · serveur",
+                  "Request · client",
+                  "ACK · serveur"
+                ]
+              }
             }
           ],
           "takeaway": "DORA : Discover, Offer, Request, ACK. Le relais sert les clients d’un autre sous-réseau.",
@@ -965,6 +1856,84 @@
               ],
               "correct": 3,
               "explanation": "La commande s’applique à l’interface de couche 3 côté clients."
+            },
+            {
+              "id": "c2-dhcp-v2-q1",
+              "question": "Quels ports UDP utilise DHCPv4 côté serveur et client ?",
+              "answer": "67 serveur, 68 client",
+              "choices": [
+                "68 serveur, 67 client",
+                "67 serveur, 68 client",
+                "53 serveur, 54 client",
+                "80 serveur, 443 client"
+              ],
+              "correct": 1,
+              "explanation": "Les deux ports permettent les échanges avant et après l’attribution de l’adresse."
+            },
+            {
+              "id": "c2-dhcp-v2-q2",
+              "question": "Pour un bail de 8 h, quand survient T1 par défaut ?",
+              "answer": "Après 4 h",
+              "choices": [
+                "Après 1 h",
+                "Après 7 h",
+                "Après 4 h",
+                "Après 8 h"
+              ],
+              "correct": 2,
+              "explanation": "T1 correspond habituellement à 50 % du bail quand le serveur ne spécifie pas d’autre valeur."
+            },
+            {
+              "id": "c2-dhcp-v2-q3",
+              "question": "Quel champ DHCPv4 un relais utilise-t-il pour indiquer le réseau client ?",
+              "answer": "giaddr",
+              "choices": [
+                "TTL",
+                "VLAN natif",
+                "DNS AAAA",
+                "giaddr"
+              ],
+              "correct": 3,
+              "explanation": "Le serveur peut choisir son pool grâce à l’adresse de relais."
+            },
+            {
+              "id": "c2-dhcp-v2-q4",
+              "question": "Quel port déclarer de confiance pour DHCP snooping ?",
+              "answer": "Le chemin vers le serveur DHCP légitime",
+              "choices": [
+                "Le chemin vers le serveur DHCP légitime",
+                "Tous les ports clients",
+                "Tous les ports inutilisés",
+                "Le port de n’importe quel invité"
+              ],
+              "correct": 0,
+              "explanation": "Faire confiance aux ports clients permettrait à un faux serveur d’envoyer des réponses."
+            },
+            {
+              "id": "c2-dhcp-v2-q5",
+              "question": "Que vérifie principalement Dynamic ARP Inspection ?",
+              "answer": "La validité des associations IP–MAC dans ARP",
+              "choices": [
+                "Le contenu HTML",
+                "La validité des associations IP–MAC dans ARP",
+                "Les identifiants WPA3",
+                "Les ports UDP du DNS"
+              ],
+              "correct": 1,
+              "explanation": "DAI peut s’appuyer sur la table DHCP snooping ou des associations statiques."
+            },
+            {
+              "id": "c2-dhcp-v2-q6",
+              "question": "À quoi sert une exclusion dans un pool DHCP ?",
+              "answer": "Réserver des adresses qui ne seront pas distribuées dynamiquement",
+              "choices": [
+                "Réduire le nombre de VLAN",
+                "Supprimer le bail du serveur DNS",
+                "Réserver des adresses qui ne seront pas distribuées dynamiquement",
+                "Interdire le routage IPv6"
+              ],
+              "correct": 2,
+              "explanation": "On exclut par exemple la passerelle et les équipements adressés statiquement."
             }
           ],
           "exams": [
@@ -985,7 +1954,7 @@
           "id": "c2-routage",
           "title": "Routes statiques & route par défaut",
           "description": "Lire une table de routage et choisir le bon chemin.",
-          "minutes": 14,
+          "minutes": 17,
           "sections": [
             {
               "title": "La règle du préfixe le plus long",
@@ -999,6 +1968,16 @@
             {
               "title": "Distance administrative et métrique",
               "body": "Pour un même préfixe appris par plusieurs sources, la distance administrative aide à choisir la source de route préférée. La métrique compare les chemins d’un protocole. Une route statique flottante utilise une distance plus élevée pour servir de secours lorsque la route préférée disparaît."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Le choix de la route se fait d’abord par le préfixe le plus spécifique correspondant à la destination. Pour installer des routes concurrentes vers le même préfixe, la distance administrative compare les sources ; la métrique départage ensuite les chemins selon le protocole. Une route par défaut sert seulement si rien de plus précis ne correspond.",
+              "bullets": [
+                "Une route connectée nécessite une interface opérationnelle avec une adresse appropriée.",
+                "Une route statique flottante a une distance administrative supérieure à celle de la route principale.",
+                "Une route de résumé regroupe des préfixes contigus et alignés ; annoncer trop large peut attirer du trafic sans destination réelle."
+              ],
+              "formula": "192.168.0.0/24 + 192.168.1.0/24 → 192.168.0.0/23\nDeux blocs contigus de 256 adresses → 512 adresses, alignées sur /23"
             }
           ],
           "takeaway": "D’abord le préfixe le plus long parmi les routes installées. Pense toujours au chemin retour.",
@@ -1054,6 +2033,84 @@
               ],
               "correct": 3,
               "explanation": "Un chemin aller correct ne garantit ni le chemin retour ni l’autorisation du trafic."
+            },
+            {
+              "id": "c2-routage-v2-q1",
+              "question": "Que compare la distance administrative ?",
+              "answer": "La préférence entre sources de routes vers le même préfixe",
+              "choices": [
+                "La distance physique du câble",
+                "La préférence entre sources de routes vers le même préfixe",
+                "La taille des trames Ethernet",
+                "Le nombre de clients DHCP"
+              ],
+              "correct": 1,
+              "explanation": "Une distance plus faible est normalement préférée ; la longueur de préfixe reste prioritaire pour transférer un paquet."
+            },
+            {
+              "id": "c2-routage-v2-q2",
+              "question": "Une route /24 ou /16 correspond à la destination : laquelle sert au transfert ?",
+              "answer": "La /24",
+              "choices": [
+                "La /16 systématiquement",
+                "La plus ancienne",
+                "La /24",
+                "La route par défaut"
+              ],
+              "correct": 2,
+              "explanation": "Le préfixe le plus long est la correspondance la plus précise."
+            },
+            {
+              "id": "c2-routage-v2-q3",
+              "question": "Quel résumé exact regroupe 192.168.0.0/24 et 192.168.1.0/24 ?",
+              "answer": "192.168.0.0/23",
+              "choices": [
+                "192.168.0.0/25",
+                "192.168.1.0/23",
+                "192.168.0.0/16",
+                "192.168.0.0/23"
+              ],
+              "correct": 3,
+              "explanation": "Le bloc /23 est aligné sur un troisième octet pair et couvre exactement ces deux /24."
+            },
+            {
+              "id": "c2-routage-v2-q4",
+              "question": "Quand une route connectée apparaît-elle normalement ?",
+              "answer": "Quand l’interface adressée est opérationnelle",
+              "choices": [
+                "Quand l’interface adressée est opérationnelle",
+                "Quand le DNS répond",
+                "Dès qu’un câble est rangé dans la baie",
+                "Après une réponse HTTP"
+              ],
+              "correct": 0,
+              "explanation": "La connectivité de l’interface conditionne l’utilisation de son réseau connecté."
+            },
+            {
+              "id": "c2-routage-v2-q5",
+              "question": "Quel préfixe représente la route IPv6 par défaut ?",
+              "answer": "::/0",
+              "choices": [
+                "::1/128",
+                "::/0",
+                "fe80::/10",
+                "ff00::/8"
+              ],
+              "correct": 1,
+              "explanation": "Aucun bit de préfixe n’est imposé : toutes les destinations peuvent correspondre."
+            },
+            {
+              "id": "c2-routage-v2-q6",
+              "question": "Pourquoi une route aller ne suffit-elle pas à une communication bidirectionnelle ?",
+              "answer": "Le destinataire a aussi besoin d’un chemin de retour",
+              "choices": [
+                "TCP ignore les routeurs",
+                "Le masque change à chaque paquet",
+                "Le destinataire a aussi besoin d’un chemin de retour",
+                "ARP traverse automatiquement Internet"
+              ],
+              "correct": 2,
+              "explanation": "Le routage retour peut être différent, mais il doit exister et être autorisé."
             }
           ],
           "exams": [
@@ -1074,7 +2131,7 @@
           "id": "c2-wifi",
           "title": "Wi-Fi & sécurisation",
           "description": "SSID, bandes radio et authentification.",
-          "minutes": 11,
+          "minutes": 14,
           "sections": [
             {
               "title": "Un média partagé",
@@ -1092,6 +2149,16 @@
                 "Masquer le SSID n’est pas une protection suffisante.",
                 "Un mot de passe robuste et des équipements maintenus restent nécessaires."
               ]
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Le Wi-Fi partage le temps d’antenne : un débit radio affiché ne représente pas le débit utile de chaque client. Les obstacles, la distance, les interférences et le nombre de stations réduisent les performances. Un plan radio choisit des canaux et puissances adaptés plutôt qu’une puissance maximale partout.",
+              "bullets": [
+                "À largeur de canal plus grande, capacité potentielle supérieure mais moins de canaux indépendants disponibles.",
+                "La sécurité Enterprise utilise typiquement 802.1X et un serveur RADIUS ; chaque utilisateur peut avoir ses propres identifiants.",
+                "Cacher un SSID n’est pas une protection de chiffrement. Utilise WPA2-AES ou WPA3 selon la compatibilité, puis segmente les invités."
+              ],
+              "formula": "Rapport de puissance en dB = 10 × log₁₀(P₂ / P₁)\n+3 dB ≈ puissance ×2 ; −3 dB ≈ puissance /2\nCela ne signifie pas un débit multiplié par deux."
             }
           ],
           "takeaway": "La sécurité Wi-Fi repose sur l’authentification, le chiffrement et les règles d’accès.",
@@ -1147,6 +2214,84 @@
               ],
               "correct": 3,
               "explanation": "Le VLAN et les règles de filtrage peuvent limiter l’accès au réseau interne."
+            },
+            {
+              "id": "c2-wifi-v2-q1",
+              "question": "Quelle méthode d’accès au média est associée au Wi-Fi ?",
+              "answer": "CSMA/CA",
+              "choices": [
+                "CSMA/CD en full-duplex",
+                "CSMA/CA",
+                "Token Ring obligatoire",
+                "TDMA Ethernet uniquement"
+              ],
+              "correct": 1,
+              "explanation": "Le Wi-Fi cherche à éviter les collisions ; il ne les détecte pas comme l’Ethernet partagé historique."
+            },
+            {
+              "id": "c2-wifi-v2-q2",
+              "question": "Quel service intervient typiquement avec WPA Enterprise et 802.1X ?",
+              "answer": "RADIUS",
+              "choices": [
+                "Un serveur ARP",
+                "Un relais NAT uniquement",
+                "RADIUS",
+                "Un serveur TFTP obligatoire"
+              ],
+              "correct": 2,
+              "explanation": "RADIUS centralise l’authentification et les décisions d’accès."
+            },
+            {
+              "id": "c2-wifi-v2-q3",
+              "question": "Masquer le SSID remplace-t-il le chiffrement ?",
+              "answer": "Non",
+              "choices": [
+                "Oui, les trames deviennent illisibles",
+                "Oui, les adresses MAC sont chiffrées",
+                "Oui, le réseau n’émet plus",
+                "Non"
+              ],
+              "correct": 3,
+              "explanation": "Le nom peut être découvert et le trafic nécessite toujours un mécanisme de protection."
+            },
+            {
+              "id": "c2-wifi-v2-q4",
+              "question": "Que représente environ une hausse de puissance de 3 dB ?",
+              "answer": "Une puissance doublée",
+              "choices": [
+                "Une puissance doublée",
+                "Une puissance triplée",
+                "Un débit garanti doublé",
+                "Une portée garantie doublée"
+              ],
+              "correct": 0,
+              "explanation": "Les dB sont logarithmiques : 10 log₁₀(2) ≈ 3. Cela ne garantit ni portée ni débit."
+            },
+            {
+              "id": "c2-wifi-v2-q5",
+              "question": "Quel est le compromis d’un canal Wi-Fi plus large ?",
+              "answer": "Plus de capacité potentielle mais moins de canaux indépendants",
+              "choices": [
+                "Moins d’interférences dans tous les cas",
+                "Plus de capacité potentielle mais moins de canaux indépendants",
+                "Une portée illimitée",
+                "Une suppression des obstacles"
+              ],
+              "correct": 1,
+              "explanation": "Une largeur importante occupe davantage de spectre et peut augmenter la contention."
+            },
+            {
+              "id": "c2-wifi-v2-q6",
+              "question": "Pourquoi le débit utile est-il inférieur au débit radio annoncé ?",
+              "answer": "Le temps d’antenne sert aussi aux en-têtes, accès au média et reprises",
+              "choices": [
+                "Le Wi-Fi n’envoie aucun octet utile",
+                "Le DNS divise toujours le débit par huit",
+                "Le temps d’antenne sert aussi aux en-têtes, accès au média et reprises",
+                "Le SSID impose une limite fixe"
+              ],
+              "correct": 2,
+              "explanation": "La signalisation, le partage du média et les retransmissions consomment des ressources."
             }
           ],
           "exams": [
@@ -1184,6 +2329,10 @@
         {
           "title": "OpenJFX · Introduction à FXML",
           "url": "https://openjfx.io/javadoc/25/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html"
+        },
+        {
+          "title": "OpenJFX · Task et concurrence",
+          "url": "https://openjfx.io/javadoc/25/javafx.graphics/javafx/concurrent/Task.html"
         }
       ],
       "chapters": [
@@ -1191,7 +2340,7 @@
           "id": "fx-architecture",
           "title": "Stage, Scene & les premiers pas",
           "description": "Les trois briques d’une application JavaFX.",
-          "minutes": 10,
+          "minutes": 13,
           "sections": [
             {
               "title": "Le cycle de vie",
@@ -1205,6 +2354,24 @@
             {
               "title": "Configurer le projet",
               "body": "OpenJFX se déclare comme dépendance séparée dans les projets modernes. Maven ou Gradle permettent de gérer les modules et le lancement. javafx.controls est nécessaire pour les contrôles ; javafx.fxml s’ajoute si le projet utilise FXML. Choisir une version de Java compatible avec la version OpenJFX retenue."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Une application JavaFX gère un graphe de scène : les nœuds sont organisés en arbre sous une racine. La fenêtre Stage accueille une Scene. La méthode start s’exécute sur le JavaFX Application Thread ; init sert à préparer sans manipuler de Stage vivant. Le cycle se termine avec stop pour libérer les ressources.",
+              "bullets": [
+                "Un même nœud ne peut pas appartenir simultanément à plusieurs parents du graphe de scène.",
+                "Application.launch ne se rappelle pas pour chaque fenêtre : crée plutôt des Stage supplémentaires.",
+                "Dans un projet modulaire, déclare les modules JavaFX utilisés dans module-info.java et configure leurs dépendances."
+              ],
+              "diagram": {
+                "caption": "La hiérarchie visuelle",
+                "steps": [
+                  "Stage · fenêtre",
+                  "Scene · contenu",
+                  "VBox · racine",
+                  "Label + Button · enfants"
+                ]
+              }
             }
           ],
           "takeaway": "Stage = fenêtre ; Scene = contenu ; Node = élément du graphe de scène.",
@@ -1260,6 +2427,84 @@
               ],
               "correct": 3,
               "explanation": "Button, Label et TableView font partie de javafx.controls."
+            },
+            {
+              "id": "fx-architecture-v2-q1",
+              "question": "Quelle méthode du cycle de vie libère les ressources à la fermeture ?",
+              "answer": "stop()",
+              "choices": [
+                "start() uniquement",
+                "stop()",
+                "paint()",
+                "destroyScene()"
+              ],
+              "correct": 1,
+              "explanation": "stop permet notamment d’arrêter des services et des exécuteurs propres à l’application."
+            },
+            {
+              "id": "fx-architecture-v2-q2",
+              "question": "Peut-on partager le même Node entre deux parents simultanément ?",
+              "answer": "Non",
+              "choices": [
+                "Oui, sans contrainte",
+                "Oui, si leurs tailles sont égales",
+                "Non",
+                "Oui, uniquement pour un Button"
+              ],
+              "correct": 2,
+              "explanation": "Le graphe de scène est une hiérarchie : un nœud n’a qu’un parent à la fois."
+            },
+            {
+              "id": "fx-architecture-v2-q3",
+              "question": "Sur quel thread la méthode start est-elle appelée ?",
+              "answer": "Le JavaFX Application Thread",
+              "choices": [
+                "Le thread de collecte mémoire",
+                "Un thread réseau imposé",
+                "Le thread du compilateur",
+                "Le JavaFX Application Thread"
+              ],
+              "correct": 3,
+              "explanation": "C’est le thread qui gère les interactions avec l’interface active."
+            },
+            {
+              "id": "fx-architecture-v2-q4",
+              "question": "Comment ouvrir une deuxième fenêtre dans l’application ?",
+              "answer": "Créer un nouveau Stage",
+              "choices": [
+                "Créer un nouveau Stage",
+                "Rappeler Application.launch()",
+                "Créer une deuxième JVM obligatoire",
+                "Réinitialiser le module javafx.base"
+              ],
+              "correct": 0,
+              "explanation": "Plusieurs Stage peuvent coexister dans une même application JavaFX."
+            },
+            {
+              "id": "fx-architecture-v2-q5",
+              "question": "Quel type de structure est le graphe de scène ?",
+              "answer": "Un arbre de nœuds",
+              "choices": [
+                "Une table SQL",
+                "Un arbre de nœuds",
+                "Une liste de threads",
+                "Un ensemble de sockets"
+              ],
+              "correct": 1,
+              "explanation": "Les relations parent-enfant organisent le rendu, les transformations et les événements."
+            },
+            {
+              "id": "fx-architecture-v2-q6",
+              "question": "Quel fichier déclare les dépendances d’un module Java nommé ?",
+              "answer": "module-info.java",
+              "choices": [
+                "scene.fxml obligatoirement",
+                "style.css",
+                "module-info.java",
+                "application.png"
+              ],
+              "correct": 2,
+              "explanation": "Les directives requires et opens précisent les dépendances et accès nécessaires."
             }
           ],
           "exams": [
@@ -1280,7 +2525,7 @@
           "id": "fx-layouts",
           "title": "Organiser l’interface",
           "description": "Choisir les bons conteneurs et une mise en page adaptable.",
-          "minutes": 11,
+          "minutes": 14,
           "sections": [
             {
               "title": "Laisser le conteneur disposer les nœuds",
@@ -1299,6 +2544,24 @@
                 "BorderPane convient à une fenêtre avec en-tête et zone centrale.",
                 "Tester les textes longs et le redimensionnement."
               ]
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Les conteneurs de layout recalculent les positions et tailles selon leur espace disponible et les tailles minimum, préférées et maximum des enfants. Le redimensionnement doit être conçu par contraintes ; fixer chaque coordonnée rend la vue fragile face à une petite fenêtre, une traduction ou une police agrandie.",
+              "bullets": [
+                "BorderPane organise top, bottom, left, right et center ; le centre prend l’espace restant.",
+                "HBox.setHgrow permet à un enfant de demander l’espace horizontal disponible, selon ses limites de taille.",
+                "visible=false masque un nœud ; managed=false le retire aussi du calcul de layout du parent."
+              ],
+              "diagram": {
+                "caption": "Une vue adaptative avec BorderPane",
+                "steps": [
+                  "Top · barre d’outils",
+                  "Left · navigation",
+                  "Center · contenu flexible",
+                  "Bottom · statut"
+                ]
+              }
             }
           ],
           "takeaway": "Le bon layout remplace la plupart des calculs de coordonnées.",
@@ -1354,6 +2617,84 @@
               ],
               "correct": 3,
               "explanation": "Par exemple -fx-background-color et -fx-font-size."
+            },
+            {
+              "id": "fx-layouts-v2-q1",
+              "question": "Quel conteneur répartit top, bottom, left, right et center ?",
+              "answer": "BorderPane",
+              "choices": [
+                "FlowPane",
+                "BorderPane",
+                "GridPane",
+                "StackPane"
+              ],
+              "correct": 1,
+              "explanation": "Le centre occupe l’espace restant après les régions périphériques."
+            },
+            {
+              "id": "fx-layouts-v2-q2",
+              "question": "Quel conteneur superpose ses enfants ?",
+              "answer": "StackPane",
+              "choices": [
+                "HBox",
+                "VBox",
+                "StackPane",
+                "GridPane sans contraintes"
+              ],
+              "correct": 2,
+              "explanation": "StackPane place les nœuds les uns sur les autres, selon l’ordre et l’alignement."
+            },
+            {
+              "id": "fx-layouts-v2-q3",
+              "question": "Quelle propriété retire un nœud du calcul de layout ?",
+              "answer": "managed=false",
+              "choices": [
+                "opacity=0 uniquement",
+                "visible=false uniquement",
+                "disable=true",
+                "managed=false"
+              ],
+              "correct": 3,
+              "explanation": "Un nœud invisible peut encore réserver de l’espace s’il reste managed."
+            },
+            {
+              "id": "fx-layouts-v2-q4",
+              "question": "Que permet HBox.setHgrow(node, Priority.ALWAYS) ?",
+              "answer": "Demander que le nœud utilise l’espace horizontal disponible",
+              "choices": [
+                "Demander que le nœud utilise l’espace horizontal disponible",
+                "Fixer sa hauteur à l’infini",
+                "Le déplacer vers un autre Stage",
+                "Ignorer toutes ses tailles maximales"
+              ],
+              "correct": 0,
+              "explanation": "Le parent distribue l’espace tout en respectant les contraintes applicables."
+            },
+            {
+              "id": "fx-layouts-v2-q5",
+              "question": "Quel conteneur revient automatiquement à la ligne ?",
+              "answer": "FlowPane",
+              "choices": [
+                "HBox",
+                "FlowPane",
+                "BorderPane",
+                "AnchorPane"
+              ],
+              "correct": 1,
+              "explanation": "FlowPane dispose les enfants en flux et les reporte selon l’espace disponible."
+            },
+            {
+              "id": "fx-layouts-v2-q6",
+              "question": "Pourquoi préférer les contraintes aux coordonnées fixes ?",
+              "answer": "Pour adapter l’interface aux tailles et contenus variables",
+              "choices": [
+                "Pour supprimer le thread UI",
+                "Pour rendre tous les contrôles immuables",
+                "Pour adapter l’interface aux tailles et contenus variables",
+                "Pour empêcher tout redimensionnement"
+              ],
+              "correct": 2,
+              "explanation": "Les layouts s’adaptent aux petites fenêtres, langues et tailles de police."
             }
           ],
           "exams": [
@@ -1374,7 +2715,7 @@
           "id": "fx-events",
           "title": "Événements & interactions",
           "description": "Réagir aux actions et comprendre leur propagation.",
-          "minutes": 10,
+          "minutes": 13,
           "sections": [
             {
               "title": "Écouter une intention",
@@ -1388,6 +2729,24 @@
             {
               "title": "Garder les actions lisibles",
               "body": "Un gestionnaire doit rester court : valider l’entrée, appeler la logique métier, puis afficher le résultat. Les erreurs de saisie doivent être compréhensibles. Une opération lente doit quitter le thread graphique pour éviter de figer l’interface."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Un événement suit une route dans le graphe de scène. Les filtres interviennent lors de la descente vers la cible ; les handlers lors de la remontée. Séparer validation, logique métier et mise à jour visuelle permet de garder les gestionnaires courts et testables.",
+              "bullets": [
+                "addEventHandler ajoute un gestionnaire ; setOnAction définit la propriété de gestionnaire correspondante et remplace son ancienne valeur.",
+                "ActionEvent couvre notamment l’activation au clavier ; ne limite pas une action à un clic souris.",
+                "Utilise un état de formulaire et une validation claire ; signale l’erreur près du champ concerné."
+              ],
+              "diagram": {
+                "caption": "Route simplifiée d’un événement",
+                "steps": [
+                  "Racine · filtres",
+                  "Cible · contrôle",
+                  "Remontée · handlers",
+                  "Éventuelle consommation"
+                ]
+              }
             }
           ],
           "takeaway": "Filtre pendant la capture ; gestionnaire pendant la remontée.",
@@ -1443,6 +2802,84 @@
               ],
               "correct": 3,
               "explanation": "Pendant cette opération, les interactions et le rendu peuvent rester figés."
+            },
+            {
+              "id": "fx-events-v2-q1",
+              "question": "Quelle méthode ajoute un handler sans remplacer la propriété onAction ?",
+              "answer": "addEventHandler(...)",
+              "choices": [
+                "setOnAction(...) à répétition",
+                "addEventHandler(...)",
+                "setText(...) uniquement",
+                "requestLayout(...)"
+              ],
+              "correct": 1,
+              "explanation": "Les gestionnaires ajoutés et la propriété de gestionnaire sont des mécanismes distincts."
+            },
+            {
+              "id": "fx-events-v2-q2",
+              "question": "Que fait un second appel à setOnAction sur le même Button ?",
+              "answer": "Il remplace la valeur précédente de onAction",
+              "choices": [
+                "Il crée un nouveau bouton",
+                "Il lance un thread",
+                "Il remplace la valeur précédente de onAction",
+                "Il ajoute forcément deux actions"
+              ],
+              "correct": 2,
+              "explanation": "Une propriété de gestionnaire contient une seule valeur courante."
+            },
+            {
+              "id": "fx-events-v2-q3",
+              "question": "Dans quel sens se propage la phase de bubbling ?",
+              "answer": "De la cible vers ses ancêtres",
+              "choices": [
+                "De la racine vers la cible",
+                "Uniquement entre fenêtres",
+                "Du serveur vers la scène",
+                "De la cible vers ses ancêtres"
+              ],
+              "correct": 3,
+              "explanation": "Les handlers interviennent pendant la remontée de la route d’événement."
+            },
+            {
+              "id": "fx-events-v2-q4",
+              "question": "Quel choix permet une action de bouton accessible au clavier ?",
+              "answer": "Traiter ActionEvent",
+              "choices": [
+                "Traiter ActionEvent",
+                "Traiter seulement un clic droit",
+                "Désactiver le focus",
+                "Lire directement les coordonnées de souris"
+              ],
+              "correct": 0,
+              "explanation": "L’activation du contrôle peut provenir du clavier ou de la souris."
+            },
+            {
+              "id": "fx-events-v2-q5",
+              "question": "Où placer une logique métier réutilisable ?",
+              "answer": "Dans un service ou modèle distinct du handler UI",
+              "choices": [
+                "Dans chaque chaîne CSS",
+                "Dans un service ou modèle distinct du handler UI",
+                "Dans l’attribut fx:id",
+                "Dans le nom de fichier image"
+              ],
+              "correct": 1,
+              "explanation": "Le contrôleur orchestre ; la logique distincte est plus facile à tester et réutiliser."
+            },
+            {
+              "id": "fx-events-v2-q6",
+              "question": "Que faire avant d’envoyer un formulaire invalide ?",
+              "answer": "Afficher une erreur près du champ et garder les valeurs saisies",
+              "choices": [
+                "Vider tous les champs sans explication",
+                "Fermer la fenêtre immédiatement",
+                "Afficher une erreur près du champ et garder les valeurs saisies",
+                "Ignorer silencieusement l’action"
+              ],
+              "correct": 2,
+              "explanation": "Une validation utile aide l’utilisateur à comprendre et corriger le problème."
             }
           ],
           "exams": [
@@ -1463,7 +2900,7 @@
           "id": "fx-binding",
           "title": "Propriétés & bindings",
           "description": "Synchroniser les données et l’interface.",
-          "minutes": 13,
+          "minutes": 16,
           "sections": [
             {
               "title": "Observer une valeur",
@@ -1477,6 +2914,16 @@
             {
               "title": "Collections observables",
               "body": "ObservableList notifie ses modifications structurelles aux observateurs. Des contrôles comme ListView et TableView peuvent utiliser ces collections. Observer une liste ne rend pas automatiquement tous les champs internes de ses objets observables : les propriétés des éléments doivent être exposées et reliées correctement."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Une propriété observable contient une valeur et signale ses changements. Un binding unidirectionnel calcule une propriété à partir d’une autre ; un binding bidirectionnel synchronise deux propriétés compatibles. Les listeners servent aux effets de bord, mais doivent être détachés quand leur durée de vie dépasse celle de la vue.",
+              "bullets": [
+                "ChangeListener reçoit ancienne et nouvelle valeurs ; InvalidationListener signale que la valeur doit être réévaluée.",
+                "unbind libère un binding unidirectionnel avant une affectation manuelle.",
+                "ObservableList signale les changements de structure ; suivre les propriétés des objets contenus exige des propriétés observables et éventuellement un extractor."
+              ],
+              "formula": "total = quantité × prixUnitaire\nBinding : quantité change → total est invalidé → valeur recalculée à la demande"
             }
           ],
           "takeaway": "Un binding décrit une relation durable ; un listener déclenche une réaction.",
@@ -1532,6 +2979,84 @@
               ],
               "correct": 3,
               "explanation": "Les changements internes nécessitent une observation appropriée des propriétés des éléments."
+            },
+            {
+              "id": "fx-binding-v2-q1",
+              "question": "Quel listener reçoit ancienne et nouvelle valeurs ?",
+              "answer": "ChangeListener",
+              "choices": [
+                "ActionEvent",
+                "ChangeListener",
+                "ListCell",
+                "FXMLLoader"
+              ],
+              "correct": 1,
+              "explanation": "Il reçoit l’observable, l’ancienne valeur et la nouvelle valeur."
+            },
+            {
+              "id": "fx-binding-v2-q2",
+              "question": "Que faire avant de modifier manuellement une propriété liée unidirectionnellement ?",
+              "answer": "Appeler unbind()",
+              "choices": [
+                "Appeler bind() une deuxième fois",
+                "Changer son fx:id",
+                "Appeler unbind()",
+                "Déplacer le Stage"
+              ],
+              "correct": 2,
+              "explanation": "Une propriété liée ne peut pas être définie directement tant que son binding est actif."
+            },
+            {
+              "id": "fx-binding-v2-q3",
+              "question": "Pourquoi retirer un listener devenu inutile ?",
+              "answer": "Pour éviter des références et traitements conservés inutilement",
+              "choices": [
+                "Pour augmenter la résolution écran",
+                "Pour changer le thème système",
+                "Pour réinitialiser le compilateur",
+                "Pour éviter des références et traitements conservés inutilement"
+              ],
+              "correct": 3,
+              "explanation": "Un objet vivant peut garder un listener et sa vue en mémoire."
+            },
+            {
+              "id": "fx-binding-v2-q4",
+              "question": "Un binding unidirectionnel propage les changements dans quel sens ?",
+              "answer": "De la source vers la propriété liée",
+              "choices": [
+                "De la source vers la propriété liée",
+                "Toujours dans les deux sens",
+                "Uniquement depuis la souris",
+                "Uniquement à la fermeture"
+              ],
+              "correct": 0,
+              "explanation": "La propriété liée dépend de la source ; elle ne la pilote pas en retour."
+            },
+            {
+              "id": "fx-binding-v2-q5",
+              "question": "Une ObservableList suit-elle automatiquement tout champ ordinaire de ses objets ?",
+              "answer": "Non, la structure observable ne rend pas chaque champ observable",
+              "choices": [
+                "Oui, même les champs privés non observables",
+                "Non, la structure observable ne rend pas chaque champ observable",
+                "Oui, si la liste contient dix objets",
+                "Oui, uniquement sur Android"
+              ],
+              "correct": 1,
+              "explanation": "Les modifications internes nécessitent un mécanisme observable adapté."
+            },
+            {
+              "id": "fx-binding-v2-q6",
+              "question": "Quel mécanisme convient pour un total dérivé de quantité × prix ?",
+              "answer": "Un binding numérique",
+              "choices": [
+                "Un Thread.sleep dans le handler",
+                "Une reconstruction du Stage à chaque touche",
+                "Un binding numérique",
+                "Un nom de classe CSS"
+              ],
+              "correct": 2,
+              "explanation": "Le total reste cohérent avec les propriétés dont il dépend."
             }
           ],
           "exams": [
@@ -1552,7 +3077,7 @@
           "id": "fx-fxml",
           "title": "FXML & contrôleurs",
           "description": "Séparer la vue, les interactions et la logique.",
-          "minutes": 13,
+          "minutes": 16,
           "sections": [
             {
               "title": "Décrire la vue",
@@ -1571,6 +3096,25 @@
                 "opens fr.exemple.ui to javafx.fxml;",
                 "Scene Builder peut aider à composer une vue FXML."
               ]
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "FXML décrit la structure de la vue ; le contrôleur relie ses éléments aux actions. Le FXMLLoader construit le graphe, injecte les champs puis appelle initialize. Évite de mélanger fx:controller avec setController sur le même chargement : choisis un mode de fourniture du contrôleur.",
+              "bullets": [
+                "@FXML permet notamment l’accès à des champs ou méthodes non publics pour le chargement.",
+                "fx:id identifie un objet pour le namespace et l’injection ; l’id CSS peut être défini séparément.",
+                "Une ressource introuvable produit souvent une URL nulle : vérifie le chemin, la casse et le packaging."
+              ],
+              "diagram": {
+                "caption": "Du fichier à la vue prête",
+                "steps": [
+                  "Ressource .fxml",
+                  "FXMLLoader.load()",
+                  "Construction + injection",
+                  "initialize()",
+                  "Vue affichée"
+                ]
+              }
             }
           ],
           "takeaway": "Les champs @FXML sont disponibles dans initialize, après le chargement et l’injection.",
@@ -1626,6 +3170,84 @@
               ],
               "correct": 3,
               "explanation": "Dans les modules Java, l’accès réflexif doit être ouvert explicitement lorsque nécessaire."
+            },
+            {
+              "id": "fx-fxml-v2-q1",
+              "question": "Pourquoi un champ @FXML peut-il être null dans le constructeur ?",
+              "answer": "L’injection n’a pas encore eu lieu",
+              "choices": [
+                "FXML interdit les champs privés",
+                "L’injection n’a pas encore eu lieu",
+                "Le CSS a supprimé le champ",
+                "La scène est trop petite"
+              ],
+              "correct": 1,
+              "explanation": "Le chargement instancie d’abord le contrôleur, puis injecte les objets."
+            },
+            {
+              "id": "fx-fxml-v2-q2",
+              "question": "Quand récupérer le contrôleur avec loader.getController() pour utiliser ses champs injectés ?",
+              "answer": "Après loader.load()",
+              "choices": [
+                "Avant de choisir la ressource",
+                "Uniquement après Application.stop()",
+                "Après loader.load()",
+                "Dans un fichier CSS"
+              ],
+              "correct": 2,
+              "explanation": "Le chargement doit avoir construit et injecté la vue."
+            },
+            {
+              "id": "fx-fxml-v2-q3",
+              "question": "Peut-on définir fx:controller et appeler setController pour le même chargement ?",
+              "answer": "Non, il faut choisir un seul de ces modes",
+              "choices": [
+                "Oui, cela crée deux contrôleurs synchronisés",
+                "Oui, si les noms sont identiques",
+                "Oui, uniquement avec VBox",
+                "Non, il faut choisir un seul de ces modes"
+              ],
+              "correct": 3,
+              "explanation": "Ces deux modes concurrents provoquent une erreur de contrôleur déjà spécifié."
+            },
+            {
+              "id": "fx-fxml-v2-q4",
+              "question": "Que vérifier si getResource renvoie null ?",
+              "answer": "Le chemin, la casse et la présence de la ressource empaquetée",
+              "choices": [
+                "Le chemin, la casse et la présence de la ressource empaquetée",
+                "Le nombre de processeurs",
+                "La taille du Stage uniquement",
+                "Le serveur DHCP"
+              ],
+              "correct": 0,
+              "explanation": "Une ressource classpath doit être disponible à l’emplacement exact demandé."
+            },
+            {
+              "id": "fx-fxml-v2-q5",
+              "question": "Quel symbole lie un onAction FXML à une méthode du contrôleur ?",
+              "answer": "#",
+              "choices": [
+                "$ uniquement",
+                "#",
+                "@ uniquement",
+                "% uniquement"
+              ],
+              "correct": 1,
+              "explanation": "Par exemple onAction=\"#valider\" fait référence à une méthode du contrôleur."
+            },
+            {
+              "id": "fx-fxml-v2-q6",
+              "question": "Quel est l’intérêt principal de FXML ?",
+              "answer": "Séparer la description de la vue de sa logique de contrôle",
+              "choices": [
+                "Exécuter Java sans JVM",
+                "Rendre tous les traitements asynchrones",
+                "Séparer la description de la vue de sa logique de contrôle",
+                "Remplacer toutes les dépendances JavaFX"
+              ],
+              "correct": 2,
+              "explanation": "Cette séparation facilite la lecture et l’évolution de l’interface."
             }
           ],
           "exams": [
@@ -1646,7 +3268,7 @@
           "id": "fx-concurrency",
           "title": "Tâches de fond & interface fluide",
           "description": "Utiliser Task sans bloquer le thread graphique.",
-          "minutes": 14,
+          "minutes": 17,
           "sections": [
             {
               "title": "Un thread pour l’interface",
@@ -1660,6 +3282,25 @@
             {
               "title": "Communiquer sans saturer",
               "body": "updateProgress et updateMessage sont prévus pour transmettre des informations depuis une Task. Platform.runLater planifie une action sur le thread JavaFX ; il ne rend pas cette action moins coûteuse. L’annulation est coopérative : le travail doit tester isCancelled et respecter les interruptions."
+            },
+            {
+              "title": "Pour comprendre un cran plus loin",
+              "body": "Un Task encapsule un travail exécuté en arrière-plan dans call. Il expose un état, une valeur, une exception et une progression observables. updateProgress et updateMessage transmettent des informations sans modifier directement les contrôles. L’annulation reste coopérative : le travail doit régulièrement vérifier isCancelled et gérer les interruptions.",
+              "bullets": [
+                "onFailed expose l’échec via getException ; informe l’utilisateur au lieu de laisser le bouton bloqué.",
+                "Service crée de nouveaux Task et facilite la réutilisation ; un Task terminé ne se relance pas.",
+                "Évite une boucle qui envoie des milliers de runLater : regroupe les mises à jour pour garder une interface réactive."
+              ],
+              "formula": "progression = travail effectué / travail total\n25 éléments sur 100 → 0,25 → 25 %",
+              "diagram": {
+                "caption": "Séparer calcul et affichage",
+                "steps": [
+                  "Thread UI · lancer Task",
+                  "Thread de fond · call()",
+                  "updateProgress / résultat",
+                  "Thread UI · onSucceeded ou onFailed"
+                ]
+              }
             }
           ],
           "takeaway": "Le travail long va dans call ; les mises à jour de l’interface reviennent sur le thread JavaFX.",
@@ -1715,6 +3356,84 @@
               ],
               "correct": 3,
               "explanation": "Une opération longue passée à runLater peut toujours bloquer l’interface."
+            },
+            {
+              "id": "fx-concurrency-v2-q1",
+              "question": "Quelle méthode faut-il redéfinir pour le travail d’un Task ?",
+              "answer": "call()",
+              "choices": [
+                "paint()",
+                "call()",
+                "start(Stage)",
+                "initialize(URL)"
+              ],
+              "correct": 1,
+              "explanation": "call s’exécute sur le thread qui lance la tâche en arrière-plan."
+            },
+            {
+              "id": "fx-concurrency-v2-q2",
+              "question": "Comment publier une progression depuis call() ?",
+              "answer": "Avec updateProgress(effectué, total)",
+              "choices": [
+                "En modifiant directement le ProgressBar vivant",
+                "Avec Stage.show()",
+                "Avec updateProgress(effectué, total)",
+                "Avec Thread.stop()"
+              ],
+              "correct": 2,
+              "explanation": "Task transmet les mises à jour à ses propriétés observables gérées par JavaFX."
+            },
+            {
+              "id": "fx-concurrency-v2-q3",
+              "question": "Que doit faire un travail long pour respecter une annulation ?",
+              "answer": "Vérifier isCancelled et gérer les interruptions",
+              "choices": [
+                "Ignorer toutes les interruptions",
+                "Redémarrer la même Task",
+                "Bloquer le thread UI",
+                "Vérifier isCancelled et gérer les interruptions"
+              ],
+              "correct": 3,
+              "explanation": "L’annulation est coopérative ; elle ne termine pas magiquement tout code externe."
+            },
+            {
+              "id": "fx-concurrency-v2-q4",
+              "question": "Où obtenir la cause d’une Task en échec ?",
+              "answer": "Dans getException(), notamment depuis onFailed",
+              "choices": [
+                "Dans getException(), notamment depuis onFailed",
+                "Dans le texte CSS",
+                "Dans la largeur de la Scene",
+                "Dans le port du serveur DNS"
+              ],
+              "correct": 0,
+              "explanation": "L’exception permet d’expliquer l’échec et de proposer une nouvelle tentative."
+            },
+            {
+              "id": "fx-concurrency-v2-q5",
+              "question": "Quel objet JavaFX convient pour un travail réutilisable produisant de nouveaux Task ?",
+              "answer": "Service",
+              "choices": [
+                "Stage",
+                "Service",
+                "GridPane",
+                "FXMLLoader"
+              ],
+              "correct": 1,
+              "explanation": "Service gère un cycle de vie qui crée une nouvelle tâche pour une nouvelle exécution."
+            },
+            {
+              "id": "fx-concurrency-v2-q6",
+              "question": "Pourquoi regrouper des mises à jour runLater très fréquentes ?",
+              "answer": "Pour éviter de saturer la file du thread UI",
+              "choices": [
+                "Pour contourner le type de retour Java",
+                "Pour doubler automatiquement le débit réseau",
+                "Pour éviter de saturer la file du thread UI",
+                "Pour supprimer le graphe de scène"
+              ],
+              "correct": 2,
+              "explanation": "Trop de petites mises à jour peuvent rendre l’interface moins réactive malgré le travail de fond."
             }
           ],
           "exams": [

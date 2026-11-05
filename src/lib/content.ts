@@ -32,6 +32,10 @@ export const chapterSchema = z.object({
         body: text,
         bullets: z.array(text).max(12).optional(),
         code: text.optional(),
+        formula: text.optional(),
+        diagram: z
+          .object({ caption: text, steps: z.array(text).min(2).max(8) })
+          .optional(),
       }),
     )
     .min(1)

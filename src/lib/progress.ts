@@ -39,7 +39,9 @@ export const emptyProgress: Progress = {
   activity: {},
   results: [],
   lastChapter: null,
-  repository: import.meta.env.VITE_GITHUB_REPOSITORY || "",
+  repository:
+    import.meta.env.VITE_GITHUB_REPOSITORY ||
+    "FediMechergui/memorycardsrevision",
 };
 export const dayKey = (date = new Date()) =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;

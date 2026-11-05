@@ -14,9 +14,16 @@ export default defineConfig({
       },
     },
   ],
-  webServer: {
-    command: "npm run preview -- --port 4173 --strictPort",
-    url: "http://127.0.0.1:4173",
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: "npm run preview -- --port 4173 --strictPort",
+      url: "http://127.0.0.1:4173",
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: "npm run dev:api",
+      url: "http://127.0.0.1:8788/api/health",
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 });

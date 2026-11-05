@@ -1,3 +1,4 @@
+import { Rank } from "./Rank";
 import {
   ArrowRight,
   ArrowSquareOut,
@@ -114,6 +115,7 @@ export function ProgressPage({ store }: { store: Store }) {
           </div>
         ))}
       </div>
+      <Rank progress={progress} />
       <section className="activity-panel">
         <SectionTitle
           title="Ton rythme, ces 14 derniers jours"

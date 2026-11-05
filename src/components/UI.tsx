@@ -30,6 +30,15 @@ export function SubjectIcon({
   return (
     <span className={`subject-icon ${subject.color}`}>
       <Icon size={size} weight="duotone" />
+      <span className="subject-monogram" aria-hidden="true">
+        {subject.id === "ccna1"
+          ? "C1"
+          : subject.id === "ccna2"
+            ? "C2"
+            : subject.id === "javafx"
+              ? "FX"
+              : "M"}
+      </span>
     </span>
   );
 }

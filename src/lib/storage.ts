@@ -7,7 +7,13 @@ const CATALOG_KEY = "memora.catalog.v1";
 function readProgress(): Progress {
   try {
     const stored = localStorage.getItem(PROGRESS_KEY);
-    return stored ? progressSchema.parse(JSON.parse(stored)) : emptyProgress;
+    const progress = stored
+      ? progressSchema.parse(JSON.parse(stored))
+      : emptyProgress;
+    return {
+      ...progress,
+      repository: progress.repository || emptyProgress.repository,
+    };
   } catch {
     return emptyProgress;
   }

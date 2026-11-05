@@ -16,4 +16,10 @@ android/app/src/main/assets/capacitor.plugins.json
 *.jks
 *.keystore
 .signing/
+.netlify/
+.env.*
+!.env.example
 !android/gradle/wrapper/gradle-wrapper.jar
+
+# Local Netlify folder
+.netlify

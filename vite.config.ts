@@ -3,6 +3,8 @@ import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  server: { proxy: { "/api": "http://127.0.0.1:8788" } },
+  preview: { proxy: { "/api": "http://127.0.0.1:8788" } },
   plugins: [
     react(),
     VitePWA({
@@ -38,6 +40,7 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,svg,png,woff2,json}"],
         maximumFileSizeToCacheInBytes: 4000000,
         navigateFallback: "index.html",
+        navigateFallbackDenylist: [/^\/api\//],
       },
     }),
   ],

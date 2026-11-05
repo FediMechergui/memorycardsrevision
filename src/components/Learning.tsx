@@ -264,6 +264,22 @@ export function Lesson({
               <span className="lesson-section-number">0{i + 1}</span>
               <h2>{section.title}</h2>
               <p>{section.body}</p>
+              {section.formula && (
+                <figure className="lesson-formula">
+                  <figcaption>La relation à retenir</figcaption>
+                  <pre>{section.formula}</pre>
+                </figure>
+              )}
+              {section.diagram && (
+                <figure className={`lesson-diagram ${subject.color}`}>
+                  <figcaption>{section.diagram.caption}</figcaption>
+                  <ol>
+                    {section.diagram.steps.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                </figure>
+              )}
               {section.bullets && (
                 <ul>
                   {section.bullets.map((b) => (

@@ -13,7 +13,9 @@ import {
 } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import type { Store } from "../lib/storage";
-import type { Card, Exam } from "../lib/content";
+import type { Card, Exam, Subject } from "../lib/content";
+import { AiCorrection } from "./AiCorrection";
+import { SubjectIcon } from "./UI";
 import {
   addActivity,
   saveResult,
@@ -22,7 +24,11 @@ import {
 } from "../lib/progress";
 import { EmptyState, FavoriteButton, go, Modal, ProgressBar } from "./UI";
 import { Mascot } from "./Mascot";
-type StudyCard = Card & { subjectTitle: string; chapterTitle: string };
+type StudyCard = Card & {
+  subjectTitle: string;
+  chapterTitle: string;
+  subject: Subject;
+};
 type StudyExam = Exam & { subjectTitle: string; chapterTitle: string };
 function shuffle<T>(items: T[]): T[] {
   const result = [...items];
@@ -53,13 +59,14 @@ export function Study({
       .filter(
         (c) => ["due", "favorites", s.id].includes(scope) || c.id === scope,
       )
-      .map((c) => ({ ...c, subjectTitle: s.title })),
+      .map((c) => ({ ...c, subjectTitle: s.title, subject: s })),
   );
   const allCards = selectedChapters.flatMap((c) =>
     c.cards.map((card) => ({
       ...card,
       subjectTitle: c.subjectTitle,
       chapterTitle: c.title,
+      subject: c.subject,
     })),
   );
   const [cards] = useState(() =>
@@ -348,9 +355,12 @@ function CardSession({
         <span>{Math.round((index / cards.length) * 100)} %</span>
       </div>
       <ProgressBar value={(index / cards.length) * 100} />
-      <div className={`study-card ${revealed ? "revealed" : ""} ${mode}`}>
+      <div
+        className={`study-card ${revealed ? "revealed" : ""} ${mode} card-theme-${card.subject.color}`}
+      >
         <div className="study-card-top">
           <span>
+            <SubjectIcon subject={card.subject} size={23} />
             {card.subjectTitle}
             <i />
             {card.chapterTitle}
@@ -385,22 +395,34 @@ function CardSession({
         </div>
         {mode === "flashcards" ? (
           <button
+            key={card.id}
             className="flip-area"
             onClick={() => setRevealed((v) => !v)}
             aria-label={revealed ? "Revoir la question" : "Retourner la carte"}
+            aria-pressed={revealed}
           >
-            <span className="card-side-label">
-              {revealed ? "LE DÉCLIC" : "À TOI DE TE SOUVENIR"}
+            <span className="flip-inner">
+              <span className="flip-face front" aria-hidden={revealed}>
+                <span className="card-side-label">À TOI DE TE SOUVENIR</span>
+                <span className="flash-question">{card.question}</span>
+                <span className="flip-hint">
+                  <ArrowsClockwise size={19} />
+                  Touche pour retourner
+                </span>
+                <span className="card-corner">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </span>
+              <span className="flip-face back" aria-hidden={!revealed}>
+                <span className="card-side-label">LE DÉCLIC</span>
+                <span className="flash-question">{card.answer}</span>
+                <span className="flash-explanation">{card.explanation}</span>
+                <span className="flip-hint">
+                  <ArrowsClockwise size={19} />
+                  Revoir la question
+                </span>
+              </span>
             </span>
-            <h2>{revealed ? card.answer : card.question}</h2>
-            {revealed ? (
-              <p>{card.explanation}</p>
-            ) : (
-              <div className="flip-hint">
-                <ArrowsClockwise size={19} />
-                Touche la carte pour voir la réponse
-              </div>
-            )}
           </button>
         ) : (
           <div className="question-area">
@@ -710,7 +732,7 @@ function ExamSession({
         <PencilLine size={24} />
         <p>
           {draft.submitted
-            ? "Lis le corrigé, puis coche uniquement les éléments présents dans ta réponse. La note est une autoévaluation, sans correction automatique."
+            ? "Lis le corrigé, puis coche les éléments présents dans ta réponse. Un avis IA facultatif peut t’aider ; tu gardes la main sur l’autoévaluation."
             : "Prends le temps de structurer tes réponses. Elles sont sauvegardées sur cet appareil. Le chronomètre continue si tu quittes la page ; à la fin du temps, ta copie est rendue."}
         </p>
       </div>
@@ -763,6 +785,23 @@ function ExamSession({
                 Proposition de corrigé
               </h3>
               <p>{exam.modelAnswer}</p>
+              <AiCorrection
+                key={`${draft.id}-${exam.id}`}
+                exam={exam}
+                answer={draft.answers[exam.id] || ""}
+                name={store.progress.name}
+                onApply={(criteria) =>
+                  setDraft((d) => ({
+                    ...d,
+                    checks: {
+                      ...d.checks,
+                      ...Object.fromEntries(
+                        criteria.map((met, i) => [`${exam.id}-${i}`, met]),
+                      ),
+                    },
+                  }))
+                }
+              />
               <h4>Dans ma réponse, j’ai bien expliqué…</h4>
               {exam.rubric.map((point, index) => (
                 <label className="rubric-check" key={point}>
