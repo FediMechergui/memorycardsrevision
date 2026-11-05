@@ -2,6 +2,8 @@
 
 Application française de révision, disponible comme site installable et application Android. Les données restent sur l’appareil ; aucun compte ni serveur applicatif n’est nécessaire.
 
+Dépôt : [FediMechergui/memorycardsrevision](https://github.com/FediMechergui/memorycardsrevision). Les APK sont distribués dans les [releases GitHub](https://github.com/FediMechergui/memorycardsrevision/releases).
+
 ## Fonctionnalités
 
 - CCNA 1, CCNA 2 et JavaFX : **18 chapitres**, **72 flashcards / questions de quiz**, **18 sujets rédigés**.
@@ -55,13 +57,15 @@ Pour une release, définir `MEMORA_KEYSTORE`, `MEMORA_STORE_PASSWORD`, `MEMORA_K
 
 ## Mises à jour depuis GitHub
 
-1. Créer un dépôt GitHub public avec ce projet, puis renseigner `propriétaire/dépôt` dans **Réglages**, ou définir `VITE_GITHUB_REPOSITORY` au moment de compiler.
+1. Renseigner `FediMechergui/memorycardsrevision` dans **Réglages → Dépôt GitHub**, ou définir `VITE_GITHUB_REPOSITORY` au moment de compiler. L’APK initial a été compilé avant la création du dépôt et nécessite donc ce réglage manuel.
 2. Les cours sont lus dans `public/courses/catalog.json` sur la branche par défaut découverte via l’API GitHub. Augmenter `version` à chaque publication du catalogue. Les chapitres locaux sont préservés lors de la fusion ; les chapitres identiques sont actualisés par identifiant. Cette mise à jour n’exécute aucun code téléchargé.
 3. Pour l’APK : configurer les secrets GitHub `ANDROID_KEYSTORE_BASE64`, `ANDROID_STORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD` avec la **même clé durable**.
 4. Augmenter `package.json` version, `src/lib/updates.ts` APP_VERSION, `android/app/build.gradle` versionName et versionCode. Créer un tag `vX.Y.Z` correspondant : le workflow `.github/workflows/release.yml` compile et publie `memora.apk` avec les checksums et le catalogue.
 5. Dans **Réglages → Vérifier la version Android**, l’app interroge la dernière release stable. Sur Android, elle télécharge l’asset `memora.apk` si GitHub fournit son empreinte SHA-256, vérifie les octets, le package, la signature et une versionCode supérieure, puis ouvre l’installateur Android. Si l’autorisation d’installation manque, elle ouvre les réglages système ; autoriser Mémora et retoucher le bouton.
 
 Le téléchargement vérifié exige le champ `digest` de l’asset GitHub. Si celui-ci manque, le lien de release permet un téléchargement manuel. Le web affiche le lien de release. GitHub doit être joignable ; les erreurs et limites de débit sont affichées sans effacer les données. Les dépôts privés et leurs jetons ne sont pas pris en charge dans le client.
+
+La release initiale `v1.0.0` distribue l’APK local déjà vérifié, sous le nom `memora.apk`, sans le recompiler. Le workflow automatique ignore ce premier tag ; les tags suivants utilisent la compilation signée après configuration des secrets. Les clés et mots de passe de `.signing/` ne sont pas publiés.
 
 Une application debug et une application release ont des signatures différentes : elles ne se mettent pas à jour l’une sur l’autre. Exporter la progression avant de changer de canal. Aucune installation silencieuse n’est tentée.
 
@@ -84,4 +88,4 @@ Les fonctionnalités d’installation et de signature Android doivent être vér
 
 ## Vérification de cette première version
 
-9 tests unitaires et 10 tests de parcours Chromium passent : cours, quiz, examens avec brouillon/expiration, favoris, restauration, mise à jour de catalogue simulée, navigation mobile et rechargement hors ligne. Le build web et le build Android release réussissent. L’APK est signé avec la clé locale ignorée par Git. Aucun téléphone Android n’était connecté : l’installation système et une mise à jour réelle entre deux APK restent à vérifier sur appareil. Le dépôt GitHub distant et la première release ne sont pas encore publiés.
+9 tests unitaires et 10 tests de parcours Chromium passent : cours, quiz, examens avec brouillon/expiration, favoris, restauration, mise à jour de catalogue simulée, navigation mobile et rechargement hors ligne. Le build web et le build Android release réussissent. L’APK est signé avec la clé locale ignorée par Git. Aucun téléphone Android n’était connecté : l’installation système et une mise à jour réelle entre deux APK restent à vérifier sur appareil.

@@ -7,6 +7,9 @@ permissions:
   contents: write
 jobs:
   android:
+    # v1.0.0 uses the existing, locally signed APK uploaded manually.
+    # Later version tags keep the automated build/publish workflow.
+    if: github.event_name == 'workflow_dispatch' || github.ref_name != 'v1.0.0'
     runs-on: ubuntu-latest
     env:
       VITE_GITHUB_REPOSITORY: ${{ github.repository }}
