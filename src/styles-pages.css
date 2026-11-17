@@ -2269,3 +2269,18 @@
     font-size: 10px;
   }
 }
+.lesson-references {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border, #dfe6df);
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.lesson-references summary, .guided-practical summary { cursor: pointer; font-weight: 600; }
+.lesson-references p { font-size: .9rem; }
+.lesson-practicals { margin: 2.5rem 0; }
+.guided-practical { padding: 1.5rem 0; border-top: 1px solid var(--border, #dfe6df); min-width: 0; }
+.guided-practical h3 { margin-bottom: .75rem; }
+.guided-practical details { margin-top: 1rem; }
+.guided-practical details[open] > p { margin-top: 1rem; }
+.lesson-section > .badge { margin-bottom: .75rem; }

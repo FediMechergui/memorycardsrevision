@@ -1,4 +1,17 @@
 import { test, expect } from "@playwright/test";
+test("an older backend cannot receive a new-edition exam answer", async ({ page }) => {
+  let sent = false;
+  await page.route("**/api/health", (route) => route.fulfill({ json: { ok: true, version: "1.1.0" } }));
+  await page.route("**/api/exam/feedback", (route) => { sent = true; return route.fulfill({ status: 500 }); });
+  await page.goto("/#/study/exam/ra-immersif");
+  await page.locator(".exam-question textarea").fill("La RA enrichit le réel et la RV affiche un monde synthétique.");
+  await page.getByRole("button", { name: "Rendre ma copie", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Rendre ma copie" }).click();
+  await page.getByRole("button", { name: "Demander un avis IA gratuit" }).click();
+  await expect(page.getByRole("alert")).toContainText("une autre édition");
+  expect(sent).toBe(false);
+  await expect(page.getByRole("checkbox").first()).not.toBeChecked();
+});
 test("AI advice is opt-in and only changes the assessment after explicit application", async ({
   page,
 }) => {
@@ -6,7 +19,7 @@ test("AI advice is opt-in and only changes the assessment after explicit applica
     route.fulfill({
       json: {
         model: "test/free",
-        summary: "Vérifie le rôle de chaque équipement.",
+        summary: "Vérifie le monde dominant de chaque expérience.",
         criteria: Array.from({ length: 4 }, (_, i) => ({
           met: i < 2,
           feedback: i < 2 ? "Notion retrouvée." : "À préciser.",
@@ -14,11 +27,11 @@ test("AI advice is opt-in and only changes the assessment after explicit applica
       },
     }),
   );
-  await page.goto("/#/study/exam/c1-reseaux");
+  await page.goto("/#/study/exam/ra-immersif");
   await page
     .locator(".exam-question textarea")
     .fill(
-      "Le routeur choisit une route et le switch commute les trames locales.",
+      "La RA enrichit le monde réel, la RV présente un monde synthétique.",
     );
   await page
     .getByRole("button", { name: "Rendre ma copie", exact: true })
@@ -67,7 +80,7 @@ test("two devices join via a player QR, play ten rounds, reconnect and see real 
       await expect(page.locator(".personal-qr")).toBeVisible();
     }
     const qr = await guest.locator(".personal-qr").screenshot();
-    await host.getByLabel("Terrain de jeu").selectOption("c1-ipv4");
+    await host.getByLabel("Terrain de jeu").selectOption("ia-knn");
     await host.getByRole("button", { name: /Dés du savoir/ }).click();
     await host.getByRole("button", { name: "Créer une salle" }).click();
     await host.getByRole("button", { name: "Scanner un joueur" }).click();
@@ -132,11 +145,11 @@ test("portrait flashcard flips both ways with reduced motion and retains subject
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/#/study/flashcards/fx-binding");
+  await page.goto("/#/study/flashcards/ia-knn");
   const card = page.locator(".study-card.flashcards");
   const bounds = await card.boundingBox();
   expect(bounds!.height).toBeGreaterThan(bounds!.width);
-  await expect(card.locator(".subject-monogram")).toHaveText("FX");
+  await expect(card.locator(".subject-monogram")).toHaveText("IA");
   await page
     .getByRole("button", { name: "Retourner la carte", exact: true })
     .click();

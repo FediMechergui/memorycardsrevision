@@ -3,7 +3,8 @@ import { parseCatalog, type Catalog } from "./content";
 import { emptyProgress, progressSchema, type Progress } from "./progress";
 import initial from "../../public/courses/catalog.json";
 const PROGRESS_KEY = "memora.progress.v1";
-const CATALOG_KEY = "memora.catalog.v1";
+// The old edition's catalogue stays intact; progress keeps its stable IDs.
+export const CATALOG_KEY = `memora.catalog.${initial.edition}`;
 function readProgress(): Progress {
   try {
     const stored = localStorage.getItem(PROGRESS_KEY);
@@ -18,13 +19,17 @@ function readProgress(): Progress {
     return emptyProgress;
   }
 }
+export function resolveCatalog(bundled: Catalog, saved?: Catalog): Catalog {
+  if (!saved || saved.edition !== bundled.edition) return bundled;
+  if (saved.version >= bundled.version) return saved;
+  return mergeCatalog(bundled, saved, false);
+}
 function readCatalog(): Catalog {
   try {
     const stored = localStorage.getItem(CATALOG_KEY);
     if (stored) {
       const saved = parseCatalog(JSON.parse(stored));
-      if (saved.version >= initial.version) return saved;
-      return mergeCatalog(parseCatalog(initial), saved, false);
+      return resolveCatalog(parseCatalog(initial), saved);
     }
   } catch {
     /* Invalid cached content falls back to bundled content. */
@@ -36,6 +41,8 @@ export function mergeCatalog(
   incoming: Catalog,
   preferIncoming = true,
 ): Catalog {
+  if (current.edition !== incoming.edition)
+    throw new Error("Ce catalogue appartient à une autre édition de Mémora. Tes cours actuels sont conservés.");
   const subjects = [...current.subjects];
   for (const next of incoming.subjects) {
     const index = subjects.findIndex((s) => s.id === next.id);

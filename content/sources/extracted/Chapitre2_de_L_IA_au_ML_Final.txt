@@ -1,0 +1,1908 @@
+--- PAGE 1 ---
+                                                                      Département Informatique
+                                                                                    ISET MAHDIA
+MODULE INTELLIGENCE ARTIFICIELLE
+                                                                       Enseignante : Lobna BEN RHOUMA
+
+CHAPITRE 2
+
+De l'Intelligence Artificielle                                                                                     DONNÉES
+au Machine Learning
+
+
+
+                   • Relations d'inclusion • Principes de fonctionnement
+                   • Types d'apprentissage • Panorama des modèles
+
+
+
+
+
+                                                           2026- 2027
+
+                                                                                                  1
+
+--- PAGE 2 ---
+Rappel
+
+
+
+
+
+   IA faible vs IA forte                      Repères historiques                    Domaines d'application
+
+
+
+
+                                                       1956 : naissance du terme à Dartmouth. Deux «
+    L'IA faible est spécialisée dans une tâche (c'est toute                                                                             Vision par ordinateur, traitement du langage (NLP),
+                                                                     hivers de l'IA ». Essor du Deep Learning depuis
+     l'IA actuelle) ; l'IA forte, capable d'égaler l'humain                                                                      systèmes de décision (recommandation, détection
+                                                             2012, des LLM(Large Language Model) depuis 2018-
+   dans tout domaine, reste hypothétique.                                                                        de fraude...).
+                                                             2020.
+
+--- PAGE 3 ---
+Plan du chapitre
+
+Une progression du concept d'IA vers ses méthodes, ses usages et son intégration logicielle.
+
+
+
+
+
+   01  De l’IA au Machine Learning                                               02   Principe de fonctionnement du Machine Learning
+
+           Transition • concepts clefs • périmètre du ML                                                           Logique d'apprentissage • données & algorithmes
+
+
+
+   03   Collecte et préparation des données                                         04   Les types d’apprentissage
+
+         Nettoyage • structuration • feature engineering                                                            Supervisé • non supervisé • par renforcement
+
+
+
+   05  Entraînement et construction du modèle                                      06   Évaluation et validation du modèle
+
+          Optimisation • paramètres • ajustement                                                               Métriques • surapprentissage • validation croisée
+
+
+
+   07   Prédiction et mise en production                                            08   Synthèse : le pipeline du Machine Learning
+
+         Déploiement • inférence • suivi des performances                                                             Vision globale • étapes intégrées du projet
+
+
+
+
+
+                                                                                                       3
+
+--- PAGE 4 ---
+REPÈRES DU CHAPITRE
+Objectifs pédagogiques
+
+
+
+
+   ✓Expliquer la relation entre l’Intelligence                ✓Définir le Machine Learning et expliquer son
+       Artificielle, le Machine Learning et le Deep                 principe général de fonctionnement
+      Learning.
+
+
+  ✓  Décrire les principales étapes du processus           ✓Distinguer les trois types d’apprentissage
+      de Machine Learning
+
+
+  ✓ Identifier les principales tâches et familles de       ✓  Comprendre le rôle des données dans
+                                                             l’apprentissage et expliquer l’importance de leur           modèles de Machine Learning
+                                                                 qualité pour obtenir des prédictions fiables
+
+
+
+
+
+                                                                                                      4                                                                                                                                                                                 03
+
+--- PAGE 5 ---
+POURQUOI CE SOUS-DOMAINE ?
+ De l'IA au Machine Learning
+
+ Une IA « classique » peut être entièrement programmée par des règles explicites. Le Machine Learning change de paradigme : le système apprend ses propres règles à
+  partir de données.
+
+
+    01     IA à base de règles (approche classique)              02  IA qui apprend (Machine Learning)
+
+
+         ●  Un expert humain écrit explicitement les règles de décision.                  ●  Le système découvre lui-même des régularités à partir d'exemples.
+
+         ●  Exemple : un moteur d'échecs qui évalue des positions selon des règles et         ●  Exemple : AlphaGo apprend à jouer au go en s'entraînant sur des millions
+                 heuristiques codées à la main (Deep Blue, 1997).                                   de parties, sans règles de stratégie codées à la main.
+
+         ●  Limite : impossible d'écrire des règles pour tout (reconnaître un visage,          ●  Avantage : fonctionne là où les règles explicites sont impossibles à écrire.
+              comprendre une phrase).
+
+
+
+
+
+                                                                                                         5                                                                                                                                                                                    04
+
+--- PAGE 6 ---
+LA DÉFINITION
+Définition du Machine Learning
+
+
+
+     Science qui consiste à amener les ordinateurs à apprendre et à agir comme les êtres humains, et à
+     améliorer leur apprentissage de manière autonome, en se nourrissant de données.
+
+
+
+
+
+  ML consiste en la combinaison de l’efficacité des modèles statistiques à décrire la réalité avec la puissance de
+    traitement et d’automatisation de l’Informatique.
+
+
+
+
+                                                                                                       6                                                                                                                                                                                  05
+
+--- PAGE 7 ---
+   LA DÉFINITION FORMELLE
+ Définition du Machine Learning
+
+
+
+         « Un programme apprend à partir d'une expérience E, pour une tâche T et une mesure de performance P, si sa performance sur T,mesurée par P,
+          s'améliore avec l'expérience E. »
+
+                          — définition popularisée par Tom Mitchell (1997)
+
+
+    E   Expérience                                 T    Tâche                         P    Performance
+
+
+
+  Une base de milliers d'emails déjà étiquetés « spam » /
+                                                                      Classer un nouvel email comme spam ou non                     Le taux d'emails correctement classés (précision)  « non spam »
+
+
+
+Autrement dit, en langage courant
+
+
+ ● On ne programme pas explicitement la règle de décision : on montre des exemples à l'algorithme.
+
+ ●  L'algorithme cherche lui-même la relation entre les entrées et la sortie attendue.
+
+ ●  Plus il voit d'exemples pertinents, plus ses prédictions s'améliorent — un peu comme un humain qui apprend par la pratique.
+
+
+
+                                                                                                          7
+      Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          05
+
+--- PAGE 8 ---
+Principe de Fonctionnement
+
+ Un processus structuré en 5 étapes, des données brutes jusqu'à la
+  prédiction
+
+
+
+
+
+                                     2.                      3.         1. Données                                                                               4. Modèle            5. Prédiction
+                          Prétraitement       Entraînement         brutes
+                                                                                                      Règle de décision                Estimation
+                                      Nettoyage &                   Ajustement de         Collecte des                                                                                             figée                         automatique
+                                        Séparation                       l'algorithme         historiques
+                                                                                         Modèle entraîné et                Calcul du prix d'un
+                                           Sélection des Features           Découverte de la         Ex. Base de données                                                                                 prêt à l'emploi                  nouvel appartement
+                                           (m², quartier) et                    relation : Prix ≈ a×m² +       de ventes                                                                                            opérationnel.                 de 78 m².
+                                           Target (Prix).                    b×pièces + c.        d'appartements
+         passés.
+
+
+
+
+
+                                                          Règle d'or de la qualité d'un modèle :
+      Un modèle ne « connaît » que ce qu'on lui a montré pendant l'entraînement. Sa performance et sa généralisation dépendent directement de la
+         quantité et de la qualité des données de départ.
+
+
+
+                                                                                                        8
+
+--- PAGE 9 ---
+Exemple détaillé — prédire le prix d'un appartement
+
+
+
+Features (variables d'entrée) : surface, quartier, nombre de pièces → Target (cible à prédire) : prix
+
+
+
+ Surface (m²)              Quartier                      Pièces             Prix (connu)
+                                                                         Ce que fait le modèle
+
+ 65                           Centre-ville                 3              185 000 DT               ●    Il apprend, sur les 4 premières lignes, la relation entre les
+                                                                                                                                   caractéristiques et le prix.
+
+ 90                         Périphérie                  4              210 000 DT               ●  Une régression linéaire trouverait par exemple une relation
+                                                                                                    du type : prix ≈ a×surface + b×pièces + c.
+
+ 45                           Centre-ville                 2              140 000 DT               ●    Il applique ensuite cette relation apprise à la 5ème ligne pour
+                                                                                                                       estimer le prix manquant.
+
+ 120                       Périphérie                  5              265 000 DT
+
+
+ 78                           Centre-ville                  ?              à prédire
+
+--- PAGE 10 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+La collecte constitue le point de départ fondamental de tout projet
+ML
+
+
+
+    1. Données                          2. Prétraitement        3. Entraînement           4. Modèle             5. Prédiction      Brutes                                  Nettoyage & choix               Ajustement des                Règle de décision                Estimation sur de
+    Collecte d'exemples                                    des features                    paramètres                        apprise                     nouvelles données
+   (historique, mesures)
+
+
+
+
+    Pourquoi cette étape est capitale ?
+                                             L'Axiome des Données Brutes
+  • Dépendance directe : Un modèle ne connaît que ce qui lui a
+  été montré lors de l'entraînement.                           « Un algorithme de Machine Learning apprend la relation
+                                                                sous-jacente uniquement à partir des données  • Qualité & Quantité : La précision finale du modèle dépend
+                                                                    historiques d'exemples qui lui sont fournies. »  directement du volume et de la représentativité des
+  exemples.
+                                                             Sans une collecte rigoureuse et ciblée, aucune optimisation
+  • Axiome Data Science : Alimenter un modèle avec des               algorithmique ultérieure ne pourra compenser l'absence
+  données pauvres conduit inévitablement à des prédictions             d'information essentielle.
+  erronées.
+
+
+
+
+                                                                                                  10
+
+--- PAGE 11 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+D'où proviennent les données brutes ? Panorama des 4 sources
+majeures
+
+
+
+          1. Systèmes Internes (CRM / BD)                      2. Formulaires Web & Enquêtes
+ Bases de données SQL, historiques de ventes, fichiers clients           Saisie directe par les utilisateurs lors d'inscriptions ou de
+ CRM.                                                           sondages.
+ Ex : Historique des achats d'un client e-commerce pour prédire sa         Ex : Formulaire d'évaluation de satisfaction ou demande de crédit
+  fidélité.                                                                     bancaire.
+
+
+
+
+
+             3. Capteurs & IoT / Logs                              4. Web Scraping & APIs
+ Enregistrements automatiques en continu, objets connectés,           Extraction automatisée sur le Web ou requêtes vers des bases
+ logs serveur.                                                          publiques.
+ Ex : Relevés de température, géolocalisation GPS, clics d'analyse          Ex : Récupération des annonces immobilières sur des portails en
+ web.                                                                                ligne.
+
+
+
+
+
+                                                                                                  11
+
+--- PAGE 12 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+Les données collectées se divisent en deux grands formats
+d'organisation
+
+
+
+
+                                             Données Non Structurées
+    Données Structurées (Matricielles)
+                                                      (Complexes)
+   • Organisation : Tables à deux dimensions (Lignes =
+                                                                     • Organisation : Données brutes n'obéissant pas à une   Observations / Individus, Colonnes = Variables / Features).
+                                                                          structure de table prédéfinie.
+   • Formats courants : Fichiers CSV, bases relationnelles
+                                                                     • Formats courants : Textes d'emails, fichiers audio,   (SQL), feuilles de calcul Excel.
+                                                                   images, vidéos, flux réseaux.
+   • Exemple : Table d'appartements avec Surface, Quartier,
+                                                                     • Exemple : Un lot d'emails bruts collectés pour alimenter  Nombre de pièces et Prix.
+                                                           un filtre anti-spam.
+   • Facilité d'usage : Directement prêtes à être transformées
+                                                                     • Nécessité de conversion : Nécessite une étape  en matrices numériques pour les algorithmes classiques
+                                                                            d'extraction de caractéristiques complexes (NLP, Vision par   (Régression, Arbres, KNN).
+                                                                        ordinateur / Deep Learning) avant modélisation.
+
+
+
+
+
+                                                                                                  12
+
+--- PAGE 13 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+Exemple concret 1 : Collecte de données pour la prédiction
+immobilière
+
+
+   Observation ID         Surface (m²)                Quartier            Nombre de pièces       Prix de vente réel (Target)
+
+   Appartement #1             65 m²                       Centre-ville                  3 pièces                185 000 DT
+
+   Appartement #2             90 m²                      Périphérie                  4 pièces                210 000 DT
+
+   Appartement #3             45 m²                       Centre-ville                  2 pièces                140 000 DT
+
+   Appartement #4            120 m²                      Périphérie                  5 pièces                265 000 DT
+
+  Appartement #5          78 m²                   Centre-ville               3 pièces                 ? (À prédire)
+       (Cible)
+
+
+
+                                Analyse de la structure de collecte :
+ • Features (variables d'entrée) : La Surface, le Quartier et le Nombre de pièces constituent les données explicatives collectées.
+ • Target (variable cible) : Le Prix de vente réel est la réponse connue pour l'historique des 4 premiers appartements (Supervisé).
+ • Objectif d'Apprentissage : Le modèle apprend la fonction mathématique reliant les features au prix sur les exemples collectés, afin d'estimer
+ automatiquement le prix de l'Appartement #5.
+
+
+
+
+                                                                                                  13
+
+--- PAGE 14 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+Exemple concret 2 : Collecte par formulaires web et logs applicatifs
+
+
+
+
+
+       Formulaire de Demande de Crédit                                                            Collecte d'Emails (Filtre Anti-Spam)
+                 (Banque)
+                                                                           • Mode de collecte : Extraction automatique à partir des boîtes
+   • Mode de collecte : Formulaire dynamique rempli en ligne par le           de réception historiques.
+    client.                                                                           • Données collectées : En-têtes, adresse expéditeur, présence
+   • Données collectées : Revenu mensuel, Âge, Statut                     de liens, mots-clés du texte brut.
+   professionnel, Ancienneté bancaire, Montant demandé.                                                                           • Variable cible (Target) : Étiquette explicite (Spam vs Non-
+                                                         Spam ).   • Variable cible (Target) : Historique du remboursement (0 =
+   Sans incident / 1 = En défaut de paiement).                               • Exemples d'apprentissage :
+   • Cas d'usage : Entraîner un classifieur de risque bancaire                        - « Sujet : Vous avez GAGNÉ !!! » ➔Étiqueté SPAM
+   (Arbre de décision ou Régression logistique) pour accorder ou                                                                                            - « Réunion équipe reportée à 15h » ➔Étiqueté NON-SPAM
+   refuser automatiquement un prêt.
+
+
+
+
+
+                                                                                                  14
+
+--- PAGE 15 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+Les défis majeurs de la collecte : Risques et pièges à éviter
+
+
+
+
+
+    1. Biais d'Échantillonnage — Si les données collectées ne reflètent pas la réalité du terrain, le modèle apprendra des
+                                                    règles faussées.
+ Exemple : Collecter uniquement des données de clients jeunes pour entraîner un modèle bancaire général.
+
+
+
+
+ 2. Erreurs de Collecte & Bruit — Champs mal renseignés, pannes de capteurs, saisies incohérentes créent des anomalies.
+ Exemple : Formulaire buggé générant des valeurs d'âge irréalistes (ex : 250 ans).
+
+
+
+
+   3. Données Manquantes — Sondages incomplets ou pertes lors de la transmission génèrent des valeurs nulles (NaN).
+ Exemple : Clients refusant de divulguer leur salaire mensuel.
+
+
+
+
+      4. Coût & Confidentialité — La qualification des données brutes coûte cher et impose le respect strict du RGPD.
+ Exemple : Anonymisation obligatoire des données de santé ou d'identité.
+
+
+
+
+                                                                                                  15
+
+--- PAGE 16 ---
+Etape 1 : LA COLLECTE DES DONNÉES
+Synthèse de la Partie 1 & Transition vers l'Étape 2
+
+
+
+
+
+                                                    Passage à l'Étape 2 : Le
+    À retenir sur la Collecte (Étape 1)                                                        Prétraitement
+   • Le point de départ : Sans données brutes collectées,                                                                           • Le constat : Les données brutes collectées arrivent presque
+  aucun modèle ne peut apprendre.                                                                              toujours bruitées, incomplètes ou mal formatées.
+   • Diversité des sources : CRM d'entreprise, formulaires                 • L'objectif du Prétraitement (Data Cleaning) :
+  web, capteurs IoT, logs et scraping.                                                                                    1. Détecter et imputer les valeurs manquantes (NaN).
+   • Deux grands formats : Structuré (tables d'exemples) vs                 2. Éliminer les doublons de collecte.
+   Non-structuré (textes, images).                                              3. Corriger les formats et incohérences textuelles.
+   • Règle d'or : La représentativité et le volume des données                4. Traiter les valeurs aberrantes (Outliers via EIQ / IQR).
+   priment sur la complexité algorithmique.                               • Résultat : Obtenir une matrice propre prête pour l'étape 3
+                                                                         (Entraînement du modèle).
+
+
+
+
+
+                                                                                                  16
+
+--- PAGE 17 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Un modèle de ML dépend à 100% de la qualité des données (Garbage In,
+Garbage Out)
+
+
+
+     1. Données                           2. Prétraitement        3. Entraînement           4. Modèle             5. Prédiction      Brutes                                    Nettoyage & choix               Ajustement des                Règle de décision                Estimation sur de
+     Collecte d'exemples                                      des features                    paramètres                        apprise                     nouvelles données
+    (historique, mesures)
+
+
+
+
+      1. Prévenir la règle
+   'Garbage In, Garbage             2. Éviter le crash des              3. Réduire le coût et
+           Out'                       algorithmes                gagner du temps
+
+   Un algorithme mathématique ne           La plupart des modèles de                 Selon Forbes, les Data
+     fait que traduire les régularités             Machine Learning (régression                 Scientists passent 60% à 80%
+     qu'il observe. Si les données                    linéaire, SVM, réseaux de                de leur temps à nettoyer et
+    contiennent du bruit, des                   neurones) reposent sur des                  préparer les données. Détecter
+    valeurs aberrantes ou des                     calculs matriciels qui refusent                  les erreurs en amont évite de
+    incohérences, les prédictions              de s'exécuter en présence de                 réentraîner des modèles sur
+    seront fondamentalement                    valeurs manquantes (NaN).                des chiffres faussés.
+    faussées.
+
+                                                                                                   17
+
+--- PAGE 18 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+Le nettoyage garantit des modèles fiables : « Garbage In, Garbage
+Out »
+
+
+
+                                                                            01. Éviter le crash ou le biais
+       L'impact critique sur le                   Des valeurs manquantes provoquent l'échec de nombreux                                                                               algorithmes ou induisent des biais prédictifs majeurs.
+            Pipeline ML
+
+      • Étape incontournable du Pipeline : Le Data Cleaning
+        constitue la 2ème étape charnière du pipeline ML, située juste
+       entre la collecte brute et l'entraînement.
+                                                                            02. Préserver les statistiques
+      • La règle 'Garbage In, Garbage Out' : Aucun algorithme                  Les doublons et valeurs aberrantes déforment la moyenne, la
+        d'IA ne peut compenser la mauvaise qualité initiale des                         variance et la distribution des variables d'entrée.
+       données. Des anomalies entraînent inévitablement des
+        prédictions faussées.
+
+      • Exigence des algorithmes : La plupart des modèles
+        (régression, SVM, réseaux de neurones) reposent sur des
+        calculs matriciels nécessitant un dataset complet et homogène.                            03. Garantir la conformité
+                                                          Un nettoyage rigoureux assure la précision décisionnelle et la      • Économie de temps et de coûts : Selon Forbes, les Data
+                                                                                conformité aux normes réglementaires (RGPD).        Scientists consacrent ~60% de leur temps à préparer les
+      données pour éviter des erreurs coûteuses en production.
+
+
+
+
+                                                                                                   18
+
+--- PAGE 19 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Quatre anomalies majeures dégradent les performances des algorithmes
+
+
+
+
+
+             1. Valeurs Manquantes (NaN)                            2. Doublons de Saisie
+    Origine : Champs non renseignés lors de la collecte ou perte             Origine : Formulaires soumis plusieurs fois ou fusions
+     lors de la transmission.                                                     d'extractions multiples.
+    Exemple: Âge non spécifié, salaire absent.                                Exemple: Même client enregistré 2 fois.
+
+
+
+
+
+              3. Formats Incohérents                         4. Valeurs Aberrantes (Outliers)
+    Origine : Erreurs de frappe, espaces parasites, types de                 Origine : Données physiquement impossibles ou très
+    données incorrects.                                                   éloignées de la norme.
+    Exemple: '2500 DT' au lieu de 2500.0, 'sfax'.                              Exemple: Âge = 250 ans, Salaire = 1 000 000 DT.
+
+
+
+
+
+                                                                                                   19
+
+--- PAGE 20 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Trois patterns d'absence régissent le traitement des valeurs manquantes
+
+
+
+
+
+                                                                  # Code Python (Pandas)
+
+      Les 3 Patterns selon Little & Rubin                 import pandas as pd
+                                                                    import numpy as np
+      • MCAR (Missing Completely At Random) :
+                                                                    # 1. Détecter les valeurs manquantes        L'absence est purement aléatoire et ne dépend d'aucune
+                                                                    df.isna().sum()        variable.
+
+      • MAR (Missing At Random) :                                         # 2. Supprimer les lignes avec NaN
+        L'absence dépend d'une autre variable observée (ex: femmes                 df_clean = df.dropna()
+        taisant leur âge).
+                                                                    # 3. Imputer par la médiane (numérique)
+      • NMAR (Not Missing At Random) :                                     med = df['Age'].median()
+        L'absence dépend de la valeur elle-même (ex: très hauts revenus              df['Age'].fillna(med, inplace=True)
+      masqués). Pattern non-ignorable qui requiert une modélisation
+                                                                    # 4. Imputer par le mode (catégoriel)       métier.
+                                                                    mode_v = df['Ville'].mode()[0]
+                                                                    df['Ville'].fillna(mode_v, inplace=True)
+
+
+
+
+
+                                                                                                   20
+
+--- PAGE 21 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Les doublons surreprésentent artificiellement certains individus et
+faussent les calculs
+
+
+
+
+
+                                                          # Traitement des Doublons en Python
+
+                                                                 # 1. Identifier le nombre de doublons exacts
+      Causes et Risques des Doublons                 nb_doublons = df.duplicated().sum()
+                                                                 print(f'Doublons détectés : {nb_doublons}')
+
+      • Origine : Fusions de fichiers CSV multiples, soumissions
+                                                                 # 2. Détecter des doublons sur des colonnes
+       répétées de formulaires en ligne, requêtes SQL mal jointes.
+                                                                 clés
+                                                                 df.duplicated(subset=['Nom',
+      • Impact en Machine Learning : Un même client présent 3 fois                                                                 'ID_Client']).sum()
+       aura un poids triple lors de l'apprentissage. L'algorithme risque
+      de sur-apprendre (overfitting) sur ces profils dupliqués.                   # 3. Supprimer les doublons et réinitialiser
+                                                                 l'index
+      • Solution Pandas : Détection avec .duplicated() et suppression              df_clean =
+       instantanée avec .drop_duplicates().                                 df.drop_duplicates().reset_index(drop=True)
+
+                                                                 # 4. Vérifier la nouvelle forme du DataFrame
+                                                                 print(df_clean.shape)
+
+
+
+
+
+                                                                                                   21
+
+--- PAGE 22 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Normaliser les formats et corriger le texte garantit la conversion en
+variables numériques
+
+
+
+ Colonne                    Valeur Brute (Erronée)            Correction Appliquée             Valeur Propre (Exploitable)
+
+
+ Salaire                         '2500 DT' (String)                          .str.replace(' DT', '').astype(float)       2500.0 (Float)
+
+
+ Nom                                                                   ' diana   ' (Espaces)                         .str.strip().str.capitalize()                 'Diana' (String propre)
+
+
+  Ville                                    'sfax' (Minuscule)                           .str.capitalize()                             'Sfax' (String propre)
+
+
+ Sexe                       'Homme' / 'Femme'                   .map({'Homme': 1, 'Femme': 0})       1 / 0 (Binaire)
+
+
+
+
+
+                                 # Exemples d'Opérations String sous Pandas
+   df['Salaire'] = df['Salaire'].str.replace(' DT', '').astype(float)
+   df['Nom'] = df['Nom'].str.strip().str.capitalize()
+   df['Ville'] = df['Ville'].str.strip().str.capitalize()
+
+
+
+
+                                                                                                   22
+
+--- PAGE 23 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+Exemple 3 : Corriger les données incohérentes et erreurs de saisie
+
+
+
+
+ Colonne            Donnée Brute (Incorrecte)        Problème Détecté                  Correction Pandas / Résultat
+
+  Prix                         '$185,000' (Type String)                Symbole $ et virgule empêchent le calcul       df['Prix'].str.replace('$','').astype(float) →
+                                                                                                        185000.0
+
+  Ville                                                          ' centre-ville ' / 'CENTRE'               Casse instable et espaces parasites              df['Ville'].str.strip().str.lower() → 'centre-ville'
+
+
+ Sexe                           'M' / 'Male' / 'Homme'                   Encodages multiples d'une même valeur       df['Sexe'].replace({'Male':'M', 'Homme':'M'})
+
+
+ Date                        '2023-10-05' vs '05/10/23'                Formats de dates hétérogènes                 pd.to_datetime(df['Date']) → Format ISO
+                                                                                                               standard
+
+
+
+
+                       Les 3 Règles de Normalisation des Textes et Types
+
+     • 1. Nettoyage des chaînes (.str) : Appliquer .str.strip() pour supprimer les espaces invisibles et .str.lower() pour harmoniser la casse.
+
+     • 2. Conversion explicite des types (.astype) : S'assurer que les valeurs numériques sont en float64/int64 et les catégories en category ou object.
+
+     • 3. Uniformisation par dictionnaire (.replace) : Remplacer les synonymes ou fautes de frappe récurrentes via un dictionnaire de correspondance clé-valeur.
+
+
+
+
+
+                                                                                                   23
+
+--- PAGE 24 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Isoler les valeurs aberrantes empêche la distorsion de la moyenne et de la
+variance
+
+
+
+
+
+           Qu'est-ce qu'un Outlier ?                                          Comment traiter une valeur
+      • Définition : Une donnée aberrante est une valeur                             aberrante ?
+      physiquement impossible (ex: Âge = 250 ans) ou
+                                                                                               1. Transformer en valeur manquante (NaN) :      anormalement distante des autres observations.
+                                                                                       Convertir l'âge 250 en NaN, puis imputer par la médiane.
+                                                                                                    `df.loc[df['Age'] > 120, 'Age'] = np.nan`      • Impact : Fausse la moyenne, la variance, et tire la droite de
+       régression linéaire vers elle, dégradant la précision globale du
+                                                                                               2. Plafonner (Winsorization) :      modèle.
+                                                                             Remplacer la valeur aberrante par la valeur maximale
+                                                                                     autorisée (borne supérieure).      • Méthodes de détection :
+         1. Écart Interquartile (EIQ / IQR) — Robuste aux valeurs
+                                                                                               3. Supprimer l'observation :       extrêmes.
+                                                                                                           Si la ligne est manifestement corrompue dans son ensemble.         2. Z-Score (|Z| > 3) — Suppose une distribution normale.
+
+
+
+
+
+                                                                                                   24
+
+--- PAGE 25 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+L'Écart Interquartile (EIQ = Q3 - Q1) mesure l'étalement des 50% centraux
+des données
+
+
+
+                                             Schéma du Découpage en Quartiles (100%)
+
+
+                                                       25%        25%        25%        25%
+        Définition et Formule de l'EIQ                             Min -> Q1           Q1 -> Q2            Q2 -> Q3           Q3 -> Max
+
+      • Formule : EIQ = Q3 - Q1
+
+      • Q1 (1er quartile / 25e percentile) : 25% des données sont                                        EIQ = 50% Centraux
+       inférieures à Q1.
+      • Q2 (Médiane / 50e percentile) : Divise le jeu de données en
+      deux moitiés égales.                                               Exemple Numérique (11 observations) :
+                                                                     Données : [12, 15, 18, 20, 22, 25, 28, 30, 32, 35, 85]      • Q3 (3e quartile / 75e percentile) : 75% des données sont
+                                                                    • Q1 = 18   (25% des données <= 18)
+       inférieures à Q3.
+                                                                    • Q2 = 25   (Médiane)
+                                                                    • Q3 = 32   (75% des données <= 32)
+         Propriété clé : L'EIQ est insensible aux valeurs extrêmes                • EIQ = Q3 - Q1 = 32 - 18 = 14
+        (statistique robuste), contrairement à l'écart-type.
+
+
+
+
+
+                                                                                                   25
+
+--- PAGE 26 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+La boîte à moustaches utilise l'EIQ pour identifier visuellement les
+outliers au-delà de 1.5×EIQ
+
+
+
+   Anatomie d'une Boîte à Moustaches (Box Plot)
+
+                                                                     Médiane Q2 (25)
+
+
+
+
+
+                                                                                                                                                                                                  Outlier (85)
+
+
+            Borne Inf = Q1 - 1.5×EIQ                       Q1 (18)                                           Q3 (32)           Borne Sup = Q3 + 1.5×EIQ
+                            (-3)                                                                                                                                                  (53)
+
+
+
+
+                             Règles De Détection Automatique des Outliers
+
+     1. Calcul du seuil : 1.5 × EIQ = 1.5 × 14 = 21
+     2. Borne Inférieure = Q1 - 21 = 18 - 21 = -3 (Toute valeur < -3 est aberrante)
+     3. Borne Supérieure = Q3 + 21 = 32 + 21 = 53 (Toute valeur > 53 est aberrante)
+     Conclusion dans notre exemple : L'âge 85 est > 53, il est donc identifié comme Outlier et sera imputer/traité.
+
+
+
+
+                                                                                                   26
+
+--- PAGE 27 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Arbitrer entre suppression et imputation préserve l'information sans
+introduire de biais
+
+
+
+
+
+                                                                2. Techniques d'Imputation
+            1. Technique de Suppression
+                                                                         • Imputation Statistique :
+      • Suppression d'observations (Complete Case Analysis) :                                    - Moyenne / Médiane (numérique)
+        Eliminer toutes les lignes contenant au moins un NaN                                      - Mode (catégoriel)
+        (.dropna()).
+                                                                         • Imputation par Règle Métier :
+      • Avantages : Simple et rapide à exécuter.                                      Appliquer une logique métier (ex: Si Âge < 18 alors Majeur =
+                                                                                        Faux).
+      • Inconvénients : Perte massive d'informations si beaucoup de
+        lignes contiennent des trous. Risque d'introduire un biais de                  • Imputation Algorithmique :
+       sélection si l'absence n'est pas MCAR.                                           Prédire la valeur manquante avec une régression ou KNN
+                                                                        (méthode Hot Deck).
+
+
+
+
+
+                                                                                                   27
+
+--- PAGE 28 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Cas pratique : diagnostiquer un dataset client comportant 4 types
+d'erreurs accumulées
+
+
+
+ ID_Client    Nom                Age               Salaire                        Ville                    Note_Satisfaction
+
+
+ 101              Alice                    28                  '2500 DT'                     Tunis                       4.5
+
+
+ 102          Bob                    35                    '3200'                     Sousse               NaN [Manquant]
+
+
+ 103              Charlie                  250 [Outlier]        '1800 DT'                     Tunis                       3.0
+
+
+ 104                                ' diana   '                42                  '4500 DT'                           'sfax'                       5.0
+
+
+ 102 [Doublon]  Bob                    35                    '3200'                     Sousse               NaN [Manquant]
+
+
+ 105            Émile                NaN [Manquant]     '2100 DT'                     Tunis                       2.5
+
+
+
+
+                                  Diagnostic guidé des 4 anomalies à corriger :
+
+     1. Doublon exact : Client 102 (Bob) présent deux fois. 2. Formats texte : Salaire contient ' DT', Nom contient des espaces ' diana ', Ville en minuscules 'sfax'.
+     3. Valeur aberrante : Charlie a un âge de 250 ans (physiquement impossible). 4. Valeurs manquantes : Âge d'Émile et note de Bob.
+
+
+
+
+                                                                                                   28
+
+--- PAGE 29 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Nettoyer le dataset client en 4 étapes Python avec Pandas pour obtenir une
+table exploitable
+
+
+                                                         Résultat Final (Dataset Propre) :
+
+
+                                                                                                ID_Clie  Nom       Age        Salaire          Ville         Note_Satisfac
+                                                                                                  nt                                                                  tion
+          # Script Python de Nettoyage Complet
+
+     # 1. Supprimer le doublon exact
+     df = df.drop_duplicates().reset_index(drop=True)                   101        Alice         28.0        2500.0         Tunis        4.50
+
+     # 2. Nettoyer les chaînes & convertir les types
+     df['Salaire'] = df['Salaire'].str.replace('
+     DT','').astype(float)                                                    102      Bob          35.0        3200.0        Sousse       3.75*
+     df['Nom'] = df['Nom'].str.strip().str.capitalize()
+     df['Ville'] = df['Ville'].str.strip().str.capitalize()
+
+     # 3. Traiter l'outlier (Age > 120 -> NaN)                            103        Charlie       38.5*       1800.0         Tunis        3.00
+     df.loc[df['Age'] > 120, 'Age'] = np.nan
+
+     # 4. Imputer par la médiane
+                                                                                   104       Diana        42.0        4500.0        Sfax         5.00     df['Age'].fillna(df['Age'].median(), inplace=True)
+     df['Note_Satisfaction'].fillna(
+         df['Note_Satisfaction'].median(), inplace=True)
+
+                                                                                   105       Émile         38.5*       2100.0         Tunis        2.50
+
+
+
+
+
+                                                                                                   29
+
+--- PAGE 30 ---
+Etape 2 : NETTOYAGE DES DONNÉES EN ML
+
+Un workflow structuré en 5 étapes garantit des données prêtes pour le
+Machine Learning
+
+
+
+         Étape 1                                                Inspecter
+                                      Utiliser df.info(), df.describe() et df.isna().sum() pour repérer les anomalies.
+
+
+         Étape 2                                           Dédupliquer
+                               Appliquer df.drop_duplicates() pour éliminer les enregistrements multiples.
+
+
+         Étape 3                                            Normaliser
+                             Purger les espaces (.strip()), harmoniser la casse et convertir en float/int (.astype()).
+
+
+         Étape 4                                                Traiter Outliers
+                               Détecter avec l'EIQ (Q3 - Q1), convertir en NaN et imputer proprement.
+
+
+         Étape 5                                        Imputer Manques
+                           Remplacer les NaN par la médiane (numérique) ou le mode (catégoriel).
+
+
+
+
+                                                                                                   30
+
+--- PAGE 31 ---
+Etape 3 : Entrainement
+
+L'Entraînement transforme les données en modèle de décision
+
+
+
+
+
+      1. Données         2. Prétraitement      3. ENTRAÎNEMENT                                                                            4. Modèle            5. Prédiction
+      Brutes                                 Nettoyage,             Ajustement des                                                                                   Règle apprise            Estimation sur de
+    Collecte historique            Imputation                   poids                                                               & paramétrée            nouvelles données
+  (Exemples, Mesures)     & Choix des Features      & des paramètres
+
+
+
+
+
+                           Règle fondamentale du Machine Learning
+                                                      *
+  • Un algorithme d'apprentissage ne « connaît » que ce qu'on lui a montré pendant la phase d'entraînement.
+  • La qualité du modèle final dépend directement de la qualité, de la quantité et de la représentativité des données utilisées.
+  • C'est à cette étape que la distinction entre Données Étiquetées (Supervisé) et Non Étiquetées (Non Supervisé) devient
+  déterminante.
+
+
+
+
+                                                                                                   31
+
+--- PAGE 32 ---
+Etape 3 : Entrainement
+
+La Distinction Fondamentale : Présence ou Absence d'Étiquettes
+
+
+
+           1. Apprentissage Supervisé                    2. Apprentissage Non Supervisé
+
+
+
+
+    Principe : L'algorithme s'entraîne sur des données                        Principe : L'algorithme s'entraîne sur des données non
+    étiquetées. Chaque exemple d'entrée X est accompagné de              étiquetées. Aucune réponse exacte Y n'est fournie.
+    la réponse exacte Y (Target connue).
+                                                                       Rôle de l'IA : Découvrir la structure sous-jacente, les
+   Rôle de l'IA : Apprendre la fonction mathématique f telle                motifs ou les regroupements naturels cachés dans X.
+   que Y ≈ f(X) afin de prédire Y pour un nouveau X inédit.
+                                                                        Analogie : Un archéologue qui classe des objets anciens
+   Analogie : Un élève qui révise avec un cahier d'exercices               inconnus par groupes de ressemblance sans étiquette
+   contenant le sujet ET le corrigé détaillé.                               d'époque.
+
+   Exemples : Prédire le prix d'une maison, détecter si un               Exemples : Segmenter les clients d'une banque en profils
+   email est un spam, diagnostiquer une maladie.                      de comportement, simplifier 20 indicateurs en 2 axes.
+
+
+
+
+
+                                                                                                   32
+
+--- PAGE 33 ---
+Etape 3 : Entrainement
+
+Apprentissage Supervisé : Régression vs Classification
+
+
+
+
+
+                                              CLASSIFICATION (Catégorie Discrète)      RÉGRESSION (Valeur Continue)
+                                                                       • Objectif : Attribuer une étiquette ou une catégorie à    • Objectif : Prédire une quantité numérique continue.                                                                 chaque observation.
+    • Format Target : Nombre réel (ex. Prix, Température,                                                                       • Format Target : Binaire (Oui/Non) ou Multi-classes    Âge, Montant).                                                                         (Chat/Chien/Oiseau).
+    • Relation : Ajuster une droite ou une courbe : y = a·x +                                                                       • Relation : Tracer une frontière de décision séparant les    b.                                                                                classes.
+    • Exemple  : Prédire le prix d'un appartement de 78m²                                                                       • Exemple Filtre Anti-Spam : Analyser un email entrant →   en centre-ville →Estimation : 192 000 DT.                                                                                 Probabilité P(Spam)=0.92 →Classé SPAM.
+    • Algorithmes : Régression Linéaire, Arbre de Régression,                                                                       • Algorithmes : Régression Logistique, KNN (k-NN), Arbre   Random Forest, SVM Régression.                                                                de Décision, Random Forest, SVM.
+
+
+
+
+
+                                                                                                   33
+
+--- PAGE 34 ---
+Etape 3 : Entrainement
+
+Apprentissage Non Supervisé : Clustering vs Réduction de
+Dimension
+
+
+
+
+
+       CLUSTERING (Regroupement                                            RÉDUCTION DE DIMENSION
+               Automatique)                                                                       (Simplification)
+    • Objectif : Regrouper les données similaires en groupes                                                                       • Objectif : Condenser un grand nombre de variables   homogènes (clusters).                                                                     sans perdre l'information clé.
+    • Principe : Maximiser la ressemblance intra-groupe et la                                                                       • Principe : Éliminer la redondance et les corrélations    différence inter-groupes.                                                                          entre variables.
+    • Sans guide : L'utilisateur spécifie seulement le nombre                                                                       • Rôle : Faciliter la visualisation 2D/3D et accélérer les   de groupes K (ex. K=3).                                                                          algorithmes.
+    • Exemple Banque : Regrouper les clients sans catégorie                                                                       • Exemple Finance : Résumer 20 indicateurs boursiers    préalable →Profil A (Petits acheteurs), Profil B (Gros
+                                                                  complexes en 2 axes majeurs de risque.    investisseurs).
+                                                                       • Algorithmes : ACP (Analyse en Composantes Principales    • Algorithmes : K-Means, DBSCAN, Clustering                                                                                      / PCA), t-SNE, UMAP.    Hiérarchique.
+
+
+
+
+
+                                                                                                   34
+
+--- PAGE 35 ---
+Etape 3 : Entrainement
+
+Matrice Comparative : Supervisé vs Non Supervisé
+
+
+
+  Critère / Dimension              Apprentissage Supervisé                      Apprentissage Non Supervisé
+
+
+
+ Données d'entrée        Données Étiquetées : Features X + Target Y              Données Non Étiquetées : Features X seules
+
+
+
+ Objectif principal         Apprendre à prédire Y pour un nouveau X                  Découvrir la structure cachée ou regrouper X
+
+
+
+ Tâches majeures          Régression & Classification                                  Clustering & Réduction de dimension
+
+
+
+ Algorithmes clés          Régression Linéaire, KNN, Arbre, Random Forest, SVM      K-Means, ACP (PCA), DBSCAN, t-SNE
+
+
+
+ Mesure d'évaluation       Erreur quadratique (MSE), Précision, Rappel, F1-Score       Inertie intra-classe, Indice de Silhouette
+
+
+
+ Exemple Métier            Estimer le prix d'un bien, Détecter le spam / fraude        Segmenter les clients, Profils de risque bancaire
+
+
+
+
+                                                                                                   35
+
+--- PAGE 36 ---
+Etape 3 : Entrainement
+
+Le Troisième Paradigme : Apprentissage par Renforcement
+
+
+
+
+
+           Agent              Environnement            Action & État          Récompense (+/-)
+      Le système décisionnel qui           Le monde avec lequel           Ce que fait l'agent et la             Signal de retour positif
+               apprend.                         l'agent interagit.                   situation résultante.            (gain) ou négatif (pénalité).
+
+
+
+         Apprendre par Essai-Erreur en Interagissant avec un Environnement
+
+
+
+                         Exemple d'application emblématique : AlphaGo
+     • L'agent (AlphaGo) joue des millions de parties contre lui-même.
+     • Chaque victoire renforce les coups stratégiques gagnants (+), chaque défaite les pénalise (-).
+     • Résultat : Le système développe une stratégie de niveau mondial sans aucune règle de stratégie codée à la main.
+
+
+
+
+
+                                                                                                   36
+
+--- PAGE 37 ---
+Etape 3 :Entrainement
+
+Les Moteurs Transverses : Fonction de Coût & Descente de Gradient
+
+
+
+
+
+                                          DESCENTE DE GRADIENT (Gradient
+    FONCTION DE COÛT (Loss Function)
+                                                                   Descent)
+    • Rôle : Mesurer l'écart numérique entre les
+                                                                       • Rôle : Algorithme d'optimisation qui ajuste pas à    prédictions du modèle et la réalité des données.
+                                                           pas les poids du modèle.
+    • Objectif : Plus l'écart est petit, plus le modèle est
+                                                                       • Mécanisme : Calculer la pente (gradient) de l'erreur et    précis. L'entraînement vise à la minimiser.
+                                                                            modifier les paramètres dans le sens de la descente.
+    • Exemples : Erreur Quadratique Moyenne (MSE) pour la
+                                                                       • Taux d'apprentissage : Définit la taille de chaque pas    régression, Log-Loss pour la classification.
+                                                                              (trop grand = instable, trop petit = très lent).
+    • Analogie : Un professeur qui note une copie : plus la
+                                                                       • Analogie : Un randonneur dans le brouillard qui tâte la    note d'erreur est basse, plus l'élève est proche de la
+                                                                     pente avec ses pieds pour descendre progressivement     vérité.
+                                                                         vers la vallée.
+
+
+
+
+
+                                                                                                   37
+
+--- PAGE 38 ---
+Etape 3 : Entrainement
+
+Gestion des Risques d'Apprentissage : Surapprentissage vs Sous-
+apprentissage
+
+
+
+
+
+      Sous-apprentissage              Modèle Optimal                 Surapprentissage
+         (Underfitting)                   (Généralisation)                     (Overfitting)
+         MODÈLE TROP SIMPLE                        ÉQUILIBRE PARFAIT                     MODÈLE TROP COMPLEXE
+
+   • Le modèle n'arrive pas à capter la               • Le modèle apprend la règle générale             • Le modèle apprend 'par cœur' les
+    structure des données.                          sans mémoriser le bruit.                              détails et le bruit du Train.
+   • Causes : Modèle trop basique, trop              • Capacité : Excellente prédiction sur de           • Causes : Modèle trop puissant, trop
+   peu d'entraînement.                               nouvelles données.                              d'époques, peu de données.
+   • Erreur : Forte sur le Train Set ET sur            • Erreur : Faible sur Train Set ET faible            • Erreur : Quasi nulle sur Train, mais
+    le Test Set.                                       sur Test Set.                                         très forte sur Test.
+   • Solution : Choisir un modèle plus                • Objectif : C'est le Saint-Graal                   • Solution : Régularisation, réduire les
+   complexe, ajouter des features.                  recherché en Data Science !                        features, plus de données.
+
+
+
+
+
+                                                                                                   38
+
+--- PAGE 39 ---
+Etape 4 : Modèle
+
+Étape 4 — Qu'est-ce que l'artefact « Modèle » dans le Pipeline ?
+
+
+
+
+
+          1. Collecte                    2. Prétraitement                 3. Entraînement                    4. MODÈLE                     5. Prédiction
+        Données brutes                 Nettoyage & Features              Ajustement des poids                Artefact figé & évalué                Inférence sur 5e ligne
+
+
+
+
+
+       • Définition de l'artefact : Le modèle est la structure algorithmique associée aux paramètres optimisés découverts lors de l'entraînement (ex.
+                                   l'équation Y = aX + b avec ses coefficients calculés, ou la structure d'un arbre de décision).
+
+     • État du modèle à l'Étape 4 : La phase d'apprentissage est terminée : les poids sont figés. Le modèle ne modifie plus son comportement
+       intérieur.
+
+     • Mission principale de l'Étape 4 : Valider la qualité mathématique du modèle via des métriques objectives, s'assurer qu'il ne souffre pas
+       d'overfitting, le persister (sauvegarde) et le préparer à recevoir de nouvelles données.
+
+     • Exemple (Immobilier) : Une fois les coefficients 'a' (surface) et 'b' (pièces) déterminés, le modèle est formalisé sous forme de fichier d'équation
+      prêt à calculer l'estimation du prix.
+
+
+
+
+
+                                                                                                   39
+
+--- PAGE 40 ---
+Etape 4 : Modèle
+
+La Matrice de Confusion : Évaluer les Erreurs de Prédiction
+
+
+
+
+
+        Réalité / Pred.              Prédit : POSITIF                 Prédit : NÉGATIF
+
+
+                                                Pourquoi la Matrice est Indispensable ?
+
+         Réel : POSITIF           VP (Vrais Positifs)            FN (Faux Négatifs)                • Dépasser l'Exactitude globale : Un modèle prédisant 99% de 'Non-
+                                     [Spam / Spam]                   [Spam/non spam]
+                                                                            Spam' dans un jeu où 99% des emails sont sains aura 99% d'accuracy
+      Structure de la Matrice de Confusion                  mais sera totalement inutile pour détecter les spams.
+
+                                                                            • Faux Positif (Erreur Type I) : Classer un email légitime en Spam.
+        Réel : NÉGATIF             FP (Faux Positifs)           VN (Vrais Négatifs)                Impact : Un message urgent d'un client est manqué par l'utilisateur.
+    • En vert : Prédictions[non spam/ correctesSpam]       (VP,[nonVN)spam/non spam]
+                                                                            • Faux Négatif (Erreur Type II) : Laisser passer un Spam dans la boîte de
+    • En rouge : Erreurs du modèle (FP, FN)                           réception. Impact : Nuisance ou risque de phishing.
+
+                                                                            • Arbitrage Métier : Dans le domaine médical (détection de maladie),
+                                                                        un Faux Négatif est critique (patient malade non diagnostiqué). On
+                                                                                                    privilégiera alors le Rappel (Recall).
+
+
+
+
+
+                                                                                                   40
+
+--- PAGE 41 ---
+Etape 4 : Modèle
+
+Les 4 Métriques Clés de la Classification
+
+
+
+
+
+              Accuracy (Exactitude)                                 Précision (Precision)
+
+    Accuracy = (VP + VN) / Total                                                          Précision = VP / (VP + FP)
+
+    • Rôle : Proportion globale de bonnes réponses.                                        • Rôle : Fiabilité de la prédiction positive.
+    • Usage : À utiliser uniquement quand les classes sont bien équilibrées.                     • Usage : Cruciale quand le coût des Faux Positifs est très élevé (ex. Spam).
+
+
+
+
+
+           Rappel (Recall / Sensibilité)                                   F1-Score
+
+    Rappel = VP / (VP + FN)                                                       F1 = 2 × (Précis. × Rappel) / (Précis. + Rappel)
+
+    • Rôle : Capacité à détecter tous les cas réels.                                          • Rôle : Moyenne harmonique entre Précision et Rappel.
+    • Usage : Crucial quand rater un cas est dangereux (ex. Diagnostic médical).                 • Usage : La meilleure métrique de synthèse pour les datasets déséquilibrés.
+
+
+
+
+
+                                                                                                   41
+
+--- PAGE 42 ---
+Etape 4 : Modèle
+1. Accuracy (Exactitude) : La Mesure Globale
+
+
+
+
+
+                                           Conditions d'Usage & Pièges
+       Formule & Définition
+                                             • À utiliser quand :
+  Accuracy = (VP + VN) / Total                   Les classes du jeu de données sont bien équilibrées
+                                                                  (ex: 50% classe A / 50% classe B).
+  • Rôle : Mesure la proportion globale de prédictions
+   correctes parmi l'ensemble des observations.              • Attention au paradoxe de l'Accuracy :
+                                                            Sur un dataset déséquilibré (ex: 99% sains, 1%
+  • Interprétation : Répond à la question « Quelle est             malades), un modèle naïf qui prédit toujours « sain »
+   la fréquence à laquelle le modèle a raison ? »                     obtient 99% d'Accuracy tout en étant complètement
+                                                                               inutile !
+
+
+
+
+
+                                                                                                  42
+
+--- PAGE 43 ---
+Etape 4 : Modèle
+2. Précision (Precision) : La Fiabilité de la Détection
+
+
+
+
+
+                                           Cas d'Usage Privilégié
+        Formule & Objectif               • Objectif : Minimiser les Faux Positifs
+                                                 (FP)
+  Précision = VP / (VP + FP)
+                                                            La précision est essentielle lorsque le coût d'une
+                                                                 fausse alarme est très élevé.  • Rôle : Mesurer la proportion de vrais positifs parmi
+   l'ensemble des prédictions positives.
+                                                         Exemple concret : Détection de Spam
+                                                                • Si un courriel légitime est classé comme Spam (FP),  • Question clé : « Quand le modèle prédit un cas
+                                                                                 l'utilisateur peut rater une information cruciale.   positif, à quel point est-il fiable ? »
+                                                                • On préfère laisser passer un Spam plutôt que
+                                                                             d'isoler un vrai message.
+
+
+
+
+
+                                                                                                  43
+
+--- PAGE 44 ---
+Etape 4 : Modèle
+3. Rappel (Recall / Sensibilité) : La Capacité de Détection
+
+
+
+
+
+                                           Cas d'Usage Privilégié
+        Formule & Objectif               • Objectif : Minimiser les Faux Négatifs
+                                              (FN)
+  Rappel = VP / (VP + FN)                        Le Rappel est prioritaire lorsque rater un cas positif
+                                                                          réel entraîne des conséquences graves.
+  • Rôle : Mesurer la capacité du modèle à identifier la
+   totalité des individus positifs réels.                          Exemple concret : Diagnostic Médical
+                                                                • Détecter une maladie grave (ex: tumeur).
+  • Question clé : « Quel pourcentage des vrais cas               • Un Faux Négatif signifie laisser un patient malade
+   positifs le modèle a-t-il réussi à capturer ? »                   sans traitement.
+                                                                • On préfère tester plus de suspects (FP) plutôt que
+                                                         de rater un seul malade.
+
+
+
+
+
+                                                                                                  44
+
+--- PAGE 45 ---
+Etape 4 : Modèle
+4. F1-Score : L'Équilibre Harmonique
+
+
+
+
+
+       Formule & Définition
+                                     La Métrique de Synthèse Idéale
+  F1 = 2 × (Précision × Rappel) /
+                                          • Jeux de Données Déséquilibrés  (Précision + Rappel)
+                                                                • Solution au dilemme Précision vs Rappel.
+  • Moyenne Harmonique : Elle pénalise fortement les             • Meilleure métrique globale lorsque les classes sont
+   valeurs extrêmes (si la Précision ou le Rappel est très            déséquilibrées (ex: détection de fraude, détection de
+   faible, le F1-Score s'effondre).                                 pannes).
+                                                                • Offre un compromis unique et représentatif de la
+  • Résultat : Donne un score élevé uniquement si la             performance réelle.
+   Précision ET le Rappel sont satisfaisants.
+
+
+
+
+
+                                                                                                  45
+
+--- PAGE 46 ---
+Etape 4 : Modèle
+Tableau Comparatif : Synthèse des 4 Métriques
+
+
+
+     Métrique               Formule                  Focus / Rôle            Cas d'Usage Privilégié
+
+
+
+
+Accuracy              (VP + VN) / Total                    Exactitude globale                  Datasets équilibrés
+
+
+
+
+Précision             VP / (VP + FP)                        Éviter les fausses alarmes (FP)         Filtre Anti-Spam
+
+
+
+
+Rappel               VP / (VP + FN)                     Capturer tous les cas réels (FN)      Diagnostic Médical
+
+
+
+
+F1-Score             2 × (P × R) / (P + R)                 Équilibre Précision & Rappel          Datasets déséquilibrés
+
+
+
+
+
+                                                                                                  46
+
+--- PAGE 47 ---
+Etape 4 : Modèle
+
+Mesurer la Précision Quantitative des Prédictions(Regression)
+
+
+
+
+
+    MAE (Mean Absolute         MSE / RMSE (Root Mean            R² (Coefficient de
+             Error)                      Squared Error)                    Détermination)
+      Erreur Moyenne Absolue                                   Racine de l'Erreur Quadratique Moyenne                     Proportion de Variance Expliquée
+
+     Formule :                                         Formule :                                         Formule :
+    MAE = (1/n) Σ |Y_réel - Y_prédit|                     RMSE = √ [ (1/n) Σ (Y_réel - Y_prédit)² ]                       R² = 1 - (Var_résidus / Var_totale)
+
+     Interprétation :                                           Interprétation :                                           Interprétation :
+     Exprime l'écart moyen directement dans                        Pénalise beaucoup plus fortement les grandes                  Varie de 0 à 1 (ou 0% à 100%). Un R² de 0.85
+       l'unité de la cible (ex. en Dinars Tunisiens pour                  erreurs de prédiction en élevant les écarts au                      signifie que le modèle explique 85% de la
+       le prix d'un appartement). Très intuitive.                         carré.                                                                 variabilité des prix.
+
+
+
+
+
+                                                                                                   47
+
+--- PAGE 48 ---
+Etape 4 : Modèle
+
+Trois métriques fondamentales quantifient les erreurs et la qualité des
+prédictions
+
+
+             1. MAE                              2. RMSE                               3. R²
+
+
+  Mean Absolute Error            Root Mean Squared Error          Coefficient de
+                                                                Détermination
+   Calcule l'écart moyen absolu                   Élève les erreurs au carré avant d'en
+    directement dans l'unité d'origine de               calculer la racine moyenne.                                                                                    Mesure la proportion de la variance
+    la variable cible.                                                                                                                  totale expliquée par le modèle
+                                                                     • Pénalise fortement les grands                                                                                                                           prédictif.
+     • Très intuitive et facile à expliquer.                écarts.
+     • Poids linéaire sur toutes les erreurs.                 • Métrique de référence en                                                                                                                                     • Échelle normalisée de 0 à 1 (0% à
+     • Peu sensible aux valeurs                         optimisation.                                                                                        100%).
+    aberrantes.                                                  • Très sensible aux outliers.                                                                                                                                     • Indépendant des unités de mesure.
+                                                                                                                                     • Évalue la tendance globale.
+
+
+
+
+
+                                                                                                   48
+
+--- PAGE 49 ---
+Etape 4 : Modèle
+La MAE calcule l'erreur moyenne directement dans l'unité de mesure
+réelle
+
+
+
+
+
+                                                       Caractéristiques & Utilité
+  MAE = (1 / n) * ∑ | Y_réel - Y_prédit |                                                            Pratique
+
+                                                                                  Interprétabilité Directe
+                                                                                          Si la MAE d'un modèle de prédiction immobilière est de 15
+                                                                        000 DT, cela signifie que le modèle se trompe en moyenne
+                                                                        de 15 000 Dinars par logement.
+      Formule Mathématique de la
+            MAE                                       Traitement Linéaire des Erreurs
+                                                                 Une erreur de 10 unités compte exactement deux fois plus
+      • n : Nombre total d'observations dans le jeu de données.                    qu'une erreur de 5 unités. Il n'y a pas de sur-pénalisation
+                                                                          des écarts importants.
+      • Y_réel : Valeur réelle observée sur le terrain.
+                                                               Robustesse aux Outliers
+      • Y_prédit : Valeur estimée par l'algorithme de régression.                                                                            Parce qu'elle n'élève pas les erreurs au carré, la MAE est
+      • | ... | : Valeur absolue qui empêche la compensation entre                peu perturbée par quelques valeurs atypiques extrêmes
+     erreurs positives et négatives.                                          dans les données.
+
+
+
+
+                                                                                                   49
+
+--- PAGE 50 ---
+Etape 4 : Modèle
+La RMSE pénalise sévèrement les erreurs majeures grâce au carré des
+écarts
+
+
+
+
+
+    MSE = (1 / n) * ∑ ( Y_réel - Y_prédit )²
+                                             Pourquoi privilégier la RMSE ?          RMSE = √[ MSE ]
+
+                                                                         Pénalisation Accrue des Erreurs Graves
+                                                                 Une erreur de 2 unités devient 4, tandis qu'une erreur de 10
+                                                                                         unités devient 100 ! Le modèle est ainsi fortement incité à
+                                                                                                  éviter les grossières erreurs.
+    Formule de la MSE et de la RMSE                     Détection des Valeurs Aberrantes
+                                                                        La RMSE permet d'identifier immédiatement si le modèle
+                                                                   commet quelques très grosses erreurs isolées.
+      • MSE : Mean Squared Error — exprime l'erreur en unités
+    au carré (difficile à interpréter).                                         Lien avec l'Optimisation Mathématique
+                                                                        La MSE/RMSE est continûment dérivable, ce qui en fait la
+      • Racine Carrée : Ramène la valeur de l'erreur dans l'unité                      fonction de perte (Loss Function) idéale pour les
+     d'origine de la variable cible.                                                   algorithmes de gradient descendant.
+
+      • Propriété : RMSE est toujours supérieure ou égale à la
+   MAE (RMSE ≥ MAE).
+
+
+
+                                                                                                   50
+
+--- PAGE 51 ---
+Etape 4 : Modèle
+Le coefficient R² évalue la proportion de variance capturée par le modèle
+
+
+
+
+
+        R² = 1 - ( SS_résidus / SS_total )
+                                                   Interprétation des Valeurs de R²      R² = 1 - [ ∑(Y_i - Ŷ_i)² / ∑(Y_i - Ȳ)² ]
+
+                                                                          R² = 1.0 (100%)
+                                                                                                  Prédiction parfaite. Tous les points du jeu de données se situent
+                                                                                    exactement sur la droite/courbe de régression.
+                                                                          R² = 0.85 (85%)
+                                                                                               Excellente performance : le modèle explique 85 % de la
+       Formule du Coefficient R²                                     variabilité des données, les 15 % restants étant dus au bruit ou
+                                                                                                  variables omises.
+      • SS_résidus : Somme des carrés des erreurs de prédiction                                                                          R² = 0.0 (0%)
+    du modèle.                                                                              Le modèle n'apporte aucune information prédictive de plus que la
+                                                                                          simple moyenne des observations.      • SS_total : Somme des carrés des écarts par rapport à la
+    moyenne globale Ȳ.                                                    R² < 0 (Négatif)
+                                                                                            Indique un modèle anormalement mauvais qui prédit moins bien
+      • Échelle : Comprise idéalement entre 0 et 1 (0% à 100%                    que la simple moyenne constante Ȳ.
+    de variabilité expliquée).
+
+
+
+
+                                                                                                   51
+
+--- PAGE 52 ---
+Etape 4 : Modèle
+Analyse comparative : Échelle, sensibilité et scénarios préférentiels
+
+
+
+
+        Métrique                Unité de Mesure             Sensibilité aux Outliers             Cas d'Usage Privilégié
+
+
+
+
+
+ MAE                Même unité que Y                   Faible (Robuste)                    Évaluation intuitive de l'erreur moyenne métier.
+ (Mean Absolute      (ex: Dinars, kg, m)         Progression linéaire des
+ Error)                                          erreurs
+
+
+ RMSE / MSE           Même unité que Y                 Élevée (Sensible)                   Détection et minimisation des erreurs critiques.
+ (Root Mean        (RMSE) ou Y² (MSE)        Pénalise le carré des
+ Squared Error)                                  écarts
+
+
+ R²                     Sans unité                        Neutre                          Comparaison globale de modèles
+ (Coefficient de       Échelle normalisée [0, 1]   (Mesure la variance         indépendamment des échelles.
+ Détermination)                                  globale)
+
+
+
+
+
+                                                                                                   52
+
+--- PAGE 53 ---
+Etape 4 : Modèle
+Guide de choix pratique : Quelle métrique choisir pour votre projet ?
+
+
+
+
+     Privilégier la MAE si :
+         • Vous devez présenter les résultats à un public métier non-technique.
+         • Toutes les erreurs ont un coût financier/opérationnel strictement proportionnel.
+         • Votre jeu de données contient des valeurs aberrantes inévitables.
+
+
+
+     Privilégier la RMSE si :
+         • Une grande erreur de prédiction a des conséquences financières ou sécuritaires très graves.
+         • Vous souhaitez ajuster l'algorithme via une fonction de perte dérivable (Gradient Descent).
+         • Vous voulez tester la stabilité du modèle face aux cas extrêmes.
+
+
+
+    Toujours calculer le R² car :
+         • Il permet d'évaluer si le modèle est supérieur à la simple prédiction moyenne Ȳ.
+         • Il donne un pourcentage compréhensible de la qualité prédictive globale.
+         • Il facilite la comparaison entre des modèles appliqués à des variables différentes.
+
+
+
+
+                                                                                                   53
+
+--- PAGE 54 ---
+Etape 5 : Prédiction
+
+La prédiction clôture le pipeline en générant la valeur métier
+ ultime
+
+
+
+       1. Collecte              2. Prétraitement           3. Entraînement               4. Modèle                 5. Prédiction
+      Données brutes               Nettoyage & Scaling               Ajustement poids                     Artefact figé                    Inférence y = f(X)
+
+
+
+
+
+   Définition de l'Inférence (Prédiction)          Pourquoi cette étape est cruciale ?
+
+     • L'inférence consiste à appliquer l'équation ou la règle apprise                • Création de valeur réelle : Les 4 étapes précédentes ne sont
+    f(X) à de NOUVELLES données d'entrée X_nouvelles jamais            que des investissements ; la prédiction est le moment où le ROI
+   vues.                                                                   métier est généré.
+
+     • Objectif : Calculer automatiquement la valeur cible estimée ŷ                 • Automatisation des décisions : Remplace ou assiste la prise
+    (ex: prix d'un logement, probabilité qu'un email soit un spam).           de décision humaine en quelques millisecondes.
+
+     • Règle clé : Pendant l'inférence, le modèle est figé. Aucun                     • Mise à l'échelle : Permet de traiter des millions de demandes
+   poids n'est modifié, aucune fonction de coût n'est recalculée.              quotidiennes sans augmentation proportionnelle du personnel.
+
+
+
+
+
+                                                                                                   54
+
+--- PAGE 55 ---
+Etape 5 : Prédiction
+
+ L'inférence s'effectue en temps réel ou par lots selon la contrainte
+de latence
+
+
+
+
+
+         1. Inférence Temps Réel (Online)
+                                                             2. Inférence par Lots (Batch)    • Latence exigeante : Réponse en quelques millisecondes (< 100
+     ms).
+                                                                       • Latence tolérée : Minutes, heures ou traitement nocturne.
+    • Architecture : Exposition du modèle via une API REST (FastAPI /
+                                                                       • Architecture : Scripts Python / Spark / Tâches planifiées (CRON).
+     Flask).
+                                                                       • Déclenchement : Asynchrone sur de gros volumes de données.
+    • Déclenchement : À la demande (requête synchrone de
+                                                                       • Exemples métiers :
+      l'utilisateur).
+                                                                                                                                - Estimation mensuelle du risque de churn client
+    • Exemples métiers :
+                                                                                                                                - Mise à jour nocturne des prix immobiliers estimés
+         - Détection de fraude bancaire lors d'un paiement CB                                                                                                                                - Calcul quotidien du score de solvabilité bancaire
+         - Filtre anti-spam à la réception d'un e-mail
+         - Moteur de recommandation e-commerce au clic
+
+
+
+
+
+                                                                                                   55
+
+--- PAGE 56 ---
+Etape 5 : Prédiction
+
+Le pipeline de prédiction réapplique exactement les mêmes
+ transformations
+
+
+
+                              Transformers           Donnée Propre            Modèle Figé                Résultat ŷ    Donnée Brute
+                                           Application de .transform()              Matrice X_propre aux                     Application de                     Prédiction finale pour
+   Nouvelle observation X_brut
+                                               (Scaler / Imputer)                 bonnes dimensions                    .predict(X_propre)                               l'utilisateur
+
+
+
+
+
+       RÈGLE D'OR : Ne jamais ré-entraîner (.fit) les transformateurs sur les données
+                                         d'inférence !
+
+   • Utiliser .transform() et NON .fit_transform() : Les paramètres de normalisation (moyenne, écart-type de l'entraînement) doivent être RÉUTILISÉS à
+    l'identique. Utiliser .fit() sur une nouvelle donnée fausserait l'échelle.
+
+   • Gérer l'absence de valeurs en production : Si la nouvelle donnée contient un NaN, le transformateur d'imputation sauvegardé (Imputer) doit remplir
+    la donnée selon la médiane calculée sur le jeu d'entraînement.
+
+   • Préserver l'ordre et le nom des colonnes : L'ordre des colonnes fournies au modèle lors de l'inférence doit correspondre exactement à celui de la
+    matrice X_train.
+
+
+
+
+
+                                                                                                   56
+
+--- PAGE 57 ---
+Etape 5 : Prédiction
+
+Le modèle génère soit une valeur continue, soit des probabilités de
+ classe
+
+
+
+
+
+         Sortie en Régression (Valeur                                                          Sortie en Classification
+               Continue)                                                         (Probabilités & Classe)
+
+    • Type de résultat : Nombre réel continu (float).
+                                                                       • Type de résultat : Probabilités par classe + Étiquette finale.
+    • Méthode Python : model.predict(X_new)
+                                                                       • Méthodes Python : model.predict_proba(X_new) et
+    • Exemple Numérique : Estimation de prix d'un appartement de 78              model.predict(X_new)
+   m² :
+                                                                       • Exemple Filtre Anti-Spam : Analyse d'un nouvel email entrant :
+    • Sortie brute : ŷ = 172 500.00 DT
+                                                                       • Probabilités : P(Spam) = 0.88 | P(Non Spam) = 0.12
+    • Interprétation : Le modèle estime directement la valeur
+                                                                       • Décision finale : Classe choisie = 'SPAM' (car 0.88 > Seuil de 0.50).
+    monétaire cible sur l'axe numérique.
+
+
+
+
+
+                                                                                                   57
+
+--- PAGE 58 ---
+Etape 5 : Prédiction
+
+Exemples concrets d'inférence sur nos trois fil rouge métiers
+
+
+
+
+     Domaine Métier        Données d'Entrée (X_nouvelles)          Équation / Règle Appliquée                Résultat Prédictif (ŷ)
+
+
+
+
+
+           Immobilier          78 m², Centre-ville,                             Prix = a×Surface + b×Pièces + c                            Prix Estimé :
+         (Régression)         2 pièces, 3ème étage                           (Coefficients a, b, c calculés)                            172 500 DT
+
+
+
+
+
+         Anti-Spam            Sujet : 'Réunion de projet                   Analyse fréquences mots-clés                        P(Spam) = 2%
+          (Classification)         décalée à 14h'                                  Probabilité P(Spam)                   → NON SPAM
+
+
+
+
+
+       Banque / Prêt           Client 104 : 42 ans,                         Arbre de décision :                                       Décision :
+          (Classification)        4 500 DT salaire, sans dette                'Revenu > 3000 DT ?' -> Oui                         Accord de Crédit
+
+
+
+
+
+                                                                                                   58
+
+--- PAGE 59 ---
+Etape 5 : Prédiction
+
+ Implémentation complète d'un script d'inférence en Python
+
+
+
+
+
+    # 1. Importer les bibliothèques requises
+    import joblib
+    import pandas as pd
+
+
+    # 2. Charger le modèle et le scaler sauvegardés lors des étapes 3 & 4
+    model = joblib.load('modele_immobilier.joblib')
+    scaler = joblib.load('scaler_immobilier.joblib')
+
+
+    # 3. Recevoir une nouvelle observation entrante (ex: via formulaire web)
+    nouvel_appartement = pd.DataFrame([{'surface': 78, 'pieces': 2}])
+
+
+    # 4. Appliquer le MÊME prétraitement (.transform et non .fit_transform)
+    X_new = scaler.transform(nouvel_appartement)
+
+
+    # 5. Exécuter la prédiction
+    prix_estime = model.predict(X_new)[0]
+    print(f'Prix estimé : {prix_estime:,.2f} DT')
+
+
+
+
+
+                                                                                                   59
+
+--- PAGE 60 ---
+Etape 5 : Prédiction
+
+Le suivi des prédictions alimente la boucle de rétroaction et le ré-
+ entraînement
+
+
+
+                                                1. Logging des Prédictions
+  Chaque prédiction générée (X_new, ŷ) est enregistrée dans une base de données de production avec son horodatage.
+
+
+
+
+
+                                        2. Collecte du 'Ground Truth'
+  Plus tard, la valeur réelle observée y_réel est récupérée (ex: le prix de vente effectif final ou la confirmation de fraude).
+
+
+
+
+
+                                        3. Alerte & Ré-entraînement
+  Si l'erreur (ŷ - y_réel) augmente (Model Drift), une alerte est levée pour ré-entraîner le modèle avec les nouvelles données (Étape 1).
+
+
+
+
+
+                                                                                                   60
+
+--- PAGE 61 ---
+Etape 5 : Prédiction
+Synthèse globale : Les 5 étapes du pipeline de Machine Learning
+
+
+
+
+    Étape du Pipeline                    Objectif Principal                            Outils & Méthodes                         Livrable / Résultat
+
+
+
+
+           1. Collecte            Rassembler des exemples représentatifs         SQL, Formulaires, IoT, APIs                      Données brutes
+
+
+
+
+        2. Prétraitement          Nettoyer et mettre en forme                     Pandas, dropna, Scalers                               Matrice X, Y propre
+
+
+
+
+        3. Entraînement           Ajuster les poids du modèle                               Fit, Loss, Descente de gradient                      Paramètres optimisés
+
+
+
+
+            4. Modèle             Évaluer et sauvegarder la règle                    Matrice confusion, Joblib                                 Fichier modèle (.joblib)
+
+
+
+
+          5. Prédiction           Générer les estimations métiers                   Inférence API / Batch, .predict()                        Décisions & Valeur ŷ
+
+
+
+
+
+                                                                                                  61

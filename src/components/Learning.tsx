@@ -69,7 +69,7 @@ export function Library({
       </div>
       {subjects.length === 0 && (
         <EmptyState title="Aucune matière trouvée">
-          Essaie un autre mot, comme « IPv4 » ou « JavaFX ».
+          Essaie un autre mot, comme « tracking », « données » ou « KNN ».
         </EmptyState>
       )}
       {query && (
@@ -214,8 +214,8 @@ export function SubjectPage({
               </a>
             ))}
             <p>
-              Synthèses indépendantes. Mémora n’est affiliée ni à Cisco ni à
-              OpenJFX.
+              Synthèses des documents fournis. Les sources PDF et leurs pages
+              sont indiquées dans les chapitres ; ces liens servent aux compléments.
             </p>
           </div>
         </aside>
@@ -258,11 +258,23 @@ export function Lesson({
           </div>
           <h1>{chapter.title}</h1>
           <p className="lesson-lead">{chapter.description}</p>
+          {chapter.references && (
+            <details className="lesson-references">
+              <summary>Documents du cours · {chapter.references.length} référence(s)</summary>
+              <ul>{chapter.references.map((ref) => (
+                <li key={`${ref.document}-${ref.pages}`}><b>{ref.document}</b> · pages {ref.pages}</li>
+              ))}</ul>
+              <p>Synthèse originale des documents fournis. Les compléments et rectifications sont signalés. Les corrigés rédigés sont des propositions Mémora.</p>
+            </details>
+          )}
           <div className="lesson-rule" />
           {chapter.sections.map((section, i) => (
             <section className="lesson-section" id={`section-${i}`} key={i}>
               <span className="lesson-section-number">0{i + 1}</span>
               <h2>{section.title}</h2>
+              {section.origin && section.origin !== "course" && (
+                <span className="badge lavender">{section.origin === "correction" ? "Rectification explicitée" : "Complément Mémora"}</span>
+              )}
               <p>{section.body}</p>
               {section.formula && (
                 <figure className="lesson-formula">
@@ -291,9 +303,7 @@ export function Lesson({
                 <div className="code-block">
                   <div>
                     <span>
-                      {subject.id === "javafx"
-                        ? "JAVA / JAVAFX"
-                        : "COMMANDES · EXEMPLE"}
+                      {section.language || "EXEMPLE"}
                     </span>
                     <span>À comprendre, puis à pratiquer</span>
                   </div>
@@ -304,6 +314,23 @@ export function Lesson({
               )}
             </section>
           ))}
+          {!!chapter.practicals?.length && (
+            <section className="lesson-practicals">
+              <h2>À mettre en pratique</h2>
+              <p>Réalise ces activités dans l’outil indiqué. Les solutions sont des propositions éditoriales ; les ouvrir n’ajoute aucun point.</p>
+              {chapter.practicals.map((activity) => (
+                <article className="guided-practical" key={activity.title}>
+                  <h3>{activity.title}</h3>
+                  <p>{activity.instructions}</p>
+                  <details>
+                    <summary>Voir la proposition de solution</summary>
+                    <p>{activity.solution}</p>
+                    {activity.code && <div className="code-block"><div><span>{activity.language || "EXEMPLE"}</span></div><pre><code>{activity.code}</code></pre></div>}
+                  </details>
+                </article>
+              ))}
+            </section>
+          )}
           <div className="takeaway">
             <Sparkle size={24} weight="duotone" />
             <div>

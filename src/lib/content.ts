@@ -25,11 +25,14 @@ export const chapterSchema = z.object({
   title: text,
   description: text,
   minutes: z.number().int().min(1).max(180),
+  references: z.array(z.object({ document: text, pages: text })).max(20).optional(),
   sections: z
     .array(
       z.object({
         title: text,
         body: text,
+        origin: z.enum(["course", "supplement", "correction"]).optional(),
+        language: text.optional(),
         bullets: z.array(text).max(12).optional(),
         code: text.optional(),
         formula: text.optional(),
@@ -41,6 +44,13 @@ export const chapterSchema = z.object({
     .min(1)
     .max(30),
   takeaway: text,
+  practicals: z.array(z.object({
+    title: text,
+    instructions: text,
+    solution: text,
+    code: text.optional(),
+    language: text.optional(),
+  })).max(20).optional(),
   cards: z.array(cardSchema).min(1).max(100),
   exams: z.array(examSchema).min(1).max(30),
 });
@@ -49,14 +59,17 @@ export const subjectSchema = z.object({
   title: text,
   subtitle: text,
   description: text,
+  category: text.optional(),
+  monogram: z.string().max(3).optional(),
   color: z.enum(["mint", "lavender", "peach", "blue"]),
-  icon: z.enum(["network", "router", "code", "book"]),
+  icon: z.enum(["network", "router", "code", "book", "brain", "cube"]),
   sources: z.array(z.object({ title: text, url: link })).max(20),
   chapters: z.array(chapterSchema).min(1).max(100),
 });
 export const catalogSchema = z
   .object({
     schemaVersion: z.literal(1),
+    edition: id.default("original"),
     version: z.number().int().positive(),
     updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     subjects: z.array(subjectSchema).min(1).max(50),
@@ -81,6 +94,8 @@ export const catalogSchema = z
       }
       for (const chapter of subject.chapters)
         for (const card of chapter.cards) {
+          if (card.choices[card.correct] !== card.answer)
+            ctx.addIssue({ code: "custom", message: `Réponse incohérente : ${card.id}` });
           if (new Set(card.choices).size !== 4)
             ctx.addIssue({
               code: "custom",
@@ -105,37 +120,8 @@ export const normalize = (s: string) =>
 export function classifyCourse(input: string): string | null {
   const content = normalize(input);
   const rules: Record<string, string[]> = {
-    javafx: [
-      "javafx",
-      "fxml",
-      "scene builder",
-      "observablelist",
-      "borderpane",
-      "scenegraph",
-      "application thread",
-    ],
-    ccna2: [
-      "vlan",
-      "spanning tree",
-      "etherchannel",
-      "inter-vlan",
-      "dhcp",
-      "wlan",
-      "route statique",
-      "802.1q",
-      "hsrp",
-    ],
-    ccna1: [
-      "osi",
-      "tcp/ip",
-      "ipv4",
-      "ipv6",
-      "ethernet",
-      "adresse mac",
-      "sous-reseau",
-      "encapsulation",
-      "arp",
-    ],
+    "realites-immersives": ["realite augmentee", "realite virtuelle", "realite mixte", "tracking", "recalage", "vuforia", "unity", "haptique", "marqueur"],
+    "intelligence-artificielle": ["intelligence artificielle", "machine learning", "apprentissage supervise", "knn", "gini", "regression", "classification", "pandas", "scikit-learn"],
   };
   const scores = Object.entries(rules)
     .map(([key, terms]) => ({

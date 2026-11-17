@@ -1,0 +1,277 @@
+--- PAGE 1 ---
+Dispositifs et Technologies
+de production AR
+
+
+
+
+
+                                                                                                            106
+
+--- PAGE 2 ---
+         PLAN
+
+
+            Dispositifs                              Outils de production
+
+
+                                                                •   Moteurs de rendu 3D
+•    Dispositifs visuels                                                                •   Plateforme AR – OpenSpace 3D
+•    Dispositifs audios
+                                                                •  AR Browsers
+•    Dispositifs tactiles, tangibles et haptiques                                                                •  AR SDKs
+•    Dispositifs olfactifs                                                                •   Vuforia Engine avec Unity 3D
+•    Dispositifs gustatifs                                                                •   Architecture des applications AR
+
+
+                                                                                                         107
+
+--- PAGE 3 ---
+Dispositifs de RA
+
+
+        Dispositifs de RA
+
+
+
+                                 Dispositifs
+Dispositifs      Dispositifs        tactiles,       Dispositifs      Dispositifs
+  visuels        audios      tangibles et       olfactifs        gustatifs
+                             haptiques
+
+
+
+
+                                                                                                       108
+
+--- PAGE 4 ---
+Dispositifs visuels
+
+
+
+ ▰Dispositifs optical-see through
+ ▰Dispositifs video-see through
+ ▰Dispositifs rétiniens virtuels
+ ▰Moniteurs
+ ▰Dispositifs projecteurs
+
+
+
+                                                                                                      109
+
+--- PAGE 5 ---
+       Dispositifs visuels
+
+
+▰Dispositifs optical-see through
+     ▻Dispositifs  optiques  montés  sur  la  tête  (Head
+         Mounted Displays HMD)  : affichent directement les
+         éléments virtuels sur le monde réel en utilisant des
+            lentilles semi-transparentes.
+   ▻Ces lentilles permettent à la lumière du monde réel
+         de passer à travers eux.
+   ▻Ils offrent une vision directe de la réalité augmentée.
+    ▻Exemples   :  pare-brise d’une  voiture, une  visière,
+         Google Glass, etc.
+                                                                                                                 110
+
+--- PAGE 6 ---
+      Dispositifs visuels
+
+
+▰Dispositifs video-see through
+   ▻Des  HMD   opaques   qui   affichent
+         l’environnement virtuel fusionnée avec le
+          flux  vidéo   réel  enregistré  par  des
+                                                              Magic Leap One
+        caméras.
+   ▻Ils offrent une vision indirecte de la réalité
+        augmentée.
+   ▻Exemples  : le casque Magic Leap One,                                     Microsoft HoloLens 2
+         Microsoft HoloLens 2, etc.
+
+                                                                                                                111
+
+--- PAGE 7 ---
+      Dispositifs visuels
+
+
+▰Dispositifs rétiniens virtuels                                                                    Avegant Glyph
+  ▻Le VRD (Virtual Retinal Display) ou l’afficheur rétinien a été
+         inventé à l'Université de Washington au Laboratoire de
+         Technologie d'Interface Humaine (HIT) en 1991.
+   ▻Ils projettent un faisceau lumineux modulé, à partir d’un
+           petit projecteur ou une source de lumière, souvent logée
+        dans une paire de lunettes ou un casque, directement sur
+           la rétine de l’œil produisant une image tramée.
+   ▻Exemples    :  le  casque  Avegant  Glyph,  les  lunettes
+          intelligentes  Sony  SmartEyeglass, QD  Laser  Retissa
+                                                                                                               112          Display, etc.
+
+--- PAGE 8 ---
+     Dispositifs visuels
+
+
+
+▰Moniteurs
+   ▻Les  moniteurs ou  les  écrans   :  fusionnent
+        également les éléments virtuels avec un flux
+         vidéo réel.
+   ▻Ils peuvent être des écrans desktop ou des
+        écrans à la main (Handheld Display).
+   ▻Exemples  : un ordinateur, un smartphone, une
+           tablette, etc.
+
+
+                                                                                                              113
+
+--- PAGE 9 ---
+      Dispositifs visuels
+                                                       LUMO Interactive Projector
+
+
+▰Dispositifs projecteurs
+   ▻Ils utilisent des objets du monde  réel, tels qu’une
+          table, le sol, les murs, comme surface de projection de
+         l'environnement virtuel en utilisant un miroir mobile
+        pour orienter la projection selon le type de la surface.
+   ▻Ils prennent en compte la géométrie de la surface de
+          projection quel que soit plane, ronde, cylindrique, etc.
+   ▻Exemples   :  Lightform, Sony  Xperia Touch, LUMO
+          Interactive Projector, Microsoft RoomAlive, etc.
+                                                                                                               114
+
+--- PAGE 10 ---
+   Dispositifs audios
+
+
+▰Des systèmes qui superposent des sons virtuels à l'environnement auditif réel.
+▰Principe :
+    ▻Capture des sons ambiants par des microphones embarqués.
+    ▻Analyse de ces sons pour déterminer où et comment les sons virtuels doivent être
+          placés par rapport à l'environnement réel.
+    ▻Création et placement des sons virtuels dans un espace tridimensionnel grâce à des
+          techniques de spatialisation audio, donnant l'impression qu'ils proviennent de directions
+          spécifiques autour de l'utilisateur.
+    ▻Superposition des sons augmentés à l'environnement sonore  réel d’une manière
+         harmonieuse.
+
+                                                                                                           115
+
+--- PAGE 11 ---
+   Dispositifs audios
+
+
+                                                                   NuraTrue
+
+▰Exemples :
+   ▻Les lunettes de soleil intelligentes Bose Frames
+         intégrant un système audio de RA
+   ▻Les écouteurs NuraTrue
+   ▻Les écouteurs Aftershokz Aeropex
+   ▻Sony 360 Reality Audio
+   ▻Microsoft HoloLens avec audio spatial
+
+                                                                                                          116
+
+--- PAGE 12 ---
+    Dispositifs tactiles, tangibles et haptiques
+
+
+▰Ils permettant aux utilisateurs de ressentir et d'interagir        Microsoft Surface Hub
+    avec des objets virtuels d'une manière plus naturelle et
+    immersive.
+▰Dispositifs tactiles :
+    ▻Interaction  en  touchant ou  en  manipulant  des
+         surfaces réelles qui réagissent aux gestes tactiles.
+   ▻Ils  utilisent souvent des écrans  tactiles ou des
+         surfaces interactives.
+   ▻Exemples  : une tablette, un smartphone,  le grand
+         écran tactile Microsoft Surface Hub, etc.
+                                                                                                            117
+
+--- PAGE 13 ---
+      Dispositifs tactiles, tangibles et haptiques
+
+
+▰Dispositifs tangibles :
+                                                         Cubes tangibles Siftables
+   ▻Ils permettent aux  utilisateurs de manipuler des
+         objets physiques qui interagissent avec des éléments
+           virtuels.
+   ▻Ils  utilisent  des  objets  réels ou  des  interfaces
+          matérielles qui sont suivis par des caméras ou des
+         capteurs pour influencer le monde virtuel.
+   ▻Exemples  : les blocs tangibles (Tangible Blocks), les
+          petits cubes  interactifs  équipés de  capteurs  et
+         d'écrans Siftables, etc.                                                                                                                118
+
+--- PAGE 14 ---
+      Dispositifs tactiles, tangibles et haptiques                                                                                Ultrahaptics
+
+
+▰Dispositifs haptiques :
+   ▻Ils fournissent un retour tactile ou force feedback à
+           l'utilisateur lorsqu'il interagit avec des objets virtuels,
+         simulant ainsi la sensation de toucher, de pression
+        ou de vibration.
+   ▻Exemples  : les gants haptiques, les dispositifs de
+         retour de force comme les bras robotiques ou les
+          contrôleurs, les dispositifs Ultrahaptics utilisant des
+        ondes  ultrasonores  pour  créer  des  sensations
+          tactiles dans l'air, etc.
+                                                                                                                119
+
+--- PAGE 15 ---
+     Dispositifs olfactifs
+                                                              Masque olfactif
+                                                                                Feelreal VR Mask
+
+
+▰Conçus pour diffuser des odeurs spécifiques synchronisées avec
+    des éléments visuels ou auditifs augmentés.
+▰Ils  contiennent des  cartouches ou des  capsules  remplies
+    d'arômes spécifiques.
+▰Ils peuvent libérer des odeurs en réponse à des événements
+    déclenchés dans l'environnement virtuel ou réel.
+▰Exemples  : le masque olfactif Feelreal VR Mask qui se fixe sur
+    les casques de RA et RV, OVR Technology, VAQSO VR, etc.
+
+
+                                                                                                              120
+
+--- PAGE 16 ---
+Dispositifs gustatifs
+
+
+
+▰Ils visent à simuler ou à modifier les sensations gustatives en utilisant
+   des technologies qui interagissent avec les papilles gustatives ou la
+    perception du goût.
+▰Certains  dispositifs  utilisent  la  stimulation  électrique des  papilles
+    gustatives pour imiter ou modifier les saveurs perçues par l'utilisateur.
+▰D'autres dispositifs utilisent des sprays ou des films comestibles pour
+    diffuser des arômes directement dans la bouche, modifiant ainsi la
+    perception du goût.
+
+
+                                                                                                       121
+
+--- PAGE 17 ---
+      Dispositifs gustatifs
+
+
+
+
+
+                                                                                      Digital Lollipop▰Exemples :
+  ▻Le dispositif expérimental Digital Lollipop développé
+         par des  chercheurs de  l'Université  nationale de
+        Singapour  utilisant  la stimulation  électrique pour
+         simuler des goûts différents sur la langue.
+  ▻Le  dispositif  expérimental  Norimaki  Synthesizer
+           utilisant des gels électrolytiques pour stimuler les
+         cinq saveurs de base  (sucré,  salé,  acide, amer,
+       umami) directement sur la langue de l'utilisateur.
+
+                                                                                                                122

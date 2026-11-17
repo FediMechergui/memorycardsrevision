@@ -1,0 +1,154 @@
+--- PAGE 1 ---
+Chapitre 3 : Fondements de réalité augmentée
+
+                  Travaux dirigés n°3
+
+
+EXERCICE 1
+
+      CHOISIR LA OU LES BONNES REPONSES.
+
+1. Quelle forme de réalité augmentée utilise un code QR pour partager des informations
+  en 3D, du texte, une vidéo ou une audio ?
+
+   a)  La réalité augmentée visuelle avec marqueurs
+   b)  La réalité augmentée basée sur la géolocalisation
+   c)  La réalité augmentée visuelle sans marqueurs
+   d)  La réalité augmentée haptique
+2. Un marqueur de la réalité augmentée peut être :
+
+   a)  Une position GPS
+   b)  Un code QR
+   c)  Une image 2D
+   d)  Un objet 3D
+3. Quelle est l'étape qui ne fait pas partie de la chaîne d'augmentation ?
+
+   a)  Recalage
+   b)  Reconnaissance
+   c)  Création des objets 3D
+   d)  Affichage de rendu
+4. La vision par ordinateur est un :
+
+   a)  Champ interdisciplinaire théorique et pratique qui a pour objet la compréhension de
+      mécanismes de la cognition et de la réflexion, et leur imitation par un dispositif matériel
+        et logiciel, à des fins d'assistance ou de substitution à des activités humaines.
+   b)  Domaine dans lequel on étudie et on met au point des techniques permettant à un système
+       informatique d'analyser et de comprendre les données visuelles obtenues à l'aide de
+
+      caméras ou d'autres dispositifs électroniques.
+   c)  Processus par lequel un ordinateur, en traitant et en exploitant des données à l'aide
+       d'algorithmes, acquiert de nouvelles compétences pour exécuter de nouvelles tâches.
+   d)  Aucune de ces réponses.
+5. Quel terme ne fait pas partie de la vision par ordinateur ?
+
+   a)  Modélisation 3D
+   b)  Reconnaissance
+   c)  Tracking
+   d)  Calibrage
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      63
+
+--- PAGE 2 ---
+Chapitre 3 : Fondements de réalité augmentée
+
+6. Qu'est-ce que la reconnaissance par points d'intérêt en réalité augmentée ?
+   a)  Une technique qui superpose des objets virtuels sur des marqueurs physiques spécifiques.
+   b)  Une méthode qui  identifie des caractéristiques distinctives dans une scène pour
+
+       superposer du contenu numérique.
+   c)  Une technique qui utilise des capteurs GPS pour localiser des objets dans le monde réel.
+   d)  Un processus pour intégrer des avatars 3D dans un environnement virtuel.
+7. Pourquoi il est utile de déterminer la pose de la caméra virtuelle et l’environnement
+   réel ?
+
+   a)  Aide à positionner et à orienter l'objet numérique dans la bonne direction.
+   b)  Améliore l'immersion en créant un environnement plus réaliste.
+   c)  Rend tous les éléments de la RA plus réalistes.
+   d)  Aucune de ces propositions.
+8. Quels sont les paramètres qui ne font pas partie des paramètres intrinsèques calculés
+
+   lors du calibrage d'une caméra ?
+   a)  Distance focale
+   b)  Facteurs d’échelle
+   c)  Coordonnées du centre optique sur le plan image
+   d)  Angles de rotation
+
+9. Que signifie le recalage dans le contexte de la réalité augmentée ?
+   a)  Le processus d'inscription à des applications de RA
+   b)  L'alignement des objets virtuels avec le monde réel de manière cohérente
+   c)  La création des modèles 3D à partir d'images 2D
+   d)  La conversion des signaux analogiques en données numériques
+
+10.    Quelle technologie de tracking n'est pas utilisée dans la réalité augmentée mobile ?
+   a)  Capteurs optiques
+   b)  Accéléromètres
+   c)  GPS
+   d)  RFID
+
+11.  Le tracking radio se base sur ____________.
+   a)  Des ondes ultrasonores
+   b)   L'utilisation d'une centrale inertielle
+   c)  Des ondes électromagnétiques
+   d)  Des capteurs optiques
+
+
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      64
+
+--- PAGE 3 ---
+Chapitre 3 : Fondements de réalité augmentée
+
+12.  Quelles sont les caractéristiques qui sont utiles à l’efficacité des applications de la
+      réalité virtuelle mais qui sont ignorées ?
+   a)  Temps d’interaction rapide
+
+   b)  Un bon affichage graphique
+   c)  Les sens de l’odorat et de goût
+   d)  Le retour d’effort
+13.  Les problématiques liées à une application de la réalité augmentée sont :
+   a)  Le calibrage des caméras réelles et virtuelles
+
+   b)  La création informatique du monde virtuel
+   c)  La cohérence photométrique
+   d)  La cohérence spatio-temporelle
+14.  La cohérence photométrique tient compte de l’emplacement des objets virtuels dans
+      la scène réelle ainsi que des occultations.
+
+   a)  Vrai
+   b)  Faux
+15.  Un  projet de  réalité augmentée  doit  avoir des éléments  virtuels  les  plus
+      photoréalistes.
+   a)  Vrai
+
+   b)  Faux
+
+
+
+EXERCICE 2
+
+Trouver le point 2D m associé au point 3D M (0.5, 0, 0) d’un objet virtuel sachant que les
+paramètres de la caméra réelle sont les suivants :
+
+                 𝑓= 0.5 𝑚, 𝑘௨= 𝑘௩= 4000, 𝑢଴= 512, 𝑣଴= 384
+                                                1  0  0
+                     𝑇= (0, 0, 5) 𝑒𝑡 𝑅= ൭0  1  0൱
+                                                0  0  0
+EXERCICE 3
+
+Imaginer une application de RA, par exemples, pour la formation industrielle, la vente au détail,
+ou un jeu éducatif. Déterminer les techniques d'interaction qu’on peut utiliser dans une telle
+
+application. Expliquer.
+
+
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      65

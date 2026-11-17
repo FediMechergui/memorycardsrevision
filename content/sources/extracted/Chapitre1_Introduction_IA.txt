@@ -1,0 +1,761 @@
+--- PAGE 1 ---
+                                                                     Département Informatique
+                                                                                    ISET MAHDIA
+MODULE INTELLIGENCE ARTIFICIELLE
+                                                                       Enseignante : Lobna BEN RHOUMA
+
+CHAPITRE 1
+
+INTRODUCTION À
+
+
+                                                                                     DONNÉESL’INTELLIGENCE ARTIFICIELLE
+
+
+
+
+               Comprendre les concepts, l’histoire, les approches
+                 et les premières méthodes d’apprentissages
+
+
+
+
+
+                                                                                                                                         01
+                                                           2026- 2027
+
+--- PAGE 2 ---
+REPÈRES DU CHAPITRE
+Plan du chapitre
+
+Une progression du concept d’IA vers ses méthodes, ses usages et son intégration logicielle.
+
+
+  01 Fondements de l’IA                                02  Histoire & classification
+
+            Définition • caractéristiques • informatique classique vs IA                                       Turing • Dartmouth • types d’IA • modes de fonctionnement
+
+
+
+  03  Approches de l’IA                                 04  Machine Learning
+
+          Symbolique • connexionniste • actionniste • hybride                                              IA / ML / DL • apprentissages supervisé et non supervisé
+
+
+
+  05  Applications & architecture                          06  Synthèse
+
+         Domaines d’usage • exemple concret • composants d’un système                           Les idées essentielles à retenir
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          02
+
+--- PAGE 3 ---
+REPÈRES DU CHAPITRE
+Objectifs pédagogiques
+
+À la fin de ce chapitre, l’étudiant doit être capable de :
+
+
+  ✓  Définir l’IA et comprendre son origine             ✓  Distinguer IA, Machine Learning et Deep Learning
+
+
+
+
+  ✓  Connaître les grandes étapes historiques de l’IA        ✓  Identifier les différents types d’IA (ANI, AGI, ASI)
+
+
+
+
+  ✓  Connaître les domaines d’application de l’IA          ✓  Distinguer système informatique classique et
+                                                                système d’IA
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          03
+
+--- PAGE 4 ---
+FONDEMENTS
+Deux façons de résoudre un problème
+
+Comparer une programmation où les règles sont explicites avec une approche qui apprend à partir d’exemples.
+
+
+  01  Informatique classique                           02  Intelligence Artificielle
+
+        Le programmeur écrit des règles précises que la machine exécute.            On cherche à résoudre des problèmes où les règles sont trop
+                                                                          nombreuses ou impossibles à écrire.
+
+        Lire A, B, C
+                                                      « Cette image contient un chat. »
+
+     Moyenne ← (A + B + C) / 3
+                                                               Impossible d’écrire toutes les règles : taille,
+                                                                    couleur, position, forme…       Afficher Moyenne
+
+                                                                 Solution : donner des milliers d’exemples au      Exemple : calculer une moyenne — les règles
+                                                          système pour qu’il apprenne seul.      sont connues à l’avance.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          04
+
+--- PAGE 5 ---
+FONDEMENTS
+Qu’est-ce que l’Intelligence Artificielle ?
+
+
+
+
+
+     « L’Intelligence Artificielle est une branche de l’informatique qui cherche à concevoir des systèmes capables
+    d’accomplir des tâches nécessitant habituellement des capacités associées à l’intelligence humaine : apprentissage,
+    raisonnement, perception, compréhension du langage, résolution de problèmes et prise de décision. »
+
+
+
+
+Une définition à relier à la chaîne : données → traitement intelligent → décision / action.
+
+
+                                             Traitement intelligent        →        Décision / Action        Données           →
+
+
+
+
+                                    Exemple : image d’un patient → analyse → détection d’une anomalie → résultat
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          05
+
+--- PAGE 6 ---
+FONDEMENTS
+Pourquoi parle-t-on d’« intelligence » ?
+
+Un système peut combiner plusieurs capacités : il n’est pas nécessaire de toutes les posséder.
+
+
+  P  Percevoir                    A  Apprendre                   R  Raisonner
+
+          Capter des informations : caméra, micro,                       Améliorer ses performances à partir de                              Utiliser des règles ou connaissances pour tirer
+          capteurs, texte, bases de données.                         données et d’expériences.                                 des conclusions.
+
+
+
+
+  S  Résoudre des problèmes         D  Décider                     A  S’adapter
+
+         Chercher une solution parmi plusieurs                          Sélectionner une action parmi plusieurs                         Modifier son comportement face à de
+            possibilités.                                                  actions possibles.                                            nouvelles situations.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          06
+
+--- PAGE 7 ---
+FONDEMENTS
+IA et informatique classique
+
+Deux logiques de construction d’un système.
+
+
+   01 Programmation classique                         02 Machine Learning
+
+       Données + Règles                                       Données + Résultats attendus
+     ↓                          ↓
+      Programme                                            Algorithme → Modèle
+     ↓                          ↓
+        Résultat                                                   Prédiction sur nouvelle donnée
+
+       Le programmeur fournit les règles à l’avance.              Le système apprend automatiquement les
+                                                                    règles à partir des données.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          07
+
+--- PAGE 8 ---
+HISTOIRE & CLASSIFICATION
+Alan Turing et la question fondatrice
+
+1950 — une question simple qui ouvre un champ scientifique.
+
+
+   50 1950                   ?  La question                  T  Le Test de Turing
+
+          Alan Turing publie l’article «               « Can machines think ? »                 Un évaluateur communique avec une machine et un
+         Computing Machinery and                                                                  humain, sans savoir lequel est lequel. Si l’évaluateur ne
+           Intelligence ».                                                                                          parvient pas à distinguer systématiquement la machine
+                                « Les machines peuvent-               de l’humain, la machine manifeste un comportement                                                                                                             conversationnel suffisamment proche de celui d’un
+                                            elles penser ? »                          humain selon ce test.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          08
+
+--- PAGE 9 ---
+HISTOIRE & CLASSIFICATION
+Les grandes périodes de l’IA
+
+Une trajectoire faite d’enthousiasme, de limites, puis de renaissance.
+
+
+        1956            Dartmouth                 Le terme « Artificial Intelligence » apparaît officiellement (McCarthy, Minsky, Shannon, Rochester).
+
+
+
+         1950–1960        Premières recherches      Jeux, logique, résolution automatique de problèmes. Grand espoir, mais moyens limités.
+
+
+
+         1970–1980       Systèmes experts           Règles + moteur d’inférence. Exemple : MYCIN, pour le diagnostic médical.
+
+
+
+         Hivers de l’IA      Repli                           Résultats inférieurs aux attentes → baisse des financements et de l’intérêt scientifique.
+
+
+
+        1990–2010+       Renaissance                 Plus de données, plus de puissance de calcul (GPU), nouveaux algorithmes, stockage moins coûteux.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          09
+
+--- PAGE 10 ---
+HISTOIRE & CLASSIFICATION
+Les différents types d’IA
+
+Classification selon le niveau général des capacités du système.
+
+
+
+  A  ANI — IA faible / spécialisée       A  AGI — IA générale             AS ASI — Superintelligence
+   NI  Artificial Narrow Intelligence          GI  Artificial General Intelligen                    I                                                                                                                                      Intelligence hypothétique qui dépasserait
+                                                                                                                   largement les capacités humaines dans
+       Spécialisée dans une tâche précise :                                                                         presque tous les domaines. Concept
+                                                                                     •  Intelligence générale flexible,                            théorique et prospectif.
+          •  reconnaissance faciale,                                                                                     •  capable d’apprendre, programmer,
+          •  recommandation,                                                                résoudre des problèmes variés comme
+          •  traduction,                                                        un humain
+          •  conduite assistée.                                                                                     •  s’adapter à des nouvelles situations
+          •  Assistant vocal
+      →C’est l’IA que nous utilisons                                                    →Reste un concept de recherche.
+       actuellement.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          10
+
+--- PAGE 11 ---
+HISTOIRE & CLASSIFICATION
+Une deuxième classification : le fonctionnement
+
+Quatre catégories décrivent le rapport de l’IA à la mémoire, à l’esprit et à la conscience.
+
+
+   1  Machines réactives                               2  Mémoire limitée
+
+           Réagissent à l’état actuel de l’environnement, sans mémoire des                                   Utilise certaines informations passées pour décider. Ex. : un véhicule
+           expériences passées. Ex. : programme qui choisit son coup selon la position                autonome utilise les données récentes de ses capteurs.
+            actuelle d’un jeu.
+
+
+
+
+   3  Théorie de l’esprit                                 4  Conscience de soi
+
+           Catégorie hypothétique : l’IA modéliserait les états mentaux d’autrui                       Concept hypothétique où la machine aurait une forme de conscience d’elle-
+             (intentions, croyances, émotions, objectifs).                                     même. Non établi chez les systèmes actuels.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          11
+
+--- PAGE 12 ---
+APPROCHES
+Les grandes approches de l’IA
+
+Plusieurs courants proposent des façons différentes de construire un système intelligent.
+
+
+   1  Approche symbolique                             2  Approche connexionniste
+
+          Connaissances, symboles et règles manipulés par la logique et le                     Réseaux de neurones qui apprennent des motifs à partir de grandes
+          raisonnement.                                                                        quantités de données.
+
+
+
+
+   3  Approche actionniste                             4  Approche hybride
+
+        Un agent perçoit son environnement, décide et agit pour atteindre un                 Combine plusieurs approches afin de profiter des avantages de
+            objectif.                                                                      chacune.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          12
+
+--- PAGE 13 ---
+APPROCHES
+Approche symbolique
+
+Manipuler des symboles selon des règles logiques explicites.
+
+
+
+
+   01  Connaissances          02 Symboles et règles        03  Logique et              04  Exemple
+          explicites                                                   raisonnement
+                                                                                                                  Systèmes experts
+
+
+
+
+
+                  Idée centrale : les connaissances sont représentées explicitement et manipulées par des règles.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          13
+
+--- PAGE 14 ---
+APPROCHES
+Approche connexionniste
+
+Des réseaux de neurones apprennent directement à partir des données.
+
+
+
+
+   01  Réseaux de             02  Apprentissage à          03  Reconnaissance de       04  Exemple
+        neurones                           partir des données               motifs
+                                                                                                                     Reconnaissance
+                                                                                                                          d’images
+
+
+
+
+
+                        Idée centrale : le modèle apprend des motifs à partir d’un grand volume de données.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          14
+
+--- PAGE 15 ---
+APPROCHES
+Approche actionniste
+
+Un agent situé dans un environnement, qui agit pour atteindre un but.
+
+
+
+
+
+      1  Perception                    2  Décision                      3  Action
+                   →                     →
+
+
+
+
+            A  Agent + environnement                O  Objectif et adaptation
+
+
+
+
+
+                                                         Exemple : robot autonome
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          15
+
+--- PAGE 16 ---
+APPROCHES
+Approche hybride
+
+Combiner plusieurs approches pour profiter des avantages de chacune.
+
+
+
+   1  Réseau neuronal               2  Règles symboliques             3  Agent
+                      +                       +         pour percevoir                                  pour raisonner                                  pour agir
+
+
+                           ↓
+
+
+                                    SYSTÈME D’IA HYBRIDE
+
+
+
+
+                                                         Objectif : profiter des avantages de chaque approche.
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          16
+
+--- PAGE 17 ---
+APPROCHES
+Comparaison des approches
+
+Une lecture simple : raisonner, apprendre, agir… ou combiner.
+
+
+
+
+
+       Symbolisme              Connexionnisme               Actionnisme                   Hybride
+
+       →              →              →              →
+
+          Raisonner                     Apprendre                            Agir                      Combiner
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          17
+
+--- PAGE 18 ---
+MACHINE LEARNING
+Intelligence Artificielle, Machine Learning, Deep Learning
+
+Trois niveaux à ne pas confondre.
+
+
+
+     INTELLIGENCE ARTIFICIELLE
+
+       Domaine général visant à construire des systèmes capables de comportements intelligents.
+
+
+
+             MACHINE LEARNING
+
+                    Approche permettant à un système d’apprendre des modèles à partir de données.
+
+
+
+                               DEEP LEARNING — sous-domaine du ML basé sur des réseaux de neurones à plusieurs couches.
+
+
+
+
+
+                                 Deep Learning ⊂Machine Learning ⊂Intelligence Artificielle — l’inverse n’est pas vrai.
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          18
+
+--- PAGE 19 ---
+MACHINE LEARNING
+Les types d’apprentissage automatique
+
+Le système apprend selon la façon dont les données sont fournies.
+
+
+
+   1  Apprentissage supervisé            2  Apprentissage non supervisé        3  Apprentissage par
+                                                                                   renforcement
+         Le système apprend à partir de données                   Le système découvre seul des structures                  Le système apprend par essai-erreur, guidé
+          étiquetées (avec la bonne réponse).                     dans des données non étiquetées.                         par des récompenses.
+
+
+
+
+
+    Données étiquetées                                    Données non étiquetées                                Récompenses
+
+
+
+
+
+                                Ce chapitre détaille les deux premiers : l’apprentissage supervisé et non supervisé.
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          19
+
+--- PAGE 20 ---
+MACHINE LEARNING
+Apprentissage supervisé
+
+Apprendre à partir d’exemples déjà étiquetés par un humain.
+
+
+
+    1  Données d’entrée                2  Deux tâches                    3  Exemple
+
+        +                                                          Classification : prédire une                      Reconnaissance de chiffres
+                                                                   catégorie (ex. chat / chien)                        manuscrits       réponses attendues
+        (étiquettes)
+                   →        Régression : prédire une   →
+                                              valeur continue (ex. un
+                                                     prix)
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          20
+
+--- PAGE 21 ---
+MACHINE LEARNING
+Apprentissage non supervisé
+
+Découvrir seul une structure cachée dans des données non étiquetées.
+
+
+
+    1  Données d’entrée                2  Deux tâches                    3  Exemple
+
+       SANS réponse attendue                             Clustering : regrouper des éléments                  Segmentation de clients par
+                                                                        similaires                                   comportement d’achat
+
+                   →        Réduction de dimension   →
+                                                                        : simplifier les données
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          21
+
+--- PAGE 22 ---
+MACHINE LEARNING
+Supervisé vs non supervisé
+
+Le critère clé : la présence — ou non — d’une réponse attendue.
+
+
+
+   S  Apprentissage supervisé                   N  Apprentissage non supervisé
+
+       Données étiquetées                                      Données non étiquetées
+
+        Classification / Régression                                   Clustering / Réduction de dimension
+
+       Le système apprend à prédire                           Le système découvre des structures
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          22
+
+--- PAGE 23 ---
+DATA SCIENCE
+Qu’est-ce que la Data Science ?
+
+Un domaine qui combine plusieurs disciplines pour extraire de la connaissance à partir des données.
+
+
+
+   1  Statistiques & Mathématiques       2  Informatique &                   3  Expertise métier
+                                           Programmation
+          Analyser les données, mesurer l’incertitude                   Collecter, stocker et traiter de grands                    Comprendre le contexte pour poser les
+           et valider les résultats.                                volumes de données avec les bons outils.                 bonnes questions et interpréter les
+                                                                                                                                              résultats.
+
+
+
+
+     Probabilités, tests statistiques                                Python, bases de données, cloud                            Connaissance du domaine
+
+
+
+
+
+                 La Data Science s’appuie sur les statistiques, l’informatique et l’Intelligence Artificielle / le Machine Learning comme outils d’analyse.
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          23
+
+--- PAGE 24 ---
+DATA SCIENCE
+Le cycle de vie d’un projet Data Science
+
+Une démarche structurée, de la donnée brute à la décision — souvent répétée plusieurs fois.
+
+
+
+
+  1   Collecte            2   Nettoyage &          3   Exploration &         4   Modélisation         5   Décision &
+                                     préparation                  analyse                           (IA / ML)                     déploiement
+              →                →                →                →
+
+
+
+
+
+                     DONNÉES BRUTES → DONNÉES PRÊTES → CONNAISSANCE → MODÈLE → DÉCISION
+
+
+
+
+                         Chaque étape prépare la suivante : on ne modélise bien qu’avec des données déjà comprises et nettoyées.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          24
+
+--- PAGE 25 ---
+DATA SCIENCE
+Data Science et Intelligence Artificielle
+
+Deux domaines complémentaires, à ne pas confondre.
+
+
+
+   D  Data Science                                                                I   Intelligence Artificielle
+
+         Statistiques, visualisation, gestion des données                   Algorithmes qui simulent un comportement
+                                                                                      intelligent
+        Objectif : extraire des connaissances, orienter
+                                                                     Objectif : automatiser une tâche ou une       des décisions
+                                                                   prédiction
+         Utilise l’IA / le ML comme outils parmi
+                                                             Le Machine Learning est une de ses        d’autres
+                                                              techniques
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          25
+
+--- PAGE 26 ---
+GENIE LOGICIEL
+L’IA dans un projet de Génie Logiciel
+
+L’IA doit être vue comme un composant intégré dans un système logiciel plus large.
+
+
+
+                       APPLICATION
+                                                       MODULE IA — DÉTAIL
+
+
+                         Interface utilisateur
+
+                                                                  Données
+
+                         Backend
+
+                                                                    Modèle
+
+                     Base de données
+
+                                                                             Algorithme
+
+                        Module IA
+
+
+
+                 Rôle du génie logiciel : architecture, conception, développement, tests, déploiement, maintenance, sécurité, qualité.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          26
+
+--- PAGE 27 ---
+APPLICATIONS & ARCHITECTURE
+Domaines d’application de l’IA
+
+Des usages variés, de l’aide au diagnostic à la vision par ordinateur.
+
+
+   •  Médecine                                          •  Finance
+
+           Analyse d’images, aide au diagnostic, découverte de médicaments                                 Détection de fraude, analyse de risques, prévision
+
+
+   •   Transport                                           •   Industrie
+
+           Véhicules autonomes, optimisation d’itinéraires, gestion du trafic                                Maintenance prédictive, contrôle qualité, robotique
+
+
+   •   Informatique                                        •  Langage (NLP)
+
+           Détection de malwares, recommandations, assistants, génération de code                           Traduction, reconnaissance vocale, résumé, agents conversationnels
+
+
+   •   Vision par ordinateur
+
+          Reconnaissance d’objets et faciale, segmentation, analyse vidéo
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          27
+
+--- PAGE 28 ---
+SYNTHÈSE
+Ce qu’il faut retenir
+
+Six idées pour clôturer le chapitre.
+
+
+  01  Finalité de l’IA                                   02  IA / ML / DL
+
+            Réaliser des tâches nécessitant des capacités humaines : apprendre,                        Deep Learning ⊂Machine Learning ⊂Intelligence Artificielle.
+            raisonner, percevoir, décider.
+
+
+
+  03  Histoire                                       04  Apprentissage
+
+        De Turing (1950) et Dartmouth (1956) aux hivers de l’IA, puis à la renaissance                       Supervisé = données étiquetées ; non supervisé = structures découvertes seul.
+          des années 2000–2010.
+
+
+
+  05  Types d’IA                                      06  Approches & usages
+
+           Aujourd’hui, surtout ANI ; AGI et ASI restent des concepts de recherche.                          Symbolique, connexionniste, actionniste, hybride ; applications en médecine,
+                                                                                                               finance, transport, industrie, langage et vision.
+
+
+
+
+
+Chapitre 1 — Introduction à l’Intelligence Artificielle                                                                                                                                          28

@@ -1,0 +1,151 @@
+--- PAGE 1 ---
+Chapitre 2 : Introduction à la réalité augmentée
+
+
+                  Travaux dirigés n°2
+
+
+EXERCICE 1
+
+      CHOISIR LA BONNE REPONSE.
+
+    1. Parmi ces exemples lequel ne fait pas partie de la réalité augmentée ?
+        a) Un visiteur d’un monument en train de voir en temps réel des données historiques sur
+            les différentes parties de ce monument à travers son smartphone.
+       b) Une femme en train de tester des vêtements à travers un grand écran dans une
+
+           boutique.
+        c) Un ensemble de personnes en train de visualiser le phénomène d’écoulement de
+            fluides sur les écrans des casques immersives.
+       d) Un technicien qui visualise à travers une tablette des indications numériques sur la
+         machine réelle afin de lui guider à la maintenir.
+
+    2. La réalité augmentée ne s’appuie pas sur :
+        a) Le traitement de signal
+       b) La robotique
+        c)  Les interfaces homme/machine
+       d) Les technologies mobiles
+
+    3.  Quel composant ne fait pas partie de l’architecture matérielle basique d’un système
+      de réalité augmentée ?
+        a)  Ordinateur
+       b) Caméra
+        c)  Haut-parleurs
+
+       d) Capteurs de position
+    4. Dans un système de réalité augmentée à vision directe, on n’a pas besoin de :
+        a)  Dispositif optique
+       b)  Dispositif vidéo
+        c)  Système de tracking
+
+       d) Lunettes semi-transparentes
+    5. Pokémom Go est un exemple d’:
+        a) Un jeu de réalité virtuelle
+       b) Une application de vision par ordinateur
+        c) Un jeu de réalité augmentée
+
+       d) Une application de virtualité augmentée
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      33
+
+--- PAGE 2 ---
+Chapitre 2 : Introduction à la réalité augmentée
+
+    6.             sont des équipements à vision directe.
+        a)  Les casques immersifs
+       b) Les lunettes semi-transparentes
+
+        c)  Les écrans des smartphones
+       d) Les écrans des ordinateurs
+    7. Une figure qui représente la technologie d’affichage à vision indirecte.
+
+
+
+
+
+                            (a)
+
+
+
+
+
+                             (b)
+
+
+
+
+
+                               (c)
+
+
+
+
+
+                            (d)
+    8.  Quelle est la décennie d’apparition de la réalité augmentée ?
+        a) 1960
+
+       b) 1970
+        c) 1980
+       d) 1990
+    9.  Actuellement, comment est intégrée la réalité augmentée dans les réseaux sociaux ?
+        a)  Visio-conférence holographique
+
+       b) Communication directe en utilisant des avatars de RA
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      34
+
+--- PAGE 3 ---
+Chapitre 2 : Introduction à la réalité augmentée
+
+        c)  Publication d’une visite du bureau de l’utilisateur avec la RA
+       d) Augmentation et manipulation numériques des visages
+   10. Parmi ces exemples lequel qui ne fait pas partie de la réalité augmentée ?
+
+        a)  Traitement des phobies
+       b)  Affichage des personnages 3D des albums de coloriage
+        c)  Visite des biens immobiliers
+       d) Aide des militaires à la localisation de leurs ennemis
+   11. La réalité augmentée peut être :
+
+        a) Immersive et semi-immersive
+       b) Immersive et non immersive
+        c)  Semi-immersive et non immersive
+       d) Seulement non immersive
+   12. Comment peut-on utiliser la réalité augmentée dans un match de football ?
+
+        a)  Rediffusion
+       b) Communication des coachs avec les joueurs
+        c)  Affichage des tableaux de bord
+       d) Aide à la décision pour le changement des joueurs
+   13. Quelles sont les fonctionnalités offertes par la réalité augmentée ?
+
+        a)  Visualisation, interaction et 3D
+       b)  Collaboration, virtualisation et simulation
+        c)  Synthèse, sensorialité et virtualisation
+       d) Aucune de ces propositions
+   14. Le principe de fonctionnement de la réalité augmentée est basé sur __________.
+
+        a) Le tracking
+       b) La reconnaissance
+        c)  L'affichage des objets
+       d) Toutes les propositions
+   15. Quelles sont les caractéristiques d'un système de réalité augmentée ?
+
+        a)   Il combine le réel avec des objets virtuels dans un environnement réel.
+       b)  Il est interactif en temps réel.
+        c)   Il aligne le réel et le virtuel.
+
+       d) Toutes les propositions
+
+
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      35

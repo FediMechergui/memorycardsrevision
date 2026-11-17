@@ -5,6 +5,8 @@ import {
   Graph,
   TreeStructure,
   BookOpen,
+  Brain,
+  Cube,
   Star,
   X,
 } from "@phosphor-icons/react";
@@ -18,6 +20,8 @@ export const icons = {
   router: TreeStructure,
   code: Code,
   book: BookOpen,
+  brain: Brain,
+  cube: Cube,
 };
 export function SubjectIcon({
   subject,
@@ -31,13 +35,7 @@ export function SubjectIcon({
     <span className={`subject-icon ${subject.color}`}>
       <Icon size={size} weight="duotone" />
       <span className="subject-monogram" aria-hidden="true">
-        {subject.id === "ccna1"
-          ? "C1"
-          : subject.id === "ccna2"
-            ? "C2"
-            : subject.id === "javafx"
-              ? "FX"
-              : "M"}
+        {subject.monogram || subject.title.slice(0, 2).toUpperCase()}
       </span>
     </span>
   );

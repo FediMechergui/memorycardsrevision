@@ -1,0 +1,920 @@
+--- PAGE 1 ---
+Fondements
+de la Réalité Augmentée
+
+
+
+
+
+                                                                                                           48
+
+--- PAGE 2 ---
+     PLAN
+
+•   Technologies d’augmentation
+•   Chaîne d’augmentation – Marker based AR
+•   Techniques d’augmentation
+   o  Reconnaissance
+   o  Recalage
+   o  Calibrage et estimation de pose
+   o  Tracking
+•   Techniques d’interaction 3D
+•   Contraintes de RA
+
+
+
+
+                                                                                 49
+
+--- PAGE 3 ---
+     Technologies d’augmentation
+
+
+▰Marker based AR (Image recognition based AR)
+   Cette technologie se base sur la vision par ordinateur.
+  On  utilise une caméra pour localiser et  lire un marqueur
+      fiduciaire (marqueur de référence par exemple un QR code) ou
+    une image.
+  Ce marqueur permet d'identifier ce que l'utilisateur regarde et
+     d’où  il le regarde et aide également à placer l’élément virtuel
+     avec précision.
+  Un processus remplace alors la partie du monde réel couverte
+     par le marqueur par un élément virtuel.
+
+                                                                                                                 50
+
+--- PAGE 4 ---
+Exemples de marqueurs fiduciaires
+
+
+
+
+
+                                                                              51
+
+--- PAGE 5 ---
+     Technologies d’augmentation
+
+
+▰Markerless AR (Sensor based AR)
+     Appelée  aussi  Location  based  AR  ou
+        Position based AR.
+     Cette technologie se base sur la position
+      GPS et les données inertielles.
+      Elle utilise un capteur de position ainsi qu’un
+        capteur d’orientation.
+     La   combinaison   de   la   position   et
+         l’orientation donne  la position globale de
+          l’utilisateur dans l’environnement physique.
+                                                                                                                 52
+
+--- PAGE 6 ---
+    Technologies d’augmentation
+
+
+  Le capteur de position est  pris en charge par un récepteur GNSS (Global
+    Navigation Satellite System).
+     Le récepteur GNSS le plus populaire est le GPS (USA).
+      D’autres récepteurs GNSS : GLONASS (Russie), Galilo (Europe), Compass (Chine).
+  Les  capteurs  d’orientation  qui se  trouvent dans  les  dispositifs  Handheld:
+    accéléromètres, magnétomètres, gyroscopes, …
+  Le traitement de toutes ces données permet de  calculer l'emplacement  et
+    l'orientation de l'utilisateur.
+  Des éléments virtuels sont alors ajoutés à l'image avec une précision moindre
+   mais suffisante pour donner des directions ou des informations sur les bâtiments.
+
+                                                                                                               53
+
+--- PAGE 7 ---
+    Technologies d’augmentation
+
+
+
+▰Projection based AR
+  Cette technologie affiche des informations sur le
+    monde réel grâce à une lumière artificielle projetée.
+  Les informations virtuelles sont alors visibles par
+      tout le monde, pas seulement par un utilisateur.
+  Il est également possible de détecter les interactions
+     humaines comme le toucher sur un clavier projeté.
+   Utilise à la fois des caméras à lumière visible et des
+     caméras de profondeur par exemple KINECT.
+
+                                                                                                                54
+
+--- PAGE 8 ---
+    Technologies d’augmentation
+
+
+▰Superimposition based AR
+ Remplacement d'une partie de la vue originale par
+    des éléments  virtuels à travers un écran ou des
+     lunettes.
+ Se base  sur des  techniques de reconnaissance
+     d’objets.
+ Un seul l'utilisateur peut voir la réalité augmentée.
+  Utilisée dans  : médecine (superposition du patient
+      virtuel avec le patient réel), histoire (superposition
+    des nouvelles images avec les anciennes), éducation
+     scientifique (structure des os).                                                                    55
+
+--- PAGE 9 ---
+Chaîne d’augmentation-Marker based AR
+
+▰Etapes:
+      Filmer la scène à l’aide d’une caméra.
+      Reconnaître un objet (marqueur ou image de référence) dans le
+        but de connaître la pose de la caméra (position et orientation)
+        pour chaque image filmée.
+      Ajouter les augmentations en cohérence avec le monde réel
+        selon la pose connue de la caméra et les positions et les
+         orientations calculées.
+      Générer le rendu sur un appareil d’affichage (PC, smartphone,
+          tablette, lunettes intelligentes).
+
+                                                                                                         56
+
+--- PAGE 10 ---
+   Chaîne d’augmentation-Marker based AR
+
+
+
+                                 Caméra
+
+
+
+
+
+                                                                        Objet connu
+                                                                         (Traqueur)
+   Rendu
+d’augmentation
+
+
+                                                                                                               57
+
+--- PAGE 11 ---
+58
+
+--- PAGE 12 ---
+Chaîne d’augmentation-Marker based AR
+
+
+
+
+
+                        Pose de la caméra?
+     Capture de la scène                            Augmentation        Affichage du rendu                          Recalage et suivi par
+                              rapport à une cible
+
+
+    Techniques d’augmentation
+
+         Reconnaissance
+         Recalage:
+         Calibrage et estimation de pose de la caméra
+         Alignement des caméras réelle et virtuelle
+         Suivi (Tracking)                                                                                                        59
+
+--- PAGE 13 ---
+  Reconnaissance
+
+
+▰Identification de l’objet cible dans la scène afin de lui attribuer la bonne
+   augmentation.
+▰Principe :
+   ▻Capture et prétraitement des images réelles.
+    ▻Extraction des caractéristiques  distinctives de l’image  (couleurs, points
+           d'intérêt, contours, textures, formes géométriques, etc.)
+    ▻Comparaison des caractéristiques extraites avec des modèles ou de motifs
+          prédéfinis.
+     ▻Si une correspondance est trouvée, l’image est reconnue.
+
+                                                                                                           60
+
+--- PAGE 14 ---
+     Reconnaissance
+
+
+
+▰En  général,   il  y a deux  types  d’approches de
+   reconnaissance : globale et locale.
+▰Approche globale:
+     Analyser l’apparence globale de l’image.
+     Exemples  de  techniques:  l’histogramme  de
+        couleurs, les moments géométriques de l’image
+         (orientation,   taille,  position),  l’Eigenface,  le
+        Fisherface, etc.
+                                                                                                                61
+
+--- PAGE 15 ---
+    Reconnaissance
+
+
+
+▰Approche locale:
+     Calculer des descripteurs locaux dans
+       des zones spécifiques de l’image.
+     Se base sur les points ou les régions
+         d’intérêt.
+     Exemples de techniques: Harris, SIFT,
+       SURF, FAST, MSER, etc.
+
+
+
+                                                                                                               62
+
+--- PAGE 16 ---
+    Reconnaissance
+
+
+▰La technique la plus utilisée est la détection de points d’intérêt :
+
+    1. Capture du flux vidéo du monde réel                                                       5. Reconnaissance de l’image
+    2. Détection  des  points   d’intérêt  dans                                                       6. Objet virtuel associé généré
+       l’image en cours dans la vidéo
+                                                       7. Augmentation superposée à l’image réelle,
+    3. Calcul des  descripteurs  (features) des                                                      positionnée, orientée, mise à l’échelle grâce
+       points d’intérêt détectés.                                              aux données  fournies  par  le marqueur
+                                                 image.    4. Comparaison   de    l’ensemble   des
+       descripteurs   de   l’image   avec   les
+       descripteurs   des   images   modèles
+                                                                                                                63       (appariement).
+
+--- PAGE 17 ---
+64
+
+--- PAGE 18 ---
+  Recalage
+
+
+▰L’alignement réel-virtuel visuellement, haptiquement et auditivement.
+▰Réduire au maximum le décalage reçu par l’utilisateur.
+▰Pour le recalage visuel (processus de vision par ordinateur) :
+     Trouver les propriétés du point de vue de l’observateur dans la réalité et les
+         appliquer à la caméra virtuelle du monde numérique.
+     Nécessite beaucoup de calcul pour le calibrage et l’estimation de pose de la
+        caméra.
+     Se  fait directement  sur  le  réel  ou  en  appliquant  des transformations
+        géométriques aux objets virtuels.
+                                                                                                            65
+
+--- PAGE 19 ---
+ Calibrage et estimation de pose
+
+
+
+▰Trouver les paramètres intrinsèques et extrinsèques de la caméra.
+▰Paramètres intrinsèques: distance focale (FOV), facteurs d’échelle
+    et coordonnées de la projection du centre optique de la caméra
+   sur le plan image. Ils représentent les propriétés de projection de
+    la caméra.
+▰Paramètres extrinsèques: composantes de translation et angles de
+    rotation 3D qui représentent l’emplacement de la caméra.
+
+
+                                                                                                         66
+
+--- PAGE 20 ---
+    Calibrage et estimation de pose
+
+
+▰En projection perspective (Pinhole Camera Model)
+
+    Le point M(X, Y, Z, 1) en système de coordonnées global correspond au point
+      m(u, v, w) au niveau de l’image.
+    La caméra est caractérisée par sa matrice de projection P.
+
+         𝑚= 𝑃𝑀
+         𝐏=  𝐌𝐢𝐧𝐭 𝐌𝐞𝐱𝐭
+
+            Mint : matrice de calibrage intrinsèque
+           Mext: matrice de calibrage extrinsèque
+
+                                                                                                               67
+
+--- PAGE 21 ---
+Calibrage et estimation de pose
+
+
+
+        Paramètres intrinsèques
+
+
+
+                        M
+
+                                                       Repère global               m
+                                 Plan image
+
+
+
+    Repère caméra
+                             Paramètres extrinsèques
+                                                                                                        68
+
+--- PAGE 22 ---
+   Calibrage et estimation de pose
+
+
+                                       Paramètres intrinsèques:                k𝑢𝑓   0    𝑢0
+     𝑀i𝑛𝑡=   0    k𝑣𝑓    𝑣0                                                Distance focale: f
+                0     0     1
+                                                Facteurs d’échelle: ku et kv
+               𝑅11  𝑅12  𝑅13  𝑇1                                                    Projection du centre optique sur le plan
+                   𝑅22  𝑅23  𝑇2𝑀e𝑥𝑡= 𝑅𝑇=  𝑅21                                                     image: C’(u0, v0)
+                   𝑅32  𝑅33  𝑇3               𝑅31                                       Paramètres extrinsèques:
+                                           Composantes de translation:
+                                                              T(T1,T2,T3)
+                                              Angles de rotation: R(α, β, γ)
+
+                                                                                                             69
+
+--- PAGE 23 ---
+ Tracking
+
+
+▰Trouver en continu la position-orientation de la scène réelle ou
+   d’un objet cible dans l’espace physique.
+     Caméra non fixe avec des mouvements légers.
+      L’utilisateur ou les objets cibles en mouvement.
+▰Nécessite moins de calcul que le recalage.
+▰Possède 4 types suivant la technologie utilisée:
+      Suivi radio
+      Suivi ultrason
+      Suivi inertiel
+      Suivi optique                                                                                                         70
+
+--- PAGE 24 ---
+Tracking
+
+▰Etapes d’un algorithme de tracking:
+
+          Informations sur la position précédente et le mouvement d’un objet
+
+
+                Prédiction de la position de l’objet
+
+
+     Mise en correspondance, dans la zone prédite, des
+     primitives de l’objet afin de trouver sa position précise
+
+
+               Mise à jour des paramètres
+
+
+                                                                                                        71
+
+--- PAGE 25 ---
+ Suivi radio
+
+
+▰Basé sur des ondes électromagnétiques.
+▰Onde  électromagnétique:  énergie  générée  par une  oscillation,
+   chargée de particules électriques, dans l’espace.
+▰Estimer l’emplacement d’une cible mobile dans l’environnement par
+    l’estimation  d’une  ou  de   plusieurs   propriétés  d’une  onde
+    électromagnétique envoyée par un émetteur et reçue par une station
+   mobile à des intervalles réguliers.
+     Ces  propriétés  dépendent  principalement  de  la  distance
+        parcourue  par  le  signal  radio  et  les  caractéristiques de
+        l’environnement.
+
+                                                                                                         72
+
+--- PAGE 26 ---
+       Suivi radio
+
+
+
+▰Géolocalisation GPS
+     Le suivi se fait à l’aide des coordonnées
+        géographiques.
+      Utilisée pour les technologies RA mobile
+       où  le fonctionnement se base  sur  le
+        positionnement  de    l’utilisateur,  des
+         objets, des monuments, etc.
+     Le  système GPS  se  base  sur  une
+         constellation de satellites qui émettent en
+       permanence leur position et leur vitesse.
+                                                                                                                 73
+
+--- PAGE 27 ---
+  Suivi radio
+
+
+▰Technologie RFID (Radio Frequency Identification).
+
+                                           Signal Radio
+
+
+
+
+
+                         Signal Radio
+
+▰D’autres technologies: Bluetooth, WIFI, etc.                                              74
+
+--- PAGE 28 ---
+      Suivi Ultrason
+
+
+▰Basé  sur  des  capteurs  télémétriques
+    déterminant la distance d’un objet cible à
+    la source ultrasonore selon le temps de
+   sa propagation.
+       distance = vitesse du son × temps de trajet
+▰Envoi  des  signaux  ultrasonores  qui
+    seront  captés  par  des  microphones
+    placés sur l’objet à suivre pour estimer sa
+    position-orientation.
+▰Signaux sonores de hautes fréquences
+    entre 20 kHz et 100 kHz.                                                                                                                 75
+
+--- PAGE 29 ---
+    Suivi inertiel
+
+
+▰Utilise une centrale inertielle composée de:
+     Accéléromètre 3 axes (Pitch, Roll et Yaw) : si en état de repos, mesure le vecteur
+        de gravité sinon mesure l’accélération.
+     Gyromètre ou gyroscope 3 axes: mesure la vitesse et la position angulaire.
+                                                                  Y     Magnétomètre 3 axes: mesure champ magnétique terrestre.
+
+
+
+                                                              Z               X
+
+
+
+
+                                                                                                              76
+
+--- PAGE 30 ---
+Suivi inertiel
+                Accéléromètre
+
+
+
+
+
+                                      Magnétomètre
+
+
+
+
+
+                                                                                                        77
+                     Gyromètre
+
+--- PAGE 31 ---
+     Suivi inertiel
+
+
+
+
+
+                                                                  Y
+▰L’accéléromètre permet de mesurer les accélérations
+   de   l’appareil,  ses  changements  de   vitesse   et
+   changement de position sur un axe.                                                              Z               X
+▰Avec un accéléromètre pour chacun des trois axes
+    (transversal,  longitudinal,  vertical), on  pourra donc
+   capter  tous  les  mouvements  de  translation  du                                                                                                               78
+   smartphone.
+
+
+                                                                                                                78
+
+--- PAGE 32 ---
+    Suivi inertiel
+
+
+▰Le   gyromètre    fait   le  même   travail  que                                                                Y
+    l’accéléromètre, mais pour les rotations.
+▰Il couvre donc les mouvements de roulis et de
+                                                                      X   tangage et a besoin pour cela de trois axes  lui     Z
+    aussi.
+▰Les mouvements de lacet peuvent être captés par
+    le  gyromètre  mais  son  couplage  avec   le                                 7979
+   magnétomètre donne un meilleur résultat.
+
+
+                                                                                                               79
+
+--- PAGE 33 ---
+     Suivi inertiel
+
+
+▰Le magnétomètre mesure les champs magnétiques, tout           Y
+  comme une boussole, mais alors que la boussole doit
+    être tenue à plat pour indiquer le nord, l’appareil mobile
+                                                                       X    est généralement tourné dans tous les sens. Il faut donc  Z
+   également au magnétomètre un capteur pour chaque
+    axe.
+▰Grâce à  lui,  l’orientation du Handheld sera  toujours                                                                                                               8080
+   connue, et couplé avec le gyromètre, il permettra donc de
+   mesurer tous les mouvements de lacet.
+                                                                                                                80
+
+--- PAGE 34 ---
+ Suivi optique
+
+
+▰Appelé aussi suivi visuel.
+▰Utilise:
+         Des caméras.
+         Des techniques d’analyse d’images pour déterminer  la
+              position, l'orientation et  le mouvement d'objets ou des
+           marqueurs en temps réel.
+▰Possède deux types:
+          Suivi visuel avec marqueur (ex. code QR).
+          Suivi visuel sans marqueur (objets dans le flux vidéo réel).
+
+
+                                                                                                         81
+
+--- PAGE 35 ---
+  Suivi optique avec code QR
+
+
+▰Codes QR (Quick Response): codes matriciels ou codes à barres à
+   deux  dimensions  qui  encodent  des   milliers  de  caractères
+   numériques et alphanumériques (≠codes à barre  traditionnels:
+    vingtaine de chiffres).
+▰Permettent de réaliser plusieurs actions:
+          Ouverture d’une URL
+          Affichage d’un texte simple
+          Envoi d’un SMS ou d’un e-mail
+          Enregistrement d’une carte de visite électronique
+          Ouverture d’un système de géolocalisation (ex. Google Maps)
+          Enregistrement d’un événement dans un calendrier
+          Paiement en ligne
+                                                                                                          82          Etc.
+
+--- PAGE 36 ---
+Suivi optique avec code QR
+
+
+    Lus par tous les systèmes d’exploitation (Android, iOS, …)
+     à  l’aide d’une application de lecture préinstallée dans
+      certains smartphones ou à télécharger.
+    Faciles à créer à l’aide des outils en ligne (Unitag, QR
+     Code Generator, etc.) et imprimables sur tous types de
+      supports.
+    Peuvent être personnalisés par l’ajout d’un logo ou d’une
+      image.
+
+
+                                                                                                        83
+
+--- PAGE 37 ---
+     Suivi optique sans marqueur
+
+
+  Se base sur les caractéristiques images: les
+   points  d’intérêt,  les  régions  d’intérêt,  les
+   contours, les coins, etc.
+  Exemples des algorithmes utilisés en RA
+   pour le suivi visuel monoculaire (une seule
+   caméra) sans marqueur (points d’intérêt):
+     RAPiD:  Real-time  Attitude  and  Position
+        Determination
+     PTAM: Parallel Tracking and Mapping
+
+                                                                                                               84
+
+--- PAGE 38 ---
+Interaction
+
+
+
+▰Trois techniques d’interaction :
+    Navigation
+    Manipulation
+   Contrôle du système
+
+
+
+
+
+                                                                                                        85
+
+--- PAGE 39 ---
+   Interaction-Navigation
+
+
+▰Navigation
+  Déplacement au niveau de la scène et sélection d’un point de vue
+     spécifique.
+  Elle se fait grâce à un mouvement physique par exemples: marcher
+    dans la rue, tourner une table, etc.
+  Dispose  de  plusieurs  méthodes     :  déplacement,   orientation,
+     exploration, etc.
+
+
+
+                                                                                                             86
+
+--- PAGE 40 ---
+ Interaction-Navigation
+
+
+▰Déplacement :
+  Travel   : une méthode en RA  qui consiste à se déplacer dans un
+     environnement  réel  ou  virtuel  tout  en  superposant  des  éléments
+     numériques.
+  Exemple  : enrichir l'expérience de voyage, en affichant des informations
+     en temps réel sur les points d'intérêt à proximité, en indiquant les
+      directions sur la route ou en visualisant des itinéraires directement sur le
+      terrain.
+
+
+
+                                                                                                          87
+
+--- PAGE 41 ---
+  Interaction-Navigation
+
+
+
+La fonctionnalité Map View : une méthode
+  de déplacement AR qui superpose des
+  cartes numériques  sur  le monde  réel,
+  offrant aux utilisateurs une vue enrichie et
+  interactive de leur environnement.
+
+
+
+
+                                                                                                            88
+
+--- PAGE 42 ---
+ Interaction-Navigation
+
+
+▰Orientation :
+  Wayfinding  : une méthode en RA qui qui aide les utilisateurs à
+     trouver  leur  chemin  dans  des  environnements  complexes,
+   comme des villes, des centres commerciaux ou des aéroports
+  Elle intègre des repères visuels, des flèches directionnelles et
+    des   instructions   textuelles  directement  sur   l'écran  de
+      l'utilisateur, superposés à la vue réelle.
+
+
+
+                                                                                                          89
+
+--- PAGE 43 ---
+  Interaction-Navigation
+
+
+
+La  fonctionnalité  Navigation  path   : un
+  exemple des méthodes d’orientation AR
+  qui se réfère à la représentation visuelle et
+  interactive des itinéraires ou des chemins
+  à  suivre dans un  environnement  réel,
+  intégrée dans une interface de RA .
+
+
+
+                                                                                                            90
+
+--- PAGE 44 ---
+ Interaction-Navigation
+
+
+▰Exploration :
+  Elle  permet  aux  utilisateurs  de  découvrir  des  nouveaux
+    environnements de manière interactive.
+  Elle combine souvent des éléments de travel et de wayfinding
+     tout en ajoutant des informations contextuelles riches, des
+     animations ou des objets virtuels que l'utilisateur peut examiner
+    sous différents angles de vue.
+
+
+
+                                                                                                          91
+
+--- PAGE 45 ---
+   Interaction-Navigation
+
+En  plus  de  ces  méthodes  de  navigation,  l’utilisateur  peut  utiliser  la
+   fonctionnalité de Freeze Mode .
+Elle permet de  geler ou de capturer un  état ou une vue spécifique de
+   l'environnement  réel  et des éléments numériques superposés  pour une
+   interaction ou une analyse ultérieure.
+
+
+
+
+
+                                                                                                            92
+
+--- PAGE 46 ---
+  Interaction-Manipulation
+
+
+▰Manipulation
+     Permet à l’utilisateur de sélectionner un élément  virtuel,
+        faire bouger un objet physique ou virtuel et même leur
+       appliquer des modifications.
+     Trois méthodes   :  sélection, mouvement  et modification des
+        objets.
+      Utilise des techniques traditionnelles telle que le ray picking ou
+      des  nouveaux  paradigmes  d’interaction  par  exemple  les
+        interfaces tangibles.
+                                                                                                           93
+
+--- PAGE 47 ---
+    Interaction-Manipulation
+
+  Sélection :
+   Consiste à choisir un objet virtuel ou un élément
+       d'interface dans l'environnement augmenté.
+  Se fait :
+    ▻A l’aide d’un pointeur virtuel : un curseur ou un rayon qui
+                   part d'un contrôleur ou de la main de l'utilisateur pour
+                  sélectionner l'objet.
+      ▻Par  le  toucher  direct    :  des  dispositifs  tactiles  où
+                      l'utilisateur peut directement toucher l'objet sur l'écran
+                 pour le sélectionner.
+      ▻Par  reconnaissance  gestuelle   :  effectuer des  gestes
+                   spécifiques,  comme  pincer  avec  les  doigts  pour
+                  sélectionner un objet.                                                                           94
+
+--- PAGE 48 ---
+  Interaction-Manipulation
+
+   Principe de Ray picking:
+
+
+
+
+
+                                                                                                            95
+
+--- PAGE 49 ---
+      Interaction-Manipulation
+
+
+  Mouvement :
+     Le mouvement en RA permet de déplacer un objet
+           virtuel dans l'espace.
+     Se fait par :
+          ▻Glisser-déposer : l'utilisateur peut cliquer et glisser un objet
+                  sélectionné à l'endroit souhaité.
+        ▻Manettes ou contrôleurs   : en  utilisant des contrôleurs
+                 manuels,  l'utilisateur peut déplacer  les objets en  trois
+                 dimensions.
+        ▻Gestes de la main  : avec des systèmes de capture de
+               mouvement, l'utilisateur peut saisir et déplacer l'objet avec
+                ses mains en utilisant des gestes naturels.                                                                                                                   96
+
+--- PAGE 50 ---
+      Interaction-Manipulation
+
+  Modification des objets :
+      L'ajustement  des  propriétés  d'un  objet  virtuel,
+      comme la taille, la rotation ou la couleur.
+     Les méthodes de modification incluent :
+        ▻Échelles et poignées : utiliser des poignées autour de
+                   l'objet pour redimensionner ou faire pivoter l'objet.
+      ▻Menus contextuels : l'objet sélectionné peut afficher
+             un  menu   contextuel  avec  des  options  de
+                modification (changer la couleur, la texture, etc.).
+         ▻Manipulation gestuelle  : utiliser des gestes comme
+                pincer pour zoomer  afin de redimensionner ou
+                tourner l'objet.                                                                                   97
+
+--- PAGE 51 ---
+Interaction-Contrôle du système
+
+
+
+▰Contrôle du système
+     Adaptation des paramètres de l’application, y compris le
+        rendu, les processus d'interrogation et le contenu à qui
+      dépend l’application.
+
+
+
+
+
+                                                                                                        98
+
+--- PAGE 52 ---
+ Interaction-Contrôle du système
+
+  Exemples : l'ajustement de paramètres de tracking ou de techniques de visualisation
+    (par exemple, présenter la distance à votre POI dans un navigateur AR).
+
+
+
+
+
+                                                                                                         99
+
+--- PAGE 53 ---
+Contraintes de RA
+
+
+
+                                                                  (a) Intégration arbitraire
+                                                                 (b) Prise en compte de
+                                                            l’alignement entre caméras
+                                                                   réelle et virtuelle
+                                                                   (c) Respect de la cohérence
+                                                             spatiale
+                                                                 (d) Respect de la cohérence
+                                                     photométrique
+
+
+
+                                                                                                      100
+
+--- PAGE 54 ---
+    Contraintes de RA
+
+
+▰Alignement des caméras réelles et virtuelles
+   ▻Faire correspondre la perspective de l'objet virtuel avec celle de la scène réelle.
+   ▻Pour résoudre ce problème:
+        ▻Retrouver les propriétés de la caméra réelle ayant donné lieu à l'observation (réglages
+                internes et point de vue par rapport à la scène),
+        ▻Calculer les images synthétiques en utilisant une caméra virtuelle reprenant les
+           mêmes propriétés.
+        ▻Plusieurs techniques existent pour retrouver les paramètres réels de la caméra, à
+                   partir de capteurs ou d'indices extraits directement de l'image à augmenter.
+
+
+                                                                                                            101
+
+--- PAGE 55 ---
+Contraintes de RA
+
+
+
+▰Figure (b) : exemple de résultat obtenu lorsque l'image de la voiture respecte la
+    perspective réelle.
+
+   ▻Image non réaliste  : la voiture n'est pas correctement éclairée, et la partie arrière
+         du véhicule qui devrait être occultée par le bâtiment photographié, est pourtant
+
+           projetée par-dessus l'édifice.
+
+            Résoudre les autres problèmes.
+
+                                                                                                      102
+
+--- PAGE 56 ---
+Contraintes de RA
+
+
+▰Cohérence spatio-temporelle
+
+   ▻Concerne  les déplacements des objets  virtuels dans  la scène  réelle
+         (positionnement   relatif,  synchronisation  temporelle),  ainsi  que  les
+
+         occultations et interpénétrations qui peuvent se produire entre éléments
+
+        de natures différentes.
+
+  ▻La Figure (c) montre un résultat de composition où la cohérence spatiale
+         est prise en compte.
+                                                                                                       103
+
+--- PAGE 57 ---
+Contraintes de RA
+
+
+
+ ▰Cohérence photométrique
+
+    ▻Concerne la prise en compte des inter-réflexions lumineuses (ombres,
+            reflets) entre les scènes réelles et virtuelles.
+
+   ▻La Figure  (d) montre  le  résultat obtenu en tenant compte de  la
+         cohérence photométrique.
+
+
+
+
+                                                                                                      104
+
+--- PAGE 58 ---
+ Contraintes de RA mobile
+
+
+
+▰Trois limites majeures liées à la mobilité :
+    ▻Précision des données issues du GPS et de la caméra
+     ▻RA nécessite une précision inférieure à celle d’un GPS (en mètres).
+        ▻Qualité de caméra supérieure : pas différence entre ce qu’on filme et ce qu’on visionne.
+    ▻Performance des calculateurs
+        ▻Calcul précis et rapide surtout pour la reconnaissance de formes (temps réel).
+    ▻Problèmes de reflets et occlusions lors d’une utilisation en extérieur
+
+
+                                                                                                       105

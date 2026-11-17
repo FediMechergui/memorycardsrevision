@@ -1,0 +1,1171 @@
+--- PAGE 1 ---
+Introduction au Machine
+Learning
+
+
+
+
+
+                                                                                          Supervisé
+
+                                                                     Non supervisé
+                Département Informatique                                     Par renforcement
+                         ISET MAHDIA
+              Enseignante : Lobna BEN RHOUMA
+
+
+                                                                                                                            1
+
+--- PAGE 2 ---
+INTRODUCTION
+Plan du cours
+
+
+
+
+
+  PARTIE  I                             PARTIE II                            PARTIE III
+
+  Apprentissage supervisé         Apprentissage non              Apprentissage par
+                                  supervisé                     renforcement
+
+  • Principe, Train / Test,               • Clustering et réduction de           • Agent, environnement,
+      classification, coût                     dimension                          récompense
+
+  • Algorithme KNN : fruits             • Algorithme K-means                • Algorithme Q-Learning
+
+  • Arbre et forêt : réussite à un         • Segmentation de clients             • Sortie d’un labyrinthe
+    examen
+
+
+
+
+
+Introduction au Machine Learning                                                                                                   2
+
+--- PAGE 3 ---
+VUE D’ENSEMBLE
+Les trois grands types d’apprentissage
+
+                                   Machine Learning
+
+
+
+       Apprentissage supervisé             Apprentissage non supervisé         Apprentissage par renforcement
+
+ Données étiquetées : apprendre à         Données sans étiquette : découvrir des    Un agent apprend par essais et
+ prédire une cible connue.                    structures.                             récompenses.
+
+
+  Classification                               Clustering                               Algorithmes de valeur
+ KNN · Arbre de décision · Forêt            K-means · Clustering hiérarchique ·         Q-Learning · SARSA · Deep Q-Network
+  aléatoire · Régression logistique · SVM     DBSCAN                             (DQN)
+
+
+  Régression                             Réduction de dimension
+  Régression linéaire ; aussi KNN, arbres,     ACP / PCA
+  forêts, SVM (versions régression)
+
+
+
+Introduction au Machine Learning                                                                                                   3
+
+--- PAGE 4 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ
+Le principe de l’apprentissage supervisé
+
+
+
+      Données étiquetées                  Algorithme d’apprentissage                        Prédiction
+                 (X, y)                                ajuste un modèle                    ŷ pour un nouvel exemple
+
+
+
+ Données étiquetées                  Caractéristiques X                    Cible y
+
+  Chaque exemple est                 Les variables d’entrée (features)       L’étiquette (label) à prédire.
+  accompagné de la réponse           mesurables, notées X.                 Ex. : pomme ou orange
+  attendue, fournie à l’avance.           Ex. : poids, diamètre, heures de        (catégorie), prix d’un
+  Ex. : un fruit de 140 g et 6,8 cm        révision.                         appartement (valeur
+  est une pomme.                                                      numérique).
+
+
+
+
+
+Introduction au Machine Learning                                                                                                   4
+
+--- PAGE 5 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ
+Données d’entraînement et données de test
+
+
+
+                            Train (entraînement) · par ex. 80 %                                 Test · 20 %
+
+
+Jeu de données étiqueté complet, séparé au hasard avant l’apprentissage. Les proportions (80/20, 70/30…) sont des
+conventions, pas une règle fixe.
+
+
+  Train : apprendre                                        Test : évaluer
+
+  Les exemples utilisés pour ajuster le modèle.           Des exemples que le modèle n’a jamais vus.
+  Le modèle voit ces exemples ET leurs étiquettes.              Ils mesurent sa capacité à généraliser. Évaluer sur
+                                                                 les données d’entraînement donnerait une image
+                                                         trop optimiste.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                   5
+
+--- PAGE 6 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ
+Classification et régression
+
+Deux grandes familles de problèmes supervisés, selon la nature de la cible y.
+
+
+  Classification                                  Régression
+
+  Prédire une étiquette de classe, c’est-à-dire une          Prédire une quantité continue : y ∈ℝ.
+  valeur discrète : y ∈{0, 1} ou y ∈{classe 1, …, classe
+  K}.
+
+  • Deux classes : classification binaire (ex. spam / non       • Ex. : prix d’un appartement, température de demain.
+    spam).                                                     • Une seule variable d’entrée : régression simple ;
+  • Plus de deux classes : classification multi-classes (ex.          plusieurs variables d’entrée : régression multiple.
+   pomme / orange / banane).
+
+
+
+  Question à se poser : la réponse attendue est-elle une catégorie ou un nombre ?
+
+
+
+
+Introduction au Machine Learning                                                                                                   6
+
+--- PAGE 7 ---
+ PARTIE I · APPRENTISSAGE SUPERVISÉ
+Classification ou régression ?
+
+ Classification                              Régression
+X2                                                                 y (ex. prix)
+
+
+
+
+
+                            X1                                                     X (ex. surface)
+
+ Prédire une catégorie (valeur discrète).                        Prédire une valeur numérique continue.
+ Ex. : pomme ou orange ? e-mail spam ou non ?                  Ex. : prix d’un appartement, température demain.
+
+
+
+
+ Introduction au Machine Learning                                                                                                   7
+
+--- PAGE 8 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ
+Algorithmes supervisés : quelle tâche ?
+
+
+ Algorithme                                Classification        Régression    Remarque
+
+ K-Nearest Neighbors (KNN)                Oui              Oui        Vote ou moyenne des voisins
+
+ Arbre de décision                        Oui              Oui         Classe ou moyenne dans la feuille
+
+ Forêt aléatoire                           Oui              Oui        Ensemble d’arbres
+
+ Régression linéaire                    Non              Oui         Droite (ou hyperplan) ajustée
+
+ Régression logistique                     Oui            Non        Malgré son nom : classification
+
+ SVM                                   Oui              Oui        SVC / SVR dans scikit-learn
+
+
+
+
+
+Introduction au Machine Learning                                                                                                   8
+
+--- PAGE 9 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ
+Classification binaire ou multi-classes
+
+Le nombre de classes à prédire change la manière de formuler et d’évaluer le problème.
+
+
+  Classification binaire : 2 classes                            Classification multi-classes : K > 2 classes
+
+  • Étiquette y ∈{0, 1}.                                 • Étiquette y ∈{1, …, K}.
+
+  • Une classe est dite positive (y = 1), l’autre négative (y      • Chaque exemple appartient à une seule classe parmi
+    = 0).                                                              K.
+
+  • La classe positive est en général celle qu’on cherche       •  Il n’y a plus de « positif / négatif » global.
+    à détecter : e-mail spam, patient malade.                                                     • Ex. : pomme, orange ou banane ; chiffre manuscrit
+  • Ex. : un étudiant réussit-il ou non son examen ?            de 0 à 9.
+
+
+
+
+ À retenir : la régression logistique, malgré son nom, est un algorithme de classification. On la présente d’abord en
+  binaire, puis on l’étend à K classes.
+
+
+
+
+Introduction au Machine Learning                                                                                                   9
+
+--- PAGE 10 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Classification
+Classification binaire
+
+Exemple de modèle : la régression logistique prédit une probabilité, puis on décide.
+
+
+       Score linéaire : z = w₁x₁ + … + wₙxₙ + b, comme en régression          p = 1
+  1
+         linéaire.
+
+
+                                                                                                Classe 0 si p < 0,5
+       Sigmoïde : p = σ(z) = 1 / (1 + e⁻ᶻ) ramène z entre 0 et 1 : p est             0,5
+  2         la probabilité que y = 1.                                                                                       Classe 1 si p ≥ 0,5
+
+
+       Décision : Si p ≥ 0,5 : classe 1 (positive) ; sinon : classe 0                  0  3
+        (négative).                                                                            Seuil 0,5 en pointillés ; la courbe est la sigmoïde σ(z).       z
+
+
+
+
+  Exemple : réussite selon les heures de révision x (w = 1,2 ; b = −4, valeurs fictives apprises à l’entraînement)
+  x = 5 h → z = 2 → p = 0,88 → Réussite    x = 2 h → z = −1,6 → p = 0,17 → Échec
+
+
+
+Introduction au Machine Learning                                                                                                  10
+
+--- PAGE 11 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Classification
+Classification multi-classes
+
+Quand il y a K > 2 classes (ex. pomme, orange, banane), trois façons de procéder.
+
+
+  Algorithmes multi-classes natifs       Un contre tous (one-vs-rest)             Fonction Softmax
+
+  KNN, arbre de décision et forêt          On entraîne un classifieur binaire par         Extension de la régression logistique :
+  aléatoire gèrent directement K                classe : « cette classe » contre «           un score par classe, transformé en K
+  classes.                                    toutes les autres ».                           probabilités dont la somme vaut 1.
+
+  Ex. KNN : vote parmi les K voisins, la           Ex. : pomme / pas pomme, orange /          Détaillée dans une prochaine
+  classe la plus fréquente gagne.              pas orange, banane / pas banane. On         diapositive.
+                                           garde la classe au score le plus élevé.
+
+
+
+
+
+  Évaluation : la matrice de confusion devient K × K ; précision et rappel se calculent classe par classe.
+
+
+
+
+Introduction au Machine Learning                                                                                                  11
+
+--- PAGE 12 ---
+ PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+                 Introduction au KNN
+
+
+                                             Pourquoi « K-Nearest Neighbors » ?
+   Définition
+
+  KNN prédit la classe (ou la valeur) d’une nouvelle
+                                                                                                       le nombre de voisins consultés
+   observation à partir des K observations les plus                   K
+                                                                                  (paramètre à choisir)
+   proches dans les données d’apprentissage.
+
+
+
+                                                                     Nearest       les plus proches, au sens d’une distance
+
+
+  Type d’algorithme
+
+   •   Apprentissage supervisé                                                                  les voisins : exemples d’apprentissage
+                                                                  Neighbors
+                                                                                                     les plus similaires   •  Non paramétrique : aucune formule apprise
+
+   •  « Paresseux » (lazy) : les données sont simplement
+      mémorisées
+                                                     Principe de K-NN  : dis moi qui sont tes
+                                                          voisins, je te dirais qui tu es !
+
+
+KNN — K-Nearest Neighbors · Machine Learning                                                                                                                 12
+
+--- PAGE 13 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+Les étapes de l’algorithme KNN
+
+
+
+
+   1                   2                   3                   4                   5
+
+  Choisir K et la           Normaliser les           Calculer la              Retenir les K plus        Voter : la classe
+  distance                 variables                distance du            proches voisins          majoritaire est
+  (euclidienne)                                 nouvel exemple à                                prédite
+                                           chaque exemple
+                                          connu
+
+
+
+  En régression
+
+ KNN prédit la moyenne des valeurs cibles des K voisins (KNeighborsRegressor) au lieu d’un vote.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  13
+
+--- PAGE 14 ---
+        Exemple visuel : un nouvel étudiant
+
+
+
+ ↑ Moyenne précédente                                                                  Étudiant qui réussit
+
+                                                                                         Étudiant qui échoue
+
+                                                                               Nouvel étudiant (à prédire)
+
+
+                                                     K = 3
+                                                                                   Les 3 voisins les plus proches (cercle en
+                                                                                                  pointillés) : 2 étudiants qui réussissent, 1 qui
+                                                                             échoue.
+
+
+
+
+
+                                                                               Vote majoritaire (2 contre 1)
+                         → Il réussit
+                                                     Heures d’étude par semaine →
+
+
+
+KNN — K-Nearest Neighbors · Machine Learning                                                                                                                 14
+
+--- PAGE 15 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+Le choix de K
+
+K est un hyperparamètre : une valeur fixée par l’utilisateur avant l’entraînement.
+
+
+ K petit (ex. K = 1)                K grand                     Comment choisir ?
+
+  Frontière très irrégulière,             Frontière trop lissée : on ignore      Comparer plusieurs valeurs de K
+  sensible au bruit et aux valeurs        les particularités locales (sous-        sur des données de validation
+  aberrantes : risque de                apprentissage). Avec K = N, on         (validation croisée). K impair
+  surapprentissage.                     prédit toujours la classe               évite les égalités en
+                                          majoritaire.                             classification binaire.
+
+
+
+
+√N est parfois cité comme point de départ, mais ce n’est qu’une heuristique : seule la validation tranche.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  15
+
+--- PAGE 16 ---
+Le choix de K
+
+
+ K = 1                     K = 3                     K = 5
+
+
+
+
+
+  1 voisin : gris → il échoue                2 orange, 1 gris → il réussit              3 orange, 2 gris → il réussit
+
+
+  K trop petit                     K trop grand                      En pratique
+   Sensible au bruit : un seul point atypique           Frontière trop lisse : la classe majoritaire            Choisir K par validation croisée ; K impair
+   change la prédiction (surapprentissage).          domine (sous-apprentissage).                  en classification binaire.
+
+
+
+
+
+KNN — K-Nearest Neighbors · Machine Learning                                                                                                                 16
+
+--- PAGE 17 ---
+        Distance euclidienne et normalisation
+
+
+  Distance euclidienne                       Pourquoi normaliser ?
+
+                                                  Une variable de grande échelle écrase les autres dans le calcul
+                                                      de la distance.
+         d(A,B) = √((x₁ − y₁)² + (x₂ − y₂)²)
+                                                                    A(5 h ; 600 pts), B(6 h ; 640 pts), C(9 h ; 610 pts)
+
+  Exemple : A(2 ; 3) et B(5 ; 7)                                          Paire        Sans normalisation   Avec normalisation
+
+  d = √((2 − 5)² + (3 − 7)²)                                                 d(A,B)               40,0                 0,11
+
+  d = √(9 + 16) = √25 = 5                                                  d(A,C)               10,8                 0,40
+
+                                                                        Plus proche de A          C                B
+
+   Avec plus d’attributs, on additionne les carrés des
+                                                     Min-max : x′ = (x − min) / (max − min), donc toutes les
+   différences de chaque variable.
+                                                                     variables sont dans [0 ; 1].
+
+
+
+
+
+KNN — K-Nearest Neighbors · Machine Learning                                                                                                                 17
+
+--- PAGE 18 ---
+ PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+Mesurer la proximité : distance euclidienne
+
+y
+
+                                                 En 2 dimensions :
+                B (4 ; 6)
+     6                                           d(A, B) = √( (x₂ − x₁)² + (y₂ − y₁)² )
+
+     5
+                                                Avec n variables : d = √( Σ (aᵢ − bᵢ)² )
+     4        d = 5           4
+
+
+     3
+                                             • Exemple : d(A, B) = √(3² + 4²) = √25 = 5
+
+     2                                         • KNN calcule cette distance entre le nouvel exemple et
+                  3        A (1 ; 2)                                      tous les exemples connus.
+     1
+                                             • Autre mesure possible : distance de Manhattan (somme
+                                                 des écarts absolus).
+
+            1     2     3     4     5     6
+                             x
+
+
+
+ Introduction au Machine Learning                                                                                                  18
+
+--- PAGE 19 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+Autres mesures de distance
+
+Exemple : A (1 ; 2) et B (4 ; 6), soit des écarts de 3 et de 4 sur les deux variables.
+
+
+ Distance           Formule                      Principe                           A → B
+
+
+ Euclidienne          √( Σ (aᵢ − bᵢ)² )                 Ligne droite, « à vol d’oiseau » (par défaut)      √(3² + 4²) = 5
+
+                                    Somme des écarts, comme dans une ville en
+ Manhattan          Σ |aᵢ − bᵢ|                                                        3 + 4 = 7
+                                              damier
+
+ Tchebychev       max |aᵢ − bᵢ|                  Plus grand écart sur une seule variable        max(3 ; 4) = 4
+
+                                                                                                     (rouge, rond) et (rouge,
+ Hamming           nb. de positions différentes    Variables catégorielles ou binaires
+                                                                                                         carré) : 1
+
+
+  Choix : la distance euclidienne est la plus utilisée pour des variables numériques normalisées ; Hamming convient aux variables
+  catégorielles.
+
+
+
+Introduction au Machine Learning                                                                                                  19
+
+--- PAGE 20 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+L’algorithme KNN : pseudo-code
+
+   knn_pseudocode                                                     Notations
+  # Entrées : D, x, K
+  Pour chaque (x′, c) dans D :                       D = {(x′, c)} : exemples d’apprentissage, avec
+                                                                                       leur classe c.
+      calculer d(x, x′)
+  Trier D par distance croissante                           x : l’observation à classer.
+  kppv(x) ← les K premiers exemples                            d(x, x′) : distance entre deux observations.
+  Compter les classes dans kppv(x)                          kppv(x) : les K plus proches voisins de x.
+  Retourner la classe la plus fréquente
+
+
+
+
+
+  Égalité entre classes ? Réduire K, ou choisir la classe du voisin le plus proche. La distance d est détaillée dans la
+  diapositive suivante ; normaliser les variables avant de la calculer.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  20
+
+--- PAGE 21 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+Domaines d’application du KNN
+
+Principe commun : décider d’après des cas déjà connus qui ressemblent à la situation à traiter.
+
+
+  Reconnaissance de formes               Diagnostic médical                    Images satellites
+
+  Chiffres manuscrits, visages :               Rapprocher un patient de cas                 Classer chaque zone (forêt, eau, ville)
+  comparer une image à des exemples          similaires dont le diagnostic est              selon ses voisines.
+  étiquetés.                                connu.
+
+
+
+  Marketing ciblé                     Recommandation                      Détection de fraude
+
+  Proposer à un client ce qu’achètent          Suggérer films ou produits appréciés         Repérer une transaction très éloignée
+  des clients qui lui ressemblent.              par des utilisateurs proches.              de ses voisines habituelles.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  21
+
+--- PAGE 22 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN  · Exemple
+Exemple : classer un fruit mystère
+
+
+ ID             Poids (g)         Diamètre (cm)       Poids normalisé      Diamètre normalisé      Classe
+
+ F1           140               6,8                 0,000                0,000             Pomme
+
+ F2           150               7,2                 0,143                0,250             Pomme
+
+ F3           160               7,0                 0,286                0,125             Pomme
+
+ F4           190               7,8                 0,714                0,625                 Orange
+
+ F5           200               8,0                 0,857                0,750                 Orange
+
+ F6           210               8,4                 1,000                1,000                 Orange
+
+ Nouveau      172               7,5                 0,457                0,438                  ?
+
+
+
+• Jeu de données fictif de 6 exemples connus ; choix de K = 3 (impair, petit devant 6 exemples).
+
+• Normalisation min-max : poids de 140 à 210 g, diamètre de 6,8 à 8,4 cm.
+
+
+Introduction au Machine Learning                                                                                                  22
+
+--- PAGE 23 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN  · Exemple
+Distances et voisins (K = 3)
+
+
+ Rang      Fruit       Calcul (valeurs normalisées)                       Distance           Classe
+
+ 1        F4         √(0,257² + 0,187²)                               0,318            Orange
+
+ 2        F3         √(0,171² + 0,313²)                               0,356          Pomme
+
+ 3        F2         √(0,314² + 0,187²)                               0,366          Pomme
+
+ 4        F5         √(0,400² + 0,313²)                               0,508            Orange
+
+ 5        F1         √(0,457² + 0,438²)                               0,633          Pomme
+
+ 6        F6         √(0,543² + 0,563²)                               0,782            Orange
+
+
+Les trois lignes en vert sont les K = 3 plus proches voisins : F4 (Orange), F3 (Pomme), F2 (Pomme). Valeurs arrondies à 3
+décimales ; F3 et F2 sont proches (0,356 et 0,366) mais les trois premiers rangs sont bien distincts du 4e (0,508).
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  23
+
+--- PAGE 24 ---
+ PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN  · Exemple
+Vote majoritaire et interprétation
+
+Diamètre normalisé            Pomme       Orange
+                                             Vote des 3 voisins
+                                             F6
+     1
+                                     Pomme : 2 voix (F3, F2)
+
+                                        F5              Orange : 1 voix (F4)
+   0,75
+                                   F4
+
+                                                            Prédiction : Pomme (2 voix sur 3)    0,5
+                            ?
+
+                                                  • Interprétation : le fruit ressemble davantage à des                F2
+   0,25                                            pommes, mais sans certitude : 1 voisin sur 3 est une orange
+                     F3                                                                 (probabilité estimée 2/3 ≈ 0,67).
+           F1                                       • K compte : avec K = 1 le voisin F4 donne Orange ; avec K = 5     0
+                                                                (3 pommes contre 2 oranges) on obtient Pomme.
+
+         0        0,25       0,5       0,75       1
+                      Poids normalisé
+
+
+ Introduction au Machine Learning                                                                                                  24
+
+--- PAGE 25 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN  · Python
+KNN avec scikit-learn
+
+  knn.py                                                                     • MinMaxScaler applique la
+                                                                                           normalisation étudiée.
+  import numpy as np
+  from sklearn.neighbors import KNeighborsClassifier                      • n_neighbors=3 définit K.
+  from sklearn.preprocessing import MinMaxScaler
+                                                                             •  fit mémorise les exemples
+  # Données : [poids (g), diamètre (cm)]                                            normalisés.
+  X = np.array([[140, 6.8], [150, 7.2], [160, 7.0],                       •  predict / predict_proba classe
+                [190, 7.8], [200, 8.0], [210, 8.4]])                                                                                              prédite et part de voisins de chaque
+  y = np.array(["Pomme"] * 3 + ["Orange"] * 3)
+                                                                                                        classe.
+
+  scaler = MinMaxScaler().fit(X)      # min et max de X                   •  classes_ donne l’ordre des colonnes
+  knn = KNeighborsClassifier(n_neighbors=3)                                 de predict_proba.
+  knn.fit(scaler.transform(X), y)     # mémorise les exemples
+
+  x_new = scaler.transform([[172, 7.5]])
+  print(knn.predict(x_new))           # ['Pomme']                                                                                       Avec un vrai jeu de données :
+  print(knn.predict_proba(x_new))     # env. [[0.33 0.67]]                                                                                                             train_test_split (stratify=y), scaler ajusté
+  print(knn.classes_)                 # ['Orange' 'Pomme']                                                                                                     sur X_train seulement, puis score(X_test,
+                                                                                                              y_test).
+
+
+
+Introduction au Machine Learning                                                                                                  25
+
+--- PAGE 26 ---
+ PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+ Évaluer un classifieur : matrice de confusion
+
+                                   Classe prédite
+                                                                  Exactitude : (VP + VN) / total = 7 / 10 = 0,70
+                   Pomme            Orange
+                                                                        Part des prédictions correctes
+
+       Pomme
+                VP = 4       FN = 1              Précision : VP / (VP + FP) = 4 / 6 ≈ 0,67
+
+Classe                                                          Parmi les « Pomme » prédites, combien le sont vraiment
+réelle
+
+         Orange                                              Rappel : VP / (VP + FN) = 4 / 5 = 0,80
+                  FP = 2       VN = 3
+                                                                Parmi les vraies pommes, combien sont détectées
+
+
+                                                               Score F1 : 2PR / (P + R) ≈ 0,73
+ Classe positive = Pomme. 10 exemples de test fictifs. VP : vrai
+  positif, FN : faux négatif, FP : faux positif, VN : vrai négatif.           Moyenne harmonique de précision et rappel
+
+
+
+
+
+  Introduction au Machine Learning                                                                                                  26
+
+--- PAGE 27 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · KNN
+KNN : avantages, limites, usages
+
+
+  Avantages                                              Limites
+
+  • Très simple à comprendre                        • Prédiction lente sur de gros jeux de données
+  • Aucune hypothèse sur la forme de la frontière        • Sensible à l’échelle des variables
+  • Peu de réglages : K, distance                      • Moins efficace avec beaucoup de variables
+                                                 • Sensible au bruit si K est trop petit
+
+
+
+
+
+ Quand l’utiliser ?
+
+  Jeux de données petits ou moyens, peu de variables numériques, frontière irrégulière, ou comme premier
+  modèle de référence à comparer à d’autres.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  27
+
+--- PAGE 28 ---
+PARTIE  I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision
+ Introduction aux arbres de décision
+
+
+                                            Pourquoi « arbre de décision » ?
+      Définition
+
+   Un arbre de décision prédit la classe (ou la valeur)
+    d’une observation en lui posant une série de                                       structure hiérarchique de questions, de la racine
+                                                              Arbre
+     questions simples sur ses variables, de la racine                               aux feuilles
+     jusqu’à une feuille.
+
+
+
+                                                                            chaque feuille fournit une prédiction (classe ou
+                                                                 Décision
+                                                                                             valeur)
+
+    Type d’algorithme
+
+    •   Apprentissage supervisé
+                                                                                                    les questions sont choisies automatiquement
+    •  Non paramétrique : la structure est apprise des                 Appris                                                                                        d’après les données
+        données
+
+    •   « Éveillé » (eager) : le modèle est construit à
+         l’entraînement
+                                           Comme au jeu des 20 questions : chaque réponse réduit
+    •   Classification et régression                                                                        l’incertitude.
+
+
+
+  KNN — K-Nearest Neighbors · Machine Learning                                                                                                                             28
+
+--- PAGE 29 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision
+Arbre de décision : l’intuition
+
+Une suite de questions Oui / Non, comme dans la
+vie courante : « Faut-il prendre un parapluie ? »
+                                                                                                                                          Il pleut ?
+
+
+
+                                                                      Oui                    Non
+   Nœud racine : la première question
+
+
+   Nœud de décision : une question intermédiaire                                                              Parapluie                        Ciel très nuageux ?
+
+
+      Feuille : la réponse finale (la prédiction)
+                                                                                        Oui                 Non
+
+     Branche : le résultat Oui ou Non d’une question
+
+                                                                                  Parapluie           Pas besoin
+
+
+
+                                                                      Arbre schématique écrit à la main pour l’intuition : il n’a pas été appris à partir de
+                                                                     données.
+
+Introduction au Machine Learning                                                                                                  29
+
+--- PAGE 30 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision
+Comment l’arbre choisit ses questions
+
+Un groupe est pur s’il ne contient qu’une classe. L’arbre cherche les coupures qui rendent les groupes les plus purs
+possible.
+
+
+  Indice de Gini                                         Entropie
+
+ G = 1 − Σ pₖ² (pₖ : proportion de la classe k)             H = − Σ pₖ log₂ pₖ
+  Groupe 5 / 5 : G = 0,5 (maximum à 2 classes)               Groupe 5 / 5 : H = 1
+  Groupe 10 / 0 : G = 0 (pur)                             Groupe 10 / 0 : H = 0 (pur)
+
+
+Construction (algorithme glouton)
+
+
+   1                        2                        3                        4
+
+  Tester des seuils sur            Garder la coupure qui             Diviser les données en         Recommencer dans
+ chaque variable                  réduit le plus l’impureté        deux groupes                 chaque groupe jusqu’à un
+                                (pondérée)                                                             critère d’arrêt
+
+
+Introduction au Machine Learning                                                                                                  30
+
+--- PAGE 31 ---
+    PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+  Exemple : un étudiant réussira-t-il ?
+
+      Élève      Heures       Assiduité (%)   Réussite
+                                                             Calculs de Gini (coupure à la racine)
+     E1        1           50          Non
+                                                   Racine : 7 réussites, 3 échecs → G = 1 − (0,7² + 0,3²) = 0,42
+     E2        2           90            Oui                                                       Variable « assiduité » : meilleure coupure ≤ 65
+     E3        3           60          Non            Gauche : 4 élèves (3 non, 1 oui) → G = 1 − (0,75² + 0,25²) = 0,375.
+     E4        4           85            Oui               Droite : 6 élèves, tous « oui » → G = 0.
+     E5        3           80            Oui             Impureté pondérée : 0,4 × 0,375 + 0,6 × 0 = 0,150 (gain : 0,42 −
+     E6        6           70            Oui              0,150 = 0,270).
+     E7        8           60            Oui               Variable « heures » : meilleure coupure ≤ 3,5
+     E8        5           90            Oui            Gauche : 5 élèves (3 non, 2 oui) → G = 1 − (0,6² + 0,4²) = 0,48.
+     E9        2           40          Non              Droite : 5 élèves, tous « oui » → G = 0.
+     E10       7           80            Oui             Impureté pondérée : 0,5 × 0,48 + 0,5 × 0 = 0,240 (gain : 0,42 −
+                                                    0,240 = 0,180).
+À chaque nœud, on retient la coupure qui minimise l’impureté                                                   Choix final : (0,270 > 0,180). La coupure « assiduité ≤ 65 » produit
+pondérée :
+                                                               les groupes les plus purs : l’arbre la retient pour la racine
+Impureté pondérée = (n_gauche / n) × G_gauche +
+
+                     (n_droite / n) × G_droite
+
+Cela revient à maximiser le gain = G_parent − impureté
+pondérée.Introduction au Machine Learning                                                                                                  31
+
+--- PAGE 32 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+Exemple : un étudiant réussira-t-il ?
+
+
+
+ Pour chaque variable, on trie les valeurs distinctes puis on prend le milieu de chaque
+ paire de valeurs consécutives.
+ •   Assiduité : 40, 50, 60, 70, 80, 85, 90 → seuils 45 ; 55 ; 65 ; 75 ; 82,5 ; 87,5 (6 coupures).
+ •  Heures : 1, 2, 3, 4, 5, 6, 7, 8 → seuils 1,5 ; 2,5 ; 3,5 ; 4,5 ; 5,5 ; 6,5 ; 7,5 (7 coupures).
+  Il y a donc 13 coupures à tester à la racine. Aucune n’est écartée a priori.
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  32
+
+--- PAGE 33 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+Itération 1:Variable assiduité
+
+
+
+
+    Coupure         Gauche (n ; N/O ; G)                Droite (n ; N/O ; G)                  Impureté pondérée
+
+
+    ≤ 45             1 ; 1 Non/0 Oui ;G= 0             9 ; 2 Non/7 Oui ; 0,346                 ((1/10)*0)+((9/10)*0,346) →
+                                                                                              0,1×0 + 0,9×0,346 = 0,311
+
+    ≤ 55            2 ; 2 Non/0 Oui ;G= 0             8 ; 1 Non/7 Oui ; 0,219                0,2×0 + 0,8×0,219 = 0,175
+
+
+    ≤ 65             4 ; 3 Non/1 Oui ;G= 0,375          6 ; 0 Non/6 Oui ; 0                    0,4×0,375 + 0,6×0 = 0,150
+
+
+    ≤ 75             5 ; 3 Non/2 Oui ; G=0,480          5 ; 0 Non/5 Oui ; 0                     0,5×0,48 + 0,5×0 = 0,240
+
+
+    ≤ 82,5           7 ; 3 Non/4 Oui;G= 0,490          3 ; 0 Non/3 Oui ; 0                    0,7×0,490 = 0,343
+
+
+    ≤ 87,5           8 ; 3 Non/5 Oui ; G=0,469          2 ; 0 Non/2 Oui ; 0                    0,8×0,469 = 0,375
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  33
+
+--- PAGE 34 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+Itération 1: Variable assiduité
+
+
+
+ Exemple détaillé pour « assiduité ≤ 65 » :
+ •  Gauche = E9, E1, E3, E7 (assiduités 40, 50, 60, 60) : 1 Oui et 3 Non → G = 1 − (0,25² +
+     0,75²) = 1 − 0,625 = 0,375.
+ •   Droite = E6, E5, E10, E4, E2, E8 : 6 Oui → G = 1 − 1² = 0.
+ •  Impureté pondérée = (4/10) × 0,375 + (6/10) × 0 = 0,15.
+ Exemple détaillé pour « assiduité ≤ 82,5 » : gauche = 7 élèves (3 Non, 4 Oui) → G = 1 −
+ (3/7)² − (4/7)² = 0,490 ; droite = 3 élèves, tous Oui → G = 0 ; pondérée = 0,7 × 0,490 +
+ 0,3 × 0 = 0,343
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  34
+
+--- PAGE 35 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+Itération 1: Variable Heure
+
+
+
+
+     Coupure         Gauche (n ; N/O ; G)                 Droite (n ; N/O ; G)                   Impureté pondérée
+
+
+     ≤ 1,5            1 ; 1 Non /0 ;Oui G= 0              9 ; 2 Non/7 Oui ;G= 0,346               0,9×0,346 = 0,311
+
+
+     ≤ 2,5            3 ; 2 Non /1 Oui ; G=0,444          7 ; 1 Non/6 Oui ; G=0,245               0,3×0,444 + 0,7×0,245 = 0,305
+
+
+     ≤ 3,5            5 ; 3 Non/2 Oui ; G=0,480           5 ; 0 Non/5 Oui ;G= 0                   0,5×0,48 = 0,240
+
+
+     ≤ 4,5            6 ; 3 Non/3 Oui ; G=0,500           4 ; 0 Non/4 Oui ;G= 0                   0,6×0,5 = 0,300
+
+
+     ≤ 5,5            7 ; 3 Non/4 Oui ; G=0,490           3 ; 0 Non/3 Oui ; G=0                   0,7×0,490 = 0,343
+
+
+     ≤ 6,5            8 ; 3 Non/5 Oui ; G=0,469           2 ; 0 Non/2 Oui ; G=0                   0,8×0,469 = 0,375
+
+
+     ≤ 7,5            9 ; 3 Non/6 Oui ; G=0,444           1 ; 0 Non/1 Oui ; G=0                   0,9×0,444 = 0,400
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  35
+
+--- PAGE 36 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+
+
+
+  traiter chaque branche (test d’arrêt)
+  •  Branche droite (assiduité > 65) : G = 0, le nœud est pur. On s’arrête : c’est une
+      feuille « RÉUSSIT ».
+  •  Branche gauche (assiduité ≤ 65) : G = 0,375, le nœud est encore mélangé. On
+     doit le couper, en refaisant les étapes uniquement avec ses 4 élèves.
+   [ Assiduité ≤ 65 ? ]
+     |-- Oui -> [ E9, E1, E3, E7 : 3 Non, 1 Oui, G = 0,375 ]  <- à couper encore
+     |-- Non -> FEUILLE : RÉUSSIT (6 élèves)
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  36
+
+--- PAGE 37 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+Itération 2:Variable assiduité /variable Heure
+  Gini du nœud : G = 1 − (0,75² + 0,25²) = 0,375.
+
+  Seuils candidats (calculés sur ces 4 élèves seulement) :
+  •   Assiduité : valeurs distinctes 40, 50, 60 → seuils 45 ; 55.
+  •   Heures : valeurs distinctes 1, 2, 3, 8 → seuils 1,5 ; 2,5 ; 5,5.
+
+
+ Coupure         Gauche (n ; N/O ; G)                 Droite (n ; N/O ; G)                   Impureté pondérée
+
+ Assiduité ≤ 45     1 (E9) ; 1N ;G= 0                  3 ; 2N/1O ; G=0,444                    0,75×0,444 = 0,333
+
+
+ Assiduité ≤ 55     2 (E9,E1) ; 2N ; G= 0               2 ; 1N/1O ; G=0,5                       0,5×0,5 = 0,250
+
+
+
+ Coupure         Gauche (n ; N/O ; G)                 Droite (n ; N/O ; G)                   Impureté pondérée
+
+
+ Heures ≤ 1,5      1 (E1) ; 1N ; G=0                  3 ; 2N/1O ; G=0,444                    0,75×0,444 = 0,333
+
+
+ Heures ≤ 2,5      2 (E1,E9) ; 2N ; G= 0               2 ; 1N/1O ; G=0,5                       0,5×0,5 = 0,250
+
+
+ Heures ≤ 5,5      3 (E1,E9,E3) ; 3N ; G= 0             1 (E7) ; 1O ; G=0                    0
+
+
+Introduction au Machine Learning                                                                                                  37
+
+--- PAGE 38 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ · Arbre de décision · Exemple
+L’arbre obtenu avec scikit-learn
+
+
+
+                                                                              assiduité ≤ 65 % ?
+                                                                                     gini = 0,42 · n = 10
+                                                                          [3 échecs, 7 réussites]
+
+
+                                                       Oui                                          Non
+
+
+
+                                     heures ≤ 5,5 ?                                                         Réussite
+                                              gini = 0,375 · n = 4                                                             gini = 0 · n = 6
+                                       [3 échecs, 1 réussite]                                                 [0 échec, 6 réussites]
+
+
+                                Oui                       Non
+
+
+
+                       Échec                                Réussite
+                          gini = 0 · n = 3                              gini = 0 · n = 1
+
+
+
+
+
+Introduction au Machine Learning                                                                                                                 36
+
+--- PAGE 39 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Exemple
+Prédire pour deux nouveaux élèves
+
+
+
+          Élève A                        Racine                        Feuille de droite                    Prédiction
+        3 h · 85 %                  assiduité 85 ≤ 65 ? Non                   (n = 6)                          Réussite
+
+
+
+
+           Élève B                        Racine                    Puis heures 4 ≤ 5,5 ?                  Prédiction
+        4 h · 55 %                  assiduité 55 ≤ 65 ? Oui                  Oui                         Échec
+
+
+
+
+  Interprétation
+
+  • Dans ces données, l’assiduité est la variable la plus discriminante ; les heures n’interviennent que pour les élèves peu
+     assidus.
+  • Prudence : 10 élèves seulement, et la feuille « heures > 5,5 » repose sur un seul élève.
+
+
+
+
+Introduction au Machine Learning                                                                                                  39
+
+--- PAGE 40 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision
+Profondeur, surapprentissage, avantages
+
+
+  Surapprentissage (overfitting)                        Avantages
+
+                                                     •  Lisible : « boîte blanche »  • Un arbre sans limite finit par isoler chaque exemple,
+    y compris le bruit : excellent sur Train, plus faible sur      • Pas de normalisation nécessaire
+     Test.                                             • Variables numériques et catégorielles
+  • Limiter la complexité : max_depth,
+    min_samples_leaf, min_samples_split, élagage
+     (ccp_alpha).
+
+  • Choisir ces valeurs avec des données de validation.                                                         Limites
+  • Trop peu de profondeur : sous-apprentissage.
+                                                     • Instable : de petites variations changent l’arbre
+                                                     • Frontières parallèles aux axes (en escalier)
+                                                     • Surapprentissage si non limité
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  40
+
+--- PAGE 41 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Arbre de décision  · Python
+Arbre de décision avec scikit-learn
+
+  arbre.py                                                                   • max_depth=2 limite la profondeur.
+  import pandas as pd                                                       • random_state=0 rend le résultat
+  from sklearn.tree import DecisionTreeClassifier, export_text                 reproductible.
+
+                                                                             •  export_text affiche les règles  df = pd.DataFrame({
+      "heures":    [1, 2, 3, 4, 3, 6, 8, 5, 2, 7],                                 apprises.
+      "assiduite": [50, 90, 60, 85, 80, 70, 60, 90, 40, 80],              •  predict renvoie 1 (réussite) ou 0
+      "reussite":  [0, 1, 0, 1, 1, 1, 1, 1, 0, 1]})                                                                                                  (échec).
+  noms = ["heures", "assiduite"]
+  X, y = df[noms], df["reussite"]
+
+  arbre = DecisionTreeClassifier(max_depth=2, random_state=0)
+  arbre.fit(X, y)
+  print(export_text(arbre, feature_names=noms))                                      Visualisation (avec matplotlib) :
+                                                                                                       plot_tree(arbre, feature_names=noms,
+  eleves = pd.DataFrame({"heures": [3, 4], "assiduite": [85, 55]})         class_names=["Échec", "Réussite"],
+  print(arbre.predict(eleves))        # [1 0] : réussite, échec                filled=True).
+
+
+
+
+
+Introduction au Machine Learning                                                                                                  41
+
+--- PAGE 42 ---
+PARTIE I · APPRENTISSAGE SUPERVISÉ  · Synthèse
+KNN, arbre  : comparaison
+
+
+
+
+                  KNN                                      Arbre de décision
+
+
+
+ Principe                Vote des K plus proches voisins                 Suite de règles Oui / Non
+
+
+                              Classification ; régression (moyenne des         Classification ; régression (moyenne de la
+ Type de problème
+                              voisins)                                               feuille)
+
+
+ Avantages               Simple, sans hypothèse sur la frontière            Lisible, sans normalisation
+
+
+
+ Limites                  Lent à prédire, sensible à l’échelle               Instable, surapprentissage
+
+
+
+ Exemple d’usage          Classer un fruit selon poids et diamètre         Prédire la réussite d’un étudiant
+
+
+
+Introduction au Machine Learning                                                                                                  42

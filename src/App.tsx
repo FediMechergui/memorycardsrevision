@@ -239,7 +239,7 @@ function AppContent() {
           </span>
           <div>
             <b>Mon espace de révision</b>
-            <small>Master · Expert réseaux</small>
+            <small>3e année · Semestre 1</small>
           </div>
         </div>
         <span className="nav-section-label">MON APPRENTISSAGE</span>

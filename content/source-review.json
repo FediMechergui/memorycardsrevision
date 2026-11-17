@@ -1,0 +1,31 @@
+{
+  "edition": "s1-2026",
+  "catalogVersion": 3,
+  "appVersion": "2.0.0",
+  "reviewDate": "2026-11-17",
+  "sourceFiles": 11,
+  "sourcePages": 269,
+  "textExtraction": "PyMuPDF; scanned TD1 pages 1-3 read visually; relevant diagrams inspected.",
+  "editorialNotes": [
+    "Only supplied S1 courses are included. Original CCNA/JavaFX version retained on archive/memora-original-courses.",
+    "The RA definition includes real-time interaction; passive AR versus active MR is not used as a universal distinction.",
+    "Pre-rendered cinema compositing is not treated as sufficient evidence of interactive AR.",
+    "Optical HoloLens classification checked against Microsoft documentation.",
+    "TD2 question 7 has several indirect-view figures; rewritten questions have one correct choice.",
+    "TD3 singular rotation matrix explicitly corrected to identity for the worked projection; result (712,384).",
+    "TD4 Unity rotation converts radians to degrees; code examples are editorial proposals, not claimed to have been run in Unity.",
+    "AI client-data exercise median age recalculated as 35; satisfaction median 3.75.",
+    "R squared can be negative; F1 is not a universally best metric; test leakage prevention is explicit.",
+    "Forest, K-means and Q-Learning are announced in the source plan but their detailed lessons are absent; no missing pages are claimed.",
+    "198 questions have four distinct choices and one declared answer; 94 distractor sets were refined during editorial review."
+  ],
+  "verifiedPythonExamples": [
+    "ia-donnees",
+    "ia-evaluation",
+    "ia-inference",
+    "ia-knn",
+    "ia-arbres"
+  ],
+  "practicalExecution": "Python examples executed in an isolated virtual environment; Unity exercises require the external editor and were not executed.",
+  "publication": "Local implementation only; backend deployment and app-store/GitHub publication are separate."
+}

@@ -1,0 +1,874 @@
+[
+  {
+    "id": "ra-immersif",
+    "title": "Comprendre les technologies immersives",
+    "description": "RV, RA, virtualité augmentée et technologies qui rendent l’immersion possible.",
+    "minutes": 15,
+    "references": [
+      {
+        "document": "Chapitre_0-Introduction_aux_technologies_immersives.pdf",
+        "pages": "1–22"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Le continuum réel–virtuel",
+        "body": "Les technologies immersives modifient notre perception d’un environnement ou la manière d’y agir. Le continuum présenté par Milgram et Kishino en 1994 va d’un environnement entièrement réel à un environnement entièrement virtuel. Entre les deux, on conserve une part de réel et une part de numérique.",
+        "diagram": {
+          "caption": "Situer une expérience selon son environnement dominant",
+          "steps": [
+            "Environnement réel",
+            "Réalité augmentée : réel enrichi",
+            "Virtualité augmentée : virtuel enrichi",
+            "Environnement virtuel"
+          ]
+        }
+      },
+      {
+        "title": "Réalité virtuelle et réalité augmentée",
+        "body": "La RV place l’utilisateur dans un environnement numérique, souvent au moyen d’un casque qui masque la vue extérieure. La RA conserve le monde réel comme support et lui associe des informations numériques. Pour classer un exemple, décris d’abord ce que l’utilisateur voit réellement, puis ce qui est ajouté.",
+        "bullets": [
+          "Simulation de vol dans un monde synthétique : RV.",
+          "Consignes alignées sur une machine filmée par une tablette : RA.",
+          "Modèle de meuble posé virtuellement dans une pièce réelle : RA."
+        ]
+      },
+      {
+        "title": "Virtualité augmentée, réalité mixte et XR",
+        "body": "La virtualité augmentée intègre des éléments réels dans un environnement principalement virtuel : par exemple une vidéo en direct au sein d’un espace de réunion numérique. Le support met l’accent sur l’interaction entre réel et virtuel pour présenter la réalité mixte. XR est le terme collectif qui rassemble ces expériences."
+      },
+      {
+        "title": "Une frontière à préciser",
+        "origin": "correction",
+        "body": "La RA peut elle-même être interactive : le chapitre suivant en fait explicitement un critère. Il serait donc trompeur de définir toute RA comme passive. Le sens de « réalité mixte » varie selon les classifications : justifie un cas par son environnement dominant, son alignement spatial et ses interactions plutôt que par le seul nom du casque."
+      },
+      {
+        "title": "Rendu 3D et vision par ordinateur",
+        "body": "Le rendu transforme une scène numérique en images : géométrie, matériaux, éclairage et ombres. La vision analyse les images acquises pour reconnaître une cible, repérer des mains ou estimer des mouvements. Ces rôles sont complémentaires : reconnaître un objet réel ne revient pas à fabriquer son modèle 3D."
+      },
+      {
+        "title": "IA, voix et adaptation",
+        "body": "L’IA peut adapter un scénario, interpréter des gestes ou piloter un personnage. La reconnaissance vocale convertit la parole en texte ; le traitement du langage exploite le sens de ce texte ou produit une réponse. Une commande vocale peut ainsi déclencher une action dans la scène."
+      }
+    ],
+    "takeaway": "Identifie le monde dominant, les ajouts et les interactions avant de nommer la technologie.",
+    "cards": [
+      {
+        "id": "ra-immersif-q1",
+        "question": "Une scène entièrement numérique masque la vue extérieure. Quelle technologie décrit-elle ?",
+        "answer": "La réalité virtuelle",
+        "choices": [
+          "La réalité virtuelle",
+          "La réalité augmentée",
+          "La virtualité augmentée",
+          "La projection sur une surface réelle"
+        ],
+        "correct": 0,
+        "explanation": "L’environnement perçu est principalement synthétique."
+      },
+      {
+        "id": "ra-immersif-q2",
+        "question": "Quel environnement sert de support à la réalité augmentée ?",
+        "answer": "Le monde réel",
+        "choices": [
+          "Un monde exclusivement synthétique",
+          "Le monde réel",
+          "Un jeu de données d’entraînement",
+          "Un modèle 3D sans caméra"
+        ],
+        "correct": 1,
+        "explanation": "La RA enrichit une situation physique par des éléments numériques."
+      },
+      {
+        "id": "ra-immersif-q3",
+        "question": "Une vidéo réelle est intégrée dans une salle entièrement virtuelle. De quoi s’agit-il ?",
+        "answer": "De virtualité augmentée",
+        "choices": [
+          "De RA sur une scène réelle",
+          "De rendu sans données réelles",
+          "De virtualité augmentée",
+          "De simple reconnaissance d’image"
+        ],
+        "correct": 2,
+        "explanation": "Le monde dominant est virtuel, enrichi par un élément réel."
+      },
+      {
+        "id": "ra-immersif-q4",
+        "question": "Que désigne XR ?",
+        "answer": "Un ensemble de technologies immersives",
+        "choices": [
+          "Uniquement les casques VR",
+          "Uniquement les interfaces tactiles",
+          "Un algorithme de suivi visuel",
+          "Un ensemble de technologies immersives"
+        ],
+        "correct": 3,
+        "explanation": "XR regroupe notamment RV, RA et réalité mixte."
+      },
+      {
+        "id": "ra-immersif-q5",
+        "question": "Quelle opération relève du rendu 3D ?",
+        "answer": "Calculer l’éclairage d’un objet virtuel",
+        "choices": [
+          "Calculer l’éclairage d’un objet virtuel",
+          "Détecter un visage dans une image",
+          "Transcrire une phrase prononcée",
+          "Mesurer une accélération"
+        ],
+        "correct": 0,
+        "explanation": "Le rendu produit l’image de la scène numérique."
+      },
+      {
+        "id": "ra-immersif-q6",
+        "question": "Quelle opération relève de la vision par ordinateur ?",
+        "answer": "Repérer la main dans le flux caméra",
+        "choices": [
+          "Créer un matériau métallique",
+          "Repérer la main dans le flux caméra",
+          "Diffuser une vibration",
+          "Jouer une piste audio"
+        ],
+        "correct": 1,
+        "explanation": "La vision extrait des informations des images."
+      },
+      {
+        "id": "ra-immersif-q7",
+        "question": "Quel résultat produit directement la reconnaissance vocale ?",
+        "answer": "Une transcription de la parole",
+        "choices": [
+          "Une matrice de projection",
+          "Un modèle 3D texturé",
+          "Une transcription de la parole",
+          "Une mesure de profondeur"
+        ],
+        "correct": 2,
+        "explanation": "L’interprétation de la commande vient ensuite."
+      },
+      {
+        "id": "ra-immersif-q8",
+        "question": "À quoi peut servir l’IA dans une expérience immersive ?",
+        "answer": "Adapter le comportement d’un personnage",
+        "choices": [
+          "Remplacer obligatoirement tous les capteurs",
+          "Garantir l’absence de latence",
+          "Transformer toute vidéo en RA",
+          "Adapter le comportement d’un personnage"
+        ],
+        "correct": 3,
+        "explanation": "Elle apporte des capacités de décision ou d’adaptation."
+      },
+      {
+        "id": "ra-immersif-q9",
+        "question": "Un meuble numérique est placé dans le salon filmé. Quel est l’usage principal ?",
+        "answer": "Visualiser un produit dans son environnement",
+        "choices": [
+          "Visualiser un produit dans son environnement",
+          "Immerger dans un monde entièrement virtuel",
+          "Reconnaître une voix",
+          "Apprendre une classe de données"
+        ],
+        "correct": 0,
+        "explanation": "La pièce réelle reste le support de l’expérience."
+      },
+      {
+        "id": "ra-immersif-q10",
+        "question": "Pourquoi l’interactivité seule ne sépare-t-elle pas toujours RA et réalité mixte ?",
+        "answer": "Parce qu’une application de RA peut aussi être interactive",
+        "choices": [
+          "Parce que la RV est toujours passive",
+          "Parce qu’une application de RA peut aussi être interactive",
+          "Parce que XR exclut la RA",
+          "Parce que le rendu impose une caméra fixe"
+        ],
+        "correct": 1,
+        "explanation": "La définition de la RA inclut une interaction en temps réel."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-immersif-e1",
+        "question": "Compare une simulation de vol en casque, un guide superposé à une machine et une réunion virtuelle intégrant une vidéo réelle.",
+        "modelAnswer": "La simulation relève de la RV car le monde est synthétique. Le guide relève de la RA car les instructions enrichissent une machine réelle. La réunion relève de la virtualité augmentée car un élément réel entre dans un monde surtout virtuel. Le critère central est l’environnement dominant ; la possibilité d’interagir complète la description.",
+        "rubric": [
+          "Identifier la RV et son environnement numérique",
+          "Identifier la RA et son support réel",
+          "Identifier la virtualité augmentée",
+          "Justifier par le monde dominant plutôt que par l’appareil"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ra-systeme",
+    "title": "Construire un système de réalité augmentée",
+    "description": "Définition, architecture, affichage et domaines d’application.",
+    "minutes": 18,
+    "references": [
+      {
+        "document": "Chapitre_1-_Introduction_a_la_RA.pdf",
+        "pages": "1–28"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Trois propriétés à réunir",
+        "body": "Un système de RA combine réel et virtuel, réagit en temps réel et assure une cohérence de position et de perspective. Une image de synthèse ajoutée à un film ne suffit donc pas à démontrer une expérience de RA interactive.",
+        "bullets": [
+          "Combinaison : conserver une perception de la scène réelle.",
+          "Interactivité : réagir au mouvement ou aux actions.",
+          "Recalage : placer les ajouts dans le repère pertinent."
+        ]
+      },
+      {
+        "title": "Des repères historiques",
+        "body": "Le support évoque le casque de Sutherland en 1968, l’assistance au câblage chez Boeing dans les années 1990, les usages médicaux, puis la diffusion sur smartphone et les jeux mobiles. Ces repères illustrent le passage des prototypes à des usages accessibles."
+      },
+      {
+        "title": "Effets de cinéma et réalité augmentée",
+        "origin": "correction",
+        "body": "Le support cite Jurassic Park comme exemple historique. L’incrustation d’effets dans un film préenregistré ne satisfait pas, à elle seule, la définition interactive de la RA. De même, la mention d’un « premier tracking visuel en 2008 » n’est pas retenue comme date universelle : le suivi existait dans des systèmes antérieurs. Les perspectives de lentilles ou de commandes cérébrales sont des pistes évoquées par le cours, pas des capacités garanties."
+      },
+      {
+        "title": "L’architecture fonctionnelle",
+        "body": "Le générateur de scène produit le contenu virtuel. Le tracking estime la pose de l’utilisateur ou de la cible. Le dispositif d’affichage présente le résultat. En vision indirecte, une caméra acquiert le réel et un module de composition combine cette vidéo avec le rendu.",
+        "diagram": {
+          "caption": "Chaîne simplifiée en vision indirecte",
+          "steps": [
+            "Caméra : acquérir la scène",
+            "Reconnaissance et tracking : estimer la pose",
+            "Générateur : calculer le rendu",
+            "Composition : fusionner réel et virtuel",
+            "Écran : présenter le résultat"
+          ]
+        }
+      },
+      {
+        "title": "Vision directe et vision indirecte",
+        "body": "En optical see-through, la lumière du monde réel atteint directement l’œil à travers une optique transparente ou semi-transparente, à laquelle s’ajoute le contenu virtuel. En video see-through, le réel passe d’abord par les caméras ; l’utilisateur regarde la composition affichée sur un écran. Un système direct peut utiliser une caméra pour le suivi sans afficher sa vidéo."
+      },
+      {
+        "title": "Trois familles d’affichage",
+        "body": "Les Head Mounted Displays sont portés sur la tête. Les Handheld Displays, comme les smartphones, forment une fenêtre mobile sur la scène. Les projecteurs ajoutent le rendu sur une surface réelle ; leur calcul doit prendre en compte la géométrie du support."
+      },
+      {
+        "title": "Choisir selon l’activité",
+        "body": "Le cours illustre le divertissement, l’enseignement, la médecine, la conception, l’assemblage et la maintenance. Un bon scénario précise l’information nécessaire, son ancrage spatial, l’action attendue et les limites de visibilité. Un écran, un casque ou une tablette ne détermine pas à lui seul la nature de l’expérience."
+      }
+    ],
+    "takeaway": "La RA combine réel et virtuel, en temps réel, avec un alignement cohérent.",
+    "cards": [
+      {
+        "id": "ra-systeme-q1",
+        "question": "Quel ensemble caractérise la RA au sens du cours ?",
+        "answer": "Combinaison réel–virtuel, temps réel et alignement",
+        "choices": [
+          "Combinaison réel–virtuel, temps réel et alignement",
+          "Vidéo, son et stockage cloud",
+          "Casque opaque, manette et avatar",
+          "Modélisation, impression et animation"
+        ],
+        "correct": 0,
+        "explanation": "Les propriétés concernent le fonctionnement, pas une liste d’appareils."
+      },
+      {
+        "id": "ra-systeme-q2",
+        "question": "À quoi sert le générateur de scène ?",
+        "answer": "À produire le rendu virtuel",
+        "choices": [
+          "À identifier la cible réelle",
+          "À produire le rendu virtuel",
+          "À mesurer la pose de la caméra",
+          "À mélanger exclusivement les flux vidéo"
+        ],
+        "correct": 1,
+        "explanation": "Il calcule les éléments à ajouter à l’environnement."
+      },
+      {
+        "id": "ra-systeme-q3",
+        "question": "Quel composant actualise la pose lorsque la cible bouge ?",
+        "answer": "Le système de tracking",
+        "choices": [
+          "Le générateur de matériaux",
+          "La base des modèles 3D seule",
+          "Le système de tracking",
+          "Le module de compression vidéo"
+        ],
+        "correct": 2,
+        "explanation": "La pose doit être suivie au cours du temps."
+      },
+      {
+        "id": "ra-systeme-q4",
+        "question": "En vision indirecte, comment l’utilisateur perçoit-il le réel ?",
+        "answer": "Par une vidéo capturée puis affichée",
+        "choices": [
+          "Uniquement à travers une lentille transparente",
+          "Par une mesure GPS seule",
+          "Par un monde sans capture réelle",
+          "Par une vidéo capturée puis affichée"
+        ],
+        "correct": 3,
+        "explanation": "Le flux vidéo est combiné avec le rendu avant affichage."
+      },
+      {
+        "id": "ra-systeme-q5",
+        "question": "Quelle affirmation décrit l’optical see-through ?",
+        "answer": "Le réel est vu directement à travers l’optique",
+        "choices": [
+          "Le réel est vu directement à travers l’optique",
+          "Le réel doit être affiché par une caméra",
+          "Le tracking y est inutile",
+          "Le dispositif est nécessairement tenu à la main"
+        ],
+        "correct": 0,
+        "explanation": "Les images numériques s’ajoutent à la lumière du réel."
+      },
+      {
+        "id": "ra-systeme-q6",
+        "question": "Pourquoi une tablette est-elle appelée fenêtre augmentée ?",
+        "answer": "Son écran montre le réel filmé avec ses ajouts",
+        "choices": [
+          "Elle remplace toujours le réel par un monde synthétique",
+          "Son écran montre le réel filmé avec ses ajouts",
+          "Elle projette nécessairement sur un mur",
+          "Elle dispense du recalage"
+        ],
+        "correct": 1,
+        "explanation": "Elle relève des dispositifs tenus à la main."
+      },
+      {
+        "id": "ra-systeme-q7",
+        "question": "Que signifie HMD ?",
+        "answer": "Head Mounted Display",
+        "choices": [
+          "Handheld Mobile Display",
+          "Head Motion Detector",
+          "Head Mounted Display",
+          "Hybrid Marker Display"
+        ],
+        "correct": 2,
+        "explanation": "Il s’agit d’un dispositif d’affichage porté sur la tête."
+      },
+      {
+        "id": "ra-systeme-q8",
+        "question": "Que doit considérer un projecteur de RA ?",
+        "answer": "La géométrie de la surface de projection",
+        "choices": [
+          "Seulement la résolution du fichier projeté",
+          "Uniquement la position du spectateur",
+          "Seulement la couleur du projecteur",
+          "La géométrie de la surface de projection"
+        ],
+        "correct": 3,
+        "explanation": "La forme de la surface affecte la position et la déformation du rendu."
+      },
+      {
+        "id": "ra-systeme-q9",
+        "question": "Pourquoi une incrustation dans un film ne prouve-t-elle pas la présence de RA ?",
+        "answer": "Elle peut être préenregistrée sans interaction en temps réel",
+        "choices": [
+          "Elle peut être préenregistrée sans interaction en temps réel",
+          "Elle ne peut jamais contenir de 3D",
+          "Elle exige obligatoirement un GPS",
+          "Elle utilise toujours un casque"
+        ],
+        "correct": 0,
+        "explanation": "Le critère temporel et interactif compte autant que le mélange d’images."
+      },
+      {
+        "id": "ra-systeme-q10",
+        "question": "En maintenance, quel ajout constitue un scénario cohérent de RA ?",
+        "answer": "Une flèche alignée sur la pièce à vérifier",
+        "choices": [
+          "Une simulation intégralement virtuelle de l’usine",
+          "Une flèche alignée sur la pièce à vérifier",
+          "Un manuel affiché sans lien avec la scène",
+          "Un plan fixe sans actualisation du point de vue"
+        ],
+        "correct": 1,
+        "explanation": "L’information enrichit directement l’objet de l’intervention."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-systeme-e1",
+        "question": "Décris une application de maintenance sur tablette et compare son affichage avec celui de lunettes transparentes.",
+        "modelAnswer": "La tablette capture la machine, identifie une cible et estime sa pose. Le rendu des indications est composé avec la vidéo puis affiché : c’est une vision indirecte. Les lunettes transparentes laissent voir le réel directement et ajoutent des éléments virtuels : c’est une vision directe. Dans les deux cas, le suivi maintient l’alignement pendant le mouvement.",
+        "rubric": [
+          "Décrire capture et composition sur tablette",
+          "Expliquer reconnaissance et tracking",
+          "Distinguer vision directe et indirecte",
+          "Maintenir l’alignement en temps réel"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ra-fondements",
+    "title": "Reconnaissance, projection et tracking",
+    "description": "De la cible reconnue à une augmentation stable, cohérente et interactive.",
+    "minutes": 30,
+    "references": [
+      {
+        "document": "Chapitre_2_-_Fondements_de_RA.pdf",
+        "pages": "1–58"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Familles d’augmentation",
+        "body": "La RA avec marqueur utilise une cible connue, comme un motif ou une image. La RA fondée sur la localisation associe notamment GNSS et orientation. La projection affiche sur une surface réelle ; la superposition remplace ou enrichit une partie de la vue. Ces familles peuvent partager des composants."
+      },
+      {
+        "title": "Sans marqueur ne signifie pas seulement GPS",
+        "origin": "correction",
+        "body": "Le début du support assimile markerless à la géolocalisation, mais il présente ensuite du suivi optique sans marqueur. Retenons les deux possibilités : capteurs de localisation/orientation et analyse de caractéristiques naturelles de la scène. La distinction importante est l’absence d’une cible artificielle imposée."
+      },
+      {
+        "title": "Reconnaître une cible",
+        "body": "Après acquisition et prétraitement, on extrait des caractéristiques puis on les compare à des références. Les approches globales décrivent l’ensemble de l’image ; les approches locales exploitent coins, régions ou points d’intérêt. Le cours cite Harris, SIFT, SURF, FAST et MSER comme repères de méthodes, sans les rendre interchangeables.",
+        "diagram": {
+          "caption": "Une chaîne de reconnaissance locale",
+          "steps": [
+            "Acquérir une image",
+            "Détecter des points d’intérêt",
+            "Calculer des descripteurs",
+            "Apparier aux références",
+            "Identifier la cible"
+          ]
+        }
+      },
+      {
+        "title": "Recalage et pose",
+        "body": "Le recalage aligne les objets numériques sur le réel. La pose contient position et orientation. Les paramètres intrinsèques décrivent la projection de la caméra ; les extrinsèques décrivent la transformation entre un repère du monde et celui de la caméra. La caméra virtuelle doit reproduire le point de vue utile."
+      },
+      {
+        "title": "Projection perspective",
+        "body": "Avec une convention monde vers caméra, on calcule M_c = R M + T puis la projection homogène. Les deux premières coordonnées sont divisées par la profondeur Z_c. La focale en pixels est obtenue par f_x = k_u f et f_y = k_v f. Une focale et un champ de vision sont liés, mais ne désignent pas la même grandeur.",
+        "formula": "K = [[f_x, 0, u₀], [0, f_y, v₀], [0, 0, 1]]\ns [u, v, 1]ᵀ = K [R | T] [X, Y, Z, 1]ᵀ\nu = f_x X_c / Z_c + u₀ ; v = f_y Y_c / Z_c + v₀"
+      },
+      {
+        "title": "Quatre familles de suivi",
+        "body": "Le suivi radio exploite des signaux électromagnétiques : GNSS, RFID ou autres dispositifs radio selon le contexte. Le suivi ultrason utilise le temps de propagation du son. Le suivi inertiel exploite les capteurs de mouvement ; le suivi optique estime le mouvement à partir des images.",
+        "bullets": [
+          "Accéléromètre : accélération spécifique ; au repos, information liée à la gravité.",
+          "Gyromètre : vitesse angulaire ; l’orientation nécessite une estimation.",
+          "Magnétomètre : champ magnétique ; sensible aux perturbations.",
+          "Optique : cibles connues ou caractéristiques naturelles."
+        ]
+      },
+      {
+        "title": "Prédire, observer, mettre à jour",
+        "body": "Le suivi utilise l’état précédent pour prédire une position, recherche la cible dans la zone attendue puis actualise son état. La combinaison des capteurs peut compenser certaines limites. La distance ultrason vaut vitesse × durée pour un trajet simple ; pour un écho aller-retour, on divise la durée totale par deux.",
+        "origin": "supplement"
+      },
+      {
+        "title": "Navigation, manipulation et contrôle",
+        "body": "Naviguer change le point de vue : déplacement, orientation, exploration. Travel concerne le déplacement ; wayfinding aide à trouver un chemin ; un freeze mode fige une vue. Manipuler comprend sélection, déplacement et modification d’un objet. Le ray picking choisit un objet intersecté par un rayon. Le contrôle du système règle le comportement de l’application."
+      },
+      {
+        "title": "Trois cohérences à vérifier",
+        "body": "La perspective exige des caméras réelle et virtuelle compatibles. La cohérence spatio-temporelle concerne position, mouvement, latence et occultations. La cohérence photométrique concerne lumière, ombres et reflets. Une erreur d’occultation ne se corrige donc pas seulement en changeant la couleur d’un objet."
+      },
+      {
+        "title": "Contraintes de mobilité",
+        "body": "Précision des capteurs, puissance de calcul et conditions extérieures limitent la stabilité : reflets, faible contraste, occultation de la cible ou imprécision de localisation. L’objectif est une information lisible et correctement placée ; le photoréalisme maximal n’est pas indispensable à chaque usage."
+      }
+    ],
+    "takeaway": "Reconnaître identifie la cible ; estimer la pose permet le recalage ; suivre maintient la cohérence dans le temps.",
+    "cards": [
+      {
+        "id": "ra-fondements-q1",
+        "question": "Quelle étape identifie la cible à augmenter ?",
+        "answer": "La reconnaissance",
+        "choices": [
+          "La reconnaissance",
+          "Le recalage géométrique",
+          "La synthèse des ombres",
+          "La composition finale du rendu"
+        ],
+        "correct": 0,
+        "explanation": "On associe l’observation à une référence connue."
+      },
+      {
+        "id": "ra-fondements-q2",
+        "question": "Une approche locale exploite principalement…",
+        "answer": "Des caractéristiques de régions ou points d’intérêt",
+        "choices": [
+          "Uniquement la moyenne globale des couleurs",
+          "Des caractéristiques de régions ou points d’intérêt",
+          "Uniquement une position GPS",
+          "Le seul nom de l’image"
+        ],
+        "correct": 1,
+        "explanation": "Les descripteurs locaux caractérisent des zones distinctives."
+      },
+      {
+        "id": "ra-fondements-q3",
+        "question": "Que contient la pose d’une caméra ?",
+        "answer": "Sa position et son orientation",
+        "choices": [
+          "Sa focale et son numéro de série",
+          "Sa luminosité et sa résolution seules",
+          "Sa position et son orientation",
+          "Les couleurs du modèle 3D"
+        ],
+        "correct": 2,
+        "explanation": "La pose décrit un placement dans un repère."
+      },
+      {
+        "id": "ra-fondements-q4",
+        "question": "Quel paramètre est intrinsèque ?",
+        "answer": "La focale exprimée en pixels",
+        "choices": [
+          "La translation du monde vers la caméra",
+          "La rotation de la caméra",
+          "La position du marqueur dans la pièce",
+          "La focale exprimée en pixels"
+        ],
+        "correct": 3,
+        "explanation": "Les intrinsèques décrivent la projection interne."
+      },
+      {
+        "id": "ra-fondements-q5",
+        "question": "Quel élément appartient aux extrinsèques ?",
+        "answer": "La matrice de rotation R",
+        "choices": [
+          "La matrice de rotation R",
+          "Le point principal u₀",
+          "La focale f_x",
+          "Le facteur d’échelle k_u"
+        ],
+        "correct": 0,
+        "explanation": "R et T transforment les coordonnées entre repères."
+      },
+      {
+        "id": "ra-fondements-q6",
+        "question": "Après projection homogène, quelle opération fournit u et v ?",
+        "answer": "Diviser par la troisième coordonnée",
+        "choices": [
+          "Conserver directement les deux premières valeurs sans normaliser",
+          "Diviser par la troisième coordonnée",
+          "Multiplier par la troisième coordonnée",
+          "Diviser uniquement par la focale"
+        ],
+        "correct": 1,
+        "explanation": "Les coordonnées homogènes sont définies à un facteur près."
+      },
+      {
+        "id": "ra-fondements-q7",
+        "question": "Que mesure directement un gyromètre ?",
+        "answer": "Une vitesse angulaire",
+        "choices": [
+          "Une orientation absolue sans estimation",
+          "Une accélération linéaire",
+          "Une vitesse angulaire",
+          "Le champ magnétique local"
+        ],
+        "correct": 2,
+        "explanation": "L’orientation est estimée à partir du mouvement, éventuellement avec d’autres capteurs."
+      },
+      {
+        "id": "ra-fondements-q8",
+        "question": "Quel suivi utilise des ondes électromagnétiques ?",
+        "answer": "Le suivi radio",
+        "choices": [
+          "Le suivi ultrason",
+          "Le suivi optique uniquement par contours",
+          "Le suivi inertiel par accélération",
+          "Le suivi radio"
+        ],
+        "correct": 3,
+        "explanation": "GPS et RFID sont des exemples radio du cours."
+      },
+      {
+        "id": "ra-fondements-q9",
+        "question": "Un système sans marqueur peut-il exploiter une caméra ?",
+        "answer": "Oui, en suivant des caractéristiques naturelles",
+        "choices": [
+          "Oui, en suivant des caractéristiques naturelles",
+          "Non, seul le GPS est possible",
+          "Non, il exige un QR code",
+          "Oui, mais seulement pour enregistrer une vidéo inutilisée"
+        ],
+        "correct": 0,
+        "explanation": "Le support présente aussi du suivi optique sans cible artificielle."
+      },
+      {
+        "id": "ra-fondements-q10",
+        "question": "Quel problème relève de la cohérence spatio-temporelle ?",
+        "answer": "Un objet virtuel traverse visuellement un mur réel",
+        "choices": [
+          "Une ombre trop sombre",
+          "Un objet virtuel traverse visuellement un mur réel",
+          "Une température de couleur incorrecte",
+          "Une réflexion lumineuse manquante"
+        ],
+        "correct": 1,
+        "explanation": "L’occultation et la position relative concernent la cohérence spatiale."
+      },
+      {
+        "id": "ra-fondements-q11",
+        "question": "Quel problème relève de la photométrie ?",
+        "answer": "Des ombres incompatibles avec l’éclairage réel",
+        "choices": [
+          "Une mauvaise translation de caméra",
+          "Une cible mal identifiée",
+          "Des ombres incompatibles avec l’éclairage réel",
+          "Une latence de suivi"
+        ],
+        "correct": 2,
+        "explanation": "La photométrie traite la lumière et ses interactions."
+      },
+      {
+        "id": "ra-fondements-q12",
+        "question": "Sélectionner une pièce par un rayon relève de…",
+        "answer": "La manipulation",
+        "choices": [
+          "La navigation par déplacement",
+          "Le contrôle des paramètres de suivi",
+          "La calibration de la caméra",
+          "La manipulation"
+        ],
+        "correct": 3,
+        "explanation": "Le ray picking est une technique de sélection."
+      },
+      {
+        "id": "ra-fondements-q13",
+        "question": "Modifier le seuil de visualisation des points d’intérêt relève de…",
+        "answer": "Le contrôle du système",
+        "choices": [
+          "Le contrôle du système",
+          "La navigation dans la scène",
+          "La manipulation d’un objet virtuel",
+          "La reconnaissance d’une image cible"
+        ],
+        "correct": 0,
+        "explanation": "On règle un paramètre de l’application."
+      },
+      {
+        "id": "ra-fondements-q14",
+        "question": "Pour un écho ultrason aller-retour de durée t, quelle distance utiliser ?",
+        "answer": "d = c × t / 2",
+        "choices": [
+          "d = c × t",
+          "d = c × t / 2",
+          "d = 2 × c × t",
+          "d = t / (2 × c)"
+        ],
+        "correct": 1,
+        "explanation": "Le son parcourt deux fois la distance à la cible ; c est sa vitesse."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-fondements-e1",
+        "question": "Une augmentation glisse lorsque la caméra bouge et reste visible à travers un meuble. Analyse les causes possibles et les corrections à vérifier.",
+        "modelAnswer": "Le glissement peut venir d’une pose mal estimée, d’une mauvaise calibration ou d’un suivi trop lent. Il faut vérifier les intrinsèques, les repères, la pose et la latence. La visibilité à travers le meuble est un problème d’occultation et de cohérence spatiale. Les ombres ou couleurs concernent un autre contrôle, photométrique. La reconnaissance sert d’abord à identifier la bonne cible.",
+        "rubric": [
+          "Distinguer reconnaissance et suivi",
+          "Relier le glissement à la pose ou à la latence",
+          "Identifier le problème d’occultation",
+          "Distinguer cohérences spatiale et photométrique"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ra-dispositifs",
+    "title": "Dispositifs visuels et multisensoriels",
+    "description": "Choisir une interface de RA selon la perception et l’action attendues.",
+    "minutes": 16,
+    "references": [
+      {
+        "document": "Chapitre_3_-_Dispositifs_RA.pdf",
+        "pages": "1–17"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Affichage optique et vidéo",
+        "body": "Une optique see-through laisse passer la lumière réelle ; une solution video see-through affiche la capture caméra combinée au virtuel. Un moniteur ou un smartphone relève généralement de cette seconde voie. Les projecteurs exploitent directement un objet ou une surface de la pièce."
+      },
+      {
+        "title": "Rectification des exemples de casques",
+        "origin": "correction",
+        "body": "La page 6 range HoloLens 2 dans la vision indirecte. Sa documentation matérielle décrit des lentilles holographiques transparentes : c’est un exemple d’affichage optique direct. Pour les révisions, classe les dispositifs selon le trajet de la lumière plutôt qu’en mémorisant une liste de marques. Les références externes permettent de vérifier cette correction."
+      },
+      {
+        "title": "Affichage rétinien",
+        "body": "Le support présente le Virtual Retinal Display comme un dispositif qui forme une image par un faisceau lumineux dirigé vers la rétine. Il faut distinguer ce principe d’un écran observé à travers une optique et vérifier l’architecture réelle avant de classer un produit commercial."
+      },
+      {
+        "title": "Audio spatial",
+        "body": "Un système audio peut placer une source virtuelle dans une direction ou à une distance perçue. Le cours décrit acquisition du son ambiant, analyse, spatialisation et mélange. Tous les dispositifs audio n’exigent pas exactement cette chaîne : l’essentiel est la relation perceptible entre son et environnement."
+      },
+      {
+        "title": "Tactile, tangible et haptique",
+        "body": "Une interface tactile détecte le toucher sur une surface. Une interface tangible utilise un objet physique manipulable comme commande. Une interface haptique produit une sensation de vibration, de pression ou de force. Un même système peut combiner ces fonctions.",
+        "bullets": [
+          "Écran de tablette : entrée tactile.",
+          "Cube réel suivi par caméra : interaction tangible.",
+          "Contrôleur qui vibre : retour haptique."
+        ]
+      },
+      {
+        "title": "Odorat et goût",
+        "body": "Les dispositifs olfactifs diffusent des arômes en lien avec une scène ou un événement. Les dispositifs gustatifs expérimentaux agissent sur la perception du goût, par exemple par stimulation ou substances dédiées. Ces exemples élargissent la notion d’immersion au-delà de l’image."
+      },
+      {
+        "title": "Du dispositif à l’outil de production",
+        "body": "Le plan annonce moteurs 3D, plateformes, navigateurs AR et SDK, mais le PDF fourni s’arrête après les dispositifs. Le TD4 aborde ces outils et le développement Unity/Vuforia ; ses solutions sont présentées comme des compléments éditoriaux aux exercices, sans attribuer au PDF des pages absentes."
+      }
+    ],
+    "takeaway": "Tactile détecte un contact, tangible mobilise un objet réel, haptique restitue une sensation.",
+    "cards": [
+      {
+        "id": "ra-dispositifs-q1",
+        "question": "Quel indice révèle une vision optique directe ?",
+        "answer": "La lumière réelle traverse une optique transparente",
+        "choices": [
+          "La lumière réelle traverse une optique transparente",
+          "Le réel est exclusivement un flux vidéo",
+          "Le casque est connecté en Wi-Fi",
+          "L’appareil possède un haut-parleur"
+        ],
+        "correct": 0,
+        "explanation": "Le trajet de la lumière constitue le critère de classement."
+      },
+      {
+        "id": "ra-dispositifs-q2",
+        "question": "Selon sa documentation matérielle, HoloLens 2 est un exemple de…",
+        "answer": "Vision optique directe",
+        "choices": [
+          "Vision uniquement indirecte par écran opaque",
+          "Vision optique directe",
+          "Projection murale",
+          "Affichage gustatif"
+        ],
+        "correct": 1,
+        "explanation": "Cette correction évite de reprendre le classement erroné du support."
+      },
+      {
+        "id": "ra-dispositifs-q3",
+        "question": "Que produit un affichage rétinien dans le principe étudié ?",
+        "answer": "Une image par projection lumineuse vers la rétine",
+        "choices": [
+          "Une image exclusivement sur une surface extérieure",
+          "Une image sur un écran tenu à la main",
+          "Une image par projection lumineuse vers la rétine",
+          "Un retour de force sur le visage"
+        ],
+        "correct": 2,
+        "explanation": "Il s’agit d’un principe d’affichage visuel."
+      },
+      {
+        "id": "ra-dispositifs-q4",
+        "question": "Pourquoi la projection doit-elle considérer le relief du support ?",
+        "answer": "Pour conserver une augmentation correctement positionnée",
+        "choices": [
+          "Pour corriger seulement le volume sonore",
+          "Pour rendre le suivi de pose inutile",
+          "Pour imposer une surface toujours plane",
+          "Pour conserver une augmentation correctement positionnée"
+        ],
+        "correct": 3,
+        "explanation": "La géométrie influence la projection."
+      },
+      {
+        "id": "ra-dispositifs-q5",
+        "question": "Quel dispositif correspond à une entrée tactile ?",
+        "answer": "Un écran détectant un appui du doigt",
+        "choices": [
+          "Un écran détectant un appui du doigt",
+          "Un gant qui produit seulement une vibration",
+          "Un bloc suivi sans écran tactile",
+          "Un casque qui affiche uniquement une image"
+        ],
+        "correct": 0,
+        "explanation": "Le contact avec une surface fournit l’entrée."
+      },
+      {
+        "id": "ra-dispositifs-q6",
+        "question": "Quel exemple est tangible ?",
+        "answer": "Un bloc physique suivi pour déplacer un objet virtuel",
+        "choices": [
+          "Un écran qui affiche seulement un texte",
+          "Un bloc physique suivi pour déplacer un objet virtuel",
+          "Une vibration sans objet de commande",
+          "Un pointeur exclusivement virtuel"
+        ],
+        "correct": 1,
+        "explanation": "L’objet réel est un élément de l’interface."
+      },
+      {
+        "id": "ra-dispositifs-q7",
+        "question": "Quel exemple est haptique ?",
+        "answer": "Une manette qui restitue une vibration",
+        "choices": [
+          "Une main détectée sans retour sensoriel",
+          "Une cible imprimée sans actionneur",
+          "Une manette qui restitue une vibration",
+          "Un bouton graphique sans retour tactile"
+        ],
+        "correct": 2,
+        "explanation": "L’haptique produit un retour sensoriel mécanique."
+      },
+      {
+        "id": "ra-dispositifs-q8",
+        "question": "Quel est le but de la spatialisation audio ?",
+        "answer": "Donner une localisation perçue à un son",
+        "choices": [
+          "Reconnaître les mots d’une commande",
+          "Modifier seulement le volume global",
+          "Convertir la parole en texte",
+          "Donner une localisation perçue à un son"
+        ],
+        "correct": 3,
+        "explanation": "La direction du son peut enrichir la scène."
+      },
+      {
+        "id": "ra-dispositifs-q9",
+        "question": "Quelle famille utilise des cartouches d’arômes ?",
+        "answer": "Les dispositifs olfactifs",
+        "choices": [
+          "Les dispositifs olfactifs",
+          "Les dispositifs tangibles",
+          "Les dispositifs inertiels",
+          "Les dispositifs rétiniens"
+        ],
+        "correct": 0,
+        "explanation": "Ils agissent sur l’odorat."
+      },
+      {
+        "id": "ra-dispositifs-q10",
+        "question": "Quel critère permet de choisir une interface de maintenance ?",
+        "answer": "L’action requise et les contraintes perceptives",
+        "choices": [
+          "La marque seule",
+          "L’action requise et les contraintes perceptives",
+          "La résolution maximale sans considérer l’usage",
+          "La présence obligatoire d’un casque opaque"
+        ],
+        "correct": 1,
+        "explanation": "Il faut relier le dispositif à l’usage."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-dispositifs-e1",
+        "question": "Propose les interfaces d’une formation à l’assemblage qui doit afficher des consignes, permettre de déplacer une pièce et signaler un contact.",
+        "modelAnswer": "Un affichage aligné sur la scène présente les consignes. Un objet physique suivi peut servir d’interface tangible pour déplacer la pièce virtuelle. Un contrôleur ou un gant à retour haptique signale le contact. Un écran tactile peut compléter la sélection. Chaque dispositif doit être justifié par sa fonction et non uniquement par sa marque.",
+        "rubric": [
+          "Choisir un affichage adapté",
+          "Décrire l’interaction tangible",
+          "Expliquer le retour haptique",
+          "Justifier le choix selon l’usage"
+        ]
+      }
+    ],
+    "practicals": []
+  }
+]

@@ -1,6 +1,6 @@
 # Mémora
 
-Application française de révision, disponible comme site installable et application Android. Les révisions et leur progression restent utilisables hors connexion. Le salon multijoueur et l’avis IA utilisent un backend Netlify, sans compte ni mot de passe.
+Application française de révision, disponible comme site installable et application Android. L’édition 2.0.0 intègre exclusivement les cours S1 fournis par l’utilisateur : réalités immersives et intelligence artificielle. Les révisions et leur progression restent utilisables hors connexion. Le salon multijoueur et l’avis IA utilisent un backend Netlify, sans compte ni mot de passe.
 
 Site et API : [memora-revision-fedi.netlify.app](https://memora-revision-fedi.netlify.app).
 
@@ -8,20 +8,28 @@ Dépôt : [FediMechergui/memorycardsrevision](https://github.com/FediMechergui/m
 
 ## Fonctionnalités
 
-- CCNA 1, CCNA 2 et JavaFX : **18 chapitres**, **180 flashcards / questions de quiz**, **18 sujets rédigés**, schémas et formules.
-- Lecture : synthèses, exemples de commandes/code, points à retenir, suivi des chapitres.
+- Réalités immersives et intelligence artificielle : **16 chapitres**, **198 flashcards / questions de quiz**, **16 sujets rédigés**, **11 activités guidées**, schémas et formules. Les **11 PDF fournis (269 pages)** sont couverts, dont les quatre TD de RA.
+- Lecture : synthèses originales, références PDF avec pages, exemples Python/C#, points à retenir, suivi des chapitres. Les compléments et rectifications sont explicitement signalés.
 - Flashcards : format portrait, retournement 3D (désactivé avec réduction des animations), identité et couleur de matière, favoris, prononciation et répétition espacée.
 - Quiz : quatre choix, correction expliquée, score réel.
 - Questions/réponses : rappel écrit et comparaison avec la réponse attendue.
 - Examen : cinq minutes par question, brouillon conservé, échéance conservée à la fermeture, corrigé et grille d’autoévaluation. Aucune note IA n’est simulée.
 - Objectif quotidien, activité, série, historique et export/restauration de progression.
-- Rangs de révision calculés à partir des actions enregistrées : 10 XP par notion travaillée ; ce ne sont pas des certifications.
+- Rangs de révision calculés à partir des actions enregistrées : 10 XP par notion travaillée ; ce ne sont pas des certifications. Les quiz mesurent les choix corrects ; les réponses rédigées sont autoévaluées ; ouvrir un corrigé pratique n’ajoute aucun point.
 - Salon Mimo : profils personnalisables, QR personnel, invitations acceptées sur l’appareil du joueur, 2 à 12 joueurs, dix manches sur chapitre/matière/mashup, Sprint ou Dés du savoir.
 - Avis IA facultatif sur chaque réponse d’examen : modèle gratuit OpenRouter, critères expliqués, report des suggestions uniquement sur demande. La grille finale reste une autoévaluation modifiable.
 - Packs de cours JSON validés ; classement indicatif d’un texte ou Markdown selon ses mots-clés. Les PDF sont préparés avec l’assistant avant import, sans faux extracteur PDF ni génération automatique annoncée.
 - Hors connexion : ressources embarquées dans l’APK ; cache du site après une première visite réussie et l’activation de son service worker.
 
-Les fiches sont des synthèses originales d’introduction, pas une reproduction de cours payants ni un programme complet de certification. Les références Cisco, IETF et OpenJFX sont dans chaque matière.
+Les fiches sont des synthèses des documents fournis. Les références complémentaires (Azuma, Microsoft, Unity, Vuforia, scikit-learn) sont dans chaque matière. Les activités de développement sont à réaliser dans Python ou Unity : Mémora présente les étapes et les corrigés, sans exécuter le code de l’étudiant ni certifier sa maîtrise pratique.
+
+## Éditions et conservation des données
+
+L’ancienne version CCNA/JavaFX est conservée sur la branche locale `archive/memora-original-courses`, et les tags `v1.0.0` et `v1.1.0` sont inchangés. La nouvelle édition est développée sur `courses/user-provided` ; elle ne publie rien automatiquement.
+
+Le catalogue porte `edition: "s1-2026"`, version 3. Son cache `memora.catalog.s1-2026` est distinct de l’ancien `memora.catalog.v1`, qui reste intact. Les imports et fusions entre éditions sont refusés. Les identifiants des nouvelles questions sont distincts ; la progression `memora.progress.v1`, les favoris, l’historique et les brouillons existants ne sont pas effacés. L’activité passée reste visible, même si les anciens cours ne sont plus dans cette bibliothèque.
+
+Le salon et l’avis IA vérifient l’édition du serveur avant d’envoyer une requête métier. Le backend doit être déployé avec le même catalogue que le client ; un ancien serveur ne peut pas fournir les corrigés des nouveaux cours. Les cours locaux restent disponibles dans ce cas. Une nouvelle édition locale ne signifie pas que le site public ou une release APK a déjà été mis à jour.
 
 ## Développement web
 
@@ -91,7 +99,9 @@ Une application debug et une application release ont des signatures différentes
 
 ## Ajouter tes futurs cours
 
-Les sources de contenu sont dans `content/ccna1.ts`, `content/ccna2.ts`, `content/javafx.ts` et `content/enrichment.ts` (compléments originaux du catalogue v2). Aucun PDF utilisateur n’a été utilisé pour ces ajouts. Les conventions de préparation sont documentées dans `AGENTS.md`. Donner le cours à l’assistant, puis :
+Les sources éditoriales sont `content/immersive-courses.json`, `content/immersive-exercises.json`, `content/ai-foundations.json` et `content/ai-methods.json`. Les PDF originaux sont dans `content/sources/3éme_s1`, avec textes extraits et manifeste SHA-256. Le TD1 est scanné : ses trois pages ont été lues visuellement. Les conventions sont documentées dans `AGENTS.md`.
+
+Pour préparer un nouveau PDF, le placer dans `content/sources/`, puis lancer `python scripts/extract-course-pdfs.py` (dépendance : PyMuPDF). Le script extrait le texte et signale les pages pauvres en texte ; il ne crée aucun cours et ne valide pas une lecture. Lire le document, vérifier ses images/formules, rédiger les sections et exercices, renseigner les références puis marquer la source relue dans le manifeste. Les nouvelles sources n’obtiennent jamais automatiquement ce statut. Ensuite :
 
 ```sh
 npx tsx scripts/generate-content.ts
@@ -99,6 +109,8 @@ npm run courses:validate
 ```
 
 Le format de pack est défini par `src/lib/content.ts`. Un exemple complet se télécharge depuis **Ajouter un cours**. Un import est prévisualisé avant application. Les identifiants doivent être uniques et stables. L’import texte/Markdown propose uniquement un classement et un export du texte source à préparer.
+
+Les rectifications sont documentées dans les leçons : RA également interactive ; exemples commerciaux de vision directe/indirecte ; choix multiples ambigus des TD ; matrice singulière du TD3 avec hypothèse annoncée ; conversion radians/degrés du TD4 ; médiane des âges corrigée à 35 ; limites de R², des métriques et du prétraitement. Le plan du troisième PDF IA annonce des développements sur les forêts, K-means et Q-Learning qui ne figurent pas dans les pages fournies : seules les notions effectivement présentes sont attribuées au cours.
 
 ## Données et limites
 

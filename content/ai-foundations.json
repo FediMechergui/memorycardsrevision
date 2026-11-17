@@ -1,0 +1,909 @@
+[
+  {
+    "id": "ia-fondements",
+    "title": "IA · Fondements, histoire et approches",
+    "description": "Comprendre ce qui définit l’IA et distinguer ses principales approches.",
+    "minutes": 20,
+    "references": [
+      {
+        "document": "Chapitre1_Introduction_IA.pdf",
+        "pages": "1–17"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Des capacités et des tâches",
+        "body": "L’IA vise des systèmes capables de perception, raisonnement, apprentissage, résolution de problèmes ou décision. Un système n’a pas besoin de posséder toutes ces capacités. Il faut toujours décrire la tâche, les informations disponibles et le résultat attendu."
+      },
+      {
+        "title": "Règles explicites et apprentissage",
+        "body": "Un programme classique peut appliquer des règles connues pour calculer une moyenne. Un modèle appris peut reconnaître une catégorie d’image à partir d’exemples. Attention : l’IA inclut aussi des systèmes à règles ; « IA » et « Machine Learning » ne sont donc pas synonymes.",
+        "diagram": {
+          "caption": "Deux modes de construction",
+          "steps": [
+            "Règles explicites + données → résultat",
+            "Exemples + algorithme d’apprentissage → modèle",
+            "Modèle + nouvelle entrée → prédiction"
+          ]
+        }
+      },
+      {
+        "title": "Turing et Dartmouth",
+        "body": "Le cours présente l’article de Turing de 1950 et un test de comportement conversationnel : un évaluateur échange sans savoir s’il s’adresse à un humain ou à une machine. Ce test porte sur le comportement observable, pas sur une preuve de conscience. Dartmouth, en 1956, constitue un repère fondateur du domaine."
+      },
+      {
+        "title": "Systèmes experts et cycles de développement",
+        "body": "Les systèmes experts associent des connaissances explicites et un moteur d’inférence. Les périodes de recul appelées hivers de l’IA illustrent l’écart entre attentes et résultats. L’essor ultérieur s’appuie sur données, puissance de calcul, algorithmes et stockage ; il ne résulte pas d’un facteur unique."
+      },
+      {
+        "title": "Classer les capacités et le fonctionnement",
+        "body": "ANI désigne une intelligence spécialisée. AGI désigne une intelligence générale et ASI une capacité dépassant largement les capacités humaines dans la typologie du cours. Ce sont des catégories de portée, à distinguer des catégories de fonctionnement : réactif, mémoire limitée, théorie de l’esprit et conscience de soi. Les deux dernières sont présentées comme hypothétiques dans le support."
+      },
+      {
+        "title": "Quatre approches",
+        "body": "Le symbolisme représente explicitement les connaissances et les règles. Le connexionnisme apprend des régularités au moyen de réseaux de neurones. L’approche actionniste organise un agent qui perçoit, décide et agit dans un environnement. Une architecture hybride combine ces méthodes."
+      },
+      {
+        "title": "Exemple d’architecture hybride",
+        "body": "Un robot peut utiliser un réseau neuronal pour reconnaître un obstacle, des règles pour respecter une priorité et une stratégie d’action pour contourner l’obstacle. Le module de perception ne remplace pas toute la logique de décision. Cet exemple original illustre les catégories du cours.",
+        "origin": "supplement"
+      }
+    ],
+    "takeaway": "L’IA inclut raisonner, apprendre et agir ; le ML n’en constitue qu’une approche.",
+    "cards": [
+      {
+        "id": "ia-fondements-q1",
+        "question": "Quelle définition correspond au domaine de l’IA ?",
+        "answer": "Concevoir des systèmes réalisant des tâches de perception, raisonnement ou décision",
+        "choices": [
+          "Concevoir des systèmes réalisant des tâches de perception, raisonnement ou décision",
+          "Exécuter exclusivement des réseaux de neurones",
+          "Stocker des données sans les interpréter",
+          "Produire uniquement des statistiques descriptives"
+        ],
+        "correct": 0,
+        "explanation": "L’IA couvre plusieurs capacités et approches."
+      },
+      {
+        "id": "ia-fondements-q2",
+        "question": "Pourquoi un système expert peut-il être une IA sans ML ?",
+        "answer": "Il raisonne à partir de connaissances et de règles explicites",
+        "choices": [
+          "Il apprend obligatoirement par gradient",
+          "Il raisonne à partir de connaissances et de règles explicites",
+          "Il n’utilise aucune règle",
+          "Il est forcément conscient"
+        ],
+        "correct": 1,
+        "explanation": "L’apprentissage statistique n’est pas une condition nécessaire à toute IA."
+      },
+      {
+        "id": "ia-fondements-q3",
+        "question": "Que fournit une programmation classique à règles explicites ?",
+        "answer": "Des données et des règles pour produire un résultat",
+        "choices": [
+          "Uniquement des réponses attendues pour apprendre un modèle",
+          "Seulement une récompense issue d’un environnement",
+          "Des données et des règles pour produire un résultat",
+          "Des exemples non étiquetés pour former des groupes"
+        ],
+        "correct": 2,
+        "explanation": "La règle est définie par le concepteur."
+      },
+      {
+        "id": "ia-fondements-q4",
+        "question": "Que cherche principalement à évaluer le test de Turing présenté ?",
+        "answer": "Un comportement conversationnel observable",
+        "choices": [
+          "Une preuve certaine de conscience",
+          "Une mesure universelle de toute intelligence",
+          "La seule vitesse de calcul de réponses",
+          "Un comportement conversationnel observable"
+        ],
+        "correct": 3,
+        "explanation": "Le test ne démontre pas l’ensemble des capacités mentales."
+      },
+      {
+        "id": "ia-fondements-q5",
+        "question": "Quel repère est associé à Dartmouth ?",
+        "answer": "1956",
+        "choices": [
+          "1956",
+          "1950",
+          "1968",
+          "1997"
+        ],
+        "correct": 0,
+        "explanation": "1950 est le repère de l’article de Turing dans le cours."
+      },
+      {
+        "id": "ia-fondements-q6",
+        "question": "Que désigne un hiver de l’IA ?",
+        "answer": "Une période de recul liée notamment à des attentes déçues",
+        "choices": [
+          "Une étape de régularisation d’un réseau",
+          "Une période de recul liée notamment à des attentes déçues",
+          "Une phase obligatoire de chaque entraînement",
+          "Un mode d’apprentissage avec données manquantes"
+        ],
+        "correct": 1,
+        "explanation": "Il s’agit d’un repère historique du domaine."
+      },
+      {
+        "id": "ia-fondements-q7",
+        "question": "Que signifie ANI ?",
+        "answer": "Une IA spécialisée dans un périmètre de tâches",
+        "choices": [
+          "Une intelligence générale flexible dans tous les domaines",
+          "Une superintelligence théorique",
+          "Une IA spécialisée dans un périmètre de tâches",
+          "Une machine dotée d’une conscience démontrée"
+        ],
+        "correct": 2,
+        "explanation": "ANI décrit la portée des capacités."
+      },
+      {
+        "id": "ia-fondements-q8",
+        "question": "Quel couple appartient à la classification par fonctionnement ?",
+        "answer": "Réactif et mémoire limitée",
+        "choices": [
+          "Classification et régression",
+          "MAE et RMSE",
+          "Train et test",
+          "Réactif et mémoire limitée"
+        ],
+        "correct": 3,
+        "explanation": "Les autres couples concernent apprentissage ou évaluation."
+      },
+      {
+        "id": "ia-fondements-q9",
+        "question": "Quelle approche privilégie règles et symboles ?",
+        "answer": "L’approche symbolique",
+        "choices": [
+          "L’approche symbolique",
+          "L’approche connexionniste seule",
+          "L’apprentissage par simple regroupement",
+          "La reconnaissance de motifs sans règles explicites"
+        ],
+        "correct": 0,
+        "explanation": "Elle représente explicitement les connaissances."
+      },
+      {
+        "id": "ia-fondements-q10",
+        "question": "Quelle approche se fonde sur les réseaux de neurones ?",
+        "answer": "L’approche connexionniste",
+        "choices": [
+          "Le raisonnement par règles explicites uniquement",
+          "L’approche connexionniste",
+          "Une table de décisions écrite intégralement à la main",
+          "Une base de connaissances sans apprentissage"
+        ],
+        "correct": 1,
+        "explanation": "Les paramètres y sont ajustés à partir de données."
+      },
+      {
+        "id": "ia-fondements-q11",
+        "question": "Quelle boucle décrit un agent actionniste ?",
+        "answer": "Perception → décision → action",
+        "choices": [
+          "Étiquetage → stockage → archivage",
+          "Normalisation → déduplication → imputation",
+          "Perception → décision → action",
+          "Règle fixe → résultat sans observation de l’environnement"
+        ],
+        "correct": 2,
+        "explanation": "L’agent agit dans un environnement pour un objectif."
+      },
+      {
+        "id": "ia-fondements-q12",
+        "question": "Quand une architecture est-elle hybride ?",
+        "answer": "Lorsqu’elle combine plusieurs approches complémentaires",
+        "choices": [
+          "Lorsqu’elle répète le même modèle sur deux machines",
+          "Lorsqu’elle collecte deux copies identiques des données",
+          "Lorsqu’elle utilise uniquement des règles explicites",
+          "Lorsqu’elle combine plusieurs approches complémentaires"
+        ],
+        "correct": 3,
+        "explanation": "Perception apprise et règles explicites peuvent coexister."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-fondements-e1",
+        "question": "Explique pourquoi toute IA n’est pas du Machine Learning, puis décris une architecture hybride de robot.",
+        "modelAnswer": "Un système symbolique peut déduire des conclusions à partir de règles explicites sans les apprendre statistiquement. Le ML apprend un modèle à partir d’exemples. Dans un robot hybride, un réseau reconnaît les obstacles, des règles expriment des contraintes et un agent choisit une action selon l’environnement. Chaque composant répond à une fonction distincte.",
+        "rubric": [
+          "Distinguer IA et ML",
+          "Décrire le raisonnement symbolique",
+          "Identifier perception et décision",
+          "Justifier la combinaison hybride"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ia-apprentissages",
+    "title": "IA, ML, données et types d’apprentissage",
+    "description": "Relier les tâches, les étiquettes et le rôle du modèle dans une application.",
+    "minutes": 22,
+    "references": [
+      {
+        "document": "Chapitre1_Introduction_IA.pdf",
+        "pages": "18-28"
+      },
+      {
+        "document": "Chapitre2_de_L_IA_au_ML_Final.pdf",
+        "pages": "1-9 et 31-36"
+      }
+    ],
+    "sections": [
+      {
+        "title": "IA, ML et Deep Learning",
+        "body": "Le Machine Learning apprend des régularités à partir d’expériences. Le Deep Learning est une famille de méthodes de ML fondée sur des réseaux à plusieurs couches. L’inclusion DL ⊂ ML ⊂ IA ne se renverse pas : un arbre de décision est du ML sans être un réseau profond."
+      },
+      {
+        "title": "Expérience, tâche, performance",
+        "body": "La définition de Mitchell articule expérience E, tâche T et mesure P : l’apprentissage se constate par l’amélioration mesurée d’une tâche grâce à l’expérience. Pour un filtre de spam, E peut être un ensemble d’emails étiquetés, T le classement d’un nouvel email et P une métrique choisie selon les erreurs importantes."
+      },
+      {
+        "title": "Supervisé : apprendre une cible",
+        "body": "Chaque observation possède des caractéristiques X et une réponse y. Prédire une catégorie correspond à une classification ; prédire une quantité correspond à une régression. Un label peut provenir de l’historique d’un événement : il n’est pas nécessairement saisi manuellement par une personne."
+      },
+      {
+        "title": "Non supervisé : décrire une structure",
+        "body": "En l’absence de cible fournie, le clustering cherche des groupes de ressemblances et la réduction de dimension condense la représentation. Le cours cite K-means, DBSCAN, le clustering hiérarchique et l’ACP. Choisir un nombre K de groupes est propre à certaines méthodes, pas à toutes."
+      },
+      {
+        "title": "Renforcement : apprendre en agissant",
+        "body": "Un agent observe un état, choisit une action et reçoit une récompense dans un environnement. Il cherche une stratégie utile à long terme, plutôt qu’une réponse correcte attachée à chaque exemple. Le cours présente cette famille et cite notamment AlphaGo ; les algorithmes Q-Learning et SARSA sont annoncés dans le plan du troisième PDF, sans développement détaillé dans les pages fournies."
+      },
+      {
+        "title": "La place de la Data Science",
+        "body": "La Data Science associe statistiques, informatique et expertise métier pour extraire des connaissances et orienter des décisions. Son cycle comprend collecte, préparation, exploration, modélisation et déploiement. Le ML est un outil possible de cette démarche, qui inclut aussi des analyses sans modèle appris."
+      },
+      {
+        "title": "Intégrer un modèle à un logiciel",
+        "body": "Une application peut réunir interface, backend, base de données et module IA. Le modèle ne dispense pas de tester les entrées, gérer les erreurs, maintenir les données ou suivre le service. Les usages du support comprennent langage, vision, transport, industrie et aide à la décision."
+      },
+      {
+        "title": "Exemple fil rouge : le logement",
+        "body": "Surface, quartier et nombre de pièces servent de features ; le prix observé sert de target. L’apprentissage utilise l’historique, puis l’inférence estime le prix d’un logement nouveau. Les petites tables du support sont des illustrations pédagogiques : elles ne démontrent pas la fiabilité d’un modèle immobilier réel."
+      }
+    ],
+    "takeaway": "Choisis d’abord la tâche et le retour disponible : étiquette, structure à découvrir ou récompense.",
+    "cards": [
+      {
+        "id": "ia-apprentissages-q1",
+        "question": "Quelle inclusion est correcte ?",
+        "answer": "DL ⊂ ML ⊂ IA",
+        "choices": [
+          "DL ⊂ ML ⊂ IA",
+          "IA ⊂ ML ⊂ DL",
+          "ML ⊂ DL ⊂ IA",
+          "DL = ML = IA"
+        ],
+        "correct": 0,
+        "explanation": "Le domaine général est l’IA."
+      },
+      {
+        "id": "ia-apprentissages-q2",
+        "question": "Dans la définition E/T/P, que représente T ?",
+        "answer": "La tâche à accomplir",
+        "choices": [
+          "La mesure de performance choisie",
+          "La tâche à accomplir",
+          "L’ensemble des exemples observés",
+          "Le nombre d’itérations uniquement"
+        ],
+        "correct": 1,
+        "explanation": "E est l’expérience et P la mesure de performance."
+      },
+      {
+        "id": "ia-apprentissages-q3",
+        "question": "Pour prédire un prix, quelle variable est la cible ?",
+        "answer": "Le prix observé des exemples d’entraînement",
+        "choices": [
+          "La surface du logement",
+          "Le quartier",
+          "Le prix observé des exemples d’entraînement",
+          "Le nombre de pièces"
+        ],
+        "correct": 2,
+        "explanation": "La target est ce que le modèle doit estimer."
+      },
+      {
+        "id": "ia-apprentissages-q4",
+        "question": "Prédire spam ou non-spam est une…",
+        "answer": "Classification",
+        "choices": [
+          "Régression continue",
+          "Réduction de dimension",
+          "Segmentation non supervisée",
+          "Classification"
+        ],
+        "correct": 3,
+        "explanation": "La cible est une catégorie."
+      },
+      {
+        "id": "ia-apprentissages-q5",
+        "question": "Prédire une température est une…",
+        "answer": "Régression",
+        "choices": [
+          "Régression",
+          "Classification en catégories préfixées",
+          "Regroupement sans cible",
+          "Réduction de dimension"
+        ],
+        "correct": 0,
+        "explanation": "La cible est quantitative."
+      },
+      {
+        "id": "ia-apprentissages-q6",
+        "question": "Que fournit-on habituellement à un apprentissage supervisé ?",
+        "answer": "Des exemples X avec une cible y",
+        "choices": [
+          "Des X sans aucune cible uniquement",
+          "Des exemples X avec une cible y",
+          "Seulement des récompenses d’actions",
+          "Uniquement une liste de classes sans exemples"
+        ],
+        "correct": 1,
+        "explanation": "Les réponses connues guident l’apprentissage."
+      },
+      {
+        "id": "ia-apprentissages-q7",
+        "question": "Quel problème correspond au clustering ?",
+        "answer": "Regrouper des clients par ressemblances sans catégories fournies",
+        "choices": [
+          "Prédire un prix à partir de prix connus",
+          "Attribuer des catégories connues grâce à des étiquettes",
+          "Regrouper des clients par ressemblances sans catégories fournies",
+          "Estimer une température cible"
+        ],
+        "correct": 2,
+        "explanation": "Les groupes sont recherchés dans les données."
+      },
+      {
+        "id": "ia-apprentissages-q8",
+        "question": "Quel est l’objectif d’une réduction de dimension ?",
+        "answer": "Représenter les données avec moins de variables ou axes",
+        "choices": [
+          "Ajouter systématiquement des étiquettes",
+          "Dupliquer les observations",
+          "Garantir une précision de 100 %",
+          "Représenter les données avec moins de variables ou axes"
+        ],
+        "correct": 3,
+        "explanation": "Elle peut faciliter visualisation ou calcul."
+      },
+      {
+        "id": "ia-apprentissages-q9",
+        "question": "Quel retour caractérise le renforcement ?",
+        "answer": "Une récompense liée à l’interaction",
+        "choices": [
+          "Une récompense liée à l’interaction",
+          "Une classe correcte fournie pour chaque état",
+          "Une partition de groupes sans interaction",
+          "Une simple médiane des observations"
+        ],
+        "correct": 0,
+        "explanation": "L’agent apprend à partir des conséquences de ses actions."
+      },
+      {
+        "id": "ia-apprentissages-q10",
+        "question": "Quelle combinaison décrit la Data Science ?",
+        "answer": "Statistiques, informatique et expertise métier",
+        "choices": [
+          "Uniquement des réseaux de neurones",
+          "Statistiques, informatique et expertise métier",
+          "Uniquement de la programmation applicative",
+          "Uniquement de la gestion de bases de données"
+        ],
+        "correct": 1,
+        "explanation": "Elle dépasse l’emploi d’un seul algorithme."
+      },
+      {
+        "id": "ia-apprentissages-q11",
+        "question": "Quel rôle garde le génie logiciel autour d’un modèle ?",
+        "answer": "Concevoir, tester, déployer et maintenir l’application",
+        "choices": [
+          "Supprimer toute validation d’entrée",
+          "Remplacer tous les métiers par une métrique",
+          "Concevoir, tester, déployer et maintenir l’application",
+          "Garantir l’absence de dérive"
+        ],
+        "correct": 2,
+        "explanation": "Le modèle est un composant d’un système plus large."
+      },
+      {
+        "id": "ia-apprentissages-q12",
+        "question": "Pourquoi quatre exemples immobiliers ne suffisent-ils pas à démontrer une bonne généralisation ?",
+        "answer": "Ils ne représentent pas nécessairement la diversité des logements",
+        "choices": [
+          "Parce qu’une régression interdit les petites tables",
+          "Parce qu’un prix ne peut jamais être une cible",
+          "Parce qu’il faut toujours convertir les logements en images",
+          "Ils ne représentent pas nécessairement la diversité des logements"
+        ],
+        "correct": 3,
+        "explanation": "Le tableau illustre un mécanisme ; la qualité nécessite une évaluation."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-apprentissages-e1",
+        "question": "Classe les trois tâches suivantes et décris leurs données : estimer un prix à partir de ventes connues, segmenter des clients sans étiquette, apprendre à sortir d’un labyrinthe grâce à des récompenses.",
+        "modelAnswer": "L’estimation de prix est une régression supervisée : X contient les caractéristiques, y les prix connus. La segmentation est un clustering non supervisé : on recherche des groupes dans X sans target fournie. Le labyrinthe relève du renforcement : un agent agit dans un état et reçoit des récompenses. Une métrique adaptée doit être définie pour chaque tâche.",
+        "rubric": [
+          "Identifier la régression supervisée",
+          "Identifier le clustering non supervisé",
+          "Identifier agent, actions et récompenses",
+          "Relier les tâches aux informations disponibles"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ia-donnees",
+    "title": "Collecter et nettoyer les données",
+    "description": "Sources, données manquantes, doublons, formats et valeurs atypiques.",
+    "minutes": 28,
+    "references": [
+      {
+        "document": "Chapitre2_de_L_IA_au_ML_Final.pdf",
+        "pages": "10–30"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Collecter pour une tâche définie",
+        "body": "Bases internes, formulaires, capteurs, logs, APIs et extractions web produisent des observations. Une table structurée associe lignes et variables ; textes, sons et images demandent une représentation adaptée. La quantité seule ne compense pas un échantillon qui exclut une partie des situations visées."
+      },
+      {
+        "title": "Diagnostiquer quatre anomalies",
+        "body": "Avant l’entraînement, repérer les valeurs manquantes, doublons, incohérences de format et valeurs atypiques. Une personne répétée plusieurs fois peut peser excessivement. Une valeur extrême peut être une erreur ou un cas rare valide : il faut l’examiner avant de la supprimer."
+      },
+      {
+        "title": "Comprendre les absences",
+        "body": "MCAR signifie une absence indépendante des variables étudiées. MAR signifie une absence explicable par des variables observées, conditionnellement à celles-ci. MNAR, aussi noté NMAR dans le support, implique une dépendance à la valeur manquante non expliquée par les observations disponibles. La suppression peut donc modifier la population représentée."
+      },
+      {
+        "title": "Suppression et imputation",
+        "body": "On peut supprimer une observation si la perte est justifiée, ou imputer par moyenne, médiane, mode ou modèle adapté. L’imputation ne retrouve pas la valeur vraie : elle applique une hypothèse. Les statistiques d’imputation destinées à un modèle prédictif doivent être apprises sur l’entraînement uniquement."
+      },
+      {
+        "title": "Nettoyer les types",
+        "body": "Retirer les espaces et unités parasites, unifier les catégories et convertir les nombres. Une conversion de '$185,000' doit retirer le symbole et le séparateur de milliers ; supprimer seulement '$' ne suffit pas. Une date ambiguë exige une convention explicite plutôt qu’une conversion aveugle.",
+        "origin": "correction",
+        "language": "Python · pandas",
+        "code": "df['Salaire'] = pd.to_numeric(\n    df['Salaire'].astype(str).str.replace(' DT', '', regex=False).str.strip(),\n    errors='coerce'\n)\ndf['Nom'] = df['Nom'].str.strip().str.capitalize()\ndf['Ville'] = df['Ville'].str.strip().str.capitalize()"
+      },
+      {
+        "title": "Écart interquartile",
+        "body": "L’IQR mesure l’étalement de la moitié centrale des observations. Les bornes conventionnelles signalent des valeurs à examiner, elles ne prouvent pas une erreur. Le support donne Q1=18 et Q3=32 selon une convention de quartiles ; une bibliothèque peut utiliser une interpolation différente.",
+        "formula": "IQR = Q3 − Q1\nBorne basse = Q1 − 1,5 × IQR\nBorne haute = Q3 + 1,5 × IQR\nAvec Q1 = 18, Q3 = 32 : IQR = 14 ; bornes = −3 et 53"
+      },
+      {
+        "title": "Recalculer le cas clients",
+        "origin": "correction",
+        "body": "Après suppression du doublon de Bob et remplacement de l’âge 250 par une valeur manquante, les âges valides sont 28, 35 et 42 : leur médiane vaut 35. La valeur 38,5 affichée dans la correction source n’est pas la médiane de ces trois valeurs. Pour les notes 4,5 ; 3 ; 5 ; 2,5, la médiane vaut bien 3,75."
+      },
+      {
+        "title": "Séparer préparation pédagogique et évaluation",
+        "body": "Le nettoyage de la petite table explique les opérations. Pour mesurer une capacité prédictive, il faut en plus séparer les données avant d’ajuster les transformations statistiques et conserver un test indépendant. Confidentialité, droits d’accès et qualité des données sont des contraintes du projet ; le nettoyage technique ne garantit pas à lui seul une conformité réglementaire.",
+        "origin": "supplement"
+      }
+    ],
+    "takeaway": "Inspecte avant de corriger ; une valeur manquante imputée reste une estimation, et une valeur rare n’est pas forcément fausse.",
+    "cards": [
+      {
+        "id": "ia-donnees-q1",
+        "question": "Quelle source correspond à une collecte automatique de mesures ?",
+        "answer": "Un capteur avec journal d’observations",
+        "choices": [
+          "Un capteur avec journal d’observations",
+          "Une règle métier sans observation",
+          "Une liste de noms de modèles",
+          "Une métrique choisie sans historique"
+        ],
+        "correct": 0,
+        "explanation": "Capteurs et logs sont des sources du support."
+      },
+      {
+        "id": "ia-donnees-q2",
+        "question": "Dans un tableau de données, une ligne représente généralement…",
+        "answer": "Une observation",
+        "choices": [
+          "Une variable décrite pour tous les individus",
+          "Une observation",
+          "Un hyperparamètre de l’algorithme",
+          "La performance finale du modèle"
+        ],
+        "correct": 1,
+        "explanation": "Les colonnes décrivent les variables."
+      },
+      {
+        "id": "ia-donnees-q3",
+        "question": "Quel risque apparaît si seuls les clients jeunes sont collectés pour un modèle général ?",
+        "answer": "Un biais d’échantillonnage",
+        "choices": [
+          "Un simple changement d’unité sans biais",
+          "Un problème de format uniquement",
+          "Un biais d’échantillonnage",
+          "Une amélioration garantie de généralisation"
+        ],
+        "correct": 2,
+        "explanation": "La population d’apprentissage n’est pas représentative."
+      },
+      {
+        "id": "ia-donnees-q4",
+        "question": "Que signifie MCAR ?",
+        "answer": "Une absence indépendante des variables étudiées",
+        "choices": [
+          "Une absence dépendant toujours de sa propre valeur",
+          "Une duplication de toutes les lignes",
+          "Un outlier obligatoirement faux",
+          "Une absence indépendante des variables étudiées"
+        ],
+        "correct": 3,
+        "explanation": "C’est le mécanisme le plus fort d’indépendance des absences."
+      },
+      {
+        "id": "ia-donnees-q5",
+        "question": "Quelle méthode repère les valeurs manquantes dans pandas ?",
+        "answer": "df.isna().sum()",
+        "choices": [
+          "df.isna().sum()",
+          "df.drop_duplicates() uniquement",
+          "df.head(0) uniquement",
+          "df.sort_index() uniquement"
+        ],
+        "correct": 0,
+        "explanation": "Elle compte les absences par colonne."
+      },
+      {
+        "id": "ia-donnees-q6",
+        "question": "Pourquoi les doublons peuvent-ils fausser l’apprentissage ?",
+        "answer": "Ils donnent un poids excessif à certains exemples",
+        "choices": [
+          "Ils transforment la régression en RA",
+          "Ils donnent un poids excessif à certains exemples",
+          "Ils suppriment automatiquement le bruit",
+          "Ils rendent le test indépendant"
+        ],
+        "correct": 1,
+        "explanation": "Une ligne répétée n’est pas une nouvelle information indépendante."
+      },
+      {
+        "id": "ia-donnees-q7",
+        "question": "Quelle opération retire les espaces au début et à la fin d’un texte ?",
+        "answer": "str.strip()",
+        "choices": [
+          "str.count()",
+          "str.len()",
+          "str.strip()",
+          "str.find()"
+        ],
+        "correct": 2,
+        "explanation": "Il faut ensuite harmoniser et convertir selon les besoins."
+      },
+      {
+        "id": "ia-donnees-q8",
+        "question": "Avec Q1=18 et Q3=32, combien vaut l’IQR ?",
+        "answer": "14",
+        "choices": [
+          "25",
+          "50",
+          "21",
+          "14"
+        ],
+        "correct": 3,
+        "explanation": "IQR = 32 − 18."
+      },
+      {
+        "id": "ia-donnees-q9",
+        "question": "Avec IQR=14 et Q3=32, quelle borne haute à 1,5 IQR ?",
+        "answer": "53",
+        "choices": [
+          "53",
+          "46",
+          "21",
+          "32"
+        ],
+        "correct": 0,
+        "explanation": "32 + 1,5 × 14 = 53."
+      },
+      {
+        "id": "ia-donnees-q10",
+        "question": "Une valeur au-delà de la borne IQR doit être…",
+        "answer": "Examinée dans son contexte",
+        "choices": [
+          "Toujours supprimée sans analyse",
+          "Examinée dans son contexte",
+          "Toujours imputée par la moyenne",
+          "Considérée automatiquement comme une erreur de saisie"
+        ],
+        "correct": 1,
+        "explanation": "Un cas rare peut être valide et important."
+      },
+      {
+        "id": "ia-donnees-q11",
+        "question": "Quelle médiane remplace les âges manquants dans le cas clients corrigé ?",
+        "answer": "35",
+        "choices": [
+          "38,5",
+          "250",
+          "35",
+          "42"
+        ],
+        "correct": 2,
+        "explanation": "Après déduplication et retrait de 250, les âges valides sont 28, 35 et 42."
+      },
+      {
+        "id": "ia-donnees-q12",
+        "question": "Sur quelles données ajuste-t-on l’imputation pour évaluer un modèle ?",
+        "answer": "Sur le jeu d’entraînement",
+        "choices": [
+          "Sur tout le test avant le découpage",
+          "Sur chaque nouvel exemple séparément",
+          "Sur les prédictions futures uniquement",
+          "Sur le jeu d’entraînement"
+        ],
+        "correct": 3,
+        "explanation": "Cela évite d’introduire l’information du test dans le modèle."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-donnees-e1",
+        "question": "Propose un ordre de traitement pour une table contenant Bob deux fois, '2500 DT', un âge 250 et des notes manquantes. Donne les médianes du cas fourni.",
+        "modelAnswer": "Inspecter, dédupliquer, normaliser les chaînes et convertir les nombres. Remplacer l’âge manifestement invalide 250 par une valeur manquante. Les âges valides 28,35,42 donnent une médiane de 35 ; les quatre notes [2,5 ; 3 ; 4,5 ; 5] donnent une médiane de 3,75. Dans un pipeline prédictif, ajuster les statistiques sur le train puis les réutiliser ailleurs.",
+        "rubric": [
+          "Dédupliquer et normaliser",
+          "Traiter l’âge invalide explicitement",
+          "Obtenir 35 et 3,75",
+          "Éviter la fuite d’information lors de l’évaluation"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Atelier · Nettoyer la table clients",
+        "instructions": "Reproduis le diagnostic du support en Python. Vérifie le nombre de lignes, les types et les deux valeurs imputées. Cet exemple de nettoyage ne mesure pas une performance prédictive.",
+        "solution": "Le doublon est supprimé : cinq clients restent. Charlie et Émile reçoivent 35 pour l’âge ; Bob reçoit 3,75 pour la note. Les assertions contrôlent ces résultats, sans inventer un taux de réussite d’un modèle.",
+        "language": "Python · pandas",
+        "code": "import pandas as pd\n\ndf = pd.DataFrame({\n    \"ID\": [101, 102, 103, 104, 102, 105],\n    \"Nom\": [\"Alice\", \"Bob\", \"Charlie\", \" diana \", \"Bob\", \"Émile\"],\n    \"Age\": [28, 35, 250, 42, 35, None],\n    \"Salaire\": [\"2500 DT\", \"3200\", \"1800 DT\", \"4500 DT\", \"3200\", \"2100 DT\"],\n    \"Note\": [4.5, None, 3.0, 5.0, None, 2.5]\n}).drop_duplicates().reset_index(drop=True)\ndf[\"Nom\"] = df[\"Nom\"].str.strip().str.capitalize()\ndf[\"Salaire\"] = pd.to_numeric(df[\"Salaire\"].str.replace(\" DT\", \"\", regex=False))\ndf.loc[df[\"Age\"] > 120, \"Age\"] = float(\"nan\")\ndf[\"Age\"] = df[\"Age\"].fillna(df[\"Age\"].median())\ndf[\"Note\"] = df[\"Note\"].fillna(df[\"Note\"].median())\nassert len(df) == 5\nassert df.loc[df[\"ID\"] == 103, \"Age\"].iloc[0] == 35\nassert df.loc[df[\"ID\"] == 102, \"Note\"].iloc[0] == 3.75\nprint(df)"
+      }
+    ]
+  },
+  {
+    "id": "ia-entrainement",
+    "title": "Entraîner et valider un modèle",
+    "description": "Fonction de coût, généralisation, classification et séparation des données.",
+    "minutes": 24,
+    "references": [
+      {
+        "document": "Chapitre2_de_L_IA_au_ML_Final.pdf",
+        "pages": "31-39"
+      },
+      {
+        "document": "Chapitre3_Machine_Learning.pdf",
+        "pages": "4-11 et 15"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Algorithme et modèle",
+        "body": "L’algorithme d’apprentissage construit une règle ou ajuste des paramètres ; le modèle est le résultat utilisable pour prédire. Une droite possède des coefficients, un arbre des coupures et des feuilles, KNN conserve des exemples. Tous les algorithmes n’ajustent donc pas des poids par descente de gradient."
+      },
+      {
+        "title": "La fonction de coût",
+        "body": "Une fonction de coût quantifie l’erreur sur les exemples d’entraînement. MSE est utilisée en régression ; une log-loss convient à certaines classifications probabilistes. L’optimisation réduit cette erreur, mais une faible erreur d’entraînement ne suffit pas à prouver la généralisation."
+      },
+      {
+        "title": "Descente de gradient",
+        "body": "La descente de gradient met à jour les paramètres dans le sens opposé à la dérivée du coût. Le taux d’apprentissage règle l’amplitude des pas : trop grand, il peut rendre l’optimisation instable ; trop petit, il peut la ralentir.",
+        "formula": "θ ← θ − α ∇J(θ)\nθ : paramètres ; α : taux d’apprentissage ; J : coût"
+      },
+      {
+        "title": "Entraînement, validation et test",
+        "body": "Le train sert à apprendre, la validation à choisir les réglages, le test à estimer la performance finale sur des observations non utilisées pour ces choix. Les proportions 80/20 ou 70/30 sont des exemples. Une séparation temporelle ou par groupe peut être nécessaire lorsque les observations dépendent les unes des autres.",
+        "origin": "supplement"
+      },
+      {
+        "title": "Prétraitement sans fuite",
+        "body": "Imputation, normalisation et sélection de variables sont ajustées sur le train, puis appliquées à la validation et au test. En validation croisée, il faut les réajuster à l’intérieur de chaque pli d’entraînement. Un pipeline permet de respecter cet ordre.",
+        "origin": "supplement"
+      },
+      {
+        "title": "Sous-apprentissage et surapprentissage",
+        "body": "Un modèle trop simple ou mal ajusté peut échouer sur train et test : sous-apprentissage. Un modèle qui mémorise le bruit obtient de bons résultats sur train mais moins bons sur des données nouvelles : surapprentissage. La complexité, la régularisation, les variables et la quantité de données doivent être évaluées ensemble."
+      },
+      {
+        "title": "Classification binaire",
+        "body": "La régression logistique produit un score transformé en probabilité par une sigmoïde. On applique ensuite un seuil de décision. Avec les coefficients pédagogiques w=1,2 et b=−4, x=5 donne z=2 et p≈0,88. Le nom « régression logistique » ne change pas sa tâche de classification.",
+        "formula": "z = w₁x₁ + … + wₙxₙ + b\np = 1 / (1 + exp(−z))\nSeuil illustratif : classe 1 si p ≥ 0,5"
+      },
+      {
+        "title": "Plusieurs classes",
+        "body": "KNN et les arbres peuvent gérer plusieurs catégories. One-vs-rest construit un problème binaire par classe ; softmax transforme plusieurs scores en probabilités de somme 1. Une matrice de confusion multiclasse comporte K lignes et K colonnes. Les coefficients et performances des exemples restent fictifs."
+      }
+    ],
+    "takeaway": "La validation choisit les réglages ; le test final reste indépendant de ces choix.",
+    "cards": [
+      {
+        "id": "ia-entrainement-q1",
+        "question": "Que produit l’algorithme d’apprentissage ?",
+        "answer": "Un modèle utilisable pour prédire",
+        "choices": [
+          "Un modèle utilisable pour prédire",
+          "Une performance de test garantie",
+          "Un ensemble de prédictions réelles futures",
+          "Une étiquette vraie pour chaque entrée possible"
+        ],
+        "correct": 0,
+        "explanation": "Le modèle résulte de l’ajustement ou de la mémorisation des exemples."
+      },
+      {
+        "id": "ia-entrainement-q2",
+        "question": "Quelle fonction joue la loss ?",
+        "answer": "Quantifier une erreur à réduire pendant l’entraînement",
+        "choices": [
+          "Garantir la généralisation sans test",
+          "Quantifier une erreur à réduire pendant l’entraînement",
+          "Fixer la taille du jeu de données",
+          "Choisir automatiquement la classe positive"
+        ],
+        "correct": 1,
+        "explanation": "Elle mesure un objectif d’optimisation."
+      },
+      {
+        "id": "ia-entrainement-q3",
+        "question": "Quel est le signe de la mise à jour en descente de gradient ?",
+        "answer": "On soustrait le taux multiplié par le gradient",
+        "choices": [
+          "On ajoute toujours le gradient",
+          "On remplace les paramètres par les labels",
+          "On soustrait le taux multiplié par le gradient",
+          "On multiplie les paramètres par la taille du test"
+        ],
+        "correct": 2,
+        "explanation": "On se déplace dans une direction locale de diminution du coût."
+      },
+      {
+        "id": "ia-entrainement-q4",
+        "question": "Un taux d’apprentissage trop grand peut…",
+        "answer": "Rendre l’optimisation instable",
+        "choices": [
+          "Garantir une convergence plus rapide",
+          "Supprimer tout surapprentissage",
+          "Remplacer le test",
+          "Rendre l’optimisation instable"
+        ],
+        "correct": 3,
+        "explanation": "Un pas excessif peut dépasser les zones de faible coût."
+      },
+      {
+        "id": "ia-entrainement-q5",
+        "question": "Quel ensemble sert à choisir un hyperparamètre ?",
+        "answer": "La validation",
+        "choices": [
+          "La validation",
+          "Le test final réutilisé à chaque essai",
+          "Les seules entrées futures non étiquetées",
+          "Le résultat d’une seule prédiction"
+        ],
+        "correct": 0,
+        "explanation": "Le test doit rester indépendant des choix."
+      },
+      {
+        "id": "ia-entrainement-q6",
+        "question": "Pourquoi ajuster le scaler sur le train seulement ?",
+        "answer": "Pour éviter une fuite d’information du test",
+        "choices": [
+          "Pour calculer une échelle différente pour chaque observation test",
+          "Pour éviter une fuite d’information du test",
+          "Pour modifier les étiquettes du train",
+          "Pour garantir des valeurs futures toujours dans [0,1]"
+        ],
+        "correct": 1,
+        "explanation": "Les paramètres du prétraitement font partie de ce qui est appris."
+      },
+      {
+        "id": "ia-entrainement-q7",
+        "question": "Erreurs fortes sur train et test suggèrent…",
+        "answer": "Un sous-apprentissage",
+        "choices": [
+          "Un surapprentissage certain",
+          "Une généralisation parfaite",
+          "Un sous-apprentissage",
+          "Un modèle nécessairement trop complexe"
+        ],
+        "correct": 2,
+        "explanation": "Le modèle peut manquer de capacité, de variables utiles ou d’ajustement."
+      },
+      {
+        "id": "ia-entrainement-q8",
+        "question": "Erreur faible sur train et forte sur test suggère…",
+        "answer": "Un surapprentissage",
+        "choices": [
+          "Un résultat automatiquement fiable",
+          "Un manque obligatoire d’étiquettes",
+          "Une absence de bruit garantie",
+          "Un surapprentissage"
+        ],
+        "correct": 3,
+        "explanation": "Le modèle ne transfère pas bien ce qu’il a appris."
+      },
+      {
+        "id": "ia-entrainement-q9",
+        "question": "Quelle tâche réalise la régression logistique étudiée ?",
+        "answer": "La classification",
+        "choices": [
+          "La classification",
+          "La régression continue des prix",
+          "Le clustering sans étiquettes",
+          "La réduction de dimension par projection"
+        ],
+        "correct": 0,
+        "explanation": "Elle fournit une probabilité utilisée pour attribuer une classe."
+      },
+      {
+        "id": "ia-entrainement-q10",
+        "question": "Avec z=0, combien vaut la sigmoïde ?",
+        "answer": "0,5",
+        "choices": [
+          "0",
+          "0,5",
+          "1",
+          "−1"
+        ],
+        "correct": 1,
+        "explanation": "1/(1+exp(0)) = 1/2."
+      },
+      {
+        "id": "ia-entrainement-q11",
+        "question": "Avec trois classes, quelle taille a la matrice de confusion ?",
+        "answer": "3 × 3",
+        "choices": [
+          "2 × 2 obligatoirement",
+          "3 × 1",
+          "3 × 3",
+          "1 × 3"
+        ],
+        "correct": 2,
+        "explanation": "Chaque classe réelle et prédite dispose d’un axe."
+      },
+      {
+        "id": "ia-entrainement-q12",
+        "question": "Quelle propriété caractérise les probabilités softmax ?",
+        "answer": "Leur somme vaut 1",
+        "choices": [
+          "Elles sont toujours toutes égales",
+          "Elles peuvent être négatives",
+          "Elles remplacent le besoin de données",
+          "Leur somme vaut 1"
+        ],
+        "correct": 3,
+        "explanation": "Softmax normalise les scores de plusieurs classes."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-entrainement-e1",
+        "question": "Explique comment choisir K pour un KNN sans fausser l’évaluation finale, en incluant le prétraitement.",
+        "modelAnswer": "Séparer un test indépendant. Sur les données restantes, comparer plusieurs K en validation ou validation croisée. Dans chaque pli, apprendre la normalisation uniquement sur l’entraînement, puis transformer la validation. Choisir le réglage, réentraîner sur les données prévues et évaluer une seule fois sur le test final. K est un hyperparamètre, pas une performance.",
+        "rubric": [
+          "Conserver un test indépendant",
+          "Choisir K sur validation",
+          "Ajuster les transformations dans chaque train",
+          "Distinguer réglage et évaluation finale"
+        ]
+      }
+    ],
+    "practicals": []
+  }
+]

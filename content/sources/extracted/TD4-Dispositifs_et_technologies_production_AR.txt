@@ -1,0 +1,185 @@
+--- PAGE 1 ---
+Chapitre 4 : Dispositifs et technologies de production AR
+
+
+                  Travaux dirigés n°4
+
+
+EXERCICE 1
+
+      CHOISIR LA BONNE REPONSE.
+
+    1.  Les dispositifs Optical See-Through de la réalité augmentée permettent :
+        a) Une vision directe
+       b) Une vision totale
+        c) Une vision indirecte
+
+       d) Une vision partielle
+    2.  Les dispositifs Video See-Through de la réalité augmentée permettent :
+        a) Une vision directe
+       b) Une vision totale
+        c) Une vision indirecte
+
+       d) Une vision partielle
+    3.             sont des équipements à vision directe.
+       a)  Les casques immersifs
+       b)  Les lunettes semi-transparentes
+        c)  Les écrans des smartphones
+
+       d)  Les écrans des ordinateurs
+    4. HMD représente :
+        a) Head Mounted Detection
+        b) Head Masked Display
+        c) Head Made Display
+
+        d) Head Mounted Display
+    5.  Les dispositifs projecteurs de la réalité augmentée ne prennent pas en compte la
+      géométrie de la surface de projection.
+        a)  Vrai
+       b) Faux
+
+    6.  Les composants d’un Head Mounted Display sont :
+        a)  Miroir, caméra, système de tracking, écran
+       b)  Miroir semi-transparent, système de tracking, écran
+        c)  Miroir, caméra, système de tracking
+       d)  Ecouteurs, système de tracking, écran
+
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      88
+
+--- PAGE 2 ---
+Chapitre 4 : Dispositifs et technologies de production AR
+
+    7.  Quel est le principe de base d'un dispositif rétinien virtuel ?
+       a)  Projeter des images sur un écran distant
+       b)  Projeter des images directement sur la rétine de l'œil
+
+        c)   Projeter des images sur des lunettes transparentes
+       d)  Projeter des images sur une surface plane
+    8. Parmi les SDKs de réalité augmentée, on trouve :
+        a) OGRE
+       b) OpenSpace 3D
+
+        c)  BlippAR
+       d) ARKit
+    9.  Les bases de données Vuforia sont de types :
+        a)  Device Target Database, Area Target Database, Cloud Target Database
+       b) Device Target Database, Area Target Database, Vumark Database
+
+        c)  Device Target Database, Cloud Target Database, Vumark Database
+       d) Area Target Database, Cloud Target Database, Vumark Database
+   10. Les couches d’une application de réalité augmentée sont :
+        a)  Tracking, Application, Interaction
+       b)  Application, AR, SE/Tiers
+
+        c)  Interaction, Enregistrement, Affichage
+       d)  Application, Interaction, SE/Tiers
+   11. Quel est le plus populaire moteur de jeu utilisé pour la réalisation des expériences
+      de RA et de RV ?
+        a) Maya
+
+       b) 3DS Max
+        c)  Tilt Brush
+       d) Unity 3D
+   12. Quelle est la fonction principale de la couche d'application dans une application de
+     RA ?
+
+       a)  Gérer le rendu des éléments virtuels
+       b)  Fournir les services du système d’exploitation
+        c)  Gérer la logique métier et l'interface utilisateur
+       d)  Intégrer les éléments numériques dans le monde réel
+   13. La couche AR dans une application de réalité augmentée est principalement
+
+      responsable de :
+       a)  La gestion des interactions utilisateur
+       b)  Le suivi des mouvements et le rendu des objets virtuels
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      89
+
+--- PAGE 3 ---
+Chapitre 4 : Dispositifs et technologies de production AR
+
+        c)  La communication réseau
+       d)  Le stockage des données
+   14. La couche SE/Tiers dans une application de RA inclut généralement :
+
+       a)  Les moteurs de rendu 3D
+       b)  Les services du système d'exploitation et les composants matériels comme les
+          caméras et capteurs
+        c)  Le code source de l'application
+       d)  Aucune de ces réponses
+
+   15. La couche AR interagit directement avec quelle(s) autre(s) couche(s) pour intégrer
+        les éléments virtuels dans le monde réel ?
+       a)  Uniquement avec la couche d'application
+       b)  Uniquement avec la couche SE/Tiers
+        c)  Avec la couche d'application et la couche SE/Tiers
+
+       d)  Aucune autre couche, elle fonctionne de manière autonome.
+
+EXERCICE 2
+
+Quelle est la différence entre une application et un navigateur de réalité augmentée (AR Browser) ?
+
+EXERCICE 3
+On souhaite réaliser une application de réalité augmentée en utilisant le SDK Vuforia et le moteur
+de jeu Unity 3D. L'idée de l'application est d’aider ses utilisateurs à apprendre les formules
+
+géométriques (surface, périmètre, etc.) associées aux primitives 3D (cube, cylindre, sphère, etc.)
+
+En scannant un marqueur contenant la forme 3D, l’application augmente ce marqueur par des
+données textuelles pour les formules géométriques et un objet 3D de cette forme pour voir ses
+
+différentes caractéristiques (largeur, hauteur, longueur, rayon, etc.), qui seront schématisées sur
+
+l’objet.
+
+    1.  Quelle est la configuration nécessaire à faire pour intégrer Vuforia Engine à Unity 3D ?
+    2.  Décrire brièvement les étapes nécessaires à la création de cette application sachant qu’on
+       va se limiter à deux marqueurs pour un cube et une sphère.
+    3.  Quelle est la technique de reconnaissance de marqueurs utilisée au niveau de Vuforia ?
+    4.  Quel type de tracking sera utilisé dans cette application ?
+
+    5. On souhaite maintenant animer les modèles 3D lors de leur augmentation sur les images
+         cibles.
+       a)  Ecrire un script C# "Animation.cs" permettant de faire tourner l’objet 3D d’un angle 7
+           radian suivant l'axe Y.
+       b) Ajouter le code nécessaire pour changer la couleur de l’objet en cliquant sur la touche
+
+          « A ».
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      90
+
+--- PAGE 4 ---
+Chapitre 4 : Dispositifs et technologies de production AR
+
+    6. On veut maintenant ajouter deux boutons à la scène d’augmentation :
+               -  Un bouton « Plus » permettant d’ouvrir une nouvelle interface « Notions » afin
+                d’afficher plus de notions géométriques sur les primitives 3D.
+
+               -  Un bouton « Quitter » permettant de quitter l’application.
+
+       Ecrire le script « Boutons.cs » pour définir ces deux événements.
+
+    7. On souhaite maintenant ajouter un son d’ambiance « Son » à cette scène. En cliquant sur
+
+      un bouton « Audio », on peut activer ou désactiver ce son.
+
+       Ecrire un script C# « Audio.cs » permettant de déclencher les évènements d’activation et
+
+      de désactivation du son, sachant qu’initialement le son est activé.
+
+
+
+
+
+AMEL TILOUCHE – COURS RA & RV
+                                                                                      91

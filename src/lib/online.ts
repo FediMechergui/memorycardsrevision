@@ -1,6 +1,7 @@
 import { Capacitor } from "@capacitor/core";
 import { z } from "zod";
 import { profileInput, type Identity, type ProfileStyle } from "./classroom";
+import catalog from "../../public/courses/catalog.json";
 const identitySchema = z.object({
   profile: profileInput.extend({
     id: z.string().uuid(),
@@ -34,12 +35,26 @@ export const API_BASE =
   (Capacitor.isNativePlatform()
     ? "https://memora-revision-fedi.netlify.app"
     : "");
+let editionCheck: Promise<void> | null = null;
+async function checkEdition() {
+  if (!editionCheck) {
+    editionCheck = api<{ edition?: string }>("health", null).then((health) => {
+      if (health.edition !== catalog.edition)
+        throw new ApiError("Le service en ligne utilise une autre édition de Mémora. Le salon et l’avis IA nécessitent le serveur de cette édition ; tes révisions locales restent disponibles.", 409);
+    }).catch((error) => {
+      editionCheck = null;
+      throw error;
+    });
+  }
+  return editionCheck;
+}
 export async function api<T>(
   path: string,
   identity: Identity | null,
   data?: unknown,
   method?: string,
 ): Promise<T> {
+  if (path !== "health") await checkEdition();
   const response = await fetch(`${API_BASE}/api/${path}`, {
     method: method || (data === undefined ? "GET" : "POST"),
     headers: {

@@ -1,0 +1,1025 @@
+[
+  {
+    "id": "ra-td1",
+    "title": "TD1 · Classer les expériences immersives",
+    "description": "Quinze situations reformulées à partir de la fiche scannée.",
+    "minutes": 15,
+    "references": [
+      {
+        "document": "TD1-Technologies_immersives.pdf",
+        "pages": "1–3 · lecture visuelle des pages scannées"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Méthode de classement",
+        "body": "Pour chaque situation du TD, indique le monde dominant, l’élément ajouté et l’action possible. Réel enrichi : RA. Monde synthétique : RV. Monde virtuel contenant des prises de vue réelles : virtualité augmentée. XR est le terme englobant."
+      },
+      {
+        "title": "Réalité mixte : justifier le vocabulaire",
+        "origin": "correction",
+        "body": "La question 2 est ambiguë : la fiche propose à la fois un mélange RA/RV et un mélange RA/virtualité augmentée. Dans le continuum illustré au cours, la réalité mixte couvre les situations intermédiaires, dont RA et virtualité augmentée. Les cartes précisent cette convention. Les questions sur la chirurgie ou la collaboration sont également reformulées pour préciser l’environnement utilisé."
+      },
+      {
+        "title": "Associer une fonction à une technologie",
+        "body": "Le rendu construit les images virtuelles ; la vision repère les éléments réels ; l’IA peut interpréter gestes et comportements ; la reconnaissance vocale permet de commander par la voix. Ces technologies contribuent à l’expérience mais ne désignent pas toutes une catégorie du continuum."
+      }
+    ],
+    "takeaway": "Une réponse justifiée décrit l’environnement ; une marque ou un usage seul peut rester ambigu.",
+    "cards": [
+      {
+        "id": "ra-td1-q1",
+        "question": "Un texte est aligné sur un monument filmé par téléphone. Quelle catégorie convient ?",
+        "answer": "La RA",
+        "choices": [
+          "La RA",
+          "La RV intégrale",
+          "La virtualité augmentée",
+          "Le rendu hors ligne seul"
+        ],
+        "correct": 0,
+        "explanation": "Le monument réel sert de support."
+      },
+      {
+        "id": "ra-td1-q2",
+        "question": "Dans le continuum du cours, la réalité mixte couvre notamment…",
+        "answer": "La RA et la virtualité augmentée",
+        "choices": [
+          "Seulement l’environnement réel non modifié",
+          "La RA et la virtualité augmentée",
+          "Seulement la RV totalement synthétique",
+          "Seulement la reconnaissance vocale"
+        ],
+        "correct": 1,
+        "explanation": "Le diagramme place la réalité mixte dans les régions intermédiaires."
+      },
+      {
+        "id": "ra-td1-q3",
+        "question": "Quelle description justifie une interaction entre réel et virtuel ?",
+        "answer": "Un objet numérique réagit au déplacement d’un objet physique",
+        "choices": [
+          "Un rendu préenregistré sans mise à jour",
+          "Un objet physique sans liaison au logiciel",
+          "Un objet numérique réagit au déplacement d’un objet physique",
+          "Une scène numérique indépendante de tout mouvement réel"
+        ],
+        "correct": 2,
+        "explanation": "L’interaction dépend d’un lien effectif entre les deux environnements."
+      },
+      {
+        "id": "ra-td1-q4",
+        "question": "Quel exemple correspond à la RV ?",
+        "answer": "Explorer une ville entièrement synthétique dans un casque",
+        "choices": [
+          "Voir des indications sur une machine réelle",
+          "Projeter un clavier sur une table",
+          "Superposer le prix d’un objet filmé",
+          "Explorer une ville entièrement synthétique dans un casque"
+        ],
+        "correct": 3,
+        "explanation": "L’environnement principal est numérique."
+      },
+      {
+        "id": "ra-td1-q5",
+        "question": "Quel usage de la RA correspond au commerce du TD ?",
+        "answer": "Voir un meuble virtuel dans sa propre pièce",
+        "choices": [
+          "Voir un meuble virtuel dans sa propre pièce",
+          "Afficher une photo du produit sans contexte spatial",
+          "Explorer uniquement un magasin entièrement synthétique",
+          "Consulter le catalogue sans vue de la pièce"
+        ],
+        "correct": 0,
+        "explanation": "Le produit est visualisé dans son contexte réel."
+      },
+      {
+        "id": "ra-td1-q6",
+        "question": "Un modèle anatomique est aligné sur un mannequin réel et manipulable. Quel aspect est décisif ?",
+        "answer": "La combinaison spatiale et interactive du réel et du virtuel",
+        "choices": [
+          "La seule présence d’un modèle 3D",
+          "La combinaison spatiale et interactive du réel et du virtuel",
+          "Le seul nombre de polygones",
+          "L’utilisation d’un écran, quel que soit le contenu"
+        ],
+        "correct": 1,
+        "explanation": "La formulation précise le scénario que la question originale laissait ouvert."
+      },
+      {
+        "id": "ra-td1-q7",
+        "question": "Des équipes travaillent dans un monde partagé entièrement synthétique. Quelle catégorie domine ?",
+        "answer": "La RV",
+        "choices": [
+          "La RA sur une salle physique",
+          "La projection sur mur réel",
+          "La RV",
+          "La vision directe optique"
+        ],
+        "correct": 2,
+        "explanation": "La collaboration ne change pas le fait que le monde dominant est virtuel."
+      },
+      {
+        "id": "ra-td1-q8",
+        "question": "Que fait la virtualité augmentée ?",
+        "answer": "Elle intègre du réel dans un environnement virtuel",
+        "choices": [
+          "Elle supprime tout élément réel",
+          "Elle affiche seulement le réel non modifié",
+          "Elle impose un affichage sur smartphone",
+          "Elle intègre du réel dans un environnement virtuel"
+        ],
+        "correct": 3,
+        "explanation": "Le sens de l’enrichissement est inverse de la RA."
+      },
+      {
+        "id": "ra-td1-q9",
+        "question": "Quel cas illustre la virtualité augmentée ?",
+        "answer": "Une rue filmée en direct intégrée à un jeu virtuel",
+        "choices": [
+          "Une rue filmée en direct intégrée à un jeu virtuel",
+          "Une flèche sur une machine filmée",
+          "Un meuble virtuel dans une pièce réelle",
+          "Un univers entièrement synthétique"
+        ],
+        "correct": 0,
+        "explanation": "La vidéo réelle enrichit le jeu virtuel."
+      },
+      {
+        "id": "ra-td1-q10",
+        "question": "Quel terme regroupe plusieurs technologies immersives ?",
+        "answer": "XR",
+        "choices": [
+          "HMD",
+          "XR",
+          "GPS",
+          "NLP"
+        ],
+        "correct": 1,
+        "explanation": "XR signifie réalité étendue ; les autres termes désignent un système, un domaine ou un dispositif."
+      },
+      {
+        "id": "ra-td1-q11",
+        "question": "Laquelle est une catégorie de XR ?",
+        "answer": "La réalité virtuelle",
+        "choices": [
+          "L’impression 3D seule",
+          "La compression d’images seule",
+          "La réalité virtuelle",
+          "La reconnaissance de parole seule"
+        ],
+        "correct": 2,
+        "explanation": "Créer un objet physique ou compresser un fichier ne constitue pas en soi une expérience XR."
+      },
+      {
+        "id": "ra-td1-q12",
+        "question": "Quel rôle joue la vision dans le suivi de la scène ?",
+        "answer": "Détecter et suivre des objets physiques",
+        "choices": [
+          "Générer uniquement la géométrie des objets virtuels",
+          "Calculer uniquement l’éclairage synthétique",
+          "Diffuser les sons spatialisés",
+          "Détecter et suivre des objets physiques"
+        ],
+        "correct": 3,
+        "explanation": "Elle traite le flux visuel du réel."
+      },
+      {
+        "id": "ra-td1-q13",
+        "question": "Comment l’IA peut-elle enrichir l’interaction ?",
+        "answer": "En interprétant les gestes de l’utilisateur",
+        "choices": [
+          "En interprétant les gestes de l’utilisateur",
+          "En garantissant un matériel sans capteurs",
+          "En annulant toute erreur de suivi",
+          "En supprimant toute interface"
+        ],
+        "correct": 0,
+        "explanation": "L’interprétation peut guider une action adaptée."
+      },
+      {
+        "id": "ra-td1-q14",
+        "question": "Quelle fonction permet une commande prononcée ?",
+        "answer": "Reconnaissance vocale puis interprétation",
+        "choices": [
+          "Calibration de la focale seule",
+          "Reconnaissance vocale puis interprétation",
+          "Calcul des ombres seul",
+          "Projection perspective seule"
+        ],
+        "correct": 1,
+        "explanation": "Il faut reconnaître les mots puis associer leur sens à une action."
+      },
+      {
+        "id": "ra-td1-q15",
+        "question": "À quoi sert la modélisation 3D dans le scénario mixte ?",
+        "answer": "À produire les objets numériques à intégrer",
+        "choices": [
+          "Estimer directement la pose d’une caméra",
+          "Reconnaître les mots d’une commande",
+          "À produire les objets numériques à intégrer",
+          "Mesurer les accélérations du casque"
+        ],
+        "correct": 2,
+        "explanation": "Les objets modélisés sont ensuite rendus et associés à la scène."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-td1-e1",
+        "question": "Classe un guide de musée sur téléphone, une simulation numérique et un jeu virtuel intégrant une caméra réelle. Justifie chaque choix.",
+        "modelAnswer": "Le guide relève de la RA si les informations sont associées aux œuvres réelles. La simulation relève de la RV si son monde est synthétique. Le jeu relève de la virtualité augmentée si la vidéo réelle enrichit le monde virtuel. Il faut préciser le contexte, car le téléphone ou le casque ne suffisent pas à classer une expérience.",
+        "rubric": [
+          "Classer le guide en RA",
+          "Classer la simulation en RV",
+          "Classer le jeu en virtualité augmentée",
+          "Justifier chaque environnement dominant"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ra-td2",
+    "title": "TD2 · Analyser un système de RA",
+    "description": "Architecture, vision directe ou indirecte et lecture critique des exemples.",
+    "minutes": 18,
+    "references": [
+      {
+        "document": "TD2-Introduction_RA.pdf",
+        "pages": "1–3"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Lire un schéma d’affichage",
+        "body": "Repère le chemin du réel vers l’œil. Caméra → mélange vidéo/graphique → écran indique une vision indirecte. Une optique semi-transparente qui laisse passer le réel indique une vision directe. Les capteurs de suivi fournissent la pose dans les deux architectures."
+      },
+      {
+        "title": "La question à figures admet plusieurs réponses",
+        "origin": "correction",
+        "body": "À la question 7, les figures a, c et d font intervenir un flux vidéo composé : elles sont indirectes. La figure b représente une optique semi-transparente directe. Les cartes remplacent ce choix ambigu par des descriptions explicites pour garantir une seule réponse correcte."
+      },
+      {
+        "title": "Évaluer un scénario complet",
+        "body": "Une application pédagogique, une visite immobilière ou un traitement de phobie peut utiliser différentes technologies. Le contexte doit préciser si le réel reste visible, comment le virtuel est aligné et comment l’utilisateur interagit. De même, un son n’est pas obligatoire pour toutes les RA visuelles, et un robot peut accueillir une RA sans être un composant minimal."
+      },
+      {
+        "title": "Les repères du TD",
+        "body": "Retenir la décennie 1960 pour le prototype de Sutherland présenté au cours ; les filtres suivis sur un visage comme exemple social ; les graphiques associés au terrain comme exemple sportif. Les catégories d’immersion dépendent du dispositif et ne constituent pas à elles seules la définition de RA."
+      }
+    ],
+    "takeaway": "Suis le trajet de l’image réelle pour distinguer l’affichage direct de l’affichage indirect.",
+    "cards": [
+      {
+        "id": "ra-td2-q1",
+        "question": "Une simulation de fluide montre uniquement un monde synthétique dans un casque. Est-ce de la RA ?",
+        "answer": "Non, le scénario décrit une RV",
+        "choices": [
+          "Non, le scénario décrit une RV",
+          "Oui, tout casque est de la RA",
+          "Oui, tout rendu 3D est de la RA",
+          "Oui, la vidéo suffit"
+        ],
+        "correct": 0,
+        "explanation": "Le réel n’est pas enrichi dans ce scénario."
+      },
+      {
+        "id": "ra-td2-q2",
+        "question": "Quel domaine contribue directement à reconnaître une cible visuelle ?",
+        "answer": "La vision par ordinateur",
+        "choices": [
+          "La synthèse des ombres seule",
+          "La vision par ordinateur",
+          "La spatialisation audio seule",
+          "La gestion des animations seule"
+        ],
+        "correct": 1,
+        "explanation": "La RA mobilise notamment vision, signal, rendu et interfaces."
+      },
+      {
+        "id": "ra-td2-q3",
+        "question": "Quel composant est facultatif pour une RA purement visuelle ?",
+        "answer": "Des haut-parleurs",
+        "choices": [
+          "Un moyen d’affichage",
+          "Un contenu à superposer",
+          "Des haut-parleurs",
+          "Une estimation d’alignement"
+        ],
+        "correct": 2,
+        "explanation": "L’audio n’est pas requis pour toute augmentation visuelle."
+      },
+      {
+        "id": "ra-td2-q4",
+        "question": "En vision directe, quelle fonction n’est pas obligatoire ?",
+        "answer": "Afficher au regard la vidéo du monde réel",
+        "choices": [
+          "Laisser passer la lumière réelle",
+          "Superposer le contenu virtuel",
+          "Maintenir l’alignement",
+          "Afficher au regard la vidéo du monde réel"
+        ],
+        "correct": 3,
+        "explanation": "Une caméra peut néanmoins servir au tracking."
+      },
+      {
+        "id": "ra-td2-q5",
+        "question": "Le mode de Pokémon GO qui montre une créature dans le flux caméra illustre…",
+        "answer": "La réalité augmentée",
+        "choices": [
+          "La réalité augmentée",
+          "Une RV exclusivement synthétique",
+          "Une virtualité augmentée dominée par un monde virtuel",
+          "Une projection physique sur le sol"
+        ],
+        "correct": 0,
+        "explanation": "La précision du scénario évite de confondre les différents écrans du jeu."
+      },
+      {
+        "id": "ra-td2-q6",
+        "question": "Quel dispositif permet une vision directe du réel ?",
+        "answer": "Des lunettes optiques semi-transparentes",
+        "choices": [
+          "Un écran montrant seulement la caméra",
+          "Des lunettes optiques semi-transparentes",
+          "Un moniteur de vidéosurveillance",
+          "Un casque opaque sans passage de lumière"
+        ],
+        "correct": 1,
+        "explanation": "Le réel traverse l’optique jusqu’à l’œil."
+      },
+      {
+        "id": "ra-td2-q7",
+        "question": "Caméra → composition vidéo/3D → écran : quel affichage ?",
+        "answer": "Indirect",
+        "choices": [
+          "Optique direct",
+          "Uniquement rétinien",
+          "Indirect",
+          "Sans affichage"
+        ],
+        "correct": 2,
+        "explanation": "Le réel est restitué par la chaîne vidéo."
+      },
+      {
+        "id": "ra-td2-q8",
+        "question": "Dans quelle décennie se situe le prototype de Sutherland cité ?",
+        "answer": "Les années 1960",
+        "choices": [
+          "Les années 1970",
+          "Les années 1980",
+          "Les années 1990",
+          "Les années 1960"
+        ],
+        "correct": 3,
+        "explanation": "Le repère présenté est 1968."
+      },
+      {
+        "id": "ra-td2-q9",
+        "question": "Quel exemple social utilise une augmentation visuelle suivie ?",
+        "answer": "Un masque numérique qui suit les mouvements du visage",
+        "choices": [
+          "Un masque numérique qui suit les mouvements du visage",
+          "Une photo du visage sans suivi",
+          "Un appel audio seul",
+          "Un avatar dans un monde intégralement synthétique"
+        ],
+        "correct": 0,
+        "explanation": "Le masque s’aligne sur des caractéristiques suivies."
+      },
+      {
+        "id": "ra-td2-q10",
+        "question": "Pour classer une visite immobilière, quelle information manque souvent ?",
+        "answer": "Savoir si la scène est réelle enrichie ou entièrement virtuelle",
+        "choices": [
+          "Le nom commercial de l’application",
+          "Savoir si la scène est réelle enrichie ou entièrement virtuelle",
+          "La seule présence de modèles 3D",
+          "La seule taille de l’écran"
+        ],
+        "correct": 1,
+        "explanation": "L’usage immobilier seul ne suffit pas à déterminer RA ou RV."
+      },
+      {
+        "id": "ra-td2-q11",
+        "question": "Le degré d’immersion dépend surtout de…",
+        "answer": "L’affichage, les perceptions et les interactions offertes",
+        "choices": [
+          "La seule extension du modèle 3D",
+          "Le seul sigle RA",
+          "L’affichage, les perceptions et les interactions offertes",
+          "Le nombre de cibles enregistrées uniquement"
+        ],
+        "correct": 2,
+        "explanation": "Il faut décrire le dispositif et l’expérience."
+      },
+      {
+        "id": "ra-td2-q12",
+        "question": "Quel ajout sportif peut être lié spatialement à l’image du terrain ?",
+        "answer": "Une ligne virtuelle recalée sur le terrain",
+        "choices": [
+          "Une vidéo ralentie sans augmentation",
+          "Un commentaire audio sans ancrage",
+          "Une image fixe sans correspondance au terrain",
+          "Une ligne virtuelle recalée sur le terrain"
+        ],
+        "correct": 3,
+        "explanation": "L’ancrage au terrain est le point central du scénario."
+      },
+      {
+        "id": "ra-td2-q13",
+        "question": "Quel ensemble de fonctions est central à une RA visuelle ?",
+        "answer": "Reconnaître ou localiser, aligner et afficher",
+        "choices": [
+          "Reconnaître ou localiser, aligner et afficher",
+          "Modéliser, texturer et exporter uniquement",
+          "Capturer, compresser et archiver uniquement",
+          "Éclairer, ombrer et enregistrer uniquement"
+        ],
+        "correct": 0,
+        "explanation": "Ces fonctions relient observation et augmentation."
+      },
+      {
+        "id": "ra-td2-q14",
+        "question": "Pourquoi actualiser le tracking ?",
+        "answer": "Pour conserver l’alignement lorsque le point de vue change",
+        "choices": [
+          "Pour changer l’identité de la cible à chaque image",
+          "Pour conserver l’alignement lorsque le point de vue change",
+          "Pour remplacer les paramètres intrinsèques par des couleurs",
+          "Pour figer la scène malgré les déplacements"
+        ],
+        "correct": 1,
+        "explanation": "Une pose initiale ne suffit pas en mouvement."
+      },
+      {
+        "id": "ra-td2-q15",
+        "question": "Quelle condition complète combinaison et temps réel ?",
+        "answer": "La cohérence spatiale du réel et du virtuel",
+        "choices": [
+          "Un accès cloud permanent",
+          "Un écran obligatoirement opaque",
+          "La cohérence spatiale du réel et du virtuel",
+          "Un réalisme photographique parfait"
+        ],
+        "correct": 2,
+        "explanation": "Le recalage est une propriété de base."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-td2-e1",
+        "question": "Explique les chemins suivis par le réel et le virtuel dans les deux architectures d’affichage, puis donne un exemple pour chacune.",
+        "modelAnswer": "Dans une tablette, le réel est capturé par caméra, composé avec le rendu puis affiché : vision indirecte. Dans des lunettes transparentes, le réel atteint directement l’œil et un rendu s’y ajoute : vision directe. Le générateur produit le contenu et le tracking fournit la pose. Une caméra éventuelle de suivi ne transforme pas automatiquement une optique directe en affichage indirect.",
+        "rubric": [
+          "Décrire la chaîne vidéo",
+          "Décrire le passage optique du réel",
+          "Relier générateur et tracking",
+          "Donner deux exemples cohérents"
+        ]
+      }
+    ],
+    "practicals": []
+  },
+  {
+    "id": "ra-td3",
+    "title": "TD3 · Calculer une projection et concevoir une interaction",
+    "description": "Reconnaissance, capteurs, cohérence et exercice numérique corrigé.",
+    "minutes": 25,
+    "references": [
+      {
+        "document": "TD3-Fondements_RA.pdf",
+        "pages": "1–3"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Des QCM reformulés pour une seule bonne réponse",
+        "body": "La fiche autorise parfois plusieurs réponses. Ici chaque carte cible un seul fait : image de référence, points d’intérêt, intrinsèques, extrinsèques ou cohérence. Un objet reconnu peut être une cible 3D ; un GPS donne une position, pas une image marqueur."
+      },
+      {
+        "title": "Une incohérence à repérer avant de calculer",
+        "origin": "correction",
+        "body": "L’exercice 2 imprime R = diag(1, 1, 0). Cette matrice n’est pas une rotation 3D : son déterminant est nul. La résolution pédagogique précise donc l’hypothèse R = I, correspondant à l’absence de rotation. Pour le point donné, dont Z vaut zéro, le calcul numérique produit le même résultat avec la matrice imprimée, mais cela ne la rend pas physiquement valide."
+      },
+      {
+        "title": "Projection du point du TD",
+        "body": "On utilise f = 0,5 m, k_u = k_v = 4000 pixels/m, donc f_x = f_y = 2000 pixels. Avec M = (0,5 ; 0 ; 0), T = (0 ; 0 ; 5) et la convention M_c = R M + T, on obtient M_c = (0,5 ; 0 ; 5). Le point principal est (512 ; 384).",
+        "formula": "u = 2000 × 0,5 / 5 + 512 = 712\nv = 2000 × 0 / 5 + 384 = 384\nm = (712 ; 384) pixels"
+      },
+      {
+        "title": "Tracking et limites du QCM",
+        "origin": "correction",
+        "body": "La question 10 suggère que RFID ne serait pas utilisé en RA mobile, alors que le cours le présente comme suivi radio. Sans restriction de matériel, l’exclusion générale n’est pas justifiée. Les cartes évaluent plutôt le principe radio. Les occultations sont spatiales, les ombres photométriques ; le photoréalisme dépend du besoin et n’est pas une obligation universelle."
+      },
+      {
+        "title": "Concevoir l’interaction",
+        "body": "Pour un atelier virtuel superposé à une machine, la navigation permet d’inspecter les côtés, la manipulation de sélectionner une pièce et le contrôle du système de choisir un mode d’affichage. Une justification doit relier chaque geste au but de la tâche et prévoir un retour visible."
+      }
+    ],
+    "takeaway": "Vérifie la validité des matrices et les unités avant de projeter ; annonce toute hypothèse de correction.",
+    "cards": [
+      {
+        "id": "ra-td3-q1",
+        "question": "Une image cible connue sert principalement à…",
+        "answer": "Reconnaître une référence et estimer son alignement",
+        "choices": [
+          "Reconnaître une référence et estimer son alignement",
+          "Mesurer la vitesse angulaire sans analyse d’image",
+          "Produire uniquement la texture du modèle",
+          "Remplacer toute estimation géométrique"
+        ],
+        "correct": 0,
+        "explanation": "La reconnaissance relie l’image observée à une cible."
+      },
+      {
+        "id": "ra-td3-q2",
+        "question": "Quel élément est une cible visuelle ?",
+        "answer": "Une image imprimée riche en détails",
+        "choices": [
+          "Une latitude sans image",
+          "Une image imprimée riche en détails",
+          "Une mesure d’accélération seule",
+          "Un angle fourni par un gyroscope seul"
+        ],
+        "correct": 1,
+        "explanation": "Le GPS localise mais ne constitue pas une image."
+      },
+      {
+        "id": "ra-td3-q3",
+        "question": "Quelle tâche peut être préparée avant la boucle d’augmentation ?",
+        "answer": "La création du modèle 3D",
+        "choices": [
+          "La capture de chaque nouvelle image",
+          "L’actualisation de pose",
+          "La création du modèle 3D",
+          "La composition de chaque image affichée"
+        ],
+        "correct": 2,
+        "explanation": "Le modèle peut être un asset préexistant."
+      },
+      {
+        "id": "ra-td3-q4",
+        "question": "Quel objectif appartient à la vision par ordinateur ?",
+        "answer": "Interpréter les données d’une caméra",
+        "choices": [
+          "Produire exclusivement les matériaux du rendu",
+          "Restituer une force à l’utilisateur",
+          "Diffuser une augmentation sonore",
+          "Interpréter les données d’une caméra"
+        ],
+        "correct": 3,
+        "explanation": "La vision extrait des informations du visuel."
+      },
+      {
+        "id": "ra-td3-q5",
+        "question": "Quelle tâche concerne surtout la création de contenu ?",
+        "answer": "Modéliser la géométrie d’un objet virtuel",
+        "choices": [
+          "Modéliser la géométrie d’un objet virtuel",
+          "Calibrer une caméra",
+          "Détecter une cible",
+          "Suivre des points d’intérêt"
+        ],
+        "correct": 0,
+        "explanation": "Modélisation et vision jouent des rôles distincts."
+      },
+      {
+        "id": "ra-td3-q6",
+        "question": "À quoi servent les descripteurs de points d’intérêt ?",
+        "answer": "Comparer des caractéristiques locales entre images",
+        "choices": [
+          "Calculer directement des ombres",
+          "Comparer des caractéristiques locales entre images",
+          "Mesurer le champ magnétique",
+          "Déterminer la position GPS sans image"
+        ],
+        "correct": 1,
+        "explanation": "Ils facilitent l’appariement."
+      },
+      {
+        "id": "ra-td3-q7",
+        "question": "Pourquoi estimer la pose ?",
+        "answer": "Pour placer et orienter le rendu selon le point de vue",
+        "choices": [
+          "Pour supprimer la projection",
+          "Pour garantir le photoréalisme sans éclairage",
+          "Pour placer et orienter le rendu selon le point de vue",
+          "Pour empêcher tout mouvement réel"
+        ],
+        "correct": 2,
+        "explanation": "Le recalage dépend d’un repère et d’un point de vue."
+      },
+      {
+        "id": "ra-td3-q8",
+        "question": "Lequel est extrinsèque ?",
+        "answer": "Un angle de rotation",
+        "choices": [
+          "La focale",
+          "Le point principal",
+          "Un facteur d’échelle de pixels",
+          "Un angle de rotation"
+        ],
+        "correct": 3,
+        "explanation": "Les extrinsèques décrivent la transformation spatiale."
+      },
+      {
+        "id": "ra-td3-q9",
+        "question": "Que désigne le recalage ?",
+        "answer": "L’alignement du virtuel avec le réel",
+        "choices": [
+          "L’alignement du virtuel avec le réel",
+          "L’export du modèle en format 3D",
+          "L’identification de l’utilisateur",
+          "La compression du flux vidéo"
+        ],
+        "correct": 0,
+        "explanation": "Il vise la correspondance des deux scènes."
+      },
+      {
+        "id": "ra-td3-q10",
+        "question": "Quelle affirmation sur RFID est correcte dans le contexte du cours ?",
+        "answer": "Il fait partie des technologies radio citées",
+        "choices": [
+          "Il mesure la vitesse angulaire",
+          "Il fait partie des technologies radio citées",
+          "Il repose sur des signaux ultrasonores",
+          "Il est forcément exclu de toute application de RA"
+        ],
+        "correct": 1,
+        "explanation": "L’exclusion absolue du QCM source n’est pas retenue."
+      },
+      {
+        "id": "ra-td3-q11",
+        "question": "Le suivi radio repose sur…",
+        "answer": "Des ondes électromagnétiques",
+        "choices": [
+          "Uniquement des ultrasons",
+          "Uniquement la gravité",
+          "Des ondes électromagnétiques",
+          "La reconnaissance de couleurs seule"
+        ],
+        "correct": 2,
+        "explanation": "Les phénomènes exploités diffèrent selon les familles de capteurs."
+      },
+      {
+        "id": "ra-td3-q12",
+        "question": "Quels sens sont visés par olfactif et gustatif ?",
+        "answer": "L’odorat et le goût",
+        "choices": [
+          "La vue et l’ouïe",
+          "Le toucher et la vue",
+          "L’équilibre et l’ouïe",
+          "L’odorat et le goût"
+        ],
+        "correct": 3,
+        "explanation": "Ils complètent les interactions audiovisuelles."
+      },
+      {
+        "id": "ra-td3-q13",
+        "question": "Quel défaut relève de la cohérence spatiale ?",
+        "answer": "Une augmentation visible devant un obstacle qui devrait la cacher",
+        "choices": [
+          "Une augmentation visible devant un obstacle qui devrait la cacher",
+          "Une ombre mal orientée",
+          "Une réflexion trop brillante",
+          "Une température de couleur incorrecte"
+        ],
+        "correct": 0,
+        "explanation": "Le défaut est une erreur d’occultation."
+      },
+      {
+        "id": "ra-td3-q14",
+        "question": "Quel défaut relève de la cohérence photométrique ?",
+        "answer": "Une lumière virtuelle incompatible avec la lumière réelle",
+        "choices": [
+          "Une matrice de rotation singulière",
+          "Une lumière virtuelle incompatible avec la lumière réelle",
+          "Une mauvaise position GPS",
+          "Un objet virtuel placé sur une autre cible"
+        ],
+        "correct": 1,
+        "explanation": "La photométrie concerne lumière, ombres et reflets."
+      },
+      {
+        "id": "ra-td3-q15",
+        "question": "Avec les données du TD et R = I, quelle projection obtient-on ?",
+        "answer": "(712 ; 384) pixels",
+        "choices": [
+          "(512 ; 384) pixels",
+          "(2512 ; 384) pixels",
+          "(712 ; 384) pixels",
+          "(712 ; 584) pixels"
+        ],
+        "correct": 2,
+        "explanation": "u = 2000 × 0,5 / 5 + 512 ; v reste 384."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-td3-e1",
+        "question": "Résous la projection du TD : M=(0,5;0;0), f=0,5, k_u=k_v=4000, u₀=512, v₀=384, T=(0;0;5). Discute R=diag(1,1,0) avant le calcul.",
+        "modelAnswer": "La matrice imprimée est singulière et ne représente pas une rotation. Sous l’hypothèse explicitée R=I et la convention monde vers caméra, M_c=(0,5;0;5). Les focales en pixels valent 2000. Après division par Z_c, u=712 et v=384. Le point ayant Z=0, la matrice imprimée donne ici le même nombre, sans être une rotation valide.",
+        "rubric": [
+          "Signaler la matrice invalide et l’hypothèse",
+          "Calculer les focales en pixels",
+          "Transformer le point et diviser par la profondeur",
+          "Obtenir et interpréter (712 ; 384)"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Atelier · Concevoir une formation industrielle",
+        "instructions": "Décris une navigation, une manipulation et un contrôle du système pour apprendre à assembler une pompe. Précise le retour visible et la conduite à tenir si la cible est perdue.",
+        "solution": "Naviguer : tourner autour de la pompe. Manipuler : sélectionner puis déplacer une pièce virtuelle à l’aide d’un geste ou d’un objet tangible. Contrôler : activer une vue éclatée. Afficher une confirmation de sélection ; si le suivi est perdu, suspendre l’indication spatiale et demander de retrouver la cible. Cette proposition est un corrigé éditorial du troisième exercice."
+      }
+    ]
+  },
+  {
+    "id": "ra-td4",
+    "title": "TD4 · Produire une application Unity et Vuforia",
+    "description": "Architecture, cibles visuelles et scripts C# pour l’atelier de géométrie.",
+    "minutes": 30,
+    "references": [
+      {
+        "document": "TD4-Dispositifs_et_technologies_production_AR.pdf",
+        "pages": "1–4"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Du logiciel métier aux capteurs",
+        "body": "La couche application contient logique et interface ; la couche AR assure reconnaissance, pose, suivi et intégration du rendu ; la couche système et services tiers donne accès aux caméras, capteurs et ressources. La couche AR fait le lien entre les deux autres."
+      },
+      {
+        "title": "Moteur, SDK et navigateur AR",
+        "origin": "supplement",
+        "body": "Un moteur tel que Unity organise scène, rendu et comportements. Un SDK tel que Vuforia ou ARKit apporte des capacités AR intégrables. Une application réalise un usage précis ; un navigateur AR fournit une interface générique pour consulter plusieurs contenus augmentés. OpenSpace3D et les navigateurs cités au plan sont des catégories d’outils à distinguer, pas des composants obligatoires."
+      },
+      {
+        "title": "Les cibles du projet de géométrie",
+        "origin": "supplement",
+        "body": "Préparer deux images distinctives, l’une pour un cube, l’autre pour une sphère. Ajouter l’extension Vuforia au projet Unity compatible, configurer l’ARCamera et la licence du projet, puis créer deux Image Targets de taille physique connue. Chaque cible reçoit son modèle et ses légendes comme enfants. Vérifier le suivi sur les images imprimées avant d’ajouter les interactions."
+      },
+      {
+        "title": "Reconnaissance et bases de cibles",
+        "origin": "supplement",
+        "body": "Vuforia compare les caractéristiques naturelles de l’image à celles d’une référence. Une Device Database conserve des références localement ; une Cloud Database utilise un service de reconnaissance distant ; une VuMark Database concerne les VuMarks. Les étapes de configuration dépendent de la version du SDK : consulter les références officielles liées à la matière."
+      },
+      {
+        "title": "Unités et événements",
+        "origin": "correction",
+        "body": "Le TD demande une rotation de 7 radians. Transform.Rotate utilise des degrés : il faut multiplier par Mathf.Rad2Deg. Le corrigé réalise ce déplacement une fois ; une rotation continue demanderait une vitesse angulaire et Time.deltaTime. Les exemples clavier utilisent l’Input Manager historique : l’activer ou choisir « Both » dans le projet. Sur téléphone, relier la même méthode publique à un bouton."
+      },
+      {
+        "title": "Conditions de réalisation",
+        "body": "Les exercices ci-dessous se réalisent dans Unity, avec les scènes, modèles, images cibles et un périphérique de test. Mémora fournit le raisonnement et des propositions de scripts ; la lecture d’un corrigé ne valide pas automatiquement une manipulation. Le PDF de cours fourni s’arrête aux dispositifs : les détails de production sont des compléments au TD."
+      }
+    ],
+    "takeaway": "Sépare logique, suivi AR et services système ; vérifie les unités, les références de scène et les événements.",
+    "cards": [
+      {
+        "id": "ra-td4-q1",
+        "question": "Optical see-through correspond à…",
+        "answer": "Une vision directe du réel",
+        "choices": [
+          "Une vision directe du réel",
+          "Une capture vidéo obligatoire pour voir le réel",
+          "Un monde entièrement synthétique",
+          "Une projection audio"
+        ],
+        "correct": 0,
+        "explanation": "Le réel traverse l’optique."
+      },
+      {
+        "id": "ra-td4-q2",
+        "question": "Video see-through correspond à…",
+        "answer": "Une vision du réel restituée par caméra",
+        "choices": [
+          "Une optique transparente sans vidéo affichée",
+          "Une vision du réel restituée par caméra",
+          "Un rendu sans aucune scène réelle",
+          "Une projection directe sur la surface réelle"
+        ],
+        "correct": 1,
+        "explanation": "Le rendu est composé au flux caméra."
+      },
+      {
+        "id": "ra-td4-q3",
+        "question": "Quel élément rend possible une vision optique directe ?",
+        "answer": "Une optique semi-transparente",
+        "choices": [
+          "Un écran opaque seul",
+          "Un haut-parleur",
+          "Une optique semi-transparente",
+          "Une base de données cloud"
+        ],
+        "correct": 2,
+        "explanation": "La lumière réelle doit parvenir à l’œil."
+      },
+      {
+        "id": "ra-td4-q4",
+        "question": "Que signifie le D de HMD ?",
+        "answer": "Display",
+        "choices": [
+          "Detection",
+          "Database",
+          "Direction",
+          "Display"
+        ],
+        "correct": 3,
+        "explanation": "Head Mounted Display désigne un affichage porté sur la tête."
+      },
+      {
+        "id": "ra-td4-q5",
+        "question": "Une projection sur une surface courbe nécessite…",
+        "answer": "De tenir compte de sa géométrie",
+        "choices": [
+          "De tenir compte de sa géométrie",
+          "D’ignorer la forme du support",
+          "D’utiliser seulement sa couleur moyenne",
+          "De remplacer le recalage par l’éclairage"
+        ],
+        "correct": 0,
+        "explanation": "La forme du support affecte le placement du rendu."
+      },
+      {
+        "id": "ra-td4-q6",
+        "question": "Dans un affichage optique direct, quel ensemble est cohérent ?",
+        "answer": "Optique semi-transparente, affichage et tracking",
+        "choices": [
+          "Un écran opaque sans composition vidéo",
+          "Optique semi-transparente, affichage et tracking",
+          "Une caméra et un écran sans passage direct de lumière",
+          "Un projecteur exclusivement mural"
+        ],
+        "correct": 1,
+        "explanation": "La question précise l’architecture pour éviter une réponse unique à tous les HMD."
+      },
+      {
+        "id": "ra-td4-q7",
+        "question": "Quel est le principe du dispositif rétinien étudié ?",
+        "answer": "Former une image par un faisceau dirigé vers la rétine",
+        "choices": [
+          "Afficher uniquement sur un écran distant",
+          "Projeter sur la surface d’un objet réel",
+          "Former une image par un faisceau dirigé vers la rétine",
+          "Combiner seulement des sons spatialisés"
+        ],
+        "correct": 2,
+        "explanation": "Il relève de l’affichage visuel."
+      },
+      {
+        "id": "ra-td4-q8",
+        "question": "Quel outil cité est un SDK de RA pour les plateformes Apple ?",
+        "answer": "ARKit",
+        "choices": [
+          "Unity",
+          "Maya",
+          "3DS Max",
+          "ARKit"
+        ],
+        "correct": 3,
+        "explanation": "Le TD mélange plusieurs catégories ; ce critère rend le choix univoque."
+      },
+      {
+        "id": "ra-td4-q9",
+        "question": "Quelles familles de bases sont décrites pour Vuforia ?",
+        "answer": "Device, Cloud et VuMark",
+        "choices": [
+          "Device, Cloud et VuMark",
+          "Device, Area et Cloud uniquement",
+          "Device, Area et VuMark uniquement",
+          "Area, Cloud et VuMark uniquement"
+        ],
+        "correct": 0,
+        "explanation": "Elles correspondent à différentes modalités de stockage et reconnaissance des cibles."
+      },
+      {
+        "id": "ra-td4-q10",
+        "question": "Quel ordre décrit l’architecture étudiée ?",
+        "answer": "Application, AR, système/services tiers",
+        "choices": [
+          "Tracking, rendu et animation uniquement",
+          "Application, AR, système/services tiers",
+          "Caméra, image cible et modèle uniquement",
+          "Reconnaissance, pose et recalage uniquement"
+        ],
+        "correct": 1,
+        "explanation": "La couche AR relie le métier au système."
+      },
+      {
+        "id": "ra-td4-q11",
+        "question": "Quel outil organise la scène et les scripts du projet du TD ?",
+        "answer": "Unity",
+        "choices": [
+          "Vuforia Target Manager",
+          "Un Image Target",
+          "Unity",
+          "La base de cibles seule"
+        ],
+        "correct": 2,
+        "explanation": "Unity est ici le moteur de développement."
+      },
+      {
+        "id": "ra-td4-q12",
+        "question": "À quelle couche appartient la logique métier ?",
+        "answer": "La couche application",
+        "choices": [
+          "La couche capteurs exclusivement",
+          "Le firmware de caméra exclusivement",
+          "La seule base de cibles",
+          "La couche application"
+        ],
+        "correct": 3,
+        "explanation": "Elle définit le comportement pédagogique et l’interface."
+      },
+      {
+        "id": "ra-td4-q13",
+        "question": "Quel rôle appartient à la couche AR ?",
+        "answer": "Le suivi et l’intégration des objets virtuels",
+        "choices": [
+          "Le suivi et l’intégration des objets virtuels",
+          "Le choix du scénario pédagogique",
+          "La gestion des permissions du système seule",
+          "Le stockage de l’historique métier seul"
+        ],
+        "correct": 0,
+        "explanation": "Elle relie observations réelles et contenu numérique."
+      },
+      {
+        "id": "ra-td4-q14",
+        "question": "Quel service relève du système et du matériel ?",
+        "answer": "L’accès à la caméra",
+        "choices": [
+          "Le choix pédagogique de la formule",
+          "L’accès à la caméra",
+          "Le texte d’explication du cube",
+          "Le barème d’un exercice"
+        ],
+        "correct": 1,
+        "explanation": "Le système fournit les ressources de bas niveau."
+      },
+      {
+        "id": "ra-td4-q15",
+        "question": "Comment convertir les 7 radians du TD pour Transform.Rotate ?",
+        "answer": "7 × Mathf.Rad2Deg",
+        "choices": [
+          "7 × Mathf.Deg2Rad",
+          "7 / 360",
+          "7 × Mathf.Rad2Deg",
+          "7 × Time.time sans conversion"
+        ],
+        "correct": 2,
+        "explanation": "L’API attend un angle en degrés, environ 401,07°."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ra-td4-e1",
+        "question": "Décris l’application à deux cibles du TD : un cube et une sphère affichés avec leurs dimensions et formules. Justifie reconnaissance et tracking.",
+        "modelAnswer": "Créer un projet Unity compatible avec l’extension Vuforia, configurer la caméra AR et les références de cibles. Associer chaque Image Target à son modèle 3D et à ses légendes, avec une taille physique cohérente. Les caractéristiques des images permettent la reconnaissance ; le suivi optique actualise la pose. Tester les deux cibles, la perte de suivi, les boutons, les unités et le son sur le périphérique visé.",
+        "rubric": [
+          "Configurer caméra et cibles",
+          "Associer modèles et légendes aux cibles",
+          "Expliquer caractéristiques visuelles et suivi",
+          "Décrire un test concret des interactions"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Exercice 2 · Application ou navigateur AR ?",
+        "instructions": "Compare une application dédiée à la maintenance avec un navigateur AR qui affiche plusieurs collections d’informations.",
+        "solution": "L’application dédiée organise un parcours métier précis. Le navigateur propose une interface commune qui charge plusieurs contenus ou couches. Les deux peuvent utiliser les mêmes techniques de reconnaissance et de rendu ; la différence porte surtout sur la portée et l’organisation du contenu."
+      },
+      {
+        "title": "Exercice 3.1–4 · Deux cibles géométriques",
+        "instructions": "Construis la scène cube/sphère, indique les configurations nécessaires et explique la reconnaissance et le type de tracking.",
+        "solution": "Importer l’extension Vuforia compatible et configurer une licence de projet dans l’ARCamera. Préparer deux images distinctes, créer leurs Image Targets et leurs tailles physiques. Ajouter cube, sphère et textes comme enfants des cibles respectives. Vérifier le suivi optique des caractéristiques naturelles. Afficher cube : aire 6a², volume a³ ; sphère : aire 4πr², volume 4πr³/3. Les formules sont des compléments utiles à l’atelier. Éviter d’appeler « périmètre de la sphère » une circonférence sans préciser le cercle considéré."
+      },
+      {
+        "title": "Exercice 3.5 · Rotation et couleur",
+        "instructions": "Dans Animation.cs, applique une rotation de 7 radians autour de Y, puis change la couleur lorsque la touche A est pressée. Attache le script à un modèle possédant un Renderer.",
+        "solution": "Start applique une rotation unique, avec conversion en degrés. Update détecte la pression et appelle une méthode publique réutilisable par un bouton mobile. Le matériau doit exposer une couleur compatible avec le shader choisi. Le code utilise l’Input Manager historique.",
+        "language": "C# · Animation.cs",
+        "code": "using UnityEngine;\n\n[RequireComponent(typeof(Renderer))]\npublic class Animation : MonoBehaviour\n{\n    private Material materiau;\n\n    void Start()\n    {\n        materiau = GetComponent<Renderer>().material;\n        transform.Rotate(0f, 7f * Mathf.Rad2Deg, 0f, Space.Self);\n    }\n\n    void Update()\n    {\n        if (Input.GetKeyDown(KeyCode.A)) ChangerCouleur();\n    }\n\n    public void ChangerCouleur()\n    {\n        if (materiau != null) materiau.color = Color.red;\n    }\n\n    void OnDestroy()\n    {\n        if (materiau != null) Destroy(materiau);\n    }\n}"
+      },
+      {
+        "title": "Exercice 3.6 · Plus et Quitter",
+        "instructions": "Crée la scène Notions, inclus-la dans la liste des scènes du build et relie les boutons Plus et Quitter aux méthodes du script Boutons.cs.",
+        "solution": "Plus charge la scène nommée Notions. Quitter demande l’arrêt de l’application construite ; l’appel ne ferme pas le mode Play de l’éditeur. Relier les événements OnClick aux méthodes publiques sur le GameObject qui porte le script.",
+        "language": "C# · Boutons.cs",
+        "code": "using UnityEngine;\nusing UnityEngine.SceneManagement;\n\npublic class Boutons : MonoBehaviour\n{\n    public void Plus()\n    {\n        SceneManager.LoadScene(\"Notions\");\n    }\n\n    public void Quitter()\n    {\n        Application.Quit();\n    }\n}"
+      },
+      {
+        "title": "Exercice 3.7 · Activer ou couper le son",
+        "instructions": "Ajoute un AudioSource avec le clip Son et relie le bouton Audio à BasculerSon. Le son doit être actif au démarrage.",
+        "solution": "Assigner le clip dans l’inspecteur. Le démarrage lance la lecture ; mute alterne le silence sans perdre la position dans la piste. Cela correspond ici au choix de conception « couper/rétablir le son » ; Pause et UnPause conviendraient pour suspendre réellement la lecture.",
+        "language": "C# · Audio.cs",
+        "code": "using UnityEngine;\n\n[RequireComponent(typeof(AudioSource))]\npublic class Audio : MonoBehaviour\n{\n    private AudioSource source;\n\n    void Start()\n    {\n        source = GetComponent<AudioSource>();\n        source.loop = true;\n        source.mute = false;\n        if (source.clip != null && !source.isPlaying) source.Play();\n    }\n\n    public void BasculerSon()\n    {\n        if (source != null) source.mute = !source.mute;\n    }\n}"
+      }
+    ]
+  }
+]

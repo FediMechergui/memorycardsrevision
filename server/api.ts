@@ -144,7 +144,8 @@ export async function handleApi(
     if (path[0] === "health" && req.method === "GET")
       return reply({
         ok: true,
-        version: "1.1.0",
+        version: "2.0.0",
+        edition: catalog.edition,
         aiConfigured: !!deps.aiKey,
         catalogVersion: catalog.version,
       });

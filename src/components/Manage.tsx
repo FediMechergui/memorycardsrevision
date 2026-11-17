@@ -79,7 +79,7 @@ export function ProgressPage({ store }: { store: Store }) {
     {
       icon: Cards,
       value: learned,
-      label: "cartes bien ancrées",
+      label: "cartes espacées ≥ 3 jours",
       color: "mint",
     },
     {
@@ -162,6 +162,11 @@ export function ProgressPage({ store }: { store: Store }) {
         })}
       </div>
       <SectionTitle title="Mes dernières sessions" />
+      <p className="content-note">
+        Quiz : réponses correctes. Questions/réponses et examens : autoévaluation.
+        Les XP et séries mesurent l’activité enregistrée, y compris ton historique
+        conservé des éditions précédentes. Ils ne certifient pas une compétence pratique.
+      </p>
       {progress.results.length ? (
         <div className="results-list">
           {progress.results.slice(0, 30).map((r) => (
@@ -203,8 +208,9 @@ export function ProgressPage({ store }: { store: Store }) {
         </EmptyState>
       )}
       <p className="content-note">
-        Une carte est « bien ancrée » quand sa prochaine révision est espacée
-        d’au moins 3 jours. Les statistiques restent sur cet appareil.
+        Une carte est espacée d’au moins 3 jours selon tes évaluations de rappel.
+        Ce délai est un repère de révision, pas une mesure indépendante de maîtrise.
+        Les statistiques restent sur cet appareil.
       </p>
     </>
   );
@@ -510,7 +516,10 @@ export function ImportPage({ store }: { store: Store }) {
       if (f.size > 5_000_000)
         throw new Error("Le fichier dépasse la limite de 5 Mo.");
       if (f.name.toLowerCase().endsWith(".json")) {
-        setPack(parseCatalog(JSON.parse(await f.text())));
+        const incoming = parseCatalog(JSON.parse(await f.text()));
+        if (incoming.edition !== store.catalog.edition)
+          throw new Error("Ce pack appartient à une autre édition. Utilise l’exemple de pack de cette bibliothèque.");
+        setPack(incoming);
         return;
       }
       if (!/\.(txt|md)$/i.test(f.name))
@@ -677,6 +686,12 @@ export function ImportPage({ store }: { store: Store }) {
             identifiera la matière et préparera les résumés, les flashcards, les
             quiz et les sujets rédigés. Tu pourras ensuite importer le pack ici
             ou récupérer la mise à jour depuis GitHub.
+          </p>
+          <p>
+            Cette édition contient les 11 PDF du semestre fournis, lus et préparés
+            en cours et TD. Pour un nouveau PDF, la préparation comprend lecture,
+            vérification et création des exercices ; le dépôt d’un fichier texte
+            ici suggère seulement une matière.
           </p>
           <button
             className="text-link"

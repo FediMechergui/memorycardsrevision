@@ -1,0 +1,352 @@
+--- PAGE 1 ---
+Réalité augmentée
+& Réalité virtuelle
+
+Enseignante: Amel TILOUCHE
+Niveau: MDW3
+
+--- PAGE 2 ---
+     FICHE DESCRIPTIVE
+
+
+
+
+PRESENTATION                                             OBJECTIFS
+ Domaine de formation : Sciences et technologies                     Avoir les compétences théoriques et pratiques nécessaires à la
+                                                                               réalisation des applications de réalité augmentée et de réalité Mention : Licence en Informatique
+                                                                                      virtuelle :
+ Parcours : Multimédia et Développement Web (MDW)
+                                                                  Introduire les notions de base de la réalité augmentée et la
+ Semestre : S5                                                                                        réalité virtuelle
+ Unité d’enseignement : Développement 3D avancé                                                                Maîtriser  les  fondements  théoriques  et  les  outils  de
+                                                                        production de la réalité augmentée Volume horaire : 21 heures (14h cours – 7h TD)
+                                                                Maîtriser  les  fondements  théoriques  et  les  outils  de  Coefficient : 2      ----     Crédit : 2
+                                                                        production de la réalité virtuelle
+MOYENS PEDAGOGIQUES
+                                                        EVALUATION
+  Présentation,  vidéos, codes,  tableau, QCM,  travaux
+                                                               Evaluation écrite: DS (1h) + Examen (1.5h)     dirigés
+ Outils de développement.
+                                                                                                                2
+
+--- PAGE 3 ---
+  PLAN
+
+
+
+      PARTIE 1              PARTIE 2               PARTIE 3
+
+
+
+  Introduction à la            Réalité augmentée:            Réalité virtuelle:
+réalité augmentée et        Fondements et outils        Fondements et outils
+  la réalité virtuelle             de production               de production
+
+
+
+
+
+                                                                                                            3
+
+--- PAGE 4 ---
+INTRODUCTION
+AUX TECHNOLOGIES IMMERSIVES
+
+
+                                                                                                                4
+
+--- PAGE 5 ---
+ Technologies immersives ?
+
+
+▰Ensemble de technologies qui créent des environnements ou des expériences
+    numériques où les utilisateurs peuvent interagir de manière plus naturelle et
+    engageante,  souvent  en  simulant   la  présence  physique  dans  un
+
+    environnement numérique ou en superposant des éléments virtuels au monde
+     réel.
+
+▰Elles incluent principalement  la  réalité  virtuelle,  la  réalité augmentée,  la
+     virtualité augmentée, la réalité mixte et la réalité étendue.
+
+                                                                                                         5
+
+--- PAGE 6 ---
+ Continuum du réel-virtuel
+
+
+▰Un concept initialement introduit par Paul Milgram et Fumio
+
+   Kishino en 1994.
+
+▰Un spectre des environnements réel et  virtuel   : s'étend de
+
+   l'environnement physique non altéré à l’environnement virtuel
+
+   où se trouve  la  réalité  virtuelle totalement immersive, en
+
+   passant par la réalité augmentée et la virtualité augmentée.
+
+                                                                                                         6
+
+--- PAGE 7 ---
+Continuum du réel-virtuel
+
+
+
+
+
+                                                                                                        7
+
+--- PAGE 8 ---
+     Réalité virtuelle
+
+
+
+▰VR   : plonge  l'utilisateur dans un environnement
+    entièrement  virtuel, généré par ordinateur, où   il
+    peut interagir avec des objets 3D, des avatars, et
+    des scénarios comme s'il était réellement présent.
+▰Cela se fait généralement à l'aide des casques VR
+    qui couvrent la vue du monde réel.
+▰Très utilisée dans plusieurs applications telles que :
+    jeux  vidéo,  la  simulation  de  formation  (ex.
+    simulation du vol), la thérapie (ex. traitement des
+    phobies).
+                                                                                                                8
+
+--- PAGE 9 ---
+     Réalité augmentée
+
+
+▰AR  : superpose des éléments numériques (images,
+    sons,    vidéos,   informations    textuelles    et
+    graphiques) sur le monde réel, visible à travers un
+    écran comme  celui  d'un  smartphone  ou  des
+    lunettes AR.
+▰Contrairement à la VR, l'utilisateur reste connecté
+    au monde physique tout en voyant des ajouts
+    numériques.
+▰Exploitée dans  plusieurs domaines  tels que   :
+    divertissement (ex. jeux), maintenance industrielle
+    assistée, commerce, etc.                                                                                                                9
+
+--- PAGE 10 ---
+ Virtualité augmentée
+
+
+
+▰AV  : désigne des environnements essentiellement virtuels dans lesquels des
+    éléments réels sont intégrés et interagissent avec les éléments numériques.
+
+▰Exemples d’applications : collaboration à distance (ex. réunions virtuelles où des
+    participants réels sont projetés dans un espace virtuel partagé), divertissement
+
+    et jeux (ex. une vidéo en direct de l'environnement du joueur intégrée dans le
+
+     jeu).
+
+
+
+                                                                                                          10
+
+--- PAGE 11 ---
+ Réalité mixte
+
+
+▰MR : Combine les éléments de la RV et de la RA pour permettre une interaction en
+   temps réel entre le monde réel et les objets virtuels.
+
+▰Les utilisateurs peuvent manipuler des objets numériques comme s'ils faisaient
+     partie de leur environnement physique.
+
+▰Contrairement à la RA qui offre seulement des contenus virtuels passifs, la RM
+    offre des contenus plus riches et plus performants, où l’utilisateur peut interagir
+
+    avec des contenus virtuels actifs.
+
+                                                                                                         11
+
+--- PAGE 12 ---
+     Réalité mixte
+
+
+▰Exemples d'applications :
+  ▻La simulation  (ex. des étudiants en médecine qui
+        peuvent pratiquer des interventions chirurgicales sur
+        des patients virtuels superposés à des mannequins
+           réels).
+  ▻Le prototypage  virtuel pour  la visualisation et  la
+         modification des prototypes virtuels en temps réel,
+         directement dans l'espace physique (ex. une voiture
+        en cours de conception peut être projetée en 3D
+        dans un espace  réel, permettant aux  designers
+         d'examiner  ses  proportions  et  d'apporter  des
+         modifications instantanées).                                                                    12
+
+--- PAGE 13 ---
+   Réalité étendue
+
+
+▰XR (Extended Reality)  : un terme générique qui englobe VR, AR, et MR, ainsi
+   que toute autre technologie immersive qui pourrait combiner ou transcender
+   ces expériences et qui reste encore à développer dans le futur.
+
+
+
+
+
+                                                                                                            13
+
+--- PAGE 14 ---
+ Technologies connexes ?
+
+
+▰Domaines technologiques qui contribuent à améliorer, enrichir ou rendre
+    possibles les expériences immersives.
+
+▰Principales technologies :
+
+   ▻Rendu 3D
+   ▻Vision par ordinateur (CV)
+    ▻Intelligence artificielle (AI)
+    ▻Reconnaissance vocale et traitement du langage naturel (NLP)
+
+                                                                                                          14
+
+--- PAGE 15 ---
+    Rendu 3D
+
+
+▰Il permet de créer des environnements interactifs
+    et réalistes.
+
+▰Il génère des objets et des mondes virtuels en 3D.
+
+▰Il garantit ainsi des effets de lumière, d'ombre et de
+    physique  qui  renforcent  l'illusion de  la  réalité,
+
+    améliorant ainsi la perception et l'engagement des
+    utilisateurs.
+                                                                                                               15
+
+--- PAGE 16 ---
+   Vision par ordinateur
+
+
+▰Un domaine de l'intelligence artificielle qui permet aux ordinateurs
+
+    d'analyser, d'interpréter et de comprendre des images ou des vidéos.
+
+▰Elle vise à automatiser des tâches que l’œil humain peut effectuer,
+
+    telles que  la reconnaissance d'objets, la détection de visages ou
+
+    l'analyse des scènes.
+
+
+
+                                                                                                             16
+
+--- PAGE 17 ---
+   Vision par ordinateur
+
+
+▰Exemples d’utilisation :
+  ▻Le suivi de mouvement des mains et du
+        corps de l’utilisateur pour son interaction
+       avec les environnements VR/AR.
+  ▻La    reconnaissance     faciale    pour
+        personnaliser   les  avatars  dans  des
+        applications immersives.
+    ▻L’intégration  d'objets  réels  dans  des
+        simulations MR.
+                                                                                                             17
+
+--- PAGE 18 ---
+ Intelligence artificielle
+
+
+▰Elle  permet  d'améliorer   l'interactivité  et  l'adaptabilité  des
+
+   expériences immersives.
+
+▰Elle  est  utilisée pour  créer des environnements  virtuels plus
+
+    réalistes,  des  personnages  non-joueurs  intelligents,  et  pour
+
+   analyser  les  actions  de   l'utilisateur  afin  de  personnaliser
+
+    l'expérience.
+
+                                                                                                         18
+
+--- PAGE 19 ---
+     Intelligence artificielle
+
+
+▰Exemples d’utilisation :
+  ▻La personnalisation des expériences de jeu en
+       VR.
+    ▻L’amélioration de la reconnaissance d'objets
+         et de gestes dans les applications AR.
+  ▻La création des personnages  interactifs et
+         réactifs dans les environnements immersifs.
+
+
+
+                                                                                                               19
+
+--- PAGE 20 ---
+   Reconnaissance vocale
+   et traitement du langage naturel (NLP)
+
+
+
+▰Elles  permettent  aux   utilisateurs
+    d'interagir avec des environnements
+
+    virtuels ou augmentés en utilisant la
+    voix,   rendant   l'expérience   plus
+    intuitive et naturelle.
+
+
+
+                                                                                                            20
+
+--- PAGE 21 ---
+ Reconnaissance vocale
+ et traitement du langage naturel (NLP)
+
+
+▰NLP  : se concentre sur l'interaction entre les ordinateurs et le
+
+   langage humain.
+
+▰Il permet aux machines de comprendre, interpréter et générer du
+
+    texte ou de la parole, en se basant sur des algorithmes pour des
+
+   tâches comme la traduction automatique, l'analyse des sentiments
+
+   ou la reconnaissance vocale.
+
+                                                                                                         21
+
+--- PAGE 22 ---
+ Reconnaissance vocale
+ et traitement du langage naturel (NLP)
+
+
+▰Reconnaissance vocale  : permet à un système informatique de
+
+    convertir la parole humaine en texte.
+
+▰Elle utilise des algorithmes pour analyser les sons, identifier les
+
+   mots prononcés  et  les  transcrire,  facilitant des  applications
+
+  comme les assistants vocaux ou la commande vocale.
+
+
+                                                                                                         22

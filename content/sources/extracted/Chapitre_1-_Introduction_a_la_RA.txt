@@ -1,0 +1,440 @@
+--- PAGE 1 ---
+INTRODUCTION
+A LA REALITE AUGMENTEE
+ET LA REALITE VIRTUELLE
+
+
+                                                                                                                23
+
+--- PAGE 2 ---
+        PLAN
+
+
+   La réalité augmentée                   La réalité virtuelle
+
+- Définition                                                                - Finalité et définitions
+- Historique                                                               - Système RV et principe
+- Principe et Système RA                                           - Historique
+- Technologies d’affichage                                        - Interfaces comportementales
+- Exemples d’applications                                          - Exemples d’applications
+- Perspectives                                                           - Perspectives
+
+
+
+
+                                                                                                     24
+
+--- PAGE 3 ---
+Réalité Augmentée
+
+
+
+
+
+                                                                                                          25
+
+--- PAGE 4 ---
+ Introduction
+
+
+▰La  réalité augmentée  est  interdisciplinaire  et  s'enrichit  grâce à un
+   environnement augmenté par des ajouts visuels, sonores et/ou haptiques.
+▰Elle s'appuie sur :
+  ▻le traitement du signal ;
+  ▻la vision par ordinateur ;
+  ▻la synthèse d'images ;
+   ▻les interfaces homme/application ;
+   ▻les technologies mobiles.                                                                                                          26
+
+--- PAGE 5 ---
+ Définition
+
+
+▰RA vise à ajouter des éléments virtuels au monde réel qui nous entoure, en offrant à
+     l'utilisateur la possibilité d'être immergé dans cet environnement mixte.
+▰Plus précisément, la réalité augmentée (RA) :
+   ▻combine le réel et le virtuel,
+  ▻de manière interactive (en temps réel) et
+  ▻en respectant l'homogénéité perspectiviste.
+▰Un mélange soigneusement dosé entre le monde réel et le monde virtuel:
+    ▻L'environnement réel est enrichi avec des informations de synthèse.
+
+                                                                                                          27
+
+--- PAGE 6 ---
+    Historique
+
+
+
+▰Années 1960 – 1970
+
+   ▻Années prémices de la RA.
+
+   ▻1968  : développement du premier système de réalité
+        augmentée par Ivan Sutherland.
+
+      ▻Il s’agit d’un casque de visualisation, appelé "The Sword
+                of Damocles", qui superpose des formes géométriques
+
+               simples sur le monde réel.
+                                                                                                               28
+
+--- PAGE 7 ---
+    Historique
+
+
+▰Années 1980 – 1990
+
+   ▻1992  : développement d’un système pour guider les ouvriers
+         dans l'assemblage des câblages d'avion en superposant des
+
+          informations numériques sur le monde réel, par Tom Caudell,
+
+          ingénieur chez Boeing.
+
+   ▻1992 et 1996 : création des applications de visualisation directe
+         des données d’imagerie médicale à ultrasons sur le corps du
+
+           patient par les deux chercheurs Bajura (1992) et State (1996).
+                                                                                                               29
+
+--- PAGE 8 ---
+Historique
+
+
+
+
+▻1993 : apparition de premier film « Jurassic Park »
+     qui utilise la RA, réalisé par Steven Spielberg.
+
+    ▻Ajout des images de synthèse des dinosaures au
+         décor du parc d’attraction (réel).
+
+
+
+
+                                                                                                        30
+
+--- PAGE 9 ---
+     Historique
+
+
+▰Années 2000
+
+  ▻RA est devenu plus accessible au grand public grâce à
+         l'avènement  des  smartphones,  des  caméras  intégrées,
+
+          l’introduction du premier système de tracking visuel en 2008
+
+          et le développement des technologies du tracking.
+
+    ▻Apparition de premières applications mobiles pour l’affichage
+        des informations sur des lieux ou les objets en temps réel.
+                                                                                                                 31
+
+--- PAGE 10 ---
+  Historique
+
+
+
+▰Années 2010
+
+    ▻Popularité  croissante des  applications de RA
+      comme Pokémon GO en 2016.
+
+    ▻Développement des lunettes RA par plusieurs
+          entreprises, comme les Google Glasses en 2012.
+
+
+
+                                                                                                            32
+
+--- PAGE 11 ---
+     Historique
+
+
+▰Années 2020
+
+   ▻Années d’expansion et des applications avancées de RA.
+
+    ▻Développement   des   applications   dans  nombreux
+        domaines, notamment la médecine (chirurgie assistée par
+
+         RA), l'industrie (maintenance et assemblage guidés par
+
+         RA),   l'éducation   (apprentissage   interactif)   et    le
+
+         divertissement (jeux vidéo et expériences immersives).
+                                                                                                               33
+
+--- PAGE 12 ---
+ Principe
+
+
+▰Grâce à des capteurs, des caméras et des algorithmes, la RA
+   reconnaît l'environnement physique et y intègre ces éléments
+    virtuels en temps réel, créant une interaction dynamique entre le
+    réel et le virtuel.
+▰Elle procède à  la reconnaissance d'images (marqueurs), des
+   formes 3D ou la détection de localisation, puis génère des images
+   en trois dimensions en temps réel qui sont alors affichées à
+    travers un écran ou directement sur les images du monde réel.
+
+
+                                                                                                         34
+
+--- PAGE 13 ---
+     Principe
+
+
+
+▰Le rendu visuel en RA peut être:
+    ▻Indirect   :  sur  grand ou moyen
+        écran en semi-immersion, sur petit
+        écran (PDA) ou sur des casques
+        immersifs.
+     ▻la vue du réel est restituée par
+            caméra : vision indirecte.
+
+
+                                                                                                               35
+
+--- PAGE 14 ---
+     Principe
+
+
+
+
+
+▻Direct : lunettes semi-transparentes.
+
+  ▻Le réel est perçu directement par
+           l’utilisateur : vision directe.
+
+
+
+
+
+                                                                                                               36
+
+--- PAGE 15 ---
+   Système RA
+
+
+
+▰Un système de réalité augmentée doit permettre de :
+
+   ▻mixer le virtuel et le réel ;
+   ▻mettre en correspondance ces derniers en cas de mobilité de
+         l'utilisateur ou de l'environnement ;
+   ▻permettre à l'utilisateur d'interagir avec le système en temps réel.
+
+
+
+                                                                                                             37
+
+--- PAGE 16 ---
+   Système RA
+
+
+▰Composé principalement de :
+  ▻Un générateur de scène : soit un appareil ou un logiciel responsable au rendu
+        de la scène virtuelle.
+  ▻Un système de tracking : permet de suivre l’utilisateur et les marqueurs de RA
+        pour que les objets dans les mondes réel et virtuel doivent être correctement
+         alignés les uns par rapport aux autres.
+    ▻Dispositifs d’affichage  : des appareils avec lesquels le réel augmenté est
+          visualisé, ils peuvent être des dispositifs portés sur la tête (Head Mounted
+         Displays HMD), des dispositifs pris à la main (Handheld Displays) ou des
+         projecteurs spéciaux (Projector Displays).
+                                                                                                             38
+
+--- PAGE 17 ---
+Système RA
+
+
+
+▻Une caméra : utile en vision indirecte afin de filmer la scène réelle en
+    vidéo, la traiter et lui rajouter indirectement les éléments virtuels.
+▻Un module de mélange réel et virtuel : se trouve dans les systèmes à
+    vision indirecte, sa tâche est d’insérer les éléments virtuels sur la
+    vidéo de la scène réelle capturée par une caméra, tout en respectant
+    les données de position et d’orientation fournies par le système de
+    tracking.
+
+
+
+                                                                                                        39
+
+--- PAGE 18 ---
+Système RA
+
+
+
+
+
+                                                                                                        40
+
+--- PAGE 19 ---
+ Technologies d’affichage – Head Worn
+
+
+
+▰Head Worn displays
+
+   ▻Appelés aussi HMD (Head Mounted Displays).
+
+    ▻Consiste à afficher des images 3D (un affichage pour chaque oeil) modifiées
+         par la position de l’utilisateur dans l’environnement.
+
+
+
+                                                                                                         41
+
+--- PAGE 20 ---
+   Technologies d’affichage – Head Worn
+
+
+▰Deux types de dispositifs pour assurer le mélange réel/virtuel:
+   ▻Les dispositifs optical see-through : apportent une vision directe dans laquelle
+           l’utilisateur perçoit le monde réel à travers un dispositif optique dans lequel
+         sont projetés les images virtuelles destinées à l’augmentation.
+   ▻Les dispositifs video see-through: apportent une vision indirecte dans laquelle
+           le monde réel est perçu grâce à une ou deux caméras disposées sur le
+        casque ou les lunettes. Le mélange réel virtuel consiste alors à superposer
+          les augmentations au signal vidéo des caméras avant d’afficher le résultat
+        dans les lunettes.
+
+                                                                                                             42
+
+--- PAGE 21 ---
+   Technologies d’affichage – Handheld
+
+
+
+▰Handheld displays
+    ▻Offrir  à   l’utilisateur  une  «   fenêtre
+        augmentée » sur le monde réel.
+  ▻En équipant un PDA ou une tablette PC
+         d’une caméra et d’un système de tracking
+         permettant ainsi d’augmenter
+
+
+
+                                                                                                             43
+
+--- PAGE 22 ---
+    Technologies d’affichage – Projective
+
+
+
+▰Projective displays
+   ▻Augmenter  n’importe  quelle  partie  d’une
+         pièce (table, sol, murs) en utilisant un miroir
+        mobile pour orienter la projection selon le
+         type de surface.
+    ▻Utilisation  des  projecteurs  prenant  en
+       compte  la  géométrie de  la  surface de
+         projection (plane , ronde, cylindrique, etc.).
+
+
+                                                                                                                44
+
+--- PAGE 23 ---
+    Exemples d’applications
+
+
+▰Divertissement :
+   ▻Jeux vidéo
+   ▻Média  : enrichissement du contenu des films, des séries, des
+            publicités, des émissions télévisuelles, etc.
+   ▻Sport : animation des événements pour fournir des analyses en
+        temps réel, des statistiques et des graphiques superposés à
+          l'image du match.
+    ▻Livres et bandes dessinées   : ajout des animations et des
+         éléments interactifs pour donner vie aux illustrations.
+
+
+                                                                                                                45
+
+--- PAGE 24 ---
+    Exemples d’applications
+
+
+▰Education :
+     ▻Visualisation des concepts  : superposition des modèles 3D et
+         des animations sur des supports éducatifs (apprentissage des
+          structures anatomiques ou des phénomènes scientifiques).
+    ▻Expériences immersives   :  exploration des environnements
+            virtuels interactifs, tels que des reconstitutions historiques ou
+         des simulations de voyages spatiaux.
+    ▻Support à l'enseignement : création des activités pédagogiques
+         dynamiques  et des  démonstrations  visuelles  pour  capter
+            l'attention des élèves et  faciliter l'enseignement des sujets
+             difficiles.
+                                                                                                                46
+
+--- PAGE 25 ---
+    Exemples d’applications
+
+
+▰Médecine :
+    ▻Chirurgie assistée  : superposition d'images médicales
+        en temps réel afin de guider les chirurgiens.
+    ▻Formation  : utilisation des simulations immersives et
+        des   visualisations   anatomiques   en  3D   pour
+          l’apprentissage.
+    ▻Diagnostic    :  visualisation  améliorée  des  données
+        médicales et des échographies.
+    ▻Rééducation     :  assistance  des  patients  pour   la
+         rééducation physique et les thérapies cognitives.
+                                                                                                               47
+
+--- PAGE 26 ---
+   Exemples d’applications
+
+
+▰Conception technique :
+    ▻Visualisation des prototypes   : visualisation des
+       modèles 3D en taille réelle dans l'environnement
+          réel, facilitant l'évaluation des conceptions avant
+          la fabrication.
+    ▻Collaboration à distance  : collaboration en temps
+         réel des  équipes  d'ingénierie  sur des  projets
+        complexes,  en  visualisant  et  modifiant  les
+        conceptions ensemble.
+
+                                                                                                             48
+
+--- PAGE 27 ---
+    Exemples d’applications
+
+
+▰Fabrication et maintenance :
+    ▻Assemblage et fabrication  : superposition des instructions et
+         des schémas sur les pièces physiques, facilitant l'assemblage
+          précis et la vérification des étapes de fabrication.
+    ▻Maintenance  préventive  et  corrective   :  visualisation des
+           instructions  et des  diagnostics en temps  réel  pour  les
+          réparations et la maintenance, affichant des guides visuels et
+         des étapes de procédure directement sur les équipements.
+    ▻Formation des techniciens  : visualisation de simulations et
+         des  scénarios  de  maintenance  virtuels,  permettant  aux
+          techniciens de s'entraîner sans risquer d'endommager les
+         équipements réels.                                                                                 49
+
+--- PAGE 28 ---
+   Perspectives de RA
+
+
+▰Futur de RA
+   ▻Ondes cérébrales couplées à la RA
+     ▻Un architecte regarde un espace  vide,   il y imagine une
+                construction, le plan de celle-ci est conçu au fur et à mesure
+             de sa réflexion.
+    ▻Lentilles 3D
+       ▻Equipées d’un micro-processeur, assistent  leur  utilisateur
+              dans ses activités quotidiennes  : préparation d’un plat, etc.
+                Tel que l’exemple d’Edward dans Twilight.
+
+                                                                                                              50

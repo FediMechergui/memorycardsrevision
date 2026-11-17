@@ -1,0 +1,133 @@
+[
+  {
+    "file": "3éme_s1/3D/Chapitre_0-Introduction_aux_technologies_immersives.pdf",
+    "pages": 22,
+    "characters": 11590,
+    "text": "extracted/Chapitre_0-Introduction_aux_technologies_immersives.txt",
+    "sha256": "beac419ebb07af01ab77039132e29b90f31da40215dde92ff522aa071ee6b54a",
+    "sparsePages": [
+      1,
+      4,
+      7
+    ],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/3D/Chapitre_1-_Introduction_a_la_RA.pdf",
+    "pages": 28,
+    "characters": 14634,
+    "text": "extracted/Chapitre_1-_Introduction_a_la_RA.txt",
+    "sha256": "8ff19e2479d7ff9449934c16fff518c08bd4d4110e3e217bfa96fc2375e3bd92",
+    "sparsePages": [
+      1,
+      3,
+      18
+    ],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/3D/Chapitre_2_-_Fondements_de_RA.pdf",
+    "pages": 58,
+    "characters": 31474,
+    "text": "extracted/Chapitre_2_-_Fondements_de_RA.txt",
+    "sha256": "6c2688b847de81c0635f89b08e7370d18011f72817427d8f4f81a5640fdd1469",
+    "sparsePages": [
+      1,
+      4,
+      11,
+      17,
+      30,
+      48
+    ],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/3D/Chapitre_3_-_Dispositifs_RA.pdf",
+    "pages": 17,
+    "characters": 10805,
+    "text": "extracted/Chapitre_3_-_Dispositifs_RA.txt",
+    "sha256": "e45782bc7b87b99992149efadb258f6cfddd37a6ad28c0b27a37305fb07c3690",
+    "sparsePages": [
+      1
+    ],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/3D/TD1-Technologies_immersives.pdf",
+    "pages": 3,
+    "characters": 49,
+    "text": "extracted/TD1-Technologies_immersives.txt",
+    "sha256": "b13f8d2967e1e97f660742cde8fa7faebab90b590679b5fd872a94727c987a32",
+    "sparsePages": [
+      1,
+      2,
+      3
+    ],
+    "reviewed": true,
+    "reviewMethod": "visual-pages-1-3"
+  },
+  {
+    "file": "3éme_s1/3D/TD2-Introduction_RA.pdf",
+    "pages": 3,
+    "characters": 4564,
+    "text": "extracted/TD2-Introduction_RA.txt",
+    "sha256": "8543eb0de842f03f5a614b48d2c84aa5ebad566b2bb4cf54e6888293ff83a38e",
+    "sparsePages": [],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/3D/TD3-Fondements_RA.pdf",
+    "pages": 3,
+    "characters": 5396,
+    "text": "extracted/TD3-Fondements_RA.txt",
+    "sha256": "77830e428b2e5f17da1340594450cd64fb572e4caebcb1dd62ddc592e7a1946f",
+    "sparsePages": [],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/3D/TD4-Dispositifs_et_technologies_production_AR.pdf",
+    "pages": 4,
+    "characters": 6856,
+    "text": "extracted/TD4-Dispositifs_et_technologies_production_AR.txt",
+    "sha256": "41fb7739ee075a7c5ad7545e1f9eea90c300555677bdab42a3cbda57cc657ef2",
+    "sparsePages": [],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/IA/Chapitre1_Introduction_IA.pdf",
+    "pages": 28,
+    "characters": 28457,
+    "text": "extracted/Chapitre1_Introduction_IA.txt",
+    "sha256": "7c6293e727d3fca6921e2c53e21aa244ebad0f321a8263f70426b06405aa07d0",
+    "sparsePages": [],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/IA/Chapitre2_de_L_IA_au_ML_Final.pdf",
+    "pages": 61,
+    "characters": 89944,
+    "text": "extracted/Chapitre2_de_L_IA_au_ML_Final.txt",
+    "sha256": "e2adf0a54bfb6e4fad2a46f6df1ac20cf2351530995358a33f04dc9553258090",
+    "sparsePages": [],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  },
+  {
+    "file": "3éme_s1/IA/Chapitre3_Machine_Learning.pdf",
+    "pages": 42,
+    "characters": 48799,
+    "text": "extracted/Chapitre3_Machine_Learning.txt",
+    "sha256": "9792c834684e25347f22beaa1db2e3f3bd8fa6898637b850e2cd37af02922c63",
+    "sparsePages": [],
+    "reviewed": true,
+    "reviewMethod": "text-and-relevant-diagrams"
+  }
+]

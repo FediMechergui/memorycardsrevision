@@ -45,7 +45,7 @@ export const modes = [
   {
     id: "exam",
     title: "Examen blanc",
-    description: "Entraîne-toi en conditions réelles.",
+    description: "Rédige, puis autoévalue-toi.",
     icon: PencilLine,
     color: "blue",
   },
@@ -68,7 +68,7 @@ export function CourseCard({
     >
       <div className={`course-art ${subject.color}`}>
         <span className="course-category">
-          {subject.icon === "code" ? "DÉVELOPPEMENT" : "RÉSEAUX & SYSTÈMES"}
+          {subject.category || "MES COURS"}
         </span>
         <SubjectIcon subject={subject} size={34} />
         <div className="course-art-lines">
@@ -200,8 +200,7 @@ export function Dashboard({ store }: { store: Store }) {
             <div className="filter-tabs" aria-label="Filtrer les matières">
               {[
                 ["all", "Toutes les matières"],
-                ["network", "Réseaux"],
-                ["code", "Développement"],
+                ...catalog.subjects.map((s) => [s.id, s.monogram || s.title]),
               ].map(([id, text]) => (
                 <button
                   key={id}
@@ -219,9 +218,7 @@ export function Dashboard({ store }: { store: Store }) {
                 .filter(
                   (s) =>
                     filter === "all" ||
-                    (filter === "network"
-                      ? ["network", "router"].includes(s.icon)
-                      : s.icon === filter),
+                    s.id === filter,
                 )
                 .map((subject) => (
                   <CourseCard

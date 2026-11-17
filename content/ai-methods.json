@@ -1,0 +1,910 @@
+[
+  {
+    "id": "ia-evaluation",
+    "title": "Mesurer les erreurs d’un modèle",
+    "description": "Matrice de confusion, précision, rappel, F1 et erreurs de régression.",
+    "minutes": 28,
+    "references": [
+      {
+        "document": "Chapitre2_de_L_IA_au_ML_Final.pdf",
+        "pages": "40-53"
+      },
+      {
+        "document": "Chapitre3_Machine_Learning.pdf",
+        "pages": "26"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Définir la classe positive",
+        "body": "La matrice de confusion croise classe réelle et classe prédite. VP : positif correctement détecté ; VN : négatif correctement reconnu ; FP : négatif annoncé positif ; FN : positif manqué. Définir la classe positive et les axes évite d’inverser précision et rappel."
+      },
+      {
+        "title": "Exactitude et classes déséquilibrées",
+        "body": "L’accuracy mesure la proportion globale de bonnes prédictions. Avec 99 % de négatifs, annoncer toujours négatif donne 99 % d’exactitude mais aucun positif détecté. L’exactitude reste calculable ; il faut compléter son interprétation selon le déséquilibre et le coût des erreurs.",
+        "formula": "Accuracy = (VP + VN) / (VP + VN + FP + FN)"
+      },
+      {
+        "title": "Précision et rappel",
+        "body": "La précision examine les cas annoncés positifs : combien sont réellement positifs ? Le rappel examine les vrais positifs du jeu : combien ont été détectés ? Un faux positif réduit la précision ; un faux négatif réduit le rappel. Le seuil de décision peut déplacer ce compromis.",
+        "formula": "Précision = VP / (VP + FP)\nRappel = VP / (VP + FN)"
+      },
+      {
+        "title": "F1 : une synthèse à interpréter",
+        "body": "F1 est la moyenne harmonique de précision et rappel. Il est élevé si les deux sont élevés. Il ne tient pas directement compte des vrais négatifs et ne constitue pas automatiquement la meilleure métrique de tout problème déséquilibré. Le choix dépend de l’objectif.",
+        "formula": "F1 = 2PR / (P + R) = 2VP / (2VP + FP + FN)",
+        "origin": "correction"
+      },
+      {
+        "title": "Exemple des fruits",
+        "body": "En prenant Pomme comme classe positive, le support donne VP=4, FN=1, FP=2 et VN=3. Il y a dix observations : exactitude 70 %, précision 4/6≈66,7 %, rappel 4/5=80 % et F1=8/11≈72,7 %. Ces nombres appartiennent à l’exercice ; ce ne sont pas des résultats personnels dans Mémora."
+      },
+      {
+        "title": "MAE, MSE et RMSE",
+        "body": "MAE prend la moyenne des valeurs absolues des résidus. MSE moyenne leurs carrés ; RMSE reprend la racine pour retrouver l’unité de la cible. Les grandes erreurs pèsent plus fortement dans MSE/RMSE. MAE reste sensible à de grandes erreurs, mais avec une croissance linéaire.",
+        "formula": "MAE = Σ|yᵢ − ŷᵢ| / n\nMSE = Σ(yᵢ − ŷᵢ)² / n\nRMSE = √MSE"
+      },
+      {
+        "title": "R² et la référence moyenne",
+        "origin": "correction",
+        "body": "R² compare la somme des erreurs quadratiques à celle d’une prédiction constante égale à la moyenne du jeu évalué. Il peut être négatif si le modèle fait moins bien que cette référence ; il n’est pas toujours borné entre 0 et 1. Le support lui-même le précise ensuite. Pour une cible constante, le dénominateur est nul et le cas exige une convention explicite.",
+        "formula": "R² = 1 − Σ(yᵢ − ŷᵢ)² / Σ(yᵢ − ȳ)²"
+      },
+      {
+        "title": "Choisir et rapporter une mesure",
+        "body": "MAE s’exprime dans l’unité de la cible ; MSE dans son carré ; RMSE retrouve l’unité ; R² est sans unité. Mentionner jeu évalué, nombre d’exemples, classe positive et protocole. Aucune métrique isolée ne garantit l’absence d’erreurs ou la pertinence d’un usage."
+      }
+    ],
+    "takeaway": "Précision : parmi les prédictions positives ; rappel : parmi les vrais positifs. Les deux dénominateurs diffèrent.",
+    "cards": [
+      {
+        "id": "ia-evaluation-q1",
+        "question": "Un email légitime est classé spam, avec spam positif. Quelle erreur ?",
+        "answer": "Un faux positif",
+        "choices": [
+          "Un faux positif",
+          "Un faux négatif",
+          "Un vrai positif",
+          "Un vrai négatif"
+        ],
+        "correct": 0,
+        "explanation": "Le modèle annonce positif alors que la réalité est négative."
+      },
+      {
+        "id": "ia-evaluation-q2",
+        "question": "Un spam arrive dans la boîte normale. Quelle erreur ?",
+        "answer": "Un faux négatif",
+        "choices": [
+          "Un faux positif",
+          "Un faux négatif",
+          "Un vrai négatif",
+          "Un vrai positif"
+        ],
+        "correct": 1,
+        "explanation": "Un positif réel n’a pas été détecté."
+      },
+      {
+        "id": "ia-evaluation-q3",
+        "question": "Quel dénominateur utilise la précision ?",
+        "answer": "VP + FP",
+        "choices": [
+          "VP + FN",
+          "VN + FN",
+          "VP + FP",
+          "Toutes les observations uniquement"
+        ],
+        "correct": 2,
+        "explanation": "Elle examine les prédictions positives."
+      },
+      {
+        "id": "ia-evaluation-q4",
+        "question": "Quel dénominateur utilise le rappel ?",
+        "answer": "VP + FN",
+        "choices": [
+          "VP + FP",
+          "VN + FP",
+          "Les prédictions négatives seules",
+          "VP + FN"
+        ],
+        "correct": 3,
+        "explanation": "Il examine les positifs réels."
+      },
+      {
+        "id": "ia-evaluation-q5",
+        "question": "Avec VP=4, VN=3, FP=2, FN=1, quelle exactitude ?",
+        "answer": "70 %",
+        "choices": [
+          "70 %",
+          "80 %",
+          "66,7 %",
+          "40 %"
+        ],
+        "correct": 0,
+        "explanation": "Sept prédictions correctes sur dix."
+      },
+      {
+        "id": "ia-evaluation-q6",
+        "question": "Avec ces mêmes données, quel rappel ?",
+        "answer": "80 %",
+        "choices": [
+          "70 %",
+          "80 %",
+          "60 %",
+          "66,7 %"
+        ],
+        "correct": 1,
+        "explanation": "4/(4+1) = 0,8."
+      },
+      {
+        "id": "ia-evaluation-q7",
+        "question": "Avec ces mêmes données, quelle précision ?",
+        "answer": "Environ 66,7 %",
+        "choices": [
+          "80 %",
+          "70 %",
+          "Environ 66,7 %",
+          "100 %"
+        ],
+        "correct": 2,
+        "explanation": "4/(4+2) = 2/3."
+      },
+      {
+        "id": "ia-evaluation-q8",
+        "question": "Pourquoi 99 % d’accuracy peut-il masquer un échec ?",
+        "answer": "La classe majoritaire peut être prédite systématiquement",
+        "choices": [
+          "L’accuracy ne compte jamais les vrais négatifs",
+          "La précision est toujours égale au rappel",
+          "La matrice de confusion est inutilisable",
+          "La classe majoritaire peut être prédite systématiquement"
+        ],
+        "correct": 3,
+        "explanation": "La classe rare peut ne jamais être détectée."
+      },
+      {
+        "id": "ia-evaluation-q9",
+        "question": "Quelle moyenne définit F1 ?",
+        "answer": "La moyenne harmonique de précision et rappel",
+        "choices": [
+          "La moyenne harmonique de précision et rappel",
+          "La moyenne arithmétique de toutes les classes",
+          "La moyenne géométrique des prix",
+          "La médiane des erreurs absolues"
+        ],
+        "correct": 0,
+        "explanation": "F1 = 2PR/(P+R)."
+      },
+      {
+        "id": "ia-evaluation-q10",
+        "question": "Quelle métrique est exprimée dans l’unité au carré de la cible ?",
+        "answer": "MSE",
+        "choices": [
+          "MAE",
+          "MSE",
+          "RMSE",
+          "R²"
+        ],
+        "correct": 1,
+        "explanation": "Les résidus sont élevés au carré sans racine finale."
+      },
+      {
+        "id": "ia-evaluation-q11",
+        "question": "Quelle propriété vaut pour les mêmes résidus ?",
+        "answer": "RMSE ≥ MAE",
+        "choices": [
+          "RMSE est toujours strictement inférieure à MAE",
+          "MAE est toujours nulle",
+          "RMSE ≥ MAE",
+          "R² est toujours égal à RMSE"
+        ],
+        "correct": 2,
+        "explanation": "La moyenne quadratique domine la moyenne des valeurs absolues."
+      },
+      {
+        "id": "ia-evaluation-q12",
+        "question": "Que signifie un R² négatif pour une cible non constante ?",
+        "answer": "Le modèle fait moins bien que la prédiction moyenne de référence",
+        "choices": [
+          "Le modèle prédit forcément des valeurs négatives",
+          "Le modèle a un rappel négatif",
+          "Le modèle explique parfaitement les données",
+          "Le modèle fait moins bien que la prédiction moyenne de référence"
+        ],
+        "correct": 3,
+        "explanation": "L’erreur du modèle dépasse celle de la référence."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-evaluation-e1",
+        "question": "Avec VP=4, FP=2, FN=1, VN=3 et Pomme positive, calcule accuracy, précision, rappel et F1, puis explique leur différence.",
+        "modelAnswer": "Accuracy=(4+3)/10=0,70. Précision=4/6≈0,667. Rappel=4/5=0,80. F1=8/(8+2+1)=8/11≈0,727. L’exactitude porte sur tous les exemples, la précision sur les prédictions positives, le rappel sur les positifs réels. F1 synthétise précision et rappel.",
+        "rubric": [
+          "Calculer l’exactitude",
+          "Calculer la précision avec son dénominateur",
+          "Calculer le rappel avec son dénominateur",
+          "Calculer F1 et interpréter les mesures"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Atelier · Vérifier des métriques de régression",
+        "instructions": "Pour y=[2,4,6] et des prédictions [3,4,5], calcule MAE, MSE, RMSE et R² à la main puis exécute le code.",
+        "solution": "Les résidus sont −1,0,1 : MAE=2/3, MSE=2/3, RMSE≈0,8165. La moyenne de y vaut 4 ; la somme totale des carrés vaut 8 et la somme des résidus au carré vaut 2, donc R²=0,75. Exemple original ajouté pour mettre les formules en pratique.",
+        "language": "Python · bibliothèque standard",
+        "code": "from math import sqrt\n\ny, predictions = [2, 4, 6], [3, 4, 5]\nresidus = [reel - estime for reel, estime in zip(y, predictions)]\nmae = sum(abs(e) for e in residus) / len(y)\nmse = sum(e ** 2 for e in residus) / len(y)\nmoyenne = sum(y) / len(y)\ntotal = sum((valeur - moyenne) ** 2 for valeur in y)\nr2 = 1 - sum(e ** 2 for e in residus) / total\nprint(mae, mse, sqrt(mse), r2)"
+      }
+    ]
+  },
+  {
+    "id": "ia-inference",
+    "title": "Passer du modèle aux prédictions",
+    "description": "Prétraitement conservé, inférence, sauvegarde et suivi des performances.",
+    "minutes": 20,
+    "references": [
+      {
+        "document": "Chapitre2_de_L_IA_au_ML_Final.pdf",
+        "pages": "54–61"
+      }
+    ],
+    "sections": [
+      {
+        "title": "L’inférence utilise la règle apprise",
+        "body": "L’inférence applique un modèle à de nouvelles entrées pour obtenir une estimation. Dans le pipeline étudié, les paramètres restent figés pendant cette étape. Une mise à jour du modèle relève d’une nouvelle phase d’apprentissage, distincte du simple appel de prédiction."
+      },
+      {
+        "title": "Temps réel ou traitement par lots",
+        "body": "Une réponse à une requête interactive relève de l’inférence à la demande ; un calcul nocturne sur de nombreux clients relève du batch. Le besoin de délai, de volume et de disponibilité détermine le choix. Les millisecondes citées au cours illustrent une contrainte, pas une garantie universelle."
+      },
+      {
+        "title": "Réutiliser le même prétraitement",
+        "body": "Imputer, encoder et mettre à l’échelle selon les paramètres appris au train. Une nouvelle observation doit garder les mêmes noms, unités et ordre de variables attendus. On applique transform ; on ne refait pas fit sur la donnée à prédire.",
+        "diagram": {
+          "caption": "De la requête au résultat",
+          "steps": [
+            "Valider les variables d’entrée",
+            "Appliquer les transformations sauvegardées",
+            "Appeler le modèle entraîné",
+            "Interpréter valeur ou classe",
+            "Enregistrer les informations utiles au suivi"
+          ]
+        }
+      },
+      {
+        "title": "Valeur, probabilité et décision",
+        "body": "Une régression produit une quantité. Certains classifieurs fournissent des probabilités, puis une règle de seuil ou de choix de classe. Tous les estimateurs n’offrent pas predict_proba ; une probabilité élevée reste une sortie de modèle, pas une preuve de vérité."
+      },
+      {
+        "title": "Conserver un ensemble cohérent",
+        "body": "Sauvegarder modèle, transformations et description des features ensemble facilite la reprise. Un pipeline limite les décalages entre entraînement et prédiction. Charger uniquement des artefacts de confiance : les formats de sérialisation Python peuvent exécuter du code au chargement.",
+        "origin": "supplement"
+      },
+      {
+        "title": "Boucle de suivi",
+        "body": "Journaliser les entrées et prédictions utiles, puis recueillir la valeur réelle lorsqu’elle devient disponible. Comparer les erreurs dans le temps et examiner les changements de population ou de conditions. Une dérive motive une investigation puis, si nécessaire, un nouvel entraînement contrôlé."
+      }
+    ],
+    "takeaway": "À l’inférence, réutilise les transformations apprises et contrôle le sens des variables.",
+    "cards": [
+      {
+        "id": "ia-inference-q1",
+        "question": "Que fait l’inférence dans le pipeline présenté ?",
+        "answer": "Appliquer un modèle appris à de nouvelles entrées",
+        "choices": [
+          "Appliquer un modèle appris à de nouvelles entrées",
+          "Réapprendre forcément tous les paramètres",
+          "Créer automatiquement les labels réels",
+          "Supprimer le prétraitement"
+        ],
+        "correct": 0,
+        "explanation": "L’apprentissage et l’utilisation du modèle sont deux étapes distinctes."
+      },
+      {
+        "id": "ia-inference-q2",
+        "question": "Quel exemple relève du batch ?",
+        "answer": "Recalculer des estimations pendant la nuit",
+        "choices": [
+          "Répondre immédiatement à un clic individuel",
+          "Recalculer des estimations pendant la nuit",
+          "Bloquer un paiement à la réception de sa requête",
+          "Fournir une suggestion à chaque frappe"
+        ],
+        "correct": 1,
+        "explanation": "Le lot regroupe plusieurs observations selon un calendrier."
+      },
+      {
+        "id": "ia-inference-q3",
+        "question": "Quelle méthode utiliser avec un scaler déjà ajusté ?",
+        "answer": "transform",
+        "choices": [
+          "fit sur chaque nouvelle entrée",
+          "fit_transform sur chaque requête",
+          "transform",
+          "fit sur l’ensemble des valeurs à prédire"
+        ],
+        "correct": 2,
+        "explanation": "On réutilise les paramètres appris."
+      },
+      {
+        "id": "ia-inference-q4",
+        "question": "Que risque-t-on si l’ordre des variables est inversé ?",
+        "answer": "De fournir des valeurs au mauvais rôle dans le modèle",
+        "choices": [
+          "De corriger automatiquement le modèle",
+          "De changer uniquement l’ordre d’affichage sans effet",
+          "De recalculer automatiquement les unités",
+          "De fournir des valeurs au mauvais rôle dans le modèle"
+        ],
+        "correct": 3,
+        "explanation": "Une surface ne doit pas être interprétée comme un nombre de pièces."
+      },
+      {
+        "id": "ia-inference-q5",
+        "question": "D’où vient la médiane d’imputation d’une entrée future ?",
+        "answer": "Des données d’entraînement",
+        "choices": [
+          "Des données d’entraînement",
+          "De la seule entrée future",
+          "Des labels de test cachés",
+          "Du score de l’utilisateur"
+        ],
+        "correct": 0,
+        "explanation": "L’imputation doit rester cohérente avec l’apprentissage."
+      },
+      {
+        "id": "ia-inference-q6",
+        "question": "Que retourne une régression de prix ?",
+        "answer": "Une estimation numérique",
+        "choices": [
+          "Obligatoirement une classe binaire",
+          "Une estimation numérique",
+          "Un groupe sans cible",
+          "Une récompense d’action"
+        ],
+        "correct": 1,
+        "explanation": "La cible est quantitative."
+      },
+      {
+        "id": "ia-inference-q7",
+        "question": "Que faut-il vérifier avant d’utiliser predict_proba ?",
+        "answer": "Que le classifieur propose cette méthode",
+        "choices": [
+          "Que toutes les classes ont le même effectif",
+          "Que le seuil choisi vaut toujours 0,5",
+          "Que le classifieur propose cette méthode",
+          "Que le modèle n’a jamais été ajusté"
+        ],
+        "correct": 2,
+        "explanation": "Tous les estimateurs ne produisent pas des probabilités via cette interface."
+      },
+      {
+        "id": "ia-inference-q8",
+        "question": "Pourquoi sauvegarder le prétraitement avec le modèle ?",
+        "answer": "Pour appliquer les mêmes transformations lors de la reprise",
+        "choices": [
+          "Pour éviter toute validation",
+          "Pour garantir une absence de dérive",
+          "Pour remplacer les features par les labels",
+          "Pour appliquer les mêmes transformations lors de la reprise"
+        ],
+        "correct": 3,
+        "explanation": "L’artefact doit contenir l’ensemble de la chaîne utile."
+      },
+      {
+        "id": "ia-inference-q9",
+        "question": "Que désigne la ground truth recueillie plus tard ?",
+        "answer": "Le résultat réel observé",
+        "choices": [
+          "Le résultat réel observé",
+          "La prédiction répétée du modèle",
+          "Le seuil de décision retenu",
+          "La médiane du train uniquement"
+        ],
+        "correct": 0,
+        "explanation": "Elle permet de mesurer l’erreur réelle."
+      },
+      {
+        "id": "ia-inference-q10",
+        "question": "Une erreur qui augmente en production doit conduire à…",
+        "answer": "Examiner les données et la dérive avant une mise à jour contrôlée",
+        "choices": [
+          "Déclarer automatiquement toutes les prédictions correctes",
+          "Examiner les données et la dérive avant une mise à jour contrôlée",
+          "Réentraîner sur les seuls scores prédits",
+          "Ignorer les résultats réels"
+        ],
+        "correct": 1,
+        "explanation": "Le suivi sert à détecter et comprendre les changements."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-inference-e1",
+        "question": "Un modèle immobilier donne des résultats incohérents après déploiement. Le scaler est réajusté sur chaque nouvel appartement. Explique le problème et propose une chaîne correcte.",
+        "modelAnswer": "Le scaler change de référence pour chaque requête : le modèle ne reçoit plus les variables dans l’échelle apprise. Il faut charger le prétraitement d’entraînement et le modèle, contrôler noms et unités, appeler transform puis predict. Journaliser les prédictions et comparer aux prix observés ensuite permet de distinguer erreur de pipeline et dérive.",
+        "rubric": [
+          "Identifier le réajustement incorrect",
+          "Réutiliser les paramètres du train",
+          "Contrôler les entrées puis prédire",
+          "Proposer un suivi avec valeurs réelles"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Atelier · Préparer un pipeline de prédiction",
+        "instructions": "Exécute cet exemple pédagogique dans Python avec scikit-learn. Identifie où l’imputation est apprise et où elle est seulement réutilisée. Aucun score de qualité n’est prétendu sur ces quatre exemples.",
+        "solution": "fit apprend la médiane et la régression sur X. predict réutilise la même imputation sur le nouvel exemple. La petite table sert à montrer le chemin d’exécution ; un projet réel nécessite une évaluation indépendante.",
+        "language": "Python · scikit-learn",
+        "code": "from sklearn.pipeline import make_pipeline\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.linear_model import LinearRegression\n\nX = [[45, 2], [65, 3], [90, 4], [120, 5]]\ny = [140000, 185000, 210000, 265000]\npipeline = make_pipeline(SimpleImputer(strategy=\"median\"), LinearRegression())\npipeline.fit(X, y)\nnouveau = [[78, float(\"nan\")]]\nprint(pipeline.predict(nouveau))"
+      }
+    ]
+  },
+  {
+    "id": "ia-knn",
+    "title": "KNN · Distances et voisins",
+    "description": "Normaliser, choisir K, calculer les distances et interpréter un vote.",
+    "minutes": 28,
+    "references": [
+      {
+        "document": "Chapitre3_Machine_Learning.pdf",
+        "pages": "12–27"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Un apprentissage fondé sur les exemples",
+        "body": "KNN est supervisé et non paramétrique. Il mémorise les exemples ; à la prédiction, il recherche les K plus proches. En classification, il effectue un vote ; en régression, une moyenne des cibles, éventuellement pondérée. Le mot « paresseux » décrit le report du travail vers la prédiction."
+      },
+      {
+        "title": "Les distances",
+        "body": "La distance euclidienne mesure une longueur en ligne droite. Manhattan additionne les écarts absolus ; Tchebychev retient le plus grand ; Hamming compte les positions différentes sur des représentations compatibles. Le choix dépend des variables et de leur représentation.",
+        "formula": "d₂(A,B) = √Σ(aᵢ−bᵢ)²\nd₁(A,B) = Σ|aᵢ−bᵢ|\nd∞(A,B) = max |aᵢ−bᵢ|\nA=(1,2), B=(4,6) : 5 ; 7 ; 4"
+      },
+      {
+        "title": "Normaliser les variables",
+        "body": "Une variable mesurée en centaines peut dominer une autre mesurée en unités. La normalisation min-max met les valeurs du train sur une échelle comparable. Les bornes apprises sont conservées pour le test et les nouvelles entrées. Une valeur future hors de ces bornes peut dépasser [0,1] ; une variable constante demande un traitement adapté.",
+        "formula": "x′ = (x − min_train) / (max_train − min_train)"
+      },
+      {
+        "title": "Choisir K",
+        "body": "Un petit K suit finement les particularités et le bruit ; un grand K lisse la décision. Avec K=N et un vote non pondéré, la classe majoritaire du train domine. K se choisit en validation. Un K impair évite l’égalité entre deux classes dans un vote simple, sans éliminer tous les cas d’égalité multiclasse."
+      },
+      {
+        "title": "Le fruit mystère",
+        "body": "Les six exemples du cours ont des poids de 140 à 210 g et des diamètres de 6,8 à 8,4 cm. Le fruit (172 g ; 7,5 cm) devient environ (0,457 ; 0,438). Les trois voisins les plus proches sont F4 Orange (~0,318), F3 Pomme (~0,356) et F2 Pomme (~0,366)."
+      },
+      {
+        "title": "Interpréter la prédiction",
+        "body": "Avec K=3, deux voisins sur trois sont des pommes : le vote donne Pomme. Avec K=1, F4 donne Orange. La proportion 2/3 décrit le vote dans cet exemple ; elle ne garantit pas une probabilité parfaitement calibrée. L’ordre des colonnes de predict_proba se lit dans classes_."
+      },
+      {
+        "title": "Atouts et limites",
+        "body": "KNN est simple et peut épouser des frontières irrégulières. La prédiction peut être coûteuse lorsque la base grandit ; les distances deviennent moins discriminantes avec beaucoup de dimensions. Échelle, variables peu utiles, bruit et choix de K influencent donc fortement le résultat."
+      },
+      {
+        "title": "Comparer sans confondre",
+        "body": "Un exemple de fruits fictifs explique le calcul. Une expérience d’évaluation exige un test indépendant. De même, une proximité entre personnes ne prouve pas une relation causale : le modèle exploite une représentation et des observations disponibles."
+      }
+    ],
+    "takeaway": "KNN dépend autant de l’échelle et de la distance que du nombre de voisins.",
+    "cards": [
+      {
+        "id": "ia-knn-q1",
+        "question": "À quel moment KNN recherche-t-il principalement les voisins utiles ?",
+        "answer": "Lors de la prédiction",
+        "choices": [
+          "Lors de la prédiction",
+          "Uniquement avant de recevoir les exemples",
+          "Uniquement lors du choix de la métrique finale",
+          "Seulement après avoir obtenu la vraie classe"
+        ],
+        "correct": 0,
+        "explanation": "L’apprentissage est dit paresseux."
+      },
+      {
+        "id": "ia-knn-q2",
+        "question": "En classification KNN simple, comment décide-t-on ?",
+        "answer": "Par vote des K voisins les plus proches",
+        "choices": [
+          "Par la seule classe du dernier exemple mémorisé",
+          "Par vote des K voisins les plus proches",
+          "Par le vote de tous les exemples quelle que soit leur distance",
+          "Par la classe du point le plus éloigné"
+        ],
+        "correct": 1,
+        "explanation": "Les classes des voisins guident la prédiction."
+      },
+      {
+        "id": "ia-knn-q3",
+        "question": "En régression KNN simple, que peut-on calculer ?",
+        "answer": "La moyenne des cibles des voisins",
+        "choices": [
+          "La somme non normalisée des cibles",
+          "Le nombre de classes présentes uniquement",
+          "La moyenne des cibles des voisins",
+          "La classe majoritaire sans valeur numérique"
+        ],
+        "correct": 2,
+        "explanation": "KNN existe aussi pour les cibles numériques."
+      },
+      {
+        "id": "ia-knn-q4",
+        "question": "Entre (1,2) et (4,6), quelle distance euclidienne ?",
+        "answer": "5",
+        "choices": [
+          "7",
+          "4",
+          "25",
+          "5"
+        ],
+        "correct": 3,
+        "explanation": "√(3²+4²)=5."
+      },
+      {
+        "id": "ia-knn-q5",
+        "question": "Pour ces points, quelle distance de Manhattan ?",
+        "answer": "7",
+        "choices": [
+          "7",
+          "5",
+          "4",
+          "25"
+        ],
+        "correct": 0,
+        "explanation": "3+4=7."
+      },
+      {
+        "id": "ia-knn-q6",
+        "question": "Pour ces points, quelle distance de Tchebychev ?",
+        "answer": "4",
+        "choices": [
+          "5",
+          "4",
+          "7",
+          "3"
+        ],
+        "correct": 1,
+        "explanation": "Le plus grand des écarts absolus vaut 4."
+      },
+      {
+        "id": "ia-knn-q7",
+        "question": "Pourquoi mettre les variables à une échelle comparable ?",
+        "answer": "Pour éviter qu’une unité domine artificiellement la distance",
+        "choices": [
+          "Pour rendre tous les exemples identiques",
+          "Pour supprimer les étiquettes",
+          "Pour éviter qu’une unité domine artificiellement la distance",
+          "Pour garantir la bonne classe"
+        ],
+        "correct": 2,
+        "explanation": "La représentation influence le voisinage."
+      },
+      {
+        "id": "ia-knn-q8",
+        "question": "Quel risque est associé à K=1 ?",
+        "answer": "Une forte sensibilité au bruit local",
+        "choices": [
+          "Une moyenne systématique de tous les exemples",
+          "Une impossibilité de prédire",
+          "Une absence de dépendance à l’échelle",
+          "Une forte sensibilité au bruit local"
+        ],
+        "correct": 3,
+        "explanation": "Un seul voisin atypique peut changer la décision."
+      },
+      {
+        "id": "ia-knn-q9",
+        "question": "Comment choisir K pour mesurer honnêtement la performance ?",
+        "answer": "Par validation en conservant un test indépendant",
+        "choices": [
+          "Par validation en conservant un test indépendant",
+          "En réessayant sur le test final jusqu’au meilleur score",
+          "En imposant systématiquement K=1",
+          "En utilisant uniquement le taux de réussite sur le train"
+        ],
+        "correct": 0,
+        "explanation": "Le test ne doit pas guider le réglage."
+      },
+      {
+        "id": "ia-knn-q10",
+        "question": "Avec K=3, quelle classe obtient le fruit du cours ?",
+        "answer": "Pomme",
+        "choices": [
+          "Orange",
+          "Pomme",
+          "Banane",
+          "Classe indéterminée malgré le vote 2 contre 1"
+        ],
+        "correct": 1,
+        "explanation": "F3 et F2 sont pommes, F4 orange."
+      },
+      {
+        "id": "ia-knn-q11",
+        "question": "Avec K=1, quelle classe obtient ce même fruit ?",
+        "answer": "Orange",
+        "choices": [
+          "Pomme",
+          "Banane",
+          "Orange",
+          "Aucune classe possible"
+        ],
+        "correct": 2,
+        "explanation": "F4 est le voisin le plus proche."
+      },
+      {
+        "id": "ia-knn-q12",
+        "question": "Pourquoi consulter classes_ avec predict_proba ?",
+        "answer": "Pour connaître l’ordre des classes correspondant aux colonnes",
+        "choices": [
+          "Pour connaître la distance utilisée",
+          "Pour retrouver les bornes de normalisation",
+          "Pour lire les étiquettes vraies des nouveaux exemples",
+          "Pour connaître l’ordre des classes correspondant aux colonnes"
+        ],
+        "correct": 3,
+        "explanation": "Une colonne de probabilité n’identifie pas seule sa classe."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-knn-e1",
+        "question": "Explique le résultat KNN du fruit (172;7,5) à partir des voisins F4 Orange, F3 Pomme et F2 Pomme. Discute normalisation et choix de K.",
+        "modelAnswer": "On normalise poids et diamètre avec les bornes du train afin qu’une unité ne domine pas la distance. Les distances croissantes donnent F4, F3 et F2. À K=3, Pomme reçoit deux votes et Orange un ; à K=1, Orange gagne. K doit être choisi sur validation. Ce vote de trois exemples ne démontre pas une performance générale.",
+        "rubric": [
+          "Justifier la normalisation du train",
+          "Retenir les trois voisins",
+          "Expliquer les votes pour K=3 et K=1",
+          "Distinguer exemple et évaluation"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Atelier · Refaire le calcul des fruits",
+        "instructions": "Exécute le code, retrouve les trois indices des voisins et modifie K de 3 à 1. Compare les classes et explique le changement.",
+        "solution": "Les indices commencent à zéro : [3,2,1] correspondent à F4,F3,F2. Pour K=3, le résultat est Pomme ; pour K=1, Orange. Le code ne prétend pas mesurer une accuracy sur ces exemples d’entraînement.",
+        "language": "Python · scikit-learn",
+        "code": "from sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.neighbors import KNeighborsClassifier\n\nX = [[140, 6.8], [150, 7.2], [160, 7.0],\n     [190, 7.8], [200, 8.0], [210, 8.4]]\ny = [\"Pomme\"] * 3 + [\"Orange\"] * 3\nmodele = make_pipeline(MinMaxScaler(), KNeighborsClassifier(n_neighbors=3))\nmodele.fit(X, y)\nnouveau = [[172, 7.5]]\nprint(modele.predict(nouveau))\nscaler = modele.named_steps[\"minmaxscaler\"]\nknn = modele.named_steps[\"kneighborsclassifier\"]\nprint(knn.kneighbors(scaler.transform(nouveau)))\nprint(knn.classes_, modele.predict_proba(nouveau))"
+      }
+    ]
+  },
+  {
+    "id": "ia-arbres",
+    "title": "Arbres de décision · Coupures et impureté",
+    "description": "Construire un arbre, calculer Gini et contrôler sa complexité.",
+    "minutes": 30,
+    "references": [
+      {
+        "document": "Chapitre3_Machine_Learning.pdf",
+        "pages": "28–42"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Racine, branches et feuilles",
+        "body": "Un arbre pose une suite de questions sur les variables. La racine est la première décision ; les branches suivent ses résultats ; une feuille fournit une classe ou une valeur. Un arbre dessiné à la main pour expliquer un principe n’est pas nécessairement un arbre appris."
+      },
+      {
+        "title": "Construire des groupes plus purs",
+        "body": "L’algorithme teste des coupures et choisit celle qui réduit le plus l’impureté pondérée. Un groupe pur contient une seule classe. La construction est gloutonne : elle choisit localement une bonne coupure, sans garantir l’arbre globalement optimal.",
+        "formula": "Gini = 1 − Σ pₖ²\nEntropie = −Σ pₖ log₂(pₖ), avec 0 log₂(0) = 0\nImpureté des enfants = (n_g/n) G_g + (n_d/n) G_d"
+      },
+      {
+        "title": "Le cas des dix étudiants",
+        "body": "Le support comporte sept réussites et trois échecs : Gini=0,42 à la racine. Pour assiduité≤65, le groupe gauche contient trois échecs et une réussite, Gini=0,375 ; le groupe droit contient six réussites, Gini=0. L’impureté pondérée vaut 0,15 et le gain 0,27."
+      },
+      {
+        "title": "Comparer les seuils",
+        "body": "Les seuils candidats se placent entre valeurs distinctes successives. Le tableau du cours propose six seuils d’assiduité et sept seuils d’heures, soit treize essais à la racine. La meilleure coupure des heures, à 3,5, donne une impureté pondérée de 0,24 et un gain de 0,18 : l’assiduité est donc retenue."
+      },
+      {
+        "title": "Construire le deuxième niveau",
+        "body": "La branche assiduité>65 est pure et devient une feuille Réussite. À gauche, on recalcule les candidats sur les quatre étudiants concernés. Le seuil heures≤5,5 sépare trois échecs d’une réussite : les deux feuilles sont pures.",
+        "diagram": {
+          "caption": "Arbre de l’exemple",
+          "steps": [
+            "Assiduité > 65 % → Réussite",
+            "Sinon, heures ≤ 5,5 → Échec",
+            "Sinon → Réussite"
+          ]
+        }
+      },
+      {
+        "title": "Prédire et rester prudent",
+        "body": "L’étudiant A (3 h,85 %) suit la branche de droite et reçoit Réussite. L’étudiant B (4 h,55 %) suit la branche gauche puis heures≤5,5 et reçoit Échec. Ce sont des sorties d’un exemple fictif à dix observations ; la branche de réussite peu assidue ne repose que sur une personne."
+      },
+      {
+        "title": "Limiter la complexité",
+        "body": "La profondeur, le nombre minimal d’exemples par feuille ou coupure et l’élagage limitent le surapprentissage. Un arbre trop court peut sous-apprendre ; un arbre trop détaillé peut mémoriser le bruit. Les réglages se comparent par validation. Les arbres numériques ne nécessitent généralement pas une normalisation d’échelle comme KNN."
+      },
+      {
+        "title": "Variables et familles annoncées",
+        "origin": "supplement",
+        "body": "Le support mentionne les variables catégorielles en général ; avec DecisionTreeClassifier de scikit-learn, il faut leur fournir une représentation numérique adaptée. Le plan annonce forêts, K-means et Q-Learning, mais les pages effectivement fournies développent KNN et arbres : cette synthèse n’invente pas la suite annoncée."
+      }
+    ],
+    "takeaway": "Choisis la coupure qui réduit l’impureté pondérée, puis recommence seulement sur les données de chaque branche.",
+    "cards": [
+      {
+        "id": "ia-arbres-q1",
+        "question": "Quel élément fournit la prédiction finale d’un arbre ?",
+        "answer": "Une feuille",
+        "choices": [
+          "Une feuille",
+          "Le nom de la variable racine seul",
+          "La profondeur maximale seule",
+          "Le gain total sans chemin de décision"
+        ],
+        "correct": 0,
+        "explanation": "Le chemin mène à une feuille."
+      },
+      {
+        "id": "ia-arbres-q2",
+        "question": "Quand un nœud de classification est-il pur ?",
+        "answer": "Quand ses observations appartiennent à une seule classe",
+        "choices": [
+          "Quand toutes les classes ont les mêmes proportions",
+          "Quand ses observations appartiennent à une seule classe",
+          "Quand il contient exactement deux variables",
+          "Quand il se trouve à la racine"
+        ],
+        "correct": 1,
+        "explanation": "Son Gini vaut alors zéro."
+      },
+      {
+        "id": "ia-arbres-q3",
+        "question": "Quel Gini pour 50 % de chaque classe binaire ?",
+        "answer": "0,5",
+        "choices": [
+          "0",
+          "1",
+          "0,5",
+          "0,25"
+        ],
+        "correct": 2,
+        "explanation": "1−0,5²−0,5²=0,5."
+      },
+      {
+        "id": "ia-arbres-q4",
+        "question": "Quel Gini pour sept réussites et trois échecs ?",
+        "answer": "0,42",
+        "choices": [
+          "0,7",
+          "0,3",
+          "0,49",
+          "0,42"
+        ],
+        "correct": 3,
+        "explanation": "1−0,7²−0,3²=0,42."
+      },
+      {
+        "id": "ia-arbres-q5",
+        "question": "Comment comparer deux coupures ?",
+        "answer": "Par l’impureté des enfants pondérée par leurs effectifs",
+        "choices": [
+          "Par l’impureté des enfants pondérée par leurs effectifs",
+          "Par la seule pureté du plus petit enfant",
+          "Par la somme non pondérée des effectifs",
+          "Par la valeur numérique du seuil uniquement"
+        ],
+        "correct": 0,
+        "explanation": "La pondération évite d’ignorer la taille des groupes."
+      },
+      {
+        "id": "ia-arbres-q6",
+        "question": "Quelle impureté pondérée pour assiduité≤65 dans le cours ?",
+        "answer": "0,15",
+        "choices": [
+          "0,375",
+          "0,15",
+          "0,42",
+          "0,27"
+        ],
+        "correct": 1,
+        "explanation": "0,4×0,375 + 0,6×0 = 0,15."
+      },
+      {
+        "id": "ia-arbres-q7",
+        "question": "Quel gain correspond à cette coupure ?",
+        "answer": "0,27",
+        "choices": [
+          "0,15",
+          "0,375",
+          "0,27",
+          "0,65"
+        ],
+        "correct": 2,
+        "explanation": "0,42−0,15=0,27."
+      },
+      {
+        "id": "ia-arbres-q8",
+        "question": "Combien de coupures candidates sont comparées à la racine du tableau ?",
+        "answer": "13",
+        "choices": [
+          "6",
+          "7",
+          "10",
+          "13"
+        ],
+        "correct": 3,
+        "explanation": "Six seuils d’assiduité et sept d’heures."
+      },
+      {
+        "id": "ia-arbres-q9",
+        "question": "Pourquoi arrêter la branche assiduité>65 dans l’exemple ?",
+        "answer": "Elle est pure avec six réussites",
+        "choices": [
+          "Elle est pure avec six réussites",
+          "Elle possède le plus grand nombre de variables",
+          "Elle a dépassé 65 observations",
+          "La variable heures ne peut jamais y être mesurée"
+        ],
+        "correct": 0,
+        "explanation": "Un nœud pur n’a plus d’impureté à réduire."
+      },
+      {
+        "id": "ia-arbres-q10",
+        "question": "Quel seuil sépare la branche gauche au deuxième niveau ?",
+        "answer": "Heures ≤ 5,5",
+        "choices": [
+          "Heures ≤ 3,5",
+          "Heures ≤ 5,5",
+          "Assiduité ≤ 55",
+          "Heures ≤ 2,5"
+        ],
+        "correct": 1,
+        "explanation": "Il produit trois échecs à gauche et une réussite à droite."
+      },
+      {
+        "id": "ia-arbres-q11",
+        "question": "Que prédit l’arbre pour 4 h et 55 % d’assiduité ?",
+        "answer": "Échec",
+        "choices": [
+          "Réussite",
+          "Une probabilité imposée de 100 % de réussite",
+          "Échec",
+          "Une valeur de Gini à la place d’une classe"
+        ],
+        "correct": 2,
+        "explanation": "55≤65 puis 4≤5,5."
+      },
+      {
+        "id": "ia-arbres-q12",
+        "question": "Quel réglage peut limiter le surapprentissage d’un arbre ?",
+        "answer": "max_depth",
+        "choices": [
+          "random_state seul",
+          "Le nom de la classe positive",
+          "L’ordre d’affichage des branches",
+          "max_depth"
+        ],
+        "correct": 3,
+        "explanation": "La profondeur contraint la complexité et doit être validée."
+      }
+    ],
+    "exams": [
+      {
+        "id": "ia-arbres-e1",
+        "question": "Compare les coupures assiduité≤65 et heures≤3,5 à la racine du cas étudiants, puis décris l’arbre final.",
+        "modelAnswer": "Le Gini parent vaut 0,42. L’assiduité donne une impureté pondérée de 0,15, gain 0,27 ; les heures donnent 0,24, gain 0,18. L’assiduité est retenue. Sa branche >65 est une feuille Réussite. La branche ≤65 est divisée à heures≤5,5 : Échec à gauche et Réussite à droite. Une validation reste nécessaire malgré des feuilles pures.",
+        "rubric": [
+          "Calculer le Gini parent",
+          "Comparer les impuretés pondérées et les gains",
+          "Décrire les deux niveaux",
+          "Distinguer pureté du train et généralisation"
+        ]
+      }
+    ],
+    "practicals": [
+      {
+        "title": "Atelier · Apprendre et lire l’arbre",
+        "instructions": "Exécute le modèle du cours, affiche ses règles et retrouve le trajet des deux nouveaux étudiants. Fais varier max_depth et observe les feuilles, sans appeler cela une mesure de généralisation.",
+        "solution": "Avec profondeur 2, l’arbre reproduit les décisions du cas présenté et prédit [1,0]. Un vrai protocole réserverait des données distinctes pour choisir les réglages et mesurer les performances.",
+        "language": "Python · pandas / scikit-learn",
+        "code": "import pandas as pd\nfrom sklearn.tree import DecisionTreeClassifier, export_text\n\ndf = pd.DataFrame({\n    \"heures\": [1, 2, 3, 4, 3, 6, 8, 5, 2, 7],\n    \"assiduite\": [50, 90, 60, 85, 80, 70, 60, 90, 40, 80],\n    \"reussite\": [0, 1, 0, 1, 1, 1, 1, 1, 0, 1]\n})\ncolonnes = [\"heures\", \"assiduite\"]\narbre = DecisionTreeClassifier(max_depth=2, random_state=0)\narbre.fit(df[colonnes], df[\"reussite\"])\nprint(export_text(arbre, feature_names=colonnes))\nnouveaux = pd.DataFrame({\"heures\": [3, 4], \"assiduite\": [85, 55]})\nprint(arbre.predict(nouveaux))"
+      }
+    ]
+  }
+]

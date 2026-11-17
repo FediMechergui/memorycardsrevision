@@ -34,7 +34,7 @@ function game() {
   const room = createRoom(
     "ABCD234",
     host,
-    { scope: "c1-ipv4", mode: "dice" },
+    { scope: "ia-knn", mode: "dice" },
     catalog,
     1000,
     () => 0.3,
@@ -330,7 +330,7 @@ describe("anonymous online API", () => {
     const { call, profile, aiCalls } = setup();
     const me = await profile("Lina");
     const input = {
-      examId: "c1-reseaux-e1",
+      examId: "ra-immersif-e1",
       answer: "Le routeur relie les réseaux.",
     };
     const first = await call("exam/feedback", me, input);
